@@ -649,3 +649,4 @@ const HeadingBold1 = styled(HeadingMedium1)`
 ### Fuentes
 
 1- https://styled-components.com/docs/basics#extending-styles
+xz
