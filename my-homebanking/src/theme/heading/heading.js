@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { neutralColor } from "./Colors";
+import { neutralColor } from "../colors/colors";
 
 // H1
 

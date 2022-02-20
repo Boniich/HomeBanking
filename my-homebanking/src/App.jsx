@@ -1,10 +1,10 @@
-import { useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import LoginView from "./components/views/login/LoginView";
+
 function App() {
   return (
     <div className="App">
-      <h1>hola</h1>
+      <LoginView />
     </div>
   );
 }
