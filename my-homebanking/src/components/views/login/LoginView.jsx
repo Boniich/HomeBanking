@@ -75,7 +75,7 @@ const LoginView = () => {
               onKeyUp={handleKeyUp}
             />
             {error.cardNumber === "false" ? (
-              <span>El PIN es incorrecto</span>
+              <span>El número de tarjeta no existe</span>
             ) : null}
           </div>
           <div className="containerPin">
