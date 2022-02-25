@@ -60,7 +60,8 @@ export const LoginViewStyled = styled.div`
     }
 
     input:focus {
-      outline: 3px solid #0fb398;
+      border: 2px solid ${primaryColor.primary500};
+      outline: 3px solid ${primaryColor.primary200};
       box-shadow: 0px 18px 56px -2px rgba(16, 71, 62, 0.13);
     }
 
