@@ -43,7 +43,7 @@ export const LoginViewStyled = styled.div`
       margin: 0;
     }
 
-    .containerCardNumber {
+    .containerEmail {
       margin-bottom: 16px;
     }
 
@@ -70,12 +70,12 @@ export const LoginViewStyled = styled.div`
         outline: 3px solid ${errorColor.error500};
       }
     }
-    .containerPin {
+    .containerPassword {
       position: relative;
       margin-bottom: 16px;
     }
 
-    .inputPin {
+    .inputPassword {
       padding: 0 16px;
       font-size: 17px;
       line-height: 24px;

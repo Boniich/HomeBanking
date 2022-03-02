@@ -9,34 +9,34 @@ import {
 import { Button } from "../../../theme/buttons/buttons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
-import { formatNumber, formatPIN, validateLogin } from "./validate";
+import {validateLogin } from "./validate";
 
 const LoginView = () => {
-  const [showPin, setShowPin] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const [input, setInput] = useState({
-    cardNumber: "",
-    pin: "",
+    email: "",
+    password: "",
   });
   const [error, setError] = useState({});
 
   const [isDisable, setIsDisable] = useState(true);
 
   const handleChange = (e) => {
-    if (e.target.name === "cardNumber") {
+    if (e.target.name === "email") {
       setInput({
         ...input,
-        [e.target.name]: formatNumber(e.target.value),
+        [e.target.name]: e.target.value,
       });
     } else {
       setInput({
         ...input,
-        [e.target.name]: formatPIN(e.target.value),
+        [e.target.name]: e.target.value,
       });
     }
   };
 
   const handleKeyUp = () => {
-    if (input.cardNumber.length !== 0 && input.pin.length !== 0) {
+    if (input.email.length !== 0 && input.password.length !== 0) {
       setIsDisable(false);
     }
     const error = validateLogin(input, setInput);
@@ -44,12 +44,12 @@ const LoginView = () => {
   };
 
   const handleClickShow = () => {
-    setShowPin(!showPin);
+    setShowPassword(!showPassword);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (error.cardNumber === "true" && error.pin === "true") {
+    if (error.email === "true" && error.password === "true") {
       console.log(input);
     }
   };
@@ -60,32 +60,32 @@ const LoginView = () => {
         <img src={trebol} alt="logo" />
         <HeadingMedium4>Saint Patrick</HeadingMedium4>
         <form action="" onSubmit={handleSubmit}>
-          <div className="containerCardNumber">
-            <ParagraphMedium3>Número de tarjeta</ParagraphMedium3>
+          <div className="containerEmail">
+            <ParagraphMedium3>Correo Electrónico</ParagraphMedium3>
             <input
-              type="text"
-              name="cardNumber"
-              value={input.cardNumber}
-              maxLength="19"
-              className={`inputCardNumber ${
-                error.cardNumber === "false" ? "error" : ""
+              type="email"
+              name="email"
+              value={input.email}
+              maxLength="50"
+              className={`inputEmail ${
+                error.email === "false" ? "error" : ""
               }`}
-              placeholder="Ingresa tu número de tarjeta"
+              placeholder="Ingesa tu E-mail"
               onChange={handleChange}
               onKeyUp={handleKeyUp}
             />
-            {error.cardNumber === "false" ? (
-              <span>El número de tarjeta no existe</span>
+            {error.email === "false" ? (
+              <span>El email es incorrecto</span>
             ) : null}
           </div>
-          <div className="containerPin">
-            <ParagraphMedium3>PIN</ParagraphMedium3>
+          <div className="containerPassword">
+            <ParagraphMedium3>Contraseña</ParagraphMedium3>
             <input
-              type={showPin ? "text" : "password"}
-              name="pin"
-              value={input.pin}
-              maxLength="4"
-              className={`inputPin ${error.pin === "false" ? "error" : ""}`}
+              type={showPassword ? "text" : "password"}
+              name="password"
+              value={input.password}
+              maxLength="8"
+              className={`inputPassword ${error.password === "false" ? "error" : ""}`}
               placeholder="Ingresa tu contraseña"
               onChange={handleChange}
               onKeyUp={handleKeyUp}
@@ -95,10 +95,10 @@ const LoginView = () => {
               className="iconEye"
               onClick={handleClickShow}
             />
-            {error.pin === "false" ? <span>El PIN es incorrecto</span> : null}
+            {error.password === "false" ? <span>La contraseña es incorrecta</span> : null}
           </div>
           <ParagraphUnderline3>¿Olvidaste tu contraseña?</ParagraphUnderline3>
-          {/* cambiarlo por link */}
+          {/* cambiar por link */}
           <Button
             className={`${isDisable === true ? "disable" : ""}`}
             type="submit"
