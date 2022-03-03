@@ -67,6 +67,7 @@ export const LoginViewStyled = styled.div`
 
     .error {
       &:focus {
+        border: none;
         outline: 3px solid ${errorColor.error500};
       }
     }
