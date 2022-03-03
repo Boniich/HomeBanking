@@ -1,5 +1,5 @@
 import styled from "styled-components";
-const CaptionMedium = styled.caption`
+const Caption = styled.caption`
   font-weight: normal;
   font-size: 12px;
   line-height: 18px;
@@ -16,4 +16,4 @@ const CaptionBold = styled(CaptionMedium)`
   text-transform: uppercase;
 `;
 
-export { CaptionMedium, CaptionSemiBold, CaptionBold };
+export { Caption, CaptionSemiBold, CaptionBold };
