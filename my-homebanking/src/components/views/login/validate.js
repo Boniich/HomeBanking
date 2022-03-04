@@ -4,7 +4,7 @@ export const validateLogin = (input, setInput) => {
   const errors = { email: null, pin: null };
   const expReg = {
     email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-    password: "^[0-9]{8}$",
+    password: "[A-Za-z0-9]{6,16}$",
   };
 
   if (number.length !== 0) {
