@@ -136,7 +136,4 @@ export const LoginViewStyled = styled.div`
       }
     }
   }
-
-  @media screen and (min-width: 1512px) {
-  }
 `;
