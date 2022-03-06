@@ -10,6 +10,7 @@ import { Button } from "../../../theme/buttons/buttons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import {validateLogin } from "./validate";
+import { Caption } from "../../../theme/caption/caption";
 
 const LoginView = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -75,27 +76,31 @@ const LoginView = () => {
               onKeyUp={handleKeyUp}
             />
             {error.email === "false" ? (
-              <span>El email es incorrecto</span>
+                <Caption>El email es incorrecto</Caption>    
             ) : null}
           </div>
           <div className="containerPassword">
             <ParagraphMedium3>Contraseña</ParagraphMedium3>
+            <div className="input-icon-container">
             <input
               type={showPassword ? "text" : "password"}
               name="password"
               value={input.password}
-              maxLength="8"
+              minLength="6"
+              maxLength="16"
               className={`inputPassword ${error.password === "false" ? "error" : ""}`}
               placeholder="Ingresa tu contraseña"
               onChange={handleChange}
               onKeyUp={handleKeyUp}
-            />
+            />  
             <FontAwesomeIcon
               icon={faEye}
               className="iconEye"
               onClick={handleClickShow}
             />
-            {error.password === "false" ? <span>La contraseña es incorrecta</span> : null}
+
+            </div>
+            {error.password === "false" ? <Caption>La contraseña es incorrecta</Caption> : null}
           </div>
           <ParagraphUnderline3>¿Olvidaste tu contraseña?</ParagraphUnderline3>
           {/* cambiar por link */}

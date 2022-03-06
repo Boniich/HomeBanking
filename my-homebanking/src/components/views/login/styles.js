@@ -53,6 +53,7 @@ export const LoginViewStyled = styled.div`
 
     .containerEmail {
       margin-bottom: 24px;
+      /* height: 101px; */
     }
 
     input {
@@ -78,8 +79,11 @@ export const LoginViewStyled = styled.div`
         outline: 3px solid ${errorColor.error500};
       }
     }
-    .containerPassword {
+
+    .input-icon-container {
       position: relative;
+    }
+    .containerPassword {
       margin-bottom: 16px;
     }
 
@@ -91,10 +95,11 @@ export const LoginViewStyled = styled.div`
 
     .iconEye {
       position: absolute;
+      right: 16px;
+      top: 35%;
       color: ${neutralColor.neutral800};
       font-size: 18px;
-      right: 16px;
-      top: 50%;
+      z-index: 1000;
       cursor: pointer;
     }
 
@@ -110,7 +115,7 @@ export const LoginViewStyled = styled.div`
       width: 100%;
       text-align: left;
       color: ${errorColor.error500};
-      padding: 4px;
+      padding: 4px 0 0 4px;
     }
 
     .disable {
