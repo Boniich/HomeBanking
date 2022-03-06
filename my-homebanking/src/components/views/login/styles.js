@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Button } from "../../../theme/buttons/buttons";
 import { Caption } from "../../../theme/caption/caption";
 
 import {
@@ -22,15 +23,19 @@ export const LoginViewStyled = styled.div`
   /* 360px mobile */
   .formulario {
     box-sizing: border-box;
-    width: 360px; //definir tama;os para mobile , tablet , pc
-    height: 553px;
+    width: 360px;
+    height: 302px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    /* box-shadow: ${shadownXL}; */
     background: #ffffff;
     border-radius: 20px;
     padding: 60px 24px 56px;
+
+    ${Button} {
+      width: 312px;
+    }
+
     img {
       width: 50px;
       height: 50px;
@@ -47,15 +52,14 @@ export const LoginViewStyled = styled.div`
     }
 
     .containerEmail {
-      margin-bottom: 16px;
+      margin-bottom: 24px;
     }
 
     input {
       width: 100%;
       height: 54px;
       box-sizing: border-box;
-      margin: 4px 0;
-      padding: 15px 16px;
+      padding: 0 16px;
       border-radius: 8px;
       border: 1px solid #c3c9d6;
       font-size: 16px;
@@ -98,6 +102,7 @@ export const LoginViewStyled = styled.div`
       color: ${primaryColor.primary500};
       text-align: right;
       margin: 16px 0 32px;
+      padding: 0;
     }
 
     ${Caption} {
@@ -113,5 +118,25 @@ export const LoginViewStyled = styled.div`
       color: ${neutralColor.neutral500};
       cursor: no-drop;
     }
+  }
+
+  @media screen and (min-width: 744px) {
+    .formulario {
+      width: 437px;
+      height: 561px;
+      box-shadow: ${shadownXL};
+      padding: 60px 48px 56px;
+
+      ${Button} {
+        width: 341px;
+      }
+
+      ${HeadingMedium4} {
+        margin: 8px 0 56px 0;
+      }
+    }
+  }
+
+  @media screen and (min-width: 1512px) {
   }
 `;
