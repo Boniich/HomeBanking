@@ -6,8 +6,8 @@ import { primaryColor } from "../colors/colors";
 
 const Button = styled.button`
   font-family: inherit;
-  /* El width es el que lleva el boton del formulario, si necesitas ponerle auto cambialo */
-  width: 341px;
+  /* El width se cambia en el componente que se este utilizando */
+  width: auto;
   height: 55px;
   background-color: ${primaryColor.primary500};
   color: #fff;

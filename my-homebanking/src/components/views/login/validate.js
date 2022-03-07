@@ -1,53 +1,31 @@
 export const validateLogin = (input, setInput) => {
-  const number = input.cardNumber.replace(/\D/g, "");
-  const pin = input.pin.replace(/\W/g, "");
-  const errors = { cardNumber: null, pin: null };
+  const number = input.email;
+  const password = input.password;
+  const errors = { email: null, pin: null };
   const expReg = {
-    visa: "^4[0-9]{12}(?:[0-9]{3})?$",
-    mastercard: "5[1-5][0-9]{14}$",
-    pin: "^[0-9]{4}$",
+    email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+    password: "[A-Za-z0-9]{6,16}$",
   };
 
   if (number.length !== 0) {
-    if (
-      number.length === 16 &&
-      (number.match(expReg.visa) || number.match(expReg.mastercard))
-    ) {
-      errors.cardNumber = "true";
+    if (number.match(expReg.email)) {
+      errors.email = "true";
     } else {
-      errors.cardNumber = "false";
+      errors.email = "false";
     }
   } else {
-    errors.cardNumber = null;
+    errors.email = null;
   }
 
-  if (pin.length !== 0) {
-    if (!pin.match(expReg.pin)) {
-      errors.pin = "false";
+  if (password.length !== 0) {
+    if (!password.match(expReg.password)) {
+      errors.password = "false";
     } else {
-      errors.pin = "true";
+      errors.password = "true";
     }
   } else {
-    errors.pin = null;
+    errors.password = null;
   }
 
   return errors;
-};
-
-export const formatNumber = (n) => {
-  const formatCardNumber = n
-    .replace(/\s/g, "")
-    // Eliminar las letras
-    .replace(/\D/g, "")
-    // Ponemos espacio cada cuatro numeros
-    .replace(/([0-9]{4})/g, "$1 ")
-    // Elimina el ultimo espaciado
-    .trim();
-  return formatCardNumber;
-};
-
-export const formatPIN = (pin) => {
-  const formatPin = pin.replace(/\D/g, "");
-  // Eliminar las letras
-  return formatPin;
 };

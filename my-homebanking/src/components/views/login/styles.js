@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { Button } from "../../../theme/buttons/buttons";
+import { Caption } from "../../../theme/caption/caption";
 
 import {
   errorColor,
@@ -18,41 +20,47 @@ export const LoginViewStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
+  /* 360px mobile */
   .formulario {
     box-sizing: border-box;
-    width: 437px; //definir tama;os para mobile , tablet , pc
-    height: 553px;
+    width: 360px;
+    height: 302px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    box-shadow: ${shadownXL};
     background: #ffffff;
     border-radius: 20px;
-    padding: 60px 48px 56px;
+    padding: 60px 24px 56px;
+
+    ${Button} {
+      width: 312px;
+    }
+
     img {
       width: 50px;
       height: 50px;
       margin: 0 auto;
     }
     ${HeadingMedium4} {
-      margin: 0 0 56px 0;
+      margin: 8px 0 40px 0;
+      text-align: center;
     }
     ${ParagraphMedium3} {
       text-align: left;
       margin: 0;
+      padding: 0 0 8px 4px;
     }
 
-    .containerCardNumber {
-      margin-bottom: 16px;
+    .containerEmail {
+      margin-bottom: 24px;
+      /* height: 101px; */
     }
 
     input {
       width: 100%;
       height: 54px;
       box-sizing: border-box;
-      margin: 4px 0;
-      padding: 10px 16px;
+      padding: 0 16px;
       border-radius: 8px;
       border: 1px solid #c3c9d6;
       font-size: 16px;
@@ -67,15 +75,19 @@ export const LoginViewStyled = styled.div`
 
     .error {
       &:focus {
+        border: none;
         outline: 3px solid ${errorColor.error500};
       }
     }
-    .containerPin {
+
+    .input-icon-container {
       position: relative;
+    }
+    .containerPassword {
       margin-bottom: 16px;
     }
 
-    .inputPin {
+    .inputPassword {
       padding: 0 16px;
       font-size: 17px;
       line-height: 24px;
@@ -83,30 +95,50 @@ export const LoginViewStyled = styled.div`
 
     .iconEye {
       position: absolute;
+      right: 16px;
+      top: 35%;
       color: ${neutralColor.neutral800};
       font-size: 18px;
-      right: 16px;
-      top: 50%;
+      z-index: 1000;
       cursor: pointer;
     }
 
     ${ParagraphUnderline3} {
       color: ${primaryColor.primary500};
       text-align: right;
-      margin: 16px 0;
+      margin: 16px 0 32px;
+      padding: 0;
     }
 
-    span {
+    ${Caption} {
       display: block;
       width: 100%;
       text-align: left;
       color: ${errorColor.error500};
+      padding: 4px 0 0 4px;
     }
 
     .disable {
       background-color: ${neutralColor.neutral200};
       color: ${neutralColor.neutral500};
       cursor: no-drop;
+    }
+  }
+
+  @media screen and (min-width: 744px) {
+    .formulario {
+      width: 437px;
+      height: 561px;
+      box-shadow: ${shadownXL};
+      padding: 60px 48px 56px;
+
+      ${Button} {
+        width: 341px;
+      }
+
+      ${HeadingMedium4} {
+        margin: 8px 0 56px 0;
+      }
     }
   }
 `;
