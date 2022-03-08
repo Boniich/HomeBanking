@@ -20,15 +20,15 @@ import { validateLogin } from "./validate";
 import { Caption } from "../../../theme/caption/caption";
 
 const LoginView = () => {
+  const [error, setError] = useState({});
+  const [isDisable, setIsDisable] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [showEye, setShowEye] = useState(false);
   const [input, setInput] = useState({
     email: "",
     password: "",
   });
-  const [error, setError] = useState({});
-
-  const [isDisable, setIsDisable] = useState(true);
+  
 
   const handleChange = (e) => {
     if (e.target.name === "email") {
