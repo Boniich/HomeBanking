@@ -21,6 +21,7 @@ import { Caption } from "../../../theme/caption/caption";
 
 const LoginView = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [showEye, setShowEye] = useState(false);
   const [input, setInput] = useState({
     email: "",
     password: "",
@@ -44,6 +45,15 @@ const LoginView = () => {
   };
 
   const handleKeyUp = () => {
+
+    // Muestra y oculta el ojo
+    if(input.password.length !== 0){
+      setShowEye(true);
+    }else{
+      setShowEye(false);
+    }
+
+
     if (input.email.length !== 0 && input.password.length !== 0) {
       setIsDisable(false);
     }
@@ -100,10 +110,13 @@ const LoginView = () => {
                 onChange={handleChange}
                 onKeyUp={handleKeyUp}
               />
+              {showEye &&
               <IconEye
-                icon={faEye}
-                onClick={handleClickShow}
-              />
+              icon={faEye}
+              onClick={handleClickShow}
+            />
+              }
+
             </InputIconContainer>
             {error.password === "false" ? (
               <Caption>La contraseña es incorrecta</Caption>
