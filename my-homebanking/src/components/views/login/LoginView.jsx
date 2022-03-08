@@ -28,7 +28,6 @@ const LoginView = () => {
     email: "",
     password: "",
   });
-  
 
   const handleChange = (e) => {
     if (e.target.name === "email") {
@@ -45,14 +44,12 @@ const LoginView = () => {
   };
 
   const handleKeyUp = () => {
-
     // Muestra y oculta el ojo
-    if(input.password.length !== 0){
+    if (input.password.length !== 0) {
       setShowEye(true);
-    }else{
+    } else {
       setShowEye(false);
     }
-
 
     if (input.email.length !== 0 && input.password.length !== 0) {
       setIsDisable(false);
@@ -110,13 +107,7 @@ const LoginView = () => {
                 onChange={handleChange}
                 onKeyUp={handleKeyUp}
               />
-              {showEye &&
-              <IconEye
-              icon={faEye}
-              onClick={handleClickShow}
-            />
-              }
-
+              {showEye && <IconEye icon={faEye} onClick={handleClickShow} />}
             </InputIconContainer>
             {error.password === "false" ? (
               <Caption>La contraseña es incorrecta</Caption>
