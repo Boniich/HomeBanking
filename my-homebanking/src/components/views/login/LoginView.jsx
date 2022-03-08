@@ -1,5 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { LoginViewStyled } from "./styles";
+import {
+  Box,
+  EmailContainer,
+  IconEye,
+  Img,
+  InputIconContainer,
+  LoginSection,
+  PasswordContainer,
+} from "./styles";
 import trebol from "../../../assets/trebol.png";
 import { HeadingMedium4 } from "../../../theme/heading/heading";
 import {
@@ -7,9 +15,8 @@ import {
   ParagraphUnderline3,
 } from "../../../theme/paragraph/paragraph";
 import { Button } from "../../../theme/buttons/buttons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
-import {validateLogin } from "./validate";
+import { validateLogin } from "./validate";
 import { Caption } from "../../../theme/caption/caption";
 
 const LoginView = () => {
@@ -56,52 +63,52 @@ const LoginView = () => {
   };
 
   return (
-    <LoginViewStyled>
-      <div className="formulario">
-        <img src={trebol} alt="logo" />
+    <LoginSection>
+      <Box>
+        <Img src={trebol} alt="logo" />
         <HeadingMedium4>Saint Patrick</HeadingMedium4>
         <form action="" onSubmit={handleSubmit}>
-          <div className="containerEmail">
+          <EmailContainer>
             <ParagraphMedium3>Correo Electrónico</ParagraphMedium3>
             <input
               type="email"
               name="email"
               value={input.email}
               maxLength="50"
-              className={`inputEmail ${
-                error.email === "false" ? "error" : ""
-              }`}
+              className={`inputEmail ${error.email === "false" ? "error" : ""}`}
               placeholder="Ingesa tu E-mail"
               onChange={handleChange}
               onKeyUp={handleKeyUp}
             />
             {error.email === "false" ? (
-                <Caption>El email es incorrecto</Caption>    
+              <Caption>El email es incorrecto</Caption>
             ) : null}
-          </div>
-          <div className="containerPassword">
+          </EmailContainer>
+          <PasswordContainer>
             <ParagraphMedium3>Contraseña</ParagraphMedium3>
-            <div className="input-icon-container">
-            <input
-              type={showPassword ? "text" : "password"}
-              name="password"
-              value={input.password}
-              minLength="6"
-              maxLength="16"
-              className={`inputPassword ${error.password === "false" ? "error" : ""}`}
-              placeholder="Ingresa tu contraseña"
-              onChange={handleChange}
-              onKeyUp={handleKeyUp}
-            />  
-            <FontAwesomeIcon
-              icon={faEye}
-              className="iconEye"
-              onClick={handleClickShow}
-            />
-
-            </div>
-            {error.password === "false" ? <Caption>La contraseña es incorrecta</Caption> : null}
-          </div>
+            <InputIconContainer>
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                value={input.password}
+                minLength="6"
+                maxLength="16"
+                className={`inputPassword ${
+                  error.password === "false" ? "error" : ""
+                }`}
+                placeholder="Ingresa tu contraseña"
+                onChange={handleChange}
+                onKeyUp={handleKeyUp}
+              />
+              <IconEye
+                icon={faEye}
+                onClick={handleClickShow}
+              />
+            </InputIconContainer>
+            {error.password === "false" ? (
+              <Caption>La contraseña es incorrecta</Caption>
+            ) : null}
+          </PasswordContainer>
           <ParagraphUnderline3>¿Olvidaste tu contraseña?</ParagraphUnderline3>
           {/* cambiar por link */}
           <Button
@@ -112,8 +119,8 @@ const LoginView = () => {
             Iniciar Sesión
           </Button>
         </form>
-      </div>
-    </LoginViewStyled>
+      </Box>
+    </LoginSection>
   );
 };
 
