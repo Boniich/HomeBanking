@@ -30,21 +30,15 @@ const LoginView = () => {
   });
 
   const handleChange = (e) => {
-    if (e.target.name === "email") {
       setInput({
         ...input,
         [e.target.name]: e.target.value,
       });
-    } else {
-      setInput({
-        ...input,
-        [e.target.name]: e.target.value,
-      });
-    }
   };
 
   const handleKeyUp = () => {
     // Muestra y oculta el ojo
+    console.log("keyUp");
     if (input.password.length !== 0) {
       setShowEye(true);
     } else {
@@ -54,8 +48,6 @@ const LoginView = () => {
     if (input.email.length !== 0 && input.password.length !== 0) {
       setIsDisable(false);
     }
-    const error = validateLogin(input, setInput);
-    setError(error);
   };
 
   const handleClickShow = () => {
@@ -82,14 +74,10 @@ const LoginView = () => {
               name="email"
               value={input.email}
               maxLength="50"
-              className={`inputEmail ${error.email === "false" ? "error" : ""}`}
               placeholder="Ingesa tu E-mail"
               onChange={handleChange}
               onKeyUp={handleKeyUp}
             />
-            {error.email === "false" ? (
-              <Caption>El email es incorrecto</Caption>
-            ) : null}
           </EmailContainer>
           <PasswordContainer>
             <ParagraphMedium3>Contraseña</ParagraphMedium3>
@@ -100,18 +88,12 @@ const LoginView = () => {
                 value={input.password}
                 minLength="6"
                 maxLength="16"
-                className={`inputPassword ${
-                  error.password === "false" ? "error" : ""
-                }`}
                 placeholder="Ingresa tu contraseña"
                 onChange={handleChange}
                 onKeyUp={handleKeyUp}
               />
               {showEye && <IconEye icon={faEye} onClick={handleClickShow} />}
             </InputIconContainer>
-            {error.password === "false" ? (
-              <Caption>La contraseña es incorrecta</Caption>
-            ) : null}
           </PasswordContainer>
           <ParagraphUnderline3>¿Olvidaste tu contraseña?</ParagraphUnderline3>
           {/* cambiar por link */}
