@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import {
   Box,
   EmailContainer,
@@ -20,7 +21,7 @@ import { validateLogin } from "./validate";
 import { Caption } from "../../../theme/caption/caption";
 
 const LoginView = () => {
-  const [error, setError] = useState({});
+  const [error, setError] = useState({email: false, password: false});
   const [isDisable, setIsDisable] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [showEye, setShowEye] = useState(false);
@@ -29,6 +30,7 @@ const LoginView = () => {
     password: "",
   });
 
+  let url = "http://challenge-react.alkemy.org/";
   const handleChange = (e) => {
       setInput({
         ...input,
@@ -54,10 +56,22 @@ const LoginView = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (error.email === "true" && error.password === "true") {
-      console.log(input);
+    try{
+      const response = await axios.post(url,JSON.stringify({
+        email: input.email,
+        password: input.password
+      }),{
+        headers: { "Content-Type": "application/json" },
+      }
+      );
+      console.log(response);
+    }catch(err){
+      console.log(err);
+
+
+
     }
   };
 
@@ -78,6 +92,7 @@ const LoginView = () => {
               onChange={handleChange}
               onKeyUp={handleKeyUp}
             />
+            {error.email && <Caption>El email es incorrecto</Caption>}
           </EmailContainer>
           <PasswordContainer>
             <ParagraphMedium3>Contraseña</ParagraphMedium3>
@@ -86,7 +101,6 @@ const LoginView = () => {
                 type={showPassword ? "text" : "password"}
                 name="password"
                 value={input.password}
-                minLength="6"
                 maxLength="16"
                 placeholder="Ingresa tu contraseña"
                 onChange={handleChange}
