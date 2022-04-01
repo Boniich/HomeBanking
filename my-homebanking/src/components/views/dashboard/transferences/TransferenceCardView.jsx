@@ -1,8 +1,6 @@
-import {
-  ParagraphMedium3,
-  ParagraphSemibold2,
-} from "../../../../theme/paragraph/paragraph";
-import { Divider, FigureTransf, Transf, TransfInfo } from "../styleDashBoard";
+import { ParagraphMedium3, ParagraphSemibold2 } from "../../../../theme/paragraph/paragraph";
+import { Divider, FigureTransf, Transf, TransfInfo } from "./styleTransference";
+
 
 const TransferenceCardView = () => {
   return (
