@@ -1,10 +1,5 @@
 import { ParagraphMedium2 } from "../../../../theme/paragraph/paragraph";
-import {
-  ActivityContainer,
-  ActivityContainer2,
-  AllActivityBox,
-  CardTransfContainer,
-} from "../styleDashBoard";
+import { ActivityContainer, ActivityContainer2, AllActivityBox, CardTransfContainer } from "./styleTransference";
 import TransferenceCardView from "./TransferenceCardView";
 
 const TransferenceView = () => {
