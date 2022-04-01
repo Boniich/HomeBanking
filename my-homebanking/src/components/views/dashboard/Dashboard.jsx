@@ -13,6 +13,12 @@ import {
   CloseIcon,
   ActivityContainer,
   ActivityContainer2,
+  CardTransfContainer,
+  FigureTransf,
+  TransfInfo,
+  Divider,
+  Transf,
+  AllActivityBox,
 } from "./styleDashBoard";
 import {
   faHouseChimney,
@@ -32,22 +38,109 @@ const Dashboard = () => {
           <ParagraphMedium2>Bienvenida a tu banca movil</ParagraphMedium2>
         </div>
       </BoxUser>
-
       <ActivityContainer>
         {/* cambiar nombre del div mas adelante */}
         <ActivityContainer2>
           <ParagraphMedium2>Actividades Recientes</ParagraphMedium2>
-          <div>
-            <figure>
-              <ParagraphMedium2>Transf Web</ParagraphMedium2>
-              <ParagraphSemibold2>-50</ParagraphSemibold2>
+          <CardTransfContainer>
+            <Transf>
+            <FigureTransf>
+              <TransfInfo>
+              <ParagraphSemibold2>Transf Web</ParagraphSemibold2>
               <ParagraphMedium3>08 Ene.2022 - 04:21pm</ParagraphMedium3>
-            </figure>
-          </div>
+              </TransfInfo>
+              <ParagraphSemibold2>-50</ParagraphSemibold2>
+            </FigureTransf>
+            <div><Divider/></div>
+            </Transf>
 
-          <div>
-            <ParagraphMedium2>Ver toda la actividad</ParagraphMedium2>
-          </div>
+            <Transf>
+            <FigureTransf>
+              <TransfInfo>
+              <ParagraphSemibold2>Transf Web</ParagraphSemibold2>
+              <ParagraphMedium3>08 Ene.2022 - 04:21pm</ParagraphMedium3>
+              </TransfInfo>
+              <ParagraphSemibold2>-50</ParagraphSemibold2>
+            </FigureTransf>
+            <div><Divider/></div>
+            </Transf>
+
+            <Transf>
+            <FigureTransf>
+              <TransfInfo>
+              <ParagraphSemibold2>Transf Web</ParagraphSemibold2>
+              <ParagraphMedium3>08 Ene.2022 - 04:21pm</ParagraphMedium3>
+              </TransfInfo>
+              <ParagraphSemibold2>-50</ParagraphSemibold2>
+            </FigureTransf>
+            <div><Divider/></div>
+            </Transf>
+
+            <Transf>
+            <FigureTransf>
+              <TransfInfo>
+              <ParagraphSemibold2>Transf Web</ParagraphSemibold2>
+              <ParagraphMedium3>08 Ene.2022 - 04:21pm</ParagraphMedium3>
+              </TransfInfo>
+              <ParagraphSemibold2>-50</ParagraphSemibold2>
+            </FigureTransf>
+            <div><Divider/></div>
+            </Transf>
+
+            <Transf>
+            <FigureTransf>
+              <TransfInfo>
+              <ParagraphSemibold2>Transf Web</ParagraphSemibold2>
+              <ParagraphMedium3>08 Ene.2022 - 04:21pm</ParagraphMedium3>
+              </TransfInfo>
+              <ParagraphSemibold2>-50</ParagraphSemibold2>
+            </FigureTransf>
+            <div><Divider/></div>
+            </Transf>
+
+            <Transf>
+            <FigureTransf>
+              <TransfInfo>
+              <ParagraphSemibold2>Transf Web</ParagraphSemibold2>
+              <ParagraphMedium3>08 Ene.2022 - 04:21pm</ParagraphMedium3>
+              </TransfInfo>
+              <ParagraphSemibold2>-50</ParagraphSemibold2>
+            </FigureTransf>
+            <div><Divider/></div>
+            </Transf>
+
+            <Transf>
+            <FigureTransf>
+              <TransfInfo>
+              <ParagraphSemibold2>Transf Web</ParagraphSemibold2>
+              <ParagraphMedium3>08 Ene.2022 - 04:21pm</ParagraphMedium3>
+              </TransfInfo>
+              <ParagraphSemibold2>-50</ParagraphSemibold2>
+            </FigureTransf>
+            <div><Divider/></div>
+            </Transf>
+
+            <Transf>
+            <FigureTransf>
+              <TransfInfo>
+              <ParagraphSemibold2>Transf Web</ParagraphSemibold2>
+              <ParagraphMedium3>08 Ene.2022 - 04:21pm</ParagraphMedium3>
+              </TransfInfo>
+              <ParagraphSemibold2>-50</ParagraphSemibold2>
+            </FigureTransf>
+            <div><Divider/></div>
+            </Transf>
+
+            
+          </CardTransfContainer>
+
+          
+
+          <AllActivityBox>
+          <ParagraphMedium2>Ver toda la actividad</ParagraphMedium2>
+          </AllActivityBox>
+            
+
         </ActivityContainer2>
       </ActivityContainer>
 
