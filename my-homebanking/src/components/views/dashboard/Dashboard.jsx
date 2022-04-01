@@ -11,14 +11,6 @@ import {
   Span,
   ArrowIcon,
   CloseIcon,
-  ActivityContainer,
-  ActivityContainer2,
-  CardTransfContainer,
-  FigureTransf,
-  TransfInfo,
-  Divider,
-  Transf,
-  AllActivityBox,
 } from "./styleDashBoard";
 import {
   faHouseChimney,
