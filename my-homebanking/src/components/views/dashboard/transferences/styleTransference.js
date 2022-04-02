@@ -5,7 +5,7 @@ import {
   ParagraphMedium3,
   ParagraphSemibold2,
 } from "../../../../theme/paragraph/paragraph";
-import { shadownMD } from "../../../../theme/shadown/shadown";
+import { shadownMD, shadownXS } from "../../../../theme/shadown/shadown";
 
 //contendor actividad
 
