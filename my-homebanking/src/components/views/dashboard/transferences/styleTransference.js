@@ -14,13 +14,26 @@ const ActivityContainer = styled.div`
   margin: 0 auto;
   margin-bottom: 100px;
   border-radius: 20px;
-  box-shadow: ${shadownMD};
+  box-shadow: ${shadownXS};
+
+  @media screen and (min-width: 744px) {
+    width: 544px;
+    box-shadow: ${shadownMD};
+  }
+
+  @media screen and (min-width: 1512px) {
+    width: 595px;
+  }
 `;
 
 const ActivityContainer2 = styled.div`
   padding: 24px 24px 40px;
   ${ParagraphMedium2} {
     margin: 0;
+  }
+
+  @media screen and (min-width: 744px) {
+    padding: 32px 32px 40px;
   }
 `;
 
