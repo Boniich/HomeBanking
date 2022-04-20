@@ -14,6 +14,7 @@ import {
   AccountSummaryContent,
   UserSection,
   UserSection2,
+  ListaItems,
 } from "./styleDashBoard";
 import {
   faHouseChimney,
@@ -94,7 +95,7 @@ const Dashboard = () => {
                     </div>
                     <UlMobile>
     
-                        <Li><Span>Tarjetas <ArrowIcon icon={faAngleRight}></ArrowIcon></Span></Li>
+                        <Li><Span><ListaItems>Tarjetas</ListaItems><ArrowIcon icon={faAngleRight}></ArrowIcon></Span></Li>
                         <Li><Span>Transferencias <ArrowIcon icon={faAngleRight}></ArrowIcon></Span></Li>
                         <Li><Span>Configuración <ArrowIcon icon={faAngleRight}></ArrowIcon></Span></Li>
                         <Li><Span>Ayuda <ArrowIcon icon={faAngleRight}></ArrowIcon></Span></Li>
