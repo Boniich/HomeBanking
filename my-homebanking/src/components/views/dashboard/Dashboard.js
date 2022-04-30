@@ -55,7 +55,7 @@ const Dashboard = () => {
         <UserSection2>
           <AccountSummary>
             <AccountSummaryContent>
-              {/* el tipo de ahorro cambia segun lo seleccionado */}
+              {/* el tipo de ahorro cambia segun lo seleccionado*/}
               <SavingType>
                 <ParagraphMedium3>Ahorro en Dolares</ParagraphMedium3>
                 <ParagraphSemibold3>Cambiar</ParagraphSemibold3>
