@@ -4,12 +4,22 @@ import { Button } from "../../../theme/buttons/buttons";
 import { neutralColor, primaryColor } from "../../../theme/colors/colors";
 import { FooterText } from "../../../theme/footer/footer";
 import { HeadingSemiBold3 } from "../../../theme/heading/heading";
-import { ParagraphMedium3 } from "../../../theme/paragraph/paragraph";
+import {
+  ParagraphMedium2,
+  ParagraphMedium3,
+  ParagraphSemibold3,
+} from "../../../theme/paragraph/paragraph";
 import { shadownMD, shadownXS } from "../../../theme/shadown/shadown";
 
 const MenuIcons = styled(FontAwesomeIcon)`
   width: 24px;
   height: 24px;
+`;
+
+const CopyButton = styled(FontAwesomeIcon)`
+  width: 14.58px;
+  height: 16.67px;
+  color: ${neutralColor.neutral500};
 `;
 
 const Nav = styled.nav`
@@ -154,7 +164,7 @@ const AccountSummaryContent = styled.div`
     background-color: ${primaryColor.primary50};
     border: 1px solid ${primaryColor.primary300};
     color: ${primaryColor.primary900};
-    margin-top: 30px;
+    margin-top: 33px;
   }
 `;
 
@@ -179,6 +189,27 @@ const ListaItems = styled.p`
   margin: 0;
 `;
 
+const SavingType = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  ${ParagraphSemibold3} {
+    color: ${primaryColor.primary600};
+  }
+`;
+
+const NumberAccount = styled.div`
+  display: flex;
+
+  ${CopyButton} {
+    margin-left: 14px;
+  }
+
+  ${ParagraphMedium2} {
+    margin: 0;
+  }
+`;
+
 export {
   Section,
   Nav,
@@ -196,4 +227,7 @@ export {
   UserSection,
   UserSection2,
   ListaItems,
+  SavingType,
+  NumberAccount,
+  CopyButton,
 };
