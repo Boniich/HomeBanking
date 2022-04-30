@@ -18,6 +18,9 @@ import {
   SavingType,
   NumberAccount,
   CopyButton,
+  CloseIconNotify,
+  ExtendedNotifyString,
+  Notify,
 } from "./styleDashBoard";
 import {
   faHouseChimney,
@@ -37,8 +40,11 @@ import {
 import { HeadingSemiBold3 } from "../../../theme/heading/heading";
 import { Button } from "../../../theme/buttons/buttons";
 import { useState } from "react";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import toast, { Toaster } from "react-hot-toast";
 const Dashboard = () => {
   const [responsiveNav, setResponsiveNav] = useState(false);
+  const numberAccount = 12458745893254;
 
   const openResponsiveNav = () => {
     setResponsiveNav(true);
@@ -46,6 +52,28 @@ const Dashboard = () => {
 
   const closeResponsivenav = () => {
     setResponsiveNav(false);
+  };
+
+  const showAlert = () => {
+    toast.dismiss();
+    toast(
+      (t) => (
+        <Notify>
+          Número de cuenta copiado{" "}
+          <ExtendedNotifyString> en el porta papeles</ExtendedNotifyString>
+          <CloseIconNotify icon={faX} onClick={() => toast.dismiss(t.id)} />
+        </Notify>
+      ),
+      {
+        style: {
+          minWidth: "200px",
+          maxWidth: "100%",
+        },
+      },
+      {
+        duration: 2000,
+      }
+    );
   };
 
   return (
@@ -62,8 +90,22 @@ const Dashboard = () => {
               </SavingType>
               <HeadingSemiBold3>$200.00</HeadingSemiBold3>
               <NumberAccount>
-                <ParagraphMedium2>12458745893254</ParagraphMedium2>
-                <CopyButton icon={faCopy} />
+                <ParagraphMedium2>{numberAccount}</ParagraphMedium2>
+                <CopyToClipboard text={numberAccount}>
+                  <CopyButton icon={faCopy} onClick={showAlert} />
+                </CopyToClipboard>
+                <Toaster
+                  position="bottom-center"
+                  containerStyle={{
+                    bottom: 75,
+                  }}
+                  toastOptions={{
+                    style: {
+                      background: "#0EA5E9",
+                      color: "#FFFF",
+                    },
+                  }}
+                />
               </NumberAccount>
               <Button>Enviar Dinero</Button>
             </AccountSummaryContent>

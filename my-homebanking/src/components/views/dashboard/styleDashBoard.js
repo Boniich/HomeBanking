@@ -122,6 +122,14 @@ const CloseIcon = styled(FontAwesomeIcon)`
   color: ${neutralColor.neutral700};
 `;
 
+const CloseIconNotify = styled(CloseIcon)`
+  width: 14px;
+  height: 14px;
+  color: #fff;
+  margin-left: 39px;
+  cursor: pointer;
+`;
+
 const Span = styled.span`
   display: flex;
   justify-content: space-between;
@@ -210,6 +218,20 @@ const NumberAccount = styled.div`
   }
 `;
 
+const ExtendedNotifyString = styled.span`
+  display: none;
+`;
+
+const Notify = styled.div`
+  width: 100%;
+
+  @media screen and (min-width: 744px) {
+    ${ExtendedNotifyString} {
+      display: inline-block;
+    }
+  }
+`;
+
 export {
   Section,
   Nav,
@@ -230,4 +252,7 @@ export {
   SavingType,
   NumberAccount,
   CopyButton,
+  CloseIconNotify,
+  ExtendedNotifyString,
+  Notify,
 };
