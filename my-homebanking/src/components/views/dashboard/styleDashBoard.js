@@ -1,25 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
-import { Button } from "../../../theme/buttons/buttons";
-import { neutralColor, primaryColor } from "../../../theme/colors/colors";
+import { neutralColor } from "../../../theme/colors/colors";
 import { FooterText } from "../../../theme/footer/footer";
-import { HeadingSemiBold3 } from "../../../theme/heading/heading";
-import {
-  ParagraphMedium2,
-  ParagraphMedium3,
-  ParagraphSemibold3,
-} from "../../../theme/paragraph/paragraph";
-import { shadownMD, shadownXS } from "../../../theme/shadown/shadown";
 
 const MenuIcons = styled(FontAwesomeIcon)`
   width: 24px;
   height: 24px;
-`;
-
-const CopyButton = styled(FontAwesomeIcon)`
-  width: 14.58px;
-  height: 16.67px;
-  color: ${neutralColor.neutral500};
 `;
 
 const Nav = styled.nav`
@@ -116,64 +102,9 @@ const ListMenu = styled.div`
   }
 `;
 
-const CloseIcon = styled(FontAwesomeIcon)`
-  width: 9.33px;
-  height: 9.33px;
-  color: ${neutralColor.neutral700};
-`;
-
-const CloseIconNotify = styled(CloseIcon)`
-  width: 14px;
-  height: 14px;
-  color: #fff;
-  margin-left: 39px;
-  cursor: pointer;
-`;
-
 const Span = styled.span`
   display: flex;
   justify-content: space-between;
-`;
-
-const AccountSummary = styled.div`
-  width: 312px;
-  background-color: #ffff;
-  box-shadow: ${shadownXS};
-  border-radius: 20px;
-  margin-bottom: 32px;
-
-  @media screen and (min-width: 744px) {
-    width: 544px;
-    box-shadow: ${shadownMD};
-  }
-
-  @media screen and (min-width: 1512px) {
-    width: 413px;
-    height: 220px;
-    margin-right: 40px;
-  }
-`;
-
-const AccountSummaryContent = styled.div`
-  padding: 24px 24px;
-
-  ${ParagraphMedium3} {
-    margin: 0;
-    color: ${neutralColor.neutral500};
-  }
-
-  ${HeadingSemiBold3} {
-    margin: 8px 0 0 0;
-  }
-
-  ${Button} {
-    width: 100%;
-    height: 60px;
-    background-color: ${primaryColor.primary50};
-    border: 1px solid ${primaryColor.primary300};
-    color: ${primaryColor.primary900};
-    margin-top: 33px;
-  }
 `;
 
 const UserSection = styled.div`
@@ -197,41 +128,6 @@ const ListaItems = styled.p`
   margin: 0;
 `;
 
-const SavingType = styled.div`
-  display: flex;
-  justify-content: space-between;
-
-  ${ParagraphSemibold3} {
-    color: ${primaryColor.primary600};
-  }
-`;
-
-const NumberAccount = styled.div`
-  display: flex;
-
-  ${CopyButton} {
-    margin-left: 14px;
-  }
-
-  ${ParagraphMedium2} {
-    margin: 0;
-  }
-`;
-
-const ExtendedNotifyString = styled.span`
-  display: none;
-`;
-
-const Notify = styled.div`
-  width: 100%;
-
-  @media screen and (min-width: 744px) {
-    ${ExtendedNotifyString} {
-      display: inline-block;
-    }
-  }
-`;
-
 export {
   Section,
   Nav,
@@ -243,16 +139,7 @@ export {
   UlMobile,
   Span,
   ArrowIcon,
-  CloseIcon,
-  AccountSummary,
-  AccountSummaryContent,
   UserSection,
   UserSection2,
   ListaItems,
-  SavingType,
-  NumberAccount,
-  CopyButton,
-  CloseIconNotify,
-  ExtendedNotifyString,
-  Notify,
 };
