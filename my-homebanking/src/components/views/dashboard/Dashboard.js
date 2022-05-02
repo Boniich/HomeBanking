@@ -8,7 +8,6 @@ import {
   Link,
   UlMobile,
   Span,
-  ArrowIcon,
   UserSection,
   UserSection2,
   ListaItems,
@@ -24,7 +23,7 @@ import TransferenceView from "./transferences/TransferenceView";
 import WelcomeHeader from "./welcomeHeader/WelcomeHeader";
 import { useState } from "react";
 import { AccountSummaryView } from "./accountSummary/AccountSummaryView";
-import { CloseIcon } from "../../../theme/styledIcon/styledIcon";
+import { ArrowIcon, CloseIcon } from "../../../theme/styledIcon/styledIcon";
 const Dashboard = () => {
   const [responsiveNav, setResponsiveNav] = useState(false);
 

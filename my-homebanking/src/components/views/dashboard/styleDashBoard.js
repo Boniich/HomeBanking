@@ -66,12 +66,6 @@ const Link = styled.a`
   text-align: center;
 `;
 
-const ArrowIcon = styled(FontAwesomeIcon)`
-  width: 16px;
-  height: 16px;
-  color: ${neutralColor.neutral300};
-`;
-
 const Section = styled.section`
   background-color: ${neutralColor.neutral50};
 `;
@@ -138,7 +132,6 @@ export {
   ListMenu,
   UlMobile,
   Span,
-  ArrowIcon,
   UserSection,
   UserSection2,
   ListaItems,
