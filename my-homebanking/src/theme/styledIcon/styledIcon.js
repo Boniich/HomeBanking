@@ -8,5 +8,9 @@ const CloseIcon = styled(FontAwesomeIcon)`
   height: 9.33px;
   color: ${neutralColor.neutral700};
 `;
-
-export { CloseIcon };
+const ArrowIcon = styled(FontAwesomeIcon)`
+  width: 16px;
+  height: 16px;
+  color: ${neutralColor.neutral300};
+`;
+export { CloseIcon, ArrowIcon };
