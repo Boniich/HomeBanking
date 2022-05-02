@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { neutralColor } from "../colors/Colors";
+import { neutralColor } from "../colors/colors";
 const ParagraphMedium1 = styled.p`
   font-size: 18px;
   line-height: 22px;

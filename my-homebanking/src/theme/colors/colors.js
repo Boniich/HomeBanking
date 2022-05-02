@@ -1,14 +1,14 @@
 const neutralColor = {
-  neutral50: " #fafafb",
-  neutral100: " #f4f5f8",
-  neutral200: " #E3E7EC",
-  neutral300: " #d3d8e1",
-  neutral400: " #c3c9d6",
-  neutral500: " #919db4",
-  neutral600: " #65748f",
-  neutral700: " #424c61",
-  neutral800: " #212630",
-  neutral900: " #101318",
+  neutral50: "#F9FAFB",
+  neutral100: "#F3F4F6",
+  neutral200: "#E5E7EB",
+  neutral300: "#D1D5DB",
+  neutral400: "#9CA3AF",
+  neutral500: "#6B7280",
+  neutral600: "#4B5563",
+  neutral700: "#374151",
+  neutral800: "#1F2937",
+  neutral900: "#111827",
 };
 
 const primaryColor = {
@@ -18,7 +18,7 @@ const primaryColor = {
   primary300: "#60EBD0",
   primary400: "#19D7B1",
   primary500: "#0FB398",
-  primary600: "#137263",
+  primary600: "#11927C",
   primary700: "#137263",
   primary800: "#145C51",
   primary900: "#10473E",

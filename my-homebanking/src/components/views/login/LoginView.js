@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import {
   Box,
   EmailContainer,
@@ -16,11 +17,10 @@ import {
 } from "../../../theme/paragraph/paragraph";
 import { Button } from "../../../theme/buttons/buttons";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
-import { validateLogin } from "./validate";
-import { Caption } from "../../../theme/caption/caption";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const LoginView = () => {
-  const [error, setError] = useState({});
+  const [error, setError] = useState({email: false, password: false});
   const [isDisable, setIsDisable] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [showEye, setShowEye] = useState(false);
@@ -29,22 +29,21 @@ const LoginView = () => {
     password: "",
   });
 
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/dashboard";
+
+  let url = "http://challenge-react.alkemy.org/";
   const handleChange = (e) => {
-    if (e.target.name === "email") {
       setInput({
         ...input,
         [e.target.name]: e.target.value,
       });
-    } else {
-      setInput({
-        ...input,
-        [e.target.name]: e.target.value,
-      });
-    }
   };
 
   const handleKeyUp = () => {
     // Muestra y oculta el ojo
+    console.log("keyUp");
     if (input.password.length !== 0) {
       setShowEye(true);
     } else {
@@ -54,18 +53,28 @@ const LoginView = () => {
     if (input.email.length !== 0 && input.password.length !== 0) {
       setIsDisable(false);
     }
-    const error = validateLogin(input, setInput);
-    setError(error);
   };
 
   const handleClickShow = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (error.email === "true" && error.password === "true") {
-      console.log(input);
+    try{
+      const response = await axios.post(url,JSON.stringify({
+        email: input.email,
+        password: input.password
+      }),{
+        headers: { "Content-Type": "application/json" },
+      }
+      );
+      console.log(from);
+      navigate(from, { replace: true });
+      console.log(response);
+    }catch(err){
+      console.log(err);
+
     }
   };
 
@@ -82,36 +91,25 @@ const LoginView = () => {
               name="email"
               value={input.email}
               maxLength="50"
-              className={`inputEmail ${error.email === "false" ? "error" : ""}`}
               placeholder="Ingesa tu E-mail"
               onChange={handleChange}
               onKeyUp={handleKeyUp}
             />
-            {error.email === "false" ? (
-              <Caption>El email es incorrecto</Caption>
-            ) : null}
           </EmailContainer>
           <PasswordContainer>
-            <ParagraphMedium3>Contraseña</ParagraphMedium3>
+          <ParagraphMedium3>Contraseña</ParagraphMedium3>
             <InputIconContainer>
               <input
                 type={showPassword ? "text" : "password"}
                 name="password"
                 value={input.password}
-                minLength="6"
                 maxLength="16"
-                className={`inputPassword ${
-                  error.password === "false" ? "error" : ""
-                }`}
                 placeholder="Ingresa tu contraseña"
                 onChange={handleChange}
                 onKeyUp={handleKeyUp}
               />
               {showEye && <IconEye icon={faEye} onClick={handleClickShow} />}
             </InputIconContainer>
-            {error.password === "false" ? (
-              <Caption>La contraseña es incorrecta</Caption>
-            ) : null}
           </PasswordContainer>
           <ParagraphUnderline3>¿Olvidaste tu contraseña?</ParagraphUnderline3>
           {/* cambiar por link */}
