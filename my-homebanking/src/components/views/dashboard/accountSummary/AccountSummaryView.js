@@ -1,4 +1,9 @@
-import { faCopy, faX } from "@fortawesome/free-solid-svg-icons";
+import {
+  faAngleRight,
+  faCopy,
+  faLocationArrow,
+  faX,
+} from "@fortawesome/free-solid-svg-icons";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import toast, { Toaster } from "react-hot-toast";
 import { Button } from "../../../../theme/buttons/buttons";
@@ -11,12 +16,15 @@ import {
 import {
   AccountSummary,
   AccountSummaryContent,
+  BackgroundSendIcon,
   CloseIconNotify,
   CopyButton,
   ExtendedNotifyString,
   Notify,
   NumberAccount,
   SavingType,
+  SendArrowIcon,
+  SendIcon,
 } from "./styleAccountSummary";
 
 export const AccountSummaryView = () => {
@@ -70,7 +78,13 @@ export const AccountSummaryView = () => {
             }}
           />
         </NumberAccount>
-        <Button>Enviar Dinero</Button>
+        <Button>
+          <BackgroundSendIcon>
+            <SendIcon icon={faLocationArrow} />
+          </BackgroundSendIcon>
+          Enviar Dinero
+          <SendArrowIcon icon={faAngleRight} />
+        </Button>
       </AccountSummaryContent>
     </AccountSummary>
   );
