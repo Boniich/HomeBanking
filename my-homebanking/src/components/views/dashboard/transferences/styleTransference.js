@@ -1,9 +1,10 @@
 import styled from "styled-components";
-import { neutralColor } from "../../../../theme/colors/colors";
+import { neutralColor, primaryColor } from "../../../../theme/colors/colors";
 import {
   ParagraphMedium2,
   ParagraphMedium3,
   ParagraphSemibold2,
+  ParagraphUnderline2,
 } from "../../../../theme/paragraph/paragraph";
 import { shadownMD, shadownXS } from "../../../../theme/shadown/shadown";
 
@@ -75,6 +76,11 @@ const Divider = styled.hr`
 
 const AllActivityBox = styled.div`
   margin-top: 32px;
+
+  ${ParagraphUnderline2} {
+    color: ${primaryColor.primary600};
+    font-weight: 400;
+  }
 `;
 
 export {
