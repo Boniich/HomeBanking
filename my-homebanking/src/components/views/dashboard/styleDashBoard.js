@@ -122,6 +122,12 @@ const ListaItems = styled.p`
   margin: 0;
 `;
 
+const UserImage = styled.img`
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+`;
+
 export {
   Section,
   Nav,
@@ -135,4 +141,5 @@ export {
   UserSection,
   UserSection2,
   ListaItems,
+  UserImage,
 };
