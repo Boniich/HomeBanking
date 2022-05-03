@@ -14,7 +14,7 @@ function App() {
         {/* Se deben proteger mas adelante */}
         <Route path="dashboard" element={<Dashboard />} />
         {/* Este ruta es provisoria, mas adelante vere si realmente necesito que este aca */}
-        <Route path="transferencias" element={<h1>transferencias</h1>} />
+        <Route path="transacciones" element={<h1>transacciones</h1>} />
         {/* error 404 (si no encuentra la pagina) */}
         <Route path="*" element={<h1>Pagina no encontrada</h1>} />
       </Route>

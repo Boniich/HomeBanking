@@ -25,7 +25,7 @@ const TransferenceView = () => {
           <TransferenceCardView />
         </CardTransfContainer>
         <AllActivityBox>
-          <Link to="/transferencias">
+          <Link to="/transacciones">
             <ParagraphUnderline2>Ver toda la actividad</ParagraphUnderline2>
           </Link>
         </AllActivityBox>
