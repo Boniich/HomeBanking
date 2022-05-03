@@ -5,7 +5,7 @@ import {
   Nav,
   Section,
   Ul,
-  Link,
+  // Link,
   UlMobile,
   Span,
   UserSection,
@@ -26,6 +26,7 @@ import { useState } from "react";
 import { AccountSummaryView } from "./accountSummary/AccountSummaryView";
 import { ArrowIcon, CloseIcon } from "../../../theme/styledIcon/styledIcon";
 import fotoPerfil from "../../../assets/fotoPerfil.jpg";
+import { Link } from "react-router-dom";
 const Dashboard = () => {
   const [responsiveNav, setResponsiveNav] = useState(false);
 
@@ -50,7 +51,7 @@ const Dashboard = () => {
       <Nav>
         <Ul>
           <Li>
-            <Link>
+            <Link to="/dashboard">
               <span>
                 <MenuIcons icon={faHouseChimney} />
               </span>
@@ -60,7 +61,7 @@ const Dashboard = () => {
             </Link>
           </Li>
           <Li>
-            <Link>
+            <Link to="/transacciones">
               <MenuIcons icon={faRightLeft} />
               <span>
                 <FooterText>Transacciones</FooterText>
@@ -68,12 +69,10 @@ const Dashboard = () => {
             </Link>
           </Li>
           <Li>
-            <Link>
-              <UserImage src={fotoPerfil}></UserImage>
-              <span>
-                <FooterText onClick={openResponsiveNav}>Ezequiel</FooterText>
-              </span>
-            </Link>
+            <UserImage src={fotoPerfil}></UserImage>
+            <span>
+              <FooterText onClick={openResponsiveNav}>Ezequiel</FooterText>
+            </span>
           </Li>
         </Ul>
       </Nav>
