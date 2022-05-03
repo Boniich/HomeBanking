@@ -11,6 +11,7 @@ import {
   UserSection,
   UserSection2,
   ListaItems,
+  UserImage,
 } from "./styleDashBoard";
 import {
   faHouseChimney,
@@ -24,6 +25,7 @@ import WelcomeHeader from "./welcomeHeader/WelcomeHeader";
 import { useState } from "react";
 import { AccountSummaryView } from "./accountSummary/AccountSummaryView";
 import { ArrowIcon, CloseIcon } from "../../../theme/styledIcon/styledIcon";
+import fotoPerfil from "../../../assets/fotoPerfil.jpg";
 const Dashboard = () => {
   const [responsiveNav, setResponsiveNav] = useState(false);
 
@@ -67,9 +69,9 @@ const Dashboard = () => {
           </Li>
           <Li>
             <Link>
-              Iconito
+              <UserImage src={fotoPerfil}></UserImage>
               <span>
-                <FooterText onClick={openResponsiveNav}>User</FooterText>
+                <FooterText onClick={openResponsiveNav}>Ezequiel</FooterText>
               </span>
             </Link>
           </Li>
