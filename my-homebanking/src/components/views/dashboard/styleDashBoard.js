@@ -6,6 +6,7 @@ import { FooterText } from "../../../theme/footer/footer";
 const MenuIcons = styled(FontAwesomeIcon)`
   width: 24px;
   height: 24px;
+  color: ${neutralColor.neutral500};
 `;
 
 const Nav = styled.nav`
@@ -31,7 +32,7 @@ const Nav = styled.nav`
     }
 
     ${FooterText} {
-      color: #ffffff;
+      color: ${neutralColor.neutral500};
     }
   }
 `;
@@ -45,18 +46,7 @@ const Ul = styled.ul`
   justify-content: space-around;
 `;
 
-const Li = styled.li``;
-
-const UlMobile = styled(Ul)`
-  flex-direction: column;
-  display: flex;
-  justify-content: space-between;
-  ${Li} {
-    padding: 10px 24px;
-  }
-`;
-
-const Link = styled.a`
+const Li = styled.li`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -66,6 +56,14 @@ const Link = styled.a`
   text-align: center;
 `;
 
+const UlMobile = styled(Ul)`
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  ${Li} {
+    padding: 10px 24px;
+  }
+`;
 const Section = styled.section`
   background-color: ${neutralColor.neutral50};
 `;
@@ -133,7 +131,6 @@ export {
   Nav,
   Ul,
   Li,
-  Link,
   MenuIcons,
   ListMenu,
   UlMobile,
