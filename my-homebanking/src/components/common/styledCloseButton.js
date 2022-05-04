@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { neutralColor } from "../../theme/colors/colors";
 
-const CloseButton = styled.div`
+const CloseButtonContainer = styled.div`
   margin-bottom: 44px;
   margin-top: 32px;
   display: flex;
@@ -19,4 +19,4 @@ const CloseButtonContent = styled.span`
   border-radius: 100%;
 `;
 
-export { CloseButton, CloseButtonContent };
+export { CloseButtonContainer, CloseButtonContent };
