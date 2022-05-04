@@ -29,7 +29,7 @@ import {
   ParagraphMedium2,
   ParagraphSemibold2,
 } from "../../../theme/paragraph/paragraph";
-import { CloseButton } from "../../common/CloseButton";
+import { CloseButton } from "../../common/closeButton/CloseButton";
 const Dashboard = () => {
   const [responsiveNav, setResponsiveNav] = useState(false);
 

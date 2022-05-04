@@ -13,7 +13,8 @@ import {
 } from "../../../../theme/paragraph/paragraph";
 import { shadownMD, shadownXS } from "../../../../theme/shadown/shadown";
 import { CloseIcon } from "../../../../theme/styledIcon/styledIcon";
-import { CloseButtonContainer } from "../../../common/styledCloseButton";
+import { CloseButtonContainer } from "../../../common/closeButton/styledCloseButton";
+
 const AccountSummary = styled.div`
   width: 312px;
   background-color: #ffff;

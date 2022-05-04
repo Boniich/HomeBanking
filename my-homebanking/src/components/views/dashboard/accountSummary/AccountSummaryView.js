@@ -10,7 +10,7 @@ import {
   ParagraphMedium3,
   ParagraphSemibold3,
 } from "../../../../theme/paragraph/paragraph";
-import { CloseButton } from "../../../common/CloseButton";
+import { CloseButton } from "../../../common/closeButton/CloseButton";
 import { SendButton } from "../../../common/sendButton/SendButton";
 import {
   AccountSummary,
