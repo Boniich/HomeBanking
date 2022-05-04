@@ -1,15 +1,19 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Popup from "reactjs-popup";
 import styled from "styled-components";
-import { Button } from "../../../../theme/buttons/buttons";
 import { neutralColor, primaryColor } from "../../../../theme/colors/colors";
-import { HeadingSemiBold3 } from "../../../../theme/heading/heading";
+import {
+  HeadingSemiBold3,
+  HeadingSemiBold5,
+} from "../../../../theme/heading/heading";
 import {
   ParagraphMedium2,
   ParagraphMedium3,
   ParagraphSemibold3,
 } from "../../../../theme/paragraph/paragraph";
 import { shadownMD, shadownXS } from "../../../../theme/shadown/shadown";
-import { ArrowIcon, CloseIcon } from "../../../../theme/styledIcon/styledIcon";
+import { CloseIcon } from "../../../../theme/styledIcon/styledIcon";
+import { CloseButtonContainer } from "../../../common/styledCloseButton";
 const AccountSummary = styled.div`
   width: 312px;
   background-color: #ffff;
@@ -39,18 +43,6 @@ const AccountSummaryContent = styled.div`
 
   ${HeadingSemiBold3} {
     margin: 8px 0 0 0;
-  }
-
-  ${Button} {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 60px;
-    background-color: ${primaryColor.primary50};
-    border: 1px solid ${primaryColor.primary300};
-    color: ${primaryColor.primary900};
-    margin-top: 33px;
   }
 `;
 
@@ -114,17 +106,47 @@ const BackgroundSendIcon = styled.span`
   background: linear-gradient(216.25deg, #60ebd0 4.63%, #0fb398 87.8%);
 `;
 
-const SendIcon = styled(FontAwesomeIcon)`
-  font-weight: 13.33px;
-  color: #fff;
+//popup components
+
+const PopupContainer = styled.div`
+  width: 312px;
+  height: 244px;
+  background: #ffffff;
+  border-radius: 16px;
 `;
 
-const SendArrowIcon = styled(ArrowIcon)`
-  color: ${primaryColor.primary500};
-  font-size: 14px;
-  margin-left: 64px;
+const PopupHeadContent = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  ${HeadingSemiBold5} {
+    margin: 0;
+  }
+
+  //Component inside of CloseButton
+  ${CloseButtonContainer} {
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
 `;
 
+const PopupContent = styled.div`
+  padding: 24px 24px 32px;
+`;
+
+const StyledPopup = styled(Popup)`
+  &-content {
+    ${PopupContainer}
+    ${PopupHeadContent}
+    ${PopupContent}
+  }
+
+  &-overlay {
+    background: ${neutralColor.neutral900};
+    opacity: 0.9;
+  }
+`;
 export {
   AccountSummary,
   AccountSummaryContent,
@@ -135,6 +157,8 @@ export {
   CloseIconNotify,
   CopyButton,
   BackgroundSendIcon,
-  SendIcon,
-  SendArrowIcon,
+  StyledPopup,
+  PopupContainer,
+  PopupHeadContent,
+  PopupContent,
 };
