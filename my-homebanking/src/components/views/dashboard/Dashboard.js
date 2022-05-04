@@ -9,7 +9,6 @@ import {
   Span,
   UserSection,
   UserSection2,
-  ListaItems,
   UserImage,
   LiMobile,
 } from "./styleDashBoard";
@@ -17,20 +16,20 @@ import {
   faHouseChimney,
   faRightLeft,
   faAngleRight,
-  faX,
 } from "@fortawesome/free-solid-svg-icons";
 import { FooterText } from "../../../theme/footer/footer";
 import TransferenceView from "./transferences/TransferenceView";
 import WelcomeHeader from "./welcomeHeader/WelcomeHeader";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { AccountSummaryView } from "./accountSummary/AccountSummaryView";
-import { ArrowIcon, CloseIcon } from "../../../theme/styledIcon/styledIcon";
+import { ArrowIcon } from "../../../theme/styledIcon/styledIcon";
 import fotoPerfil from "../../../assets/fotoPerfil.jpg";
 import { Link } from "react-router-dom";
 import {
   ParagraphMedium2,
   ParagraphSemibold2,
 } from "../../../theme/paragraph/paragraph";
+import { CloseButton } from "../../common/CloseButton";
 const Dashboard = () => {
   const [responsiveNav, setResponsiveNav] = useState(false);
 
@@ -87,11 +86,7 @@ const Dashboard = () => {
       </Nav>
       {responsiveNav && (
         <ListMenu>
-          <div className="box-close-btn">
-            <span className="span-close-btn">
-              <CloseIcon icon={faX} onClick={closeResponsivenav}></CloseIcon>
-            </span>
-          </div>
+          <CloseButton propOnClick={closeResponsivenav} />
           <UlMobile>
             <LiMobile>
               <Span>
