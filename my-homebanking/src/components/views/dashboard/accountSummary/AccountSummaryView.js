@@ -1,30 +1,30 @@
-import {
-  faAngleRight,
-  faCopy,
-  faLocationArrow,
-  faX,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCopy, faX } from "@fortawesome/free-solid-svg-icons";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import toast, { Toaster } from "react-hot-toast";
-import { Button } from "../../../../theme/buttons/buttons";
-import { HeadingSemiBold3 } from "../../../../theme/heading/heading";
+import {
+  HeadingSemiBold3,
+  HeadingSemiBold5,
+} from "../../../../theme/heading/heading";
 import {
   ParagraphMedium2,
   ParagraphMedium3,
   ParagraphSemibold3,
 } from "../../../../theme/paragraph/paragraph";
+import { CloseButton } from "../../../common/CloseButton";
+import { SendButton } from "../../../common/sendButton/SendButton";
 import {
   AccountSummary,
   AccountSummaryContent,
-  BackgroundSendIcon,
   CloseIconNotify,
   CopyButton,
   ExtendedNotifyString,
   Notify,
   NumberAccount,
+  PopupContainer,
+  PopupContent,
+  PopupHeadContent,
   SavingType,
-  SendArrowIcon,
-  SendIcon,
+  StyledPopup,
 } from "./styleAccountSummary";
 
 export const AccountSummaryView = () => {
@@ -78,13 +78,19 @@ export const AccountSummaryView = () => {
             }}
           />
         </NumberAccount>
-        <Button>
-          <BackgroundSendIcon>
-            <SendIcon icon={faLocationArrow} />
-          </BackgroundSendIcon>
-          Enviar Dinero
-          <SendArrowIcon icon={faAngleRight} />
-        </Button>
+        <StyledPopup modal trigger={<SendButton text="Enviar Dinero" />}>
+          {(close) => (
+            <PopupContainer>
+              <PopupContent>
+                <PopupHeadContent>
+                  <HeadingSemiBold5>Enviar Dinero</HeadingSemiBold5>
+                  <CloseButton propOnClick={close} />
+                </PopupHeadContent>
+                <SendButton text="A otra cuenta" />
+              </PopupContent>
+            </PopupContainer>
+          )}
+        </StyledPopup>
       </AccountSummaryContent>
     </AccountSummary>
   );
