@@ -1,7 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
-import { neutralColor } from "../../../theme/colors/colors";
+import { errorColor, neutralColor } from "../../../theme/colors/colors";
 import { FooterText } from "../../../theme/footer/footer";
+import {
+  ParagraphMedium2,
+  ParagraphSemibold2,
+} from "../../../theme/paragraph/paragraph";
 
 const MenuIcons = styled(FontAwesomeIcon)`
   width: 24px;
@@ -56,20 +60,22 @@ const Li = styled.li`
   text-align: center;
 `;
 
+const LiMobile = styled.li`
+  padding: 0 24px;
+  margin: 16px 0;
+`;
+
 const UlMobile = styled(Ul)`
   flex-direction: column;
   display: flex;
   justify-content: space-between;
-  ${Li} {
-    padding: 10px 24px;
-  }
 `;
 const Section = styled.section`
   background-color: ${neutralColor.neutral50};
 `;
 
 const ListMenu = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   background-color: #fff;
   height: 100%;
@@ -97,6 +103,16 @@ const ListMenu = styled.div`
 const Span = styled.span`
   display: flex;
   justify-content: space-between;
+
+  ${ParagraphMedium2} {
+    color: ${neutralColor.neutral700};
+    margin: 0;
+  }
+
+  ${ParagraphSemibold2} {
+    margin: 0;
+    color: ${errorColor.error500};
+  }
 `;
 
 const UserSection = styled.div`
@@ -139,4 +155,5 @@ export {
   UserSection2,
   ListaItems,
   UserImage,
+  LiMobile,
 };
