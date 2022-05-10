@@ -20,7 +20,7 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const LoginView = () => {
-  const [error, setError] = useState({email: false, password: false});
+  const [error, setError] = useState({ email: false, password: false });
   const [isDisable, setIsDisable] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [showEye, setShowEye] = useState(false);
@@ -33,12 +33,12 @@ const LoginView = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/dashboard";
 
-  let url = "http://challenge-react.alkemy.org/";
+  let url = "https://hb-api.vercel.app/account/auth";
   const handleChange = (e) => {
-      setInput({
-        ...input,
-        [e.target.name]: e.target.value,
-      });
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleKeyUp = () => {
@@ -61,20 +61,24 @@ const LoginView = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try{
-      const response = await axios.post(url,JSON.stringify({
+    try {
+      const response = await axios.post(url, {
         email: input.email,
-        password: input.password
-      }),{
-        headers: { "Content-Type": "application/json" },
-      }
-      );
+        password: input.password,
+      });
       console.log(from);
       navigate(from, { replace: true });
       console.log(response);
-    }catch(err){
-      console.log(err);
+    } catch (err) {
+      console.log("error", err);
 
+      if (err?.response.status === 404) {
+        console.log("cuenta no encontrada");
+      }
+
+      if (err?.response.status === 400) {
+        console.log("Email incorrecto");
+      }
     }
   };
 
@@ -97,13 +101,13 @@ const LoginView = () => {
             />
           </EmailContainer>
           <PasswordContainer>
-          <ParagraphMedium3>Contraseña</ParagraphMedium3>
+            <ParagraphMedium3>Contraseña</ParagraphMedium3>
             <InputIconContainer>
               <input
                 type={showPassword ? "text" : "password"}
                 name="password"
                 value={input.password}
-                maxLength="16"
+                maxLength="20"
                 placeholder="Ingresa tu contraseña"
                 onChange={handleChange}
                 onKeyUp={handleKeyUp}
