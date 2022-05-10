@@ -5,9 +5,11 @@ import {
   EmailContainer,
   IconEye,
   Img,
+  Input,
   InputIconContainer,
   LoginSection,
   PasswordContainer,
+  ShowLoginErros,
 } from "./styles";
 import trebol from "../../../assets/trebol.png";
 import { HeadingMedium4 } from "../../../theme/heading/heading";
@@ -20,7 +22,14 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const LoginView = () => {
-  const [error, setError] = useState({ email: false, password: false });
+  const [emailError, setEmailError] = useState({
+    emailErrorMsg: "",
+    handleEmailError: false,
+  });
+  const [passwordError, setPasswordError] = useState({
+    passwordErrorMsg: "",
+    handlePasswordError: false,
+  });
   const [isDisable, setIsDisable] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [showEye, setShowEye] = useState(false);
@@ -61,6 +70,7 @@ const LoginView = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setEmailError({ handleEmailError: false });
     try {
       const response = await axios.post(url, {
         email: input.email,
@@ -71,13 +81,18 @@ const LoginView = () => {
       console.log(response);
     } catch (err) {
       console.log("error", err);
-
       if (err?.response.status === 404) {
-        console.log("cuenta no encontrada");
+        setEmailError({
+          emailErrorMsg: "Email no encontrado",
+          handleEmailError: true,
+        });
       }
 
       if (err?.response.status === 400) {
-        console.log("Email incorrecto");
+        setPasswordError({
+          passwordErrorMsg: "La contraseña es incorrecta",
+          handlePasswordError: true,
+        });
       }
     }
   };
@@ -90,7 +105,8 @@ const LoginView = () => {
         <form action="" onSubmit={handleSubmit}>
           <EmailContainer>
             <ParagraphMedium3>Correo Electrónico</ParagraphMedium3>
-            <input
+            <Input
+              nonoBorder={emailError.handleEmailError}
               type="email"
               name="email"
               value={input.email}
@@ -99,11 +115,13 @@ const LoginView = () => {
               onChange={handleChange}
               onKeyUp={handleKeyUp}
             />
+            <ShowLoginErros>{emailError.emailErrorMsg}</ShowLoginErros>
           </EmailContainer>
           <PasswordContainer>
             <ParagraphMedium3>Contraseña</ParagraphMedium3>
             <InputIconContainer>
-              <input
+              <Input
+                nonoBorder={passwordError.handlePasswordError}
                 type={showPassword ? "text" : "password"}
                 name="password"
                 value={input.password}
@@ -114,6 +132,7 @@ const LoginView = () => {
               />
               {showEye && <IconEye icon={faEye} onClick={handleClickShow} />}
             </InputIconContainer>
+            <ShowLoginErros>{passwordError.passwordErrorMsg}</ShowLoginErros>
           </PasswordContainer>
           <ParagraphUnderline3>¿Olvidaste tu contraseña?</ParagraphUnderline3>
           {/* cambiar por link */}
