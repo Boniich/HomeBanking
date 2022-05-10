@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import {
   Box,
@@ -20,6 +20,7 @@ import {
 import { Button } from "../../../theme/buttons/buttons";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate, useLocation } from "react-router-dom";
+import { Loader } from "../../common/loader/Loader";
 
 const LoginView = () => {
   const [emailError, setEmailError] = useState({
@@ -37,6 +38,7 @@ const LoginView = () => {
     email: "",
     password: "",
   });
+  const [showLoader, setShowLoader] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -70,6 +72,7 @@ const LoginView = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setShowLoader(true);
     setEmailError({ handleEmailError: false });
     try {
       const response = await axios.post(url, {
@@ -94,6 +97,8 @@ const LoginView = () => {
           handlePasswordError: true,
         });
       }
+    } finally {
+      setShowLoader(false);
     }
   };
 
@@ -136,7 +141,6 @@ const LoginView = () => {
               <ShowLoginErros>{passwordError.passwordErrorMsg}</ShowLoginErros>
             )}
           </PasswordContainer>
-
           <ParagraphUnderline3>¿Olvidaste tu contraseña?</ParagraphUnderline3>
           {/* cambiar por link */}
           <Button
@@ -144,7 +148,7 @@ const LoginView = () => {
             type="submit"
             disabled={isDisable}
           >
-            Iniciar Sesión
+            {showLoader ? <Loader /> : "Iniciar Sesión"}
           </Button>
         </form>
       </Box>
