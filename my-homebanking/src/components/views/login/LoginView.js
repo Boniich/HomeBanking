@@ -42,7 +42,7 @@ const LoginView = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/dashboard";
 
-  let url = "https://hb-api.vercel.app/account/auth";
+  let url = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_AUTH_ENDPOINT}`;
   const handleChange = (e) => {
     setInput({
       ...input,
