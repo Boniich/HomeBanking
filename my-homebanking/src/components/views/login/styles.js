@@ -112,30 +112,6 @@ const Box = styled.div`
     padding: 0 0 8px 4px;
   }
 
-  /* input {
-    width: 100%;
-    height: 54px;
-    box-sizing: border-box;
-    padding: 0 16px;
-    border-radius: 8px;
-    border: 1px solid #c3c9d6;
-    font-size: 16px;
-    line-height: 24px;
-  }
-
-  input:focus {
-    border: 2px solid ${primaryColor.primary500};
-    outline: 3px solid ${primaryColor.primary200};
-    box-shadow: 0px 18px 56px -2px rgba(16, 71, 62, 0.13);
-  }
-
-  .error {
-    &:focus {
-      border: none;
-      outline: 3px solid ${errorColor.error500};
-    }
-  } */
-
   .inputPassword {
     padding: 0 16px;
     font-size: 17px;
