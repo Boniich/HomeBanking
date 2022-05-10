@@ -51,6 +51,42 @@ const IconEye = styled(FontAwesomeIcon)`
   cursor: pointer;
 `;
 
+const Input = styled.input`
+  width: 100%;
+  height: 54px;
+  box-sizing: border-box;
+  padding: 0 16px;
+  border-radius: 8px;
+  border: ${(props) =>
+    props.nonoBorder === true ? "none" : "1px solid #c3c9d6"};
+  outline: ${(props) =>
+    props.nonoBorder === true ? `2px solid ${errorColor.error500}` : "none"};
+  font-size: 16px;
+  line-height: 24px;
+
+  &:focus {
+    border: ${(props) =>
+      props.nonoBorder === true
+        ? "none"
+        : `2px solid ${primaryColor.primary500}`};
+    outline: ${(props) =>
+      props.nonoBorder === true
+        ? `2px solid ${errorColor.error500}`
+        : `3px solid ${primaryColor.primary200}`};
+    box-shadow: ${(props) =>
+      props.nonoBorder === true
+        ? "none"
+        : `0px 18px 56px -2px rgba(16, 71, 62, 0.13)`};
+  }
+`;
+
+const ShowLoginErros = styled.span`
+  padding: 4px 0 0 4px;
+  color: ${errorColor.error500};
+  font-size: 12px;
+  line-height: 18px;
+`;
+
 const Box = styled.div`
   box-sizing: border-box;
   width: 360px;
@@ -76,7 +112,7 @@ const Box = styled.div`
     padding: 0 0 8px 4px;
   }
 
-  input {
+  /* input {
     width: 100%;
     height: 54px;
     box-sizing: border-box;
@@ -98,7 +134,7 @@ const Box = styled.div`
       border: none;
       outline: 3px solid ${errorColor.error500};
     }
-  }
+  } */
 
   .inputPassword {
     padding: 0 16px;
@@ -151,4 +187,6 @@ export {
   PasswordContainer,
   InputIconContainer,
   IconEye,
+  Input,
+  ShowLoginErros,
 };
