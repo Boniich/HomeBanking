@@ -132,8 +132,11 @@ const LoginView = () => {
               />
               {showEye && <IconEye icon={faEye} onClick={handleClickShow} />}
             </InputIconContainer>
-            <ShowLoginErros>{passwordError.passwordErrorMsg}</ShowLoginErros>
+            {passwordError.handlePasswordError && (
+              <ShowLoginErros>{passwordError.passwordErrorMsg}</ShowLoginErros>
+            )}
           </PasswordContainer>
+
           <ParagraphUnderline3>¿Olvidaste tu contraseña?</ParagraphUnderline3>
           {/* cambiar por link */}
           <Button
