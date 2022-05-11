@@ -1,21 +1,34 @@
-//  This button has this format [Icon- text - icon]
-
 import {
   faAngleRight,
   faLocationArrow,
 } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
-import { SendArrowIcon, SendIcon } from "../../../theme/styledIcon/styledIcon";
-import { BackgroundSendIcon, SendButtonContainer } from "./styleSendButton";
+import { ParagraphSemibold2 } from "../../../theme/paragraph/paragraph";
+import { SendArrowIcon } from "../../../theme/styledIcon/styledIcon";
+import {
+  ActiveExtraText,
+  BackgroundSendIcon,
+  IconTextContainer,
+  SendButtonContainer,
+  SendIcon,
+} from "./styleSendButton";
 
-export const SendButton = React.forwardRef(({ text, ...props }, ref) => {
-  return (
-    <SendButtonContainer ref={ref} {...props}>
-      <BackgroundSendIcon>
-        <SendIcon icon={faLocationArrow} />
-      </BackgroundSendIcon>
-      {text}
-      <SendArrowIcon icon={faAngleRight} />
-    </SendButtonContainer>
-  );
-});
+//  This button has this format [Icon- text - icon]
+
+export const SendButton = React.forwardRef(
+  ({ text, extraText, ...props }, ref) => {
+    return (
+      <SendButtonContainer ref={ref} {...props}>
+        <IconTextContainer>
+          <BackgroundSendIcon>
+            <SendIcon icon={faLocationArrow} />
+          </BackgroundSendIcon>
+          <ParagraphSemibold2>
+            {text} <ActiveExtraText>{extraText}</ActiveExtraText>
+          </ParagraphSemibold2>
+        </IconTextContainer>
+        <SendArrowIcon icon={faAngleRight} />
+      </SendButtonContainer>
+    );
+  }
+);
