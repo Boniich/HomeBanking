@@ -14,14 +14,9 @@ const ArrowIcon = styled(FontAwesomeIcon)`
   color: ${neutralColor.neutral300};
 `;
 
-const SendIcon = styled(FontAwesomeIcon)`
-  font-weight: 13.33px;
-  color: #fff;
-`;
-
 const SendArrowIcon = styled(ArrowIcon)`
   color: ${primaryColor.primary500};
   font-size: 14px;
-  margin-left: 64px;
+  margin-right: 10px;
 `;
-export { CloseIcon, ArrowIcon, SendIcon, SendArrowIcon };
+export { CloseIcon, ArrowIcon, SendArrowIcon };
