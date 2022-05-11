@@ -104,11 +104,16 @@ const UserSection = styled.div`
 
 const UserSection2 = styled.div`
   position: absolute;
-  top: 135px;
+  top: 150px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  @media screen and (min-width: 744px) {
+    top: 230px;
+  }
+
   @media screen and (min-width: 1512px) {
+    top: 390px;
     flex-direction: row;
   }
 `;

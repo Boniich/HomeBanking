@@ -7,6 +7,9 @@ export const WelcomeUserTexs = styled.div`
   width: 320px;
   margin: 0 auto;
   padding: 48px 0 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 `;
 
 export const WelcomeUserContainer = styled.div`
@@ -29,6 +32,7 @@ export const WelcomeUserContainer = styled.div`
     height: 328px;
 
     ${WelcomeUserTexs} {
+      padding-top: 140px;
       width: 560px;
     }
   }
@@ -37,6 +41,7 @@ export const WelcomeUserContainer = styled.div`
     height: 460px;
 
     ${WelcomeUserTexs} {
+      padding-top: 290px;
       width: 1060px;
     }
   }
