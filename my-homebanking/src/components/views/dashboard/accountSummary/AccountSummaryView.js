@@ -1,4 +1,4 @@
-import { faCopy, faX } from "@fortawesome/free-solid-svg-icons";
+import { faCircleInfo, faCopy, faX } from "@fortawesome/free-solid-svg-icons";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import toast, { Toaster } from "react-hot-toast";
 import {
@@ -17,7 +17,7 @@ import {
   AccountSummaryContent,
   CloseIconNotify,
   CopyButton,
-  ExtendedNotifyString,
+  InfoIconNotify,
   Notify,
   NumberAccount,
   PopupContainer,
@@ -34,8 +34,8 @@ export const AccountSummaryView = () => {
     toast(
       (t) => (
         <Notify>
-          Número de cuenta copiado{" "}
-          <ExtendedNotifyString> en el porta papeles</ExtendedNotifyString>
+          <InfoIconNotify icon={faCircleInfo} />
+          <ParagraphSemibold3>Número de cuenta copiado</ParagraphSemibold3>
           <CloseIconNotify icon={faX} onClick={() => toast.dismiss(t.id)} />
         </Notify>
       ),
@@ -72,8 +72,9 @@ export const AccountSummaryView = () => {
             }}
             toastOptions={{
               style: {
-                background: "#0EA5E9",
-                color: "#FFFF",
+                border: "1px solid #BAE6FD",
+                background: "#F0F9FF",
+                padding: "12px 20px",
               },
             }}
           />
@@ -86,7 +87,8 @@ export const AccountSummaryView = () => {
                   <HeadingSemiBold5>Enviar Dinero</HeadingSemiBold5>
                   <CloseButton propOnClick={close} />
                 </PopupHeadContent>
-                <SendButton text="A otra cuenta" />
+                <SendButton text="A otra cuenta" extraText="San Patrick" />
+                <SendButton text="A cuenta propia" />
               </PopupContent>
             </PopupContainer>
           )}
