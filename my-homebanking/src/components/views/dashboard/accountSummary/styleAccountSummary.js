@@ -1,7 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Popup from "reactjs-popup";
 import styled from "styled-components";
-import { neutralColor, primaryColor } from "../../../../theme/colors/colors";
+import {
+  infoColor,
+  neutralColor,
+  primaryColor,
+} from "../../../../theme/colors/colors";
 import {
   HeadingSemiBold3,
   HeadingSemiBold5,
@@ -9,11 +13,16 @@ import {
 import {
   ParagraphMedium2,
   ParagraphMedium3,
+  ParagraphSemibold2,
   ParagraphSemibold3,
 } from "../../../../theme/paragraph/paragraph";
 import { shadownMD, shadownXS } from "../../../../theme/shadown/shadown";
-import { CloseIcon } from "../../../../theme/styledIcon/styledIcon";
+import {
+  CloseIcon,
+  SendArrowIcon,
+} from "../../../../theme/styledIcon/styledIcon";
 import { CloseButtonContainer } from "../../../common/closeButton/styledCloseButton";
+import { SendButtonContainer } from "../../../common/sendButton/styleSendButton";
 
 const AccountSummary = styled.div`
   width: 312px;
@@ -45,6 +54,13 @@ const AccountSummaryContent = styled.div`
   ${HeadingSemiBold3} {
     margin: 8px 0 0 0;
   }
+
+  ${SendButtonContainer} {
+    &:hover {
+      transition: all 0.5s;
+      background-color: ${primaryColor.primary300};
+    }
+  }
 `;
 
 const SavingType = styled.div`
@@ -74,26 +90,33 @@ const NumberAccount = styled.div`
   }
 `;
 
-const ExtendedNotifyString = styled.span`
-  display: none;
+const CloseIconNotify = styled(CloseIcon)`
+  width: 13.33px;
+  height: 13.33px;
+  color: ${infoColor.info900};
+  cursor: pointer;
 `;
 
 const Notify = styled.div`
-  width: 100%;
+  width: 328px;
+  display: flex;
 
-  @media screen and (min-width: 744px) {
-    ${ExtendedNotifyString} {
-      display: inline-block;
-    }
+  ${ParagraphSemibold3} {
+    color: ${infoColor.info900};
+    margin: 0;
+    margin-right: 39px;
+  }
+
+  @media screen and (min-width: 740px) {
+    width: 420px;
   }
 `;
 
-const CloseIconNotify = styled(CloseIcon)`
-  width: 14px;
-  height: 14px;
-  color: #fff;
-  margin-left: 39px;
-  cursor: pointer;
+const InfoIconNotify = styled(CloseIconNotify)`
+  width: 16.67px;
+  height: 16.67px;
+  margin-right: 13.67px;
+  cursor: none;
 `;
 
 const BackgroundSendIcon = styled.span`
@@ -114,11 +137,16 @@ const PopupContainer = styled.div`
   height: 244px;
   background: #ffffff;
   border-radius: 16px;
+
+  @media screen and (min-width: 744px) {
+    width: 400px;
+  }
 `;
 
 const PopupHeadContent = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 24px;
 
   ${HeadingSemiBold5} {
     margin: 0;
@@ -134,6 +162,23 @@ const PopupHeadContent = styled.div`
 
 const PopupContent = styled.div`
   padding: 24px 24px 32px;
+
+  ${SendButtonContainer} {
+    margin: 0;
+    margin-bottom: 16px;
+    background: transparent;
+    border: 1px solid ${neutralColor.neutral300};
+    color: ${neutralColor.neutral800};
+
+    ${SendArrowIcon} {
+      color: ${neutralColor.neutral700};
+    }
+
+    &:hover {
+      transition: all 0.5s;
+      background-color: ${neutralColor.neutral100};
+    }
+  }
 `;
 
 const StyledPopup = styled(Popup)`
@@ -154,7 +199,7 @@ export {
   SavingType,
   NumberAccount,
   Notify,
-  ExtendedNotifyString,
+  InfoIconNotify,
   CloseIconNotify,
   CopyButton,
   BackgroundSendIcon,
