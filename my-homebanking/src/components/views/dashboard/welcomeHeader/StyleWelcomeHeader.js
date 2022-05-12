@@ -31,8 +31,18 @@ export const WelcomeUserContainer = styled.div`
   @media screen and (min-width: 744px) {
     height: 328px;
 
+    ${HeadingSemiBold5} {
+      font-size: 24px;
+      letter-spacing: -0.01em;
+    }
+
+    ${ParagraphMedium2} {
+      font-size: 18px;
+      line-height: 22px;
+    }
+
     ${WelcomeUserTexs} {
-      padding-top: 140px;
+      padding-top: 80px;
       width: 560px;
     }
   }
@@ -40,8 +50,18 @@ export const WelcomeUserContainer = styled.div`
   @media screen and (min-width: 1512px) {
     height: 460px;
 
+    ${HeadingSemiBold5} {
+      font-size: 30px;
+      line-height: 120%;
+    }
+
+    ${ParagraphMedium2} {
+      font-size: 20px;
+      line-height: 28px;
+    }
+
     ${WelcomeUserTexs} {
-      padding-top: 290px;
+      padding-top: 250px;
       width: 1060px;
     }
   }

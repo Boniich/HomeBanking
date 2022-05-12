@@ -56,8 +56,8 @@ export const AccountSummaryView = () => {
       <AccountSummaryContent>
         {/* el tipo de ahorro cambia segun lo seleccionado*/}
         <SavingType>
-          <ParagraphMedium3>Ahorro en Dolares</ParagraphMedium3>
-          <ParagraphSemibold3>Cambiar</ParagraphSemibold3>
+          <ParagraphMedium3>Ahorro dolares</ParagraphMedium3>
+          <ParagraphSemibold3>Cambiar cuenta</ParagraphSemibold3>
         </SavingType>
         <HeadingSemiBold3>$200.00</HeadingSemiBold3>
         <NumberAccount>
