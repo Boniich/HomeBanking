@@ -11,11 +11,6 @@ import {
   UserSection2,
   UserImage,
   LiMobile,
-  CardSection,
-  TitleCardSection,
-  CardContentContainer,
-  Card,
-  CardIcon,
 } from "./styleDashBoard";
 import {
   faHouseChimney,
@@ -33,11 +28,8 @@ import { Link } from "react-router-dom";
 import {
   ParagraphMedium2,
   ParagraphSemibold2,
-  ParagraphUnderline2,
 } from "../../../theme/paragraph/paragraph";
 import { CloseButton } from "../../common/closeButton/CloseButton";
-import visaCard from "../../../assets/visacard.svg";
-import maestroCard from "../../../assets/maestrocard.svg";
 import { CardList } from "./cardList/CardList";
 const Dashboard = () => {
   const [responsiveNav, setResponsiveNav] = useState(false);
@@ -58,9 +50,11 @@ const Dashboard = () => {
       <WelcomeHeader />
       <UserSection>
         <UserSection2>
-          <AccountSummaryView />
-          <CardList />
-          {/* <TransferenceView /> */}
+          <div>
+            <AccountSummaryView />
+            <CardList />
+          </div>
+          <TransferenceView />
         </UserSection2>
       </UserSection>
 

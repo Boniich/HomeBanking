@@ -26,6 +26,7 @@ import { SendButtonContainer } from "../../../common/sendButton/styleSendButton"
 
 const AccountSummary = styled.div`
   width: 312px;
+  height: 258px;
   background-color: #ffff;
   box-shadow: ${shadownXS};
   border-radius: 20px;
@@ -33,18 +34,19 @@ const AccountSummary = styled.div`
 
   @media screen and (min-width: 744px) {
     width: 544px;
+    height: 319px;
     box-shadow: ${shadownMD};
   }
 
   @media screen and (min-width: 1512px) {
     width: 413px;
-    height: 220px;
+    height: 312px;
     margin-right: 40px;
   }
 `;
 
 const AccountSummaryContent = styled.div`
-  padding: 24px 24px;
+  padding: 24px 24px 32px;
 
   ${ParagraphMedium3} {
     margin: 0;
@@ -52,7 +54,7 @@ const AccountSummaryContent = styled.div`
   }
 
   ${HeadingSemiBold3} {
-    margin: 8px 0 0 0;
+    margin: 0 0 8px 0;
   }
 
   ${SendButtonContainer} {
@@ -61,11 +63,35 @@ const AccountSummaryContent = styled.div`
       background-color: ${primaryColor.primary300};
     }
   }
+
+  @media screen and (min-width: 744px) {
+    padding: 32px 32px 47px;
+
+    ${ParagraphMedium3} {
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    ${HeadingSemiBold3} {
+      font-size: 48px;
+      letter-spacing: -0.02em;
+      margin: 0 0 12px 0;
+    }
+
+    ${SendButtonContainer} {
+      margin-top: 38px;
+    }
+  }
+
+  @media screen and (min-width: 1512px) {
+    padding: 32px 32px 40px;
+  }
 `;
 
 const SavingType = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 24px;
 
   ${ParagraphSemibold3} {
     color: ${primaryColor.primary600};

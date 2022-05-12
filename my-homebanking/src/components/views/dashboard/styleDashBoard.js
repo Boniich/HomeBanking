@@ -120,7 +120,7 @@ const UserSection2 = styled.div`
 
   @media screen and (min-width: 1512px) {
     top: 390px;
-    /* flex-direction: row; */
+    flex-direction: row;
   }
 `;
 
