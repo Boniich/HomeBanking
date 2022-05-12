@@ -1,10 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
-import { errorColor, neutralColor } from "../../../theme/colors/colors";
+import {
+  errorColor,
+  neutralColor,
+  primaryColor,
+} from "../../../theme/colors/colors";
 import { FooterText } from "../../../theme/footer/footer";
 import {
   ParagraphMedium2,
   ParagraphSemibold2,
+  ParagraphUnderline2,
 } from "../../../theme/paragraph/paragraph";
 
 const MenuIcons = styled(FontAwesomeIcon)`
@@ -106,6 +111,7 @@ const UserSection2 = styled.div`
   position: absolute;
   top: 150px;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   @media screen and (min-width: 744px) {
@@ -114,7 +120,7 @@ const UserSection2 = styled.div`
 
   @media screen and (min-width: 1512px) {
     top: 390px;
-    flex-direction: row;
+    /* flex-direction: row; */
   }
 `;
 
@@ -127,6 +133,48 @@ const UserImage = styled.img`
   width: 24px;
   height: 24px;
   border-radius: 100%;
+`;
+
+const CardSection = styled.section`
+  width: 413px;
+`;
+
+const TitleCardSection = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  ${ParagraphSemibold2} {
+    color: ${neutralColor.neutral600};
+  }
+
+  ${ParagraphUnderline2} {
+    color: ${primaryColor.primary600};
+  }
+`;
+
+const CardContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
+
+const Card = styled.div`
+  background: ${neutralColor.neutral100};
+  border: 1px solid ${neutralColor.neutral300};
+  border-radius: 8px;
+  /* it should be 20px but for have card icon more bigger is the 13px */
+  padding: 13px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  ${ParagraphMedium2} {
+    margin: 0;
+  }
+`;
+
+const CardIcon = styled.img`
+  height: 37px;
 `;
 
 export {
@@ -143,4 +191,9 @@ export {
   ListaItems,
   UserImage,
   LiMobile,
+  CardSection,
+  TitleCardSection,
+  CardContentContainer,
+  Card,
+  CardIcon,
 };
