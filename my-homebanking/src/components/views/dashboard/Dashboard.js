@@ -5,35 +5,44 @@ import {
   Nav,
   Section,
   Ul,
-  Link,
   UlMobile,
   Span,
-  ArrowIcon,
   UserSection,
   UserSection2,
-  ListaItems,
+  UserImage,
+  LiMobile,
 } from "./styleDashBoard";
 import {
   faHouseChimney,
   faRightLeft,
   faAngleRight,
-  faX,
 } from "@fortawesome/free-solid-svg-icons";
 import { FooterText } from "../../../theme/footer/footer";
 import TransferenceView from "./transferences/TransferenceView";
 import WelcomeHeader from "./welcomeHeader/WelcomeHeader";
 import { useState } from "react";
 import { AccountSummaryView } from "./accountSummary/AccountSummaryView";
-import { CloseIcon } from "../../../theme/styledIcon/styledIcon";
+import { ArrowIcon } from "../../../theme/styledIcon/styledIcon";
+import fotoPerfil from "../../../assets/fotoPerfil.jpg";
+import { Link } from "react-router-dom";
+import {
+  ParagraphMedium2,
+  ParagraphSemibold2,
+} from "../../../theme/paragraph/paragraph";
+import { CloseButton } from "../../common/closeButton/CloseButton";
+import { CardList } from "./cardList/CardList";
 const Dashboard = () => {
   const [responsiveNav, setResponsiveNav] = useState(false);
 
   const openResponsiveNav = () => {
     setResponsiveNav(true);
+    // mala practica pero es una solucion temporal
+    document.body.style.overflow = "hidden";
   };
 
   const closeResponsivenav = () => {
     setResponsiveNav(false);
+    document.body.style.overflow = "auto";
   };
 
   return (
@@ -41,7 +50,10 @@ const Dashboard = () => {
       <WelcomeHeader />
       <UserSection>
         <UserSection2>
-          <AccountSummaryView />
+          <div>
+            <AccountSummaryView />
+            <CardList />
+          </div>
           <TransferenceView />
         </UserSection2>
       </UserSection>
@@ -49,7 +61,7 @@ const Dashboard = () => {
       <Nav>
         <Ul>
           <Li>
-            <Link>
+            <Link to="/dashboard">
               <span>
                 <MenuIcons icon={faHouseChimney} />
               </span>
@@ -59,7 +71,7 @@ const Dashboard = () => {
             </Link>
           </Li>
           <Li>
-            <Link>
+            <Link to="/transacciones">
               <MenuIcons icon={faRightLeft} />
               <span>
                 <FooterText>Transacciones</FooterText>
@@ -67,49 +79,49 @@ const Dashboard = () => {
             </Link>
           </Li>
           <Li>
-            <Link>
-              Iconito
+            <span onClick={openResponsiveNav}>
+              <UserImage src={fotoPerfil}></UserImage>
               <span>
-                <FooterText onClick={openResponsiveNav}>User</FooterText>
+                <FooterText>Ezequiel</FooterText>
               </span>
-            </Link>
+            </span>
           </Li>
         </Ul>
       </Nav>
       {responsiveNav && (
         <ListMenu>
-          <div className="box-close-btn">
-            <span className="span-close-btn">
-              <CloseIcon icon={faX} onClick={closeResponsivenav}></CloseIcon>
-            </span>
-          </div>
+          <CloseButton propOnClick={closeResponsivenav} />
           <UlMobile>
-            <Li>
+            <LiMobile>
               <Span>
-                <ListaItems>Tarjetas</ListaItems>
+                <ParagraphMedium2>Tarjetas</ParagraphMedium2>
                 <ArrowIcon icon={faAngleRight}></ArrowIcon>
               </Span>
-            </Li>
-            <Li>
+            </LiMobile>
+            <LiMobile>
               <Span>
-                Transferencias <ArrowIcon icon={faAngleRight}></ArrowIcon>
+                <ParagraphMedium2>Transferencias </ParagraphMedium2>
+                <ArrowIcon icon={faAngleRight}></ArrowIcon>
               </Span>
-            </Li>
-            <Li>
+            </LiMobile>
+            <LiMobile>
               <Span>
-                Configuración <ArrowIcon icon={faAngleRight}></ArrowIcon>
+                <ParagraphMedium2>Configuración</ParagraphMedium2>{" "}
+                <ArrowIcon icon={faAngleRight}></ArrowIcon>
               </Span>
-            </Li>
-            <Li>
+            </LiMobile>
+            <LiMobile>
               <Span>
-                Ayuda <ArrowIcon icon={faAngleRight}></ArrowIcon>
+                <ParagraphMedium2>Ayuda</ParagraphMedium2>
+                <ArrowIcon icon={faAngleRight}></ArrowIcon>
               </Span>
-            </Li>
-            <Li>
+            </LiMobile>
+            <LiMobile>
               <Span>
-                Cerrar sesión <ArrowIcon icon={faAngleRight}></ArrowIcon>
+                <ParagraphSemibold2>Cerrar sesión</ParagraphSemibold2>
+                <ArrowIcon icon={faAngleRight}></ArrowIcon>
               </Span>
-            </Li>
+            </LiMobile>
           </UlMobile>
         </ListMenu>
       )}

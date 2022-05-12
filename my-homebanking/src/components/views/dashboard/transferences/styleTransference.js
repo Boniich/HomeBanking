@@ -15,8 +15,8 @@ const ActivityContainer = styled.div`
   margin: 0 auto;
   margin-bottom: 100px;
   border-radius: 20px;
+  background-color: #fff;
   box-shadow: ${shadownXS};
-
   @media screen and (min-width: 744px) {
     width: 544px;
     box-shadow: ${shadownMD};

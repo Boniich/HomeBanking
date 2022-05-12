@@ -1,15 +1,15 @@
 import { HeadingSemiBold5 } from "../../../../theme/heading/heading";
 import { ParagraphMedium2 } from "../../../../theme/paragraph/paragraph";
-import { BoxUser } from "./StyleWelcomeHeader";
+import { WelcomeUserContainer, WelcomeUserTexs } from "./StyleWelcomeHeader";
 
 const WelcomeHeader = () => {
   return (
-    <BoxUser>
-      <div className="box1">
-        <HeadingSemiBold5>Hola, Darlene</HeadingSemiBold5>
+    <WelcomeUserContainer>
+      <WelcomeUserTexs>
+        <HeadingSemiBold5>Hola, Ezequiel</HeadingSemiBold5>
         <ParagraphMedium2>Bienvenida a tu banca movil</ParagraphMedium2>
-      </div>
-    </BoxUser>
+      </WelcomeUserTexs>
+    </WelcomeUserContainer>
   );
 };
 

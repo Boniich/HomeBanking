@@ -1,9 +1,6 @@
 import styled from "styled-components";
 import { primaryColor } from "../colors/colors";
 
-// faltaria el disabled pero como el login inicia con eso
-// no te estoy muy seguro de como hacerlo
-
 const Button = styled.button`
   font-family: inherit;
   /* El width se cambia en el componente que se este utilizando */

@@ -1,11 +1,21 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
-import { neutralColor } from "../../../theme/colors/colors";
+import {
+  errorColor,
+  neutralColor,
+  primaryColor,
+} from "../../../theme/colors/colors";
 import { FooterText } from "../../../theme/footer/footer";
+import {
+  ParagraphMedium2,
+  ParagraphSemibold2,
+  ParagraphUnderline2,
+} from "../../../theme/paragraph/paragraph";
 
 const MenuIcons = styled(FontAwesomeIcon)`
   width: 24px;
   height: 24px;
+  color: ${neutralColor.neutral500};
 `;
 
 const Nav = styled.nav`
@@ -31,7 +41,7 @@ const Nav = styled.nav`
     }
 
     ${FooterText} {
-      color: #ffffff;
+      color: ${neutralColor.neutral500};
     }
   }
 `;
@@ -45,18 +55,7 @@ const Ul = styled.ul`
   justify-content: space-around;
 `;
 
-const Li = styled.li``;
-
-const UlMobile = styled(Ul)`
-  flex-direction: column;
-  display: flex;
-  justify-content: space-between;
-  ${Li} {
-    padding: 10px 24px;
-  }
-`;
-
-const Link = styled.a`
+const Li = styled.li`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -66,45 +65,41 @@ const Link = styled.a`
   text-align: center;
 `;
 
-const ArrowIcon = styled(FontAwesomeIcon)`
-  width: 16px;
-  height: 16px;
-  color: ${neutralColor.neutral300};
+const LiMobile = styled.li`
+  padding: 0 24px;
+  margin: 16px 0;
 `;
 
+const UlMobile = styled(Ul)`
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+`;
 const Section = styled.section`
   background-color: ${neutralColor.neutral50};
 `;
 
 const ListMenu = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   background-color: #fff;
   height: 100%;
   width: 100%;
-
-  .box-close-btn {
-    margin-bottom: 44px;
-    margin-top: 32px;
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 36px;
-  }
-
-  .span-close-btn {
-    width: 28px;
-    height: 28px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: ${neutralColor.neutral100};
-    border-radius: 100%;
-  }
 `;
 
 const Span = styled.span`
   display: flex;
   justify-content: space-between;
+
+  ${ParagraphMedium2} {
+    color: ${neutralColor.neutral700};
+    margin: 0;
+  }
+
+  ${ParagraphSemibold2} {
+    margin: 0;
+    color: ${errorColor.error500};
+  }
 `;
 
 const UserSection = styled.div`
@@ -114,11 +109,17 @@ const UserSection = styled.div`
 
 const UserSection2 = styled.div`
   position: absolute;
-  top: 135px;
+  top: 132px;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
+  @media screen and (min-width: 744px) {
+    top: 165px;
+  }
+
   @media screen and (min-width: 1512px) {
+    top: 352px;
     flex-direction: row;
   }
 `;
@@ -128,18 +129,24 @@ const ListaItems = styled.p`
   margin: 0;
 `;
 
+const UserImage = styled.img`
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+`;
+
 export {
   Section,
   Nav,
   Ul,
   Li,
-  Link,
   MenuIcons,
   ListMenu,
   UlMobile,
   Span,
-  ArrowIcon,
   UserSection,
   UserSection2,
   ListaItems,
+  UserImage,
+  LiMobile,
 };

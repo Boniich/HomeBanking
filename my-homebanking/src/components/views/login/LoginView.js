@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import {
   Box,
   EmailContainer,
   IconEye,
   Img,
+  Input,
   InputIconContainer,
   LoginSection,
   PasswordContainer,
+  ShowLoginErros,
 } from "./styles";
 import trebol from "../../../assets/trebol.png";
 import { HeadingMedium4 } from "../../../theme/heading/heading";
@@ -18,9 +20,17 @@ import {
 import { Button } from "../../../theme/buttons/buttons";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate, useLocation } from "react-router-dom";
+import { Loader } from "../../common/loader/Loader";
 
 const LoginView = () => {
-  const [error, setError] = useState({email: false, password: false});
+  const [emailError, setEmailError] = useState({
+    emailErrorMsg: "",
+    handleEmailError: false,
+  });
+  const [passwordError, setPasswordError] = useState({
+    passwordErrorMsg: "",
+    handlePasswordError: false,
+  });
   const [isDisable, setIsDisable] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [showEye, setShowEye] = useState(false);
@@ -28,17 +38,18 @@ const LoginView = () => {
     email: "",
     password: "",
   });
+  const [showLoader, setShowLoader] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/dashboard";
 
-  let url = "http://challenge-react.alkemy.org/";
+  let url = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_AUTH_ENDPOINT}`;
   const handleChange = (e) => {
-      setInput({
-        ...input,
-        [e.target.name]: e.target.value,
-      });
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleKeyUp = () => {
@@ -61,20 +72,33 @@ const LoginView = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try{
-      const response = await axios.post(url,JSON.stringify({
+    setShowLoader(true);
+    setEmailError({ handleEmailError: false });
+    try {
+      const response = await axios.post(url, {
         email: input.email,
-        password: input.password
-      }),{
-        headers: { "Content-Type": "application/json" },
-      }
-      );
+        password: input.password,
+      });
       console.log(from);
       navigate(from, { replace: true });
       console.log(response);
-    }catch(err){
-      console.log(err);
+    } catch (err) {
+      console.log("error", err);
+      if (err?.response.status === 404) {
+        setEmailError({
+          emailErrorMsg: "Email no encontrado",
+          handleEmailError: true,
+        });
+      }
 
+      if (err?.response.status === 400) {
+        setPasswordError({
+          passwordErrorMsg: "La contraseña es incorrecta",
+          handlePasswordError: true,
+        });
+      }
+    } finally {
+      setShowLoader(false);
     }
   };
 
@@ -86,7 +110,8 @@ const LoginView = () => {
         <form action="" onSubmit={handleSubmit}>
           <EmailContainer>
             <ParagraphMedium3>Correo Electrónico</ParagraphMedium3>
-            <input
+            <Input
+              nonoBorder={emailError.handleEmailError}
               type="email"
               name="email"
               value={input.email}
@@ -95,21 +120,26 @@ const LoginView = () => {
               onChange={handleChange}
               onKeyUp={handleKeyUp}
             />
+            <ShowLoginErros>{emailError.emailErrorMsg}</ShowLoginErros>
           </EmailContainer>
           <PasswordContainer>
-          <ParagraphMedium3>Contraseña</ParagraphMedium3>
+            <ParagraphMedium3>Contraseña</ParagraphMedium3>
             <InputIconContainer>
-              <input
+              <Input
+                nonoBorder={passwordError.handlePasswordError}
                 type={showPassword ? "text" : "password"}
                 name="password"
                 value={input.password}
-                maxLength="16"
+                maxLength="20"
                 placeholder="Ingresa tu contraseña"
                 onChange={handleChange}
                 onKeyUp={handleKeyUp}
               />
               {showEye && <IconEye icon={faEye} onClick={handleClickShow} />}
             </InputIconContainer>
+            {passwordError.handlePasswordError && (
+              <ShowLoginErros>{passwordError.passwordErrorMsg}</ShowLoginErros>
+            )}
           </PasswordContainer>
           <ParagraphUnderline3>¿Olvidaste tu contraseña?</ParagraphUnderline3>
           {/* cambiar por link */}
@@ -118,7 +148,7 @@ const LoginView = () => {
             type="submit"
             disabled={isDisable}
           >
-            Iniciar Sesión
+            {showLoader ? <Loader /> : "Iniciar Sesión"}
           </Button>
         </form>
       </Box>
