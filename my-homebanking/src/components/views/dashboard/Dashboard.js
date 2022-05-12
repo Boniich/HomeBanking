@@ -38,6 +38,7 @@ import {
 import { CloseButton } from "../../common/closeButton/CloseButton";
 import visaCard from "../../../assets/visacard.svg";
 import maestroCard from "../../../assets/maestrocard.svg";
+import { CardList } from "./cardList/CardList";
 const Dashboard = () => {
   const [responsiveNav, setResponsiveNav] = useState(false);
 
@@ -58,26 +59,7 @@ const Dashboard = () => {
       <UserSection>
         <UserSection2>
           <AccountSummaryView />
-          <CardSection>
-            <TitleCardSection>
-              <ParagraphSemibold2>Tarjetas Afiliadas</ParagraphSemibold2>
-              <ParagraphUnderline2>Ver todo</ParagraphUnderline2>
-            </TitleCardSection>
-            <CardContentContainer>
-              <Card>
-                <CardIcon src={visaCard} />
-                <ParagraphMedium2>Termina en 5546</ParagraphMedium2>
-              </Card>
-              <Card>
-                <CardIcon src={maestroCard} />
-                <ParagraphMedium2>Termina en 5546</ParagraphMedium2>
-              </Card>
-              <Card>
-                <CardIcon src={visaCard} />
-                <ParagraphMedium2>Termina en 5546</ParagraphMedium2>
-              </Card>
-            </CardContentContainer>
-          </CardSection>
+          <CardList />
           {/* <TransferenceView /> */}
         </UserSection2>
       </UserSection>

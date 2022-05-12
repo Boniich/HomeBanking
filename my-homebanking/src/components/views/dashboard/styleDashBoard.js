@@ -135,48 +135,6 @@ const UserImage = styled.img`
   border-radius: 100%;
 `;
 
-const CardSection = styled.section`
-  width: 413px;
-`;
-
-const TitleCardSection = styled.div`
-  display: flex;
-  justify-content: space-between;
-
-  ${ParagraphSemibold2} {
-    color: ${neutralColor.neutral600};
-  }
-
-  ${ParagraphUnderline2} {
-    color: ${primaryColor.primary600};
-  }
-`;
-
-const CardContentContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-`;
-
-const Card = styled.div`
-  background: ${neutralColor.neutral100};
-  border: 1px solid ${neutralColor.neutral300};
-  border-radius: 8px;
-  /* it should be 20px but for have card icon more bigger is the 13px */
-  padding: 13px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-
-  ${ParagraphMedium2} {
-    margin: 0;
-  }
-`;
-
-const CardIcon = styled.img`
-  height: 37px;
-`;
-
 export {
   Section,
   Nav,
@@ -191,9 +149,4 @@ export {
   ListaItems,
   UserImage,
   LiMobile,
-  CardSection,
-  TitleCardSection,
-  CardContentContainer,
-  Card,
-  CardIcon,
 };
