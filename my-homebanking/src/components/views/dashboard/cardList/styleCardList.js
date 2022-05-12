@@ -8,6 +8,11 @@ import {
 
 const CardSection = styled.section`
   width: 413px;
+  display: none;
+
+  @media screen and (min-width: 1512px) {
+    display: block;
+  }
 `;
 
 const TitleCardSection = styled.div`
