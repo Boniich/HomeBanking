@@ -74,6 +74,7 @@ const LoginView = () => {
     e.preventDefault();
     setShowLoader(true);
     setEmailError({ handleEmailError: false });
+    setPasswordError({ handlePasswordError: false });
     try {
       const response = await axios.post(url, {
         email: input.email,
