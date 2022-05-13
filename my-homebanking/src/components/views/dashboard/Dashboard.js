@@ -18,7 +18,6 @@ import {
   faAngleRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { FooterText } from "../../../theme/footer/footer";
-import TransferenceView from "./transferences/TransferenceView";
 import WelcomeHeader from "./welcomeHeader/WelcomeHeader";
 import { useState } from "react";
 import { AccountSummaryView } from "./accountSummary/AccountSummaryView";
@@ -31,6 +30,7 @@ import {
 } from "../../../theme/paragraph/paragraph";
 import { CloseButton } from "../../common/closeButton/CloseButton";
 import { CardList } from "./cardList/CardList";
+import ActivityView from "./activity/ActivityView";
 const Dashboard = () => {
   const [responsiveNav, setResponsiveNav] = useState(false);
 
@@ -54,7 +54,7 @@ const Dashboard = () => {
             <AccountSummaryView />
             <CardList />
           </div>
-          <TransferenceView />
+          <ActivityView />
         </UserSection2>
       </UserSection>
 
