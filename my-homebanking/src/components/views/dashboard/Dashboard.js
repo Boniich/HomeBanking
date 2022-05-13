@@ -11,6 +11,7 @@ import {
   UserSection2,
   UserImage,
   LiMobile,
+  LinkBox,
 } from "./styleDashBoard";
 import {
   faHouseChimney,
@@ -23,7 +24,7 @@ import { useState } from "react";
 import { AccountSummaryView } from "./accountSummary/AccountSummaryView";
 import { ArrowIcon } from "../../../theme/styledIcon/styledIcon";
 import fotoPerfil from "../../../assets/fotoPerfil.jpg";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import {
   ParagraphMedium2,
   ParagraphSemibold2,
@@ -61,30 +62,30 @@ const Dashboard = () => {
       <Nav>
         <Ul>
           <Li>
-            <Link to="/dashboard">
-              <span>
-                <MenuIcons icon={faHouseChimney} />
-              </span>
-              <span>
-                <FooterText>Inicio</FooterText>
-              </span>
-            </Link>
+            <NavLink to="/dashboard">
+              {({ isActive }) => (
+                <LinkBox className={isActive ? "active" : ""}>
+                  <MenuIcons icon={faHouseChimney} />
+                  <FooterText>Inicio</FooterText>
+                </LinkBox>
+              )}
+            </NavLink>
           </Li>
           <Li>
-            <Link to="/transacciones">
-              <MenuIcons icon={faRightLeft} />
-              <span>
-                <FooterText>Transacciones</FooterText>
-              </span>
-            </Link>
+            <NavLink to="/transacciones">
+              {({ isActive }) => (
+                <LinkBox className={isActive ? "active" : ""}>
+                  <MenuIcons icon={faRightLeft} />
+                  <FooterText>Transacciones</FooterText>
+                </LinkBox>
+              )}
+            </NavLink>
           </Li>
           <Li>
-            <span onClick={openResponsiveNav}>
+            <LinkBox onClick={openResponsiveNav}>
               <UserImage src={fotoPerfil}></UserImage>
-              <span>
-                <FooterText>Ezequiel</FooterText>
-              </span>
-            </span>
+              <FooterText>Ezequiel</FooterText>
+            </LinkBox>
           </Li>
         </Ul>
       </Nav>

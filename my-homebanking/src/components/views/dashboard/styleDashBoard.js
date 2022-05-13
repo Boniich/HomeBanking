@@ -55,6 +55,8 @@ const Ul = styled.ul`
   justify-content: space-around;
 `;
 
+const LinkBox = styled.span``;
+
 const Li = styled.li`
   display: flex;
   flex-direction: column;
@@ -63,6 +65,13 @@ const Li = styled.li`
   width: 120px;
   height: 64px;
   text-align: center;
+
+  //this class is setted in NavLink by librery
+  .active > * {
+    color: ${primaryColor.primary500};
+    font-weight: 600;
+    line-height: 14px;
+  }
 `;
 
 const LiMobile = styled.li`
@@ -149,4 +158,5 @@ export {
   ListaItems,
   UserImage,
   LiMobile,
+  LinkBox,
 };
