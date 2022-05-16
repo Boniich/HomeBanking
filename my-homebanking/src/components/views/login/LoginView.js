@@ -4,15 +4,12 @@ import {
   Box,
   EmailContainer,
   IconEye,
-  Img,
   Input,
   InputIconContainer,
   LoginSection,
   PasswordContainer,
   ShowLoginErros,
 } from "./styles";
-import trebol from "../../../assets/trebol.png";
-import { HeadingMedium4 } from "../../../theme/heading/heading";
 import {
   ParagraphMedium3,
   ParagraphUnderline3,
@@ -21,6 +18,7 @@ import { Button } from "../../../theme/buttons/buttons";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Loader } from "../../common/loader/Loader";
+import { Logo } from "../../common/logo/Logo";
 
 const LoginView = () => {
   const [emailError, setEmailError] = useState({
@@ -106,8 +104,7 @@ const LoginView = () => {
   return (
     <LoginSection>
       <Box>
-        <Img src={trebol} alt="logo" />
-        <HeadingMedium4>Saint Patrick</HeadingMedium4>
+        <Logo activeOnLogin />
         <form action="" onSubmit={handleSubmit}>
           <EmailContainer>
             <ParagraphMedium3>Correo Electrónico</ParagraphMedium3>
