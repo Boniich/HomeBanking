@@ -12,11 +12,15 @@ import {
   UserImage,
   LiMobile,
   LinkBox,
+  UserName,
+  UserIcon,
+  UserBox,
 } from "./styleDashBoard";
 import {
   faHouseChimney,
   faRightLeft,
   faAngleRight,
+  faCaretDown,
 } from "@fortawesome/free-solid-svg-icons";
 import { FooterText } from "../../../theme/footer/footer";
 import WelcomeHeader from "./welcomeHeader/WelcomeHeader";
@@ -24,7 +28,7 @@ import { useState } from "react";
 import { AccountSummaryView } from "./accountSummary/AccountSummaryView";
 import { ArrowIcon } from "../../../theme/styledIcon/styledIcon";
 import fotoPerfil from "../../../assets/fotoPerfil.jpg";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import {
   ParagraphMedium2,
   ParagraphSemibold2,
@@ -32,6 +36,7 @@ import {
 import { CloseButton } from "../../common/closeButton/CloseButton";
 import { CardList } from "./cardList/CardList";
 import ActivityView from "./activity/ActivityView";
+import { Logo } from "../../common/logo/Logo";
 const Dashboard = () => {
   const [responsiveNav, setResponsiveNav] = useState(false);
 
@@ -60,6 +65,7 @@ const Dashboard = () => {
       </UserSection>
 
       <Nav>
+        <Logo />
         <Ul>
           <Li>
             <NavLink to="/dashboard">
@@ -70,6 +76,15 @@ const Dashboard = () => {
                 </LinkBox>
               )}
             </NavLink>
+          </Li>
+          <Li off>
+            {/* <NavLink to="/transacciones">
+              {({ isActive }) => (
+                <LinkBox className={isActive ? "active" : ""}> */}
+            <FooterText>Tarjetas</FooterText>
+            {/* </LinkBox>
+              )}
+            </NavLink> */}
           </Li>
           <Li>
             <NavLink to="/transacciones">
@@ -83,8 +98,11 @@ const Dashboard = () => {
           </Li>
           <Li>
             <LinkBox onClick={openResponsiveNav}>
-              <UserImage src={fotoPerfil}></UserImage>
-              <FooterText>Ezequiel</FooterText>
+              <UserBox>
+                <UserImage src={fotoPerfil}></UserImage>
+                <UserIcon icon={faCaretDown} />
+              </UserBox>
+              <UserName>Ezequiel</UserName>
             </LinkBox>
           </Li>
         </Ul>
