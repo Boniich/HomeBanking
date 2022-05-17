@@ -23,35 +23,47 @@ const MenuIcons = styled(FontAwesomeIcon)`
   color: ${neutralColor.neutral500};
 `;
 
-const Nav = styled.nav`
+const UserIcon = styled(FontAwesomeIcon)`
+  display: none;
+  width: 14px;
+  height: 14px;
+  color: #ffffff;
+`;
+
+const Nav = styled.nav.attrs((props) => ({
+  backColor: props.backColor || `${neutralColor.neutral700}`,
+  logoColor: props.logoColor || `#fff`,
+  fontColor: props.fontColor || "#fff",
+  iconUserColor: props.iconUserColor || "#fff",
+  scrollShadow: props.scrollShadow || "none",
+}))`
   position: fixed;
   bottom: 0;
-  /* top: 0; */
-  /* desktop */
-  /* position: fixed; */
-  /* bottom: none; */
-  /* top: 0; */
-  background-color: #ffffff;
+  background: #ffffff;
   box-shadow: 0px -1px 16px rgba(17, 24, 39, 0.06);
   height: 64px;
   width: 100%;
 
+  ${FooterText} {
+    color: ${neutralColor.neutral500};
+  }
+
   @media screen and (min-width: 1512px) {
-    // test para desktop
     height: 84px;
     display: flex;
     justify-content: space-around;
     bottom: none;
-    box-shadow: none;
+    transition: 0.3s ease-in;
+    box-shadow: ${(props) => props.scrollShadow};
     top: 0;
-    background-color: ${neutralColor.neutral700};
+    background: ${(props) => props.backColor};
 
     ${MenuIcons} {
       display: none;
     }
 
     ${FooterText} {
-      color: ${neutralColor.neutral500};
+      color: ${(props) => props.fontColor};
     }
 
     ${LogoContainer} {
@@ -73,7 +85,12 @@ const Nav = styled.nav`
       margin: 0;
       font-size: 20.35px;
       line-height: 24.42px;
-      color: #ffffff;
+      color: ${(props) => props.logoColor};
+    }
+
+    ${UserIcon} {
+      display: flex;
+      color: ${(props) => props.iconUserColor};
     }
   }
 `;
@@ -101,6 +118,10 @@ const Li = styled.li`
   height: 64px;
   text-align: center;
 
+  /* ${FooterText} {
+    color: ${neutralColor.neutral500};
+  } */
+
   @media screen and (min-width: 1512px) {
     display: flex;
     padding: 0 24px;
@@ -110,7 +131,7 @@ const Li = styled.li`
     ${FooterText} {
       font-size: 16px;
       line-height: 24px;
-      color: #ffffff;
+      /* color: #ffffff; */
     }
   }
 
@@ -200,16 +221,6 @@ const UserImage = styled.img`
 const UserName = styled(FooterText)`
   @media screen and (min-width: 1512px) {
     display: none;
-  }
-`;
-
-const UserIcon = styled(FontAwesomeIcon)`
-  display: none;
-  width: 14px;
-  height: 14px;
-  color: #ffffff;
-  @media screen and (min-width: 1512px) {
-    display: flex;
   }
 `;
 

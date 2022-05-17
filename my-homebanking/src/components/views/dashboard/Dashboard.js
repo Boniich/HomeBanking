@@ -37,8 +37,11 @@ import { CloseButton } from "../../common/closeButton/CloseButton";
 import { CardList } from "./cardList/CardList";
 import ActivityView from "./activity/ActivityView";
 import { Logo } from "../../common/logo/Logo";
+import { neutralColor } from "../../../theme/colors/colors";
+import { shadownLG } from "../../../theme/shadown/shadown";
 const Dashboard = () => {
   const [responsiveNav, setResponsiveNav] = useState(false);
+  const [changeColorNav, setChangeColorNav] = useState(false);
 
   const openResponsiveNav = () => {
     setResponsiveNav(true);
@@ -50,6 +53,18 @@ const Dashboard = () => {
     setResponsiveNav(false);
     document.body.style.overflow = "auto";
   };
+
+  const changeBackgroundColorNav = () => {
+    console.log(window.scrollY);
+
+    if (window.scrollY >= 120) {
+      setChangeColorNav(true);
+    } else {
+      setChangeColorNav(false);
+    }
+  };
+
+  window.addEventListener("scroll", changeBackgroundColorNav);
 
   return (
     <Section>
@@ -63,8 +78,15 @@ const Dashboard = () => {
           <ActivityView />
         </UserSection2>
       </UserSection>
-
-      <Nav>
+      {/* Al this props in Nav allow handle the change of background color and font color of nav bar
+    when the user scroll */}
+      <Nav
+        backColor={changeColorNav && "#fff"}
+        logoColor={changeColorNav && `${neutralColor.neutral900}`}
+        fontColor={changeColorNav && `${neutralColor.neutral800}`}
+        iconUserColor={changeColorNav && `${neutralColor.neutral700}`}
+        scrollShadow={changeColorNav && `${shadownLG}`}
+      >
         <Logo />
         <Ul>
           <Li>
