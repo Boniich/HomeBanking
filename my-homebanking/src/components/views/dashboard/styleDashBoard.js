@@ -10,6 +10,9 @@ import {
   ParagraphMedium2,
   ParagraphSemibold2,
 } from "../../../theme/paragraph/paragraph";
+import { shadownLG } from "../../../theme/shadown/shadown";
+import { ArrowIcon } from "../../../theme/styledIcon/styledIcon";
+import { CloseButtonContainer } from "../../common/closeButton/styledCloseButton";
 import {
   LogoContainer,
   LogoContent,
@@ -108,6 +111,17 @@ const Ul = styled.ul`
   }
 `;
 
+const UlMobile = styled(Ul)`
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+
+  @media screen and (min-width: 1512px) {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+`;
+
 const LinkBox = styled.span``;
 
 const Li = styled.li`
@@ -118,10 +132,6 @@ const Li = styled.li`
   height: 64px;
   text-align: center;
 
-  /* ${FooterText} {
-    color: ${neutralColor.neutral500};
-  } */
-
   @media screen and (min-width: 1512px) {
     display: flex;
     padding: 0 24px;
@@ -131,7 +141,6 @@ const Li = styled.li`
     ${FooterText} {
       font-size: 16px;
       line-height: 24px;
-      /* color: #ffffff; */
     }
   }
 
@@ -146,13 +155,12 @@ const Li = styled.li`
 const LiMobile = styled.li`
   padding: 0 24px;
   margin: 16px 0;
+
+  @media screen and (min-width: 1512px) {
+    display: ${(props) => props.offOnDesktop && "none"};
+  }
 `;
 
-const UlMobile = styled(Ul)`
-  flex-direction: column;
-  display: flex;
-  justify-content: space-between;
-`;
 const Section = styled.section`
   background-color: ${neutralColor.neutral50};
 `;
@@ -163,6 +171,22 @@ const ListMenu = styled.div`
   background-color: #fff;
   height: 100%;
   width: 100%;
+
+  @media screen and (min-width: 1512px) {
+    top: 72px;
+    left: 1350px;
+    width: 228px;
+    height: 176px;
+    box-shadow: ${shadownLG};
+    border-radius: 16px;
+    ${CloseButtonContainer} {
+      display: none;
+    }
+
+    ${ArrowIcon} {
+      display: none;
+    }
+  }
 `;
 
 const Span = styled.span`

@@ -24,7 +24,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FooterText } from "../../../theme/footer/footer";
 import WelcomeHeader from "./welcomeHeader/WelcomeHeader";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { AccountSummaryView } from "./accountSummary/AccountSummaryView";
 import { ArrowIcon } from "../../../theme/styledIcon/styledIcon";
 import fotoPerfil from "../../../assets/fotoPerfil.jpg";
@@ -42,11 +42,15 @@ import { shadownLG } from "../../../theme/shadown/shadown";
 const Dashboard = () => {
   const [responsiveNav, setResponsiveNav] = useState(false);
   const [changeColorNav, setChangeColorNav] = useState(false);
+  const refNav = useRef(false);
 
   const openResponsiveNav = () => {
-    setResponsiveNav(true);
+    setResponsiveNav(!responsiveNav);
     // mala practica pero es una solucion temporal
-    document.body.style.overflow = "hidden";
+    const wid = refNav.current.offsetWidth;
+    wid >= 1512
+      ? (document.body.style.overflow = "auto")
+      : (document.body.style.overflow = "hidden");
   };
 
   const closeResponsivenav = () => {
@@ -55,13 +59,7 @@ const Dashboard = () => {
   };
 
   const changeBackgroundColorNav = () => {
-    console.log(window.scrollY);
-
-    if (window.scrollY >= 120) {
-      setChangeColorNav(true);
-    } else {
-      setChangeColorNav(false);
-    }
+    window.scrollY >= 120 ? setChangeColorNav(true) : setChangeColorNav(false);
   };
 
   window.addEventListener("scroll", changeBackgroundColorNav);
@@ -81,6 +79,7 @@ const Dashboard = () => {
       {/* Al this props in Nav allow handle the change of background color and font color of nav bar
     when the user scroll */}
       <Nav
+        ref={refNav}
         backColor={changeColorNav && "#fff"}
         logoColor={changeColorNav && `${neutralColor.neutral900}`}
         fontColor={changeColorNav && `${neutralColor.neutral800}`}
@@ -100,13 +99,7 @@ const Dashboard = () => {
             </NavLink>
           </Li>
           <Li off>
-            {/* <NavLink to="/transacciones">
-              {({ isActive }) => (
-                <LinkBox className={isActive ? "active" : ""}> */}
             <FooterText>Tarjetas</FooterText>
-            {/* </LinkBox>
-              )}
-            </NavLink> */}
           </Li>
           <Li>
             <NavLink to="/transacciones">
@@ -133,13 +126,13 @@ const Dashboard = () => {
         <ListMenu>
           <CloseButton propOnClick={closeResponsivenav} />
           <UlMobile>
-            <LiMobile>
+            <LiMobile offOnDesktop>
               <Span>
                 <ParagraphMedium2>Tarjetas</ParagraphMedium2>
                 <ArrowIcon icon={faAngleRight}></ArrowIcon>
               </Span>
             </LiMobile>
-            <LiMobile>
+            <LiMobile offOnDesktop>
               <Span>
                 <ParagraphMedium2>Transferencias </ParagraphMedium2>
                 <ArrowIcon icon={faAngleRight}></ArrowIcon>
