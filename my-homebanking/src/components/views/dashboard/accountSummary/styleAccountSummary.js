@@ -1,11 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Popup from "reactjs-popup";
 import styled from "styled-components";
-import {
-  infoColor,
-  neutralColor,
-  primaryColor,
-} from "../../../../theme/colors/colors";
+import { neutralColor, primaryColor } from "../../../../theme/colors/colors";
 import {
   HeadingSemiBold3,
   HeadingSemiBold5,
@@ -16,10 +12,7 @@ import {
   ParagraphSemibold3,
 } from "../../../../theme/paragraph/paragraph";
 import { shadownMD, shadownXS } from "../../../../theme/shadown/shadown";
-import {
-  CloseIcon,
-  SendArrowIcon,
-} from "../../../../theme/styledIcon/styledIcon";
+import { SendArrowIcon } from "../../../../theme/styledIcon/styledIcon";
 import { CloseButtonContainer } from "../../../common/closeButton/styledCloseButton";
 import { SendButtonContainer } from "../../../common/sendButton/styleSendButton";
 
@@ -101,53 +94,15 @@ const CopyButton = styled(FontAwesomeIcon)`
   width: 14.58px;
   height: 16.67px;
   color: ${neutralColor.neutral500};
+  margin-left: 14px;
 `;
 
 const NumberAccount = styled.div`
   display: flex;
 
-  ${CopyButton} {
-    margin-left: 14px;
-  }
-
   ${ParagraphMedium2} {
     margin: 0;
   }
-`;
-
-const CloseIconNotify = styled(CloseIcon)`
-  width: 16px;
-  height: 16px;
-  color: ${infoColor.info900};
-  cursor: pointer;
-`;
-
-const NotifySpan = styled.span`
-  display: flex;
-  align-items: center;
-  gap: 13.67px;
-`;
-
-const Notify = styled.div`
-  width: 270px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  ${ParagraphSemibold3} {
-    color: ${infoColor.info900};
-    margin: 0;
-    cursor: default;
-  }
-
-  @media screen and (min-width: 740px) {
-    width: 420px;
-  }
-`;
-
-const InfoIconNotify = styled(CloseIconNotify)`
-  width: 16.67px;
-  height: 16.67px;
-  cursor: default;
 `;
 
 const BackgroundSendIcon = styled.span`
@@ -229,14 +184,10 @@ export {
   AccountSummaryContent,
   SavingType,
   NumberAccount,
-  Notify,
-  InfoIconNotify,
-  CloseIconNotify,
   CopyButton,
   BackgroundSendIcon,
   StyledPopup,
   PopupContainer,
   PopupHeadContent,
   PopupContent,
-  NotifySpan,
 };
