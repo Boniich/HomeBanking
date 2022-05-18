@@ -13,7 +13,6 @@ import {
 import {
   ParagraphMedium2,
   ParagraphMedium3,
-  ParagraphSemibold2,
   ParagraphSemibold3,
 } from "../../../../theme/paragraph/paragraph";
 import { shadownMD, shadownXS } from "../../../../theme/shadown/shadown";
@@ -117,20 +116,26 @@ const NumberAccount = styled.div`
 `;
 
 const CloseIconNotify = styled(CloseIcon)`
-  width: 13.33px;
-  height: 13.33px;
+  width: 16px;
+  height: 16px;
   color: ${infoColor.info900};
   cursor: pointer;
 `;
 
-const Notify = styled.div`
-  width: 328px;
+const NotifySpan = styled.span`
   display: flex;
+  align-items: center;
+  gap: 13.67px;
+`;
 
+const Notify = styled.div`
+  width: 270px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   ${ParagraphSemibold3} {
     color: ${infoColor.info900};
     margin: 0;
-    margin-right: 39px;
   }
 
   @media screen and (min-width: 740px) {
@@ -141,7 +146,6 @@ const Notify = styled.div`
 const InfoIconNotify = styled(CloseIconNotify)`
   width: 16.67px;
   height: 16.67px;
-  margin-right: 13.67px;
   cursor: none;
 `;
 
@@ -233,4 +237,5 @@ export {
   PopupContainer,
   PopupHeadContent,
   PopupContent,
+  NotifySpan,
 };

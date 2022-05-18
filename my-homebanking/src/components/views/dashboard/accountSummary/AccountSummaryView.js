@@ -1,4 +1,8 @@
-import { faCircleInfo, faCopy, faX } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCircleInfo,
+  faCopy,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import toast, { Toaster } from "react-hot-toast";
 import {
@@ -19,6 +23,7 @@ import {
   CopyButton,
   InfoIconNotify,
   Notify,
+  NotifySpan,
   NumberAccount,
   PopupContainer,
   PopupContent,
@@ -34,9 +39,11 @@ export const AccountSummaryView = () => {
     toast(
       (t) => (
         <Notify>
-          <InfoIconNotify icon={faCircleInfo} />
-          <ParagraphSemibold3>Número de cuenta copiado</ParagraphSemibold3>
-          <CloseIconNotify icon={faX} onClick={() => toast.dismiss(t.id)} />
+          <NotifySpan>
+            <InfoIconNotify icon={faCircleInfo} />
+            <ParagraphSemibold3>Número de cuenta copiado</ParagraphSemibold3>
+          </NotifySpan>
+          <CloseIconNotify icon={faXmark} onClick={() => toast.dismiss(t.id)} />
         </Notify>
       ),
       {
@@ -46,7 +53,7 @@ export const AccountSummaryView = () => {
         },
       },
       {
-        duration: 2000,
+        duration: 9000,
       }
     );
   };
