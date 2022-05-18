@@ -1,10 +1,4 @@
-import {
-  faCircleInfo,
-  faCopy,
-  faXmark,
-} from "@fortawesome/free-solid-svg-icons";
-import { CopyToClipboard } from "react-copy-to-clipboard";
-import toast, { Toaster } from "react-hot-toast";
+import { infoColor } from "../../../../theme/colors/colors";
 import {
   HeadingSemiBold3,
   HeadingSemiBold5,
@@ -15,15 +9,12 @@ import {
   ParagraphSemibold3,
 } from "../../../../theme/paragraph/paragraph";
 import { CloseButton } from "../../../common/closeButton/CloseButton";
+import { CopyAccion } from "../../../common/copyAccion/CopyAccion";
+import { Notification } from "../../../common/notification/Notification";
 import { SendButton } from "../../../common/sendButton/SendButton";
 import {
   AccountSummary,
   AccountSummaryContent,
-  CloseIconNotify,
-  CopyButton,
-  InfoIconNotify,
-  Notify,
-  NotifySpan,
   NumberAccount,
   PopupContainer,
   PopupContent,
@@ -34,29 +25,8 @@ import {
 
 export const AccountSummaryView = () => {
   const numberAccount = 12458745893254;
-  const showAlert = () => {
-    toast.dismiss();
-    toast(
-      (t) => (
-        <Notify>
-          <NotifySpan>
-            <InfoIconNotify icon={faCircleInfo} />
-            <ParagraphSemibold3>Número de cuenta copiado</ParagraphSemibold3>
-          </NotifySpan>
-          <CloseIconNotify icon={faXmark} onClick={() => toast.dismiss(t.id)} />
-        </Notify>
-      ),
-      {
-        style: {
-          minWidth: "200px",
-          maxWidth: "100%",
-        },
-      },
-      {
-        duration: 2000,
-      }
-    );
-  };
+  const notificationText = "Número de cuenta copiado";
+  const notificationColor = infoColor.info900;
 
   return (
     <AccountSummary>
@@ -69,22 +39,12 @@ export const AccountSummaryView = () => {
         <HeadingSemiBold3>$200.00</HeadingSemiBold3>
         <NumberAccount>
           <ParagraphMedium2>{numberAccount}</ParagraphMedium2>
-          <CopyToClipboard text={numberAccount}>
-            <CopyButton icon={faCopy} onClick={showAlert} />
-          </CopyToClipboard>
-          <Toaster
-            position="bottom-center"
-            containerStyle={{
-              bottom: 75,
-            }}
-            toastOptions={{
-              style: {
-                border: "1px solid #BAE6FD",
-                background: "#F0F9FF",
-                padding: "12px 20px",
-              },
-            }}
+          <CopyAccion
+            numberAccount={numberAccount}
+            notificationText={notificationText}
+            notificationColor={notificationColor}
           />
+          <Notification background="#F0F9FF" />
         </NumberAccount>
         <StyledPopup modal trigger={<SendButton text="Enviar Dinero" />}>
           {(close) => (
