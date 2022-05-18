@@ -1,6 +1,5 @@
 import { faCircleInfo, faXmark } from "@fortawesome/free-solid-svg-icons";
 import toast from "react-hot-toast";
-import { infoColor } from "../../../theme/colors/colors";
 import { ParagraphSemibold3 } from "../../../theme/paragraph/paragraph";
 import {
   CloseIconNotification,
@@ -15,15 +14,12 @@ export const showNotification = (text, color) => {
     (t) => (
       <NotificationContainer paragraphColor={color}>
         <NotificationIconAndText>
-          <InfoIconNotification
-            icon={faCircleInfo}
-            iconColor={infoColor.info900}
-          />
+          <InfoIconNotification icon={faCircleInfo} color={color} />
           <ParagraphSemibold3>{text}</ParagraphSemibold3>
         </NotificationIconAndText>
         <CloseIconNotification
           icon={faXmark}
-          iconColor={infoColor.info900}
+          color={color}
           onClick={() => toast.dismiss(t.id)}
         />
       </NotificationContainer>
