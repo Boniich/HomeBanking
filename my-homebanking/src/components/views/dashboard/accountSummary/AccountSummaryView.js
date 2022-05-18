@@ -53,7 +53,7 @@ export const AccountSummaryView = () => {
         },
       },
       {
-        duration: 9000,
+        duration: 2000,
       }
     );
   };
