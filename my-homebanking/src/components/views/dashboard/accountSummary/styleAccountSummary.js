@@ -136,6 +136,7 @@ const Notify = styled.div`
   ${ParagraphSemibold3} {
     color: ${infoColor.info900};
     margin: 0;
+    cursor: default;
   }
 
   @media screen and (min-width: 740px) {
@@ -146,7 +147,7 @@ const Notify = styled.div`
 const InfoIconNotify = styled(CloseIconNotify)`
   width: 16.67px;
   height: 16.67px;
-  cursor: none;
+  cursor: default;
 `;
 
 const BackgroundSendIcon = styled.span`
