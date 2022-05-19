@@ -6,9 +6,9 @@ import { SendArrowIcon } from "../../../theme/styledIcon/styledIcon";
 import { CloseButtonContainer } from "../closeButton/styledCloseButton";
 import { SendButtonContainer } from "../sendButton/styleSendButton";
 
-const PopupContainer = styled.div`
+const Modal = styled.div`
   width: 312px;
-  height: 244px;
+  height: ${(props) => props.height || `244px`};
   background: #ffffff;
   border-radius: 16px;
 
@@ -17,7 +17,11 @@ const PopupContainer = styled.div`
   }
 `;
 
-const PopupHeadContent = styled.div`
+const ModalContainer = styled.div`
+  padding: 24px 24px 32px;
+`;
+
+const ModalHeader = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 24px;
@@ -34,12 +38,13 @@ const PopupHeadContent = styled.div`
   }
 `;
 
-const PopupContent = styled.div`
-  padding: 24px 24px 32px;
+const ModalContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 
   ${SendButtonContainer} {
     margin: 0;
-    margin-bottom: 16px;
     background: transparent;
     border: 1px solid ${neutralColor.neutral300};
     color: ${neutralColor.neutral800};
@@ -56,16 +61,16 @@ const PopupContent = styled.div`
 `;
 
 const StyledPopup = styled(Popup)`
-  &-content {
-    ${PopupContainer}
-    ${PopupHeadContent}
-  ${PopupContent}
+  &-overlay {
+    background: ${(props) => props.background || `rgba(17, 24, 39, 0.9)`};
   }
 
-  &-overlay {
-    background: ${neutralColor.neutral900};
-    opacity: 0.9;
+  &-content {
+    ${Modal}
+    ${ModalContainer}
+    ${ModalHeader}
+  ${ModalContent}
   }
 `;
 
-export { StyledPopup, PopupContainer, PopupHeadContent, PopupContent };
+export { StyledPopup, Modal, ModalContainer, ModalHeader, ModalContent };
