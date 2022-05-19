@@ -9,6 +9,19 @@ import {
   StyledPopup,
 } from "./stylePopup";
 
+/**
+ * Create a popup using react-popup librery.
+ *
+ * All param are opcional but action and children props always should be added if you
+ * want have a trigger accion and content to render
+ *
+ * @param {string} background  Set a background color for overlay of popup. It has a default value of rgba(17, 24, 39, 0.9)
+ * @param {any} action Accion what will display popup. It can be a button component, a text or whatever
+ * @param {string} headerText  Text that will have the propup in the top of it
+ * @param {string} height  height of popup. It has a default value of 244px
+ * @param {any} children It is the "children of popup" which will be render what you want in middle of popup
+ **/
+
 export const Popup = React.forwardRef((props, ref) => {
   return (
     <StyledPopup
