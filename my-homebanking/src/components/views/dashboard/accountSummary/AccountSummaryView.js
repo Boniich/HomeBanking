@@ -1,32 +1,27 @@
+import React from "react";
 import { infoColor } from "../../../../theme/colors/colors";
-import {
-  HeadingSemiBold3,
-  HeadingSemiBold5,
-} from "../../../../theme/heading/heading";
+import { HeadingSemiBold3 } from "../../../../theme/heading/heading";
 import {
   ParagraphMedium2,
   ParagraphMedium3,
   ParagraphSemibold3,
 } from "../../../../theme/paragraph/paragraph";
-import { CloseButton } from "../../../common/closeButton/CloseButton";
 import { CopyAccion } from "../../../common/copyAccion/CopyAccion";
 import { Notification } from "../../../common/notification/Notification";
+import { Popup } from "../../../common/popup/Popup";
 import { SendButton } from "../../../common/sendButton/SendButton";
 import {
   AccountSummary,
   AccountSummaryContent,
   NumberAccount,
-  PopupContainer,
-  PopupContent,
-  PopupHeadContent,
   SavingType,
-  StyledPopup,
 } from "./styleAccountSummary";
 
 export const AccountSummaryView = () => {
   const numberAccount = 12458745893254;
   const notificationText = "Número de cuenta copiado";
   const notificationColor = infoColor.info900;
+  const ref = React.createRef();
 
   return (
     <AccountSummary>
@@ -46,20 +41,13 @@ export const AccountSummaryView = () => {
           />
           <Notification background="#F0F9FF" />
         </NumberAccount>
-        <StyledPopup modal trigger={<SendButton text="Enviar Dinero" />}>
-          {(close) => (
-            <PopupContainer>
-              <PopupContent>
-                <PopupHeadContent>
-                  <HeadingSemiBold5>Enviar Dinero</HeadingSemiBold5>
-                  <CloseButton propOnClick={close} />
-                </PopupHeadContent>
-                <SendButton text="A otra cuenta" extraText="San Patrick" />
-                <SendButton text="A cuenta propia" />
-              </PopupContent>
-            </PopupContainer>
-          )}
-        </StyledPopup>
+        <Popup
+          accion={<SendButton ref={ref} text="Enviar Dinero" />}
+          headerText="Enviar Dinero"
+        >
+          <SendButton text="A otra cuenta" extraText="San Patrick" />
+          <SendButton text="A cuenta propia" />
+        </Popup>
       </AccountSummaryContent>
     </AccountSummary>
   );
