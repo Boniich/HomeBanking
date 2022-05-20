@@ -12,9 +12,9 @@ import {
 /**
  * Create a popup using react-popup librery.
  *
- * All param are opcional but action and children props always should be added if you
+ * All param are opcional but ref, action and children props always should be added if you
  * want have a trigger accion and content to render
- *
+ * @param {any} ref Add reference in order to be able that trigger works like should be.
  * @param {string} background  Set a background color for overlay of popup. It has a default value of rgba(17, 24, 39, 0.9)
  * @param {any} action Accion what will display popup. It can be a button component, a text or whatever
  * @param {string} headerText  Text that will have the propup in the top of it
