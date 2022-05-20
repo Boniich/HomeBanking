@@ -8,6 +8,7 @@ import {
   ParagraphSemibold3,
 } from "../../../../theme/paragraph/paragraph";
 import { shadownMD, shadownXS } from "../../../../theme/shadown/shadown";
+import { ModalContainer } from "../../../common/popup/stylePopup";
 import { SendButtonContainer } from "../../../common/sendButton/styleSendButton";
 
 const AccountSummary = styled.div`
@@ -81,6 +82,10 @@ const SavingType = styled.div`
 
   ${ParagraphSemibold3} {
     color: ${primaryColor.primary600};
+  }
+
+  ${ModalContainer} {
+    height: auto;
   }
 `;
 

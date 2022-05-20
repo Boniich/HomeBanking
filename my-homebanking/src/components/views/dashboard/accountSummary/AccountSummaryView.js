@@ -16,20 +16,30 @@ import {
   NumberAccount,
   SavingType,
 } from "./styleAccountSummary";
+import { ChangeAccountCard } from "./changeAccount/ChangeAccountCard";
 
 export const AccountSummaryView = () => {
   const numberAccount = 12458745893254;
   const notificationText = "Número de cuenta copiado";
   const notificationColor = infoColor.info900;
   const ref = React.createRef();
-
   return (
     <AccountSummary>
       <AccountSummaryContent>
-        {/* el tipo de ahorro cambia segun lo seleccionado*/}
         <SavingType>
           <ParagraphMedium3>Ahorro dolares</ParagraphMedium3>
-          <ParagraphSemibold3>Cambiar cuenta</ParagraphSemibold3>
+          <Popup
+            accion={
+              <ParagraphSemibold3 ref={ref}>Cambiar cuenta</ParagraphSemibold3>
+            }
+            headerText="Cambiar Cuenta"
+            height="auto"
+          >
+            <ChangeAccountCard
+              typeSaving="Ahorro en Dolares"
+              accountNumber="123456789"
+            />
+          </Popup>
         </SavingType>
         <HeadingSemiBold3>$200.00</HeadingSemiBold3>
         <NumberAccount>
