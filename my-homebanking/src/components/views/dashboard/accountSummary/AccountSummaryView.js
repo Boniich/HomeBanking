@@ -29,7 +29,7 @@ export const AccountSummaryView = () => {
         <SavingType>
           <ParagraphMedium3>Ahorro dolares</ParagraphMedium3>
           <Popup
-            accion={
+            action={
               <ParagraphSemibold3 ref={ref}>Cambiar cuenta</ParagraphSemibold3>
             }
             headerText="Cambiar Cuenta"
@@ -52,7 +52,7 @@ export const AccountSummaryView = () => {
           <Notification background="#F0F9FF" />
         </NumberAccount>
         <Popup
-          accion={<SendButton ref={ref} text="Enviar Dinero" />}
+          action={<SendButton ref={ref} text="Enviar Dinero" />}
           headerText="Enviar Dinero"
         >
           <SendButton text="A otra cuenta" extraText="San Patrick" />
