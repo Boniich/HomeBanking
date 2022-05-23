@@ -28,7 +28,7 @@ export const Popup = React.forwardRef((props, ref) => {
       ref={ref}
       background={props.background}
       modal
-      trigger={props.accion}
+      trigger={props.action}
     >
       {(close) => (
         <Modal height={props.height}>
