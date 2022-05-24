@@ -7,13 +7,19 @@ import { CloseButtonContainer } from "../closeButton/styledCloseButton";
 import { SendButtonContainer } from "../sendButton/styleSendButton";
 
 const Modal = styled.div`
-  width: 312px;
+  width: ${(props) => props.width || `312px`};
   height: ${(props) => props.height || `244px`};
   background: #ffffff;
   border-radius: 16px;
 
   @media screen and (min-width: 744px) {
-    width: 400px;
+    width: ${(props) => props.tableWidth || `400px`};
+    height: ${(props) => props.tableHeight || "auto"};
+  }
+
+  @media screen and (min-width: 1512px) {
+    width: ${(props) => props.desktopWidth || `400px`};
+    height: ${(props) => props.desktopHeight || "auto"};
   }
 `;
 

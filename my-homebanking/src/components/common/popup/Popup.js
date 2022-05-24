@@ -31,7 +31,14 @@ export const Popup = React.forwardRef((props, ref) => {
       trigger={props.action}
     >
       {(close) => (
-        <Modal height={props.height}>
+        <Modal
+          width={props.width}
+          height={props.height}
+          tableWidth={props.tableWidth}
+          tableHeight={props.tableHeight}
+          desktopWidth={props.desktopWidth}
+          desktopHeight={props.desktopHeight}
+        >
           <ModalContainer>
             <ModalHeader>
               <HeadingSemiBold5>{props.headerText}</HeadingSemiBold5>
