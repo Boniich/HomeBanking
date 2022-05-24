@@ -154,7 +154,7 @@ const Dashboard = () => {
               </Span>
             </LiMobile>
             <LiMobile>
-              <CloseSessionPopup>
+              <CloseSessionPopup text="¿Desea cerrar la session?">
                 <Span ref={ref}>
                   <ParagraphSemibold2>Cerrar sesión</ParagraphSemibold2>
                   <ArrowIcon icon={faAngleRight}></ArrowIcon>
