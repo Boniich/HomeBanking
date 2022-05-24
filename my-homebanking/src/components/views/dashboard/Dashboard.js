@@ -1,3 +1,4 @@
+import React, { createRef } from "react";
 import {
   Li,
   ListMenu,
@@ -15,12 +16,19 @@ import {
   UserName,
   UserIcon,
   UserBox,
+  CloseSessionContent,
+  CloseSessionIconAndTexs,
+  BackgroundCloseSessionIcon,
+  CloseSessionIcon,
+  CloseSeccionButtonsContainer,
+  CloseSessionButton,
 } from "./styleDashBoard";
 import {
   faHouseChimney,
   faRightLeft,
   faAngleRight,
   faCaretDown,
+  faCircleInfo,
 } from "@fortawesome/free-solid-svg-icons";
 import { FooterText } from "../../../theme/footer/footer";
 import WelcomeHeader from "./welcomeHeader/WelcomeHeader";
@@ -37,12 +45,15 @@ import { CloseButton } from "../../common/closeButton/CloseButton";
 import { CardList } from "./cardList/CardList";
 import ActivityView from "./activity/ActivityView";
 import { Logo } from "../../common/logo/Logo";
-import { neutralColor } from "../../../theme/colors/colors";
+import { neutralColor, primaryColor } from "../../../theme/colors/colors";
 import { shadownLG } from "../../../theme/shadown/shadown";
+import { Popup } from "../../common/popup/Popup";
+import { HeadingBold5 } from "../../../theme/heading/heading";
 const Dashboard = () => {
   const [responsiveNav, setResponsiveNav] = useState(false);
   const [changeColorNav, setChangeColorNav] = useState(false);
   const refNav = useRef(false);
+  const ref = createRef();
 
   const openResponsiveNav = () => {
     setResponsiveNav(!responsiveNav);
@@ -151,10 +162,48 @@ const Dashboard = () => {
               </Span>
             </LiMobile>
             <LiMobile>
-              <Span>
-                <ParagraphSemibold2>Cerrar sesión</ParagraphSemibold2>
-                <ArrowIcon icon={faAngleRight}></ArrowIcon>
-              </Span>
+              <Popup
+                action={
+                  <Span ref={ref}>
+                    <ParagraphSemibold2>Cerrar sesión</ParagraphSemibold2>
+                    <ArrowIcon icon={faAngleRight}></ArrowIcon>
+                  </Span>
+                }
+                background={neutralColor.neutral700}
+                width="316px"
+                height="418px"
+                tableWidth="544px"
+                tableHeight="544px"
+                desktopWidth="686px"
+                desktopHeight="642px"
+              >
+                <CloseSessionContent>
+                  <CloseSessionIconAndTexs>
+                    <BackgroundCloseSessionIcon>
+                      <CloseSessionIcon icon={faCircleInfo}></CloseSessionIcon>
+                    </BackgroundCloseSessionIcon>
+                    <HeadingBold5>
+                      ¿Deseas mantener tu session activa?
+                    </HeadingBold5>
+                  </CloseSessionIconAndTexs>
+                  <CloseSeccionButtonsContainer>
+                    <CloseSessionButton>Mantener activa</CloseSessionButton>
+                    <CloseSessionButton
+                      background="#fff"
+                      textColor={`${primaryColor.primary500}`}
+                      border={`1px solid ${primaryColor.primary500}`}
+                      textColorHover={`${primaryColor.primary400}`}
+                      backgroundHover="none"
+                      borderHover={`${primaryColor.primary400}`}
+                      textColorFocus={`${primaryColor.primary500}`}
+                      backgroundFocus={`${primaryColor.primary50}`}
+                      borderFocus={`${primaryColor.primary200}`}
+                    >
+                      Cerrar session
+                    </CloseSessionButton>
+                  </CloseSeccionButtonsContainer>
+                </CloseSessionContent>
+              </Popup>
             </LiMobile>
           </UlMobile>
         </ListMenu>
