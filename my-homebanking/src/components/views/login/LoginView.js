@@ -91,9 +91,9 @@ const LoginView = () => {
           },
         }
       );
-      console.log(from);
-      navigate(from, { replace: true });
       console.log(response);
+      localStorage.setItem("token", response.data.token);
+      navigate(from, { replace: true });
     } catch (err) {
       console.log("error", err);
       if (err?.response.status === 404) {
