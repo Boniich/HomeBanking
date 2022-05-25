@@ -19,6 +19,8 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Loader } from "../../common/loader/Loader";
 import { Logo } from "../../common/logo/Logo";
+import bcryptjs from "bcryptjs";
+const { hash } = bcryptjs;
 
 const LoginView = () => {
   const [emailError, setEmailError] = useState({
@@ -74,10 +76,21 @@ const LoginView = () => {
     setEmailError({ handleEmailError: false });
     setPasswordError({ handlePasswordError: false });
     try {
-      const response = await axios.post(url, {
-        email: input.email,
-        password: input.password,
-      });
+      const appToken = await hash(`${process.env.REACT_APP_TOKEN_KEY}`, 10);
+
+      const response = await axios.post(
+        url,
+        {
+          email: input.email,
+          password: input.password,
+        },
+        {
+          headers: {
+            "content-type": "application/json",
+            "app-token": appToken,
+          },
+        }
+      );
       console.log(from);
       navigate(from, { replace: true });
       console.log(response);
