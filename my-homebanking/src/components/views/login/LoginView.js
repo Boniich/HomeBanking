@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useContext } from "react";
 import {
   Box,
   EmailContainer,
@@ -16,104 +15,24 @@ import {
 } from "../../../theme/paragraph/paragraph";
 import { Button } from "../../../theme/buttons/buttons";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate, useLocation } from "react-router-dom";
 import { Loader } from "../../common/loader/Loader";
 import { Logo } from "../../common/logo/Logo";
-import bcryptjs from "bcryptjs";
-const { hash } = bcryptjs;
+import AuthContext from "../../../context/AuthContext";
 
 const LoginView = () => {
-  const [emailError, setEmailError] = useState({
-    emailErrorMsg: "",
-    handleEmailError: false,
-  });
-  const [passwordError, setPasswordError] = useState({
-    passwordErrorMsg: "",
-    handlePasswordError: false,
-  });
-  const [isDisable, setIsDisable] = useState(true);
-  const [showPassword, setShowPassword] = useState(false);
-  const [showEye, setShowEye] = useState(false);
-  const [input, setInput] = useState({
-    email: "",
-    password: "",
-  });
-  const [showLoader, setShowLoader] = useState(false);
-
-  const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from?.pathname || "/dashboard";
-
-  let url = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_AUTH_ENDPOINT}`;
-  const handleChange = (e) => {
-    setInput({
-      ...input,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleKeyUp = () => {
-    // Muestra y oculta el ojo
-    console.log("keyUp");
-    if (input.password.length !== 0) {
-      setShowEye(true);
-    } else {
-      setShowEye(false);
-    }
-
-    if (input.email.length !== 0 && input.password.length !== 0) {
-      setIsDisable(false);
-    }
-  };
-
-  const handleClickShow = () => {
-    setShowPassword(!showPassword);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setShowLoader(true);
-    setEmailError({ handleEmailError: false });
-    setPasswordError({ handlePasswordError: false });
-    try {
-      const appToken = await hash(`${process.env.REACT_APP_TOKEN_KEY}`, 10);
-
-      const response = await axios.post(
-        url,
-        {
-          email: input.email,
-          password: input.password,
-        },
-        {
-          headers: {
-            "content-type": "application/json",
-            "app-token": appToken,
-          },
-        }
-      );
-      console.log(response);
-      localStorage.setItem("token", response.data.token);
-      navigate(from, { replace: true });
-    } catch (err) {
-      console.log("error", err);
-      if (err?.response.status === 404) {
-        setEmailError({
-          emailErrorMsg: "Email no encontrado",
-          handleEmailError: true,
-        });
-      }
-
-      if (err?.response.status === 400) {
-        setPasswordError({
-          passwordErrorMsg: "La contraseña es incorrecta",
-          handlePasswordError: true,
-        });
-      }
-    } finally {
-      setShowLoader(false);
-    }
-  };
-
+  const {
+    emailError,
+    passwordError,
+    isDisable,
+    showPassword,
+    showEye,
+    input,
+    showLoader,
+    handleChange,
+    handleKeyUp,
+    handleClickShow,
+    handleSubmit,
+  } = useContext(AuthContext);
   return (
     <LoginSection>
       <Box>
