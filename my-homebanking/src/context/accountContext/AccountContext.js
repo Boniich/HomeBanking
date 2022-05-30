@@ -6,6 +6,8 @@ const AccountContext = createContext();
 const AccountProvider = ({ children }) => {
   const [accountNumber, setAccountNumber] = useState();
   const [balance, setBalance] = useState("00.00");
+  const [dni, setDni] = useState(null);
+  const [name, setName] = useState();
   const [currency, setCurrency] = useState({
     currencyText: "",
     currencySymbol: "",
@@ -60,6 +62,7 @@ const AccountProvider = ({ children }) => {
       console.log(response);
       setAccountNumber(response.data.accountNumber);
       setBalance(response.data.balance);
+      setDni(response.data.owner);
       const currency = response.data.currency;
       handleCurrency(currency);
     } catch (error) {
@@ -71,10 +74,39 @@ const AccountProvider = ({ children }) => {
     handleAccount();
   }, []);
 
+  let dataUserUrl = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_USER_FIND_ENDPOINT}`;
+  const renderDataUser = async () => {
+    try {
+      const response = await axios.post(
+        dataUserUrl,
+        {
+          dni: dni,
+        },
+        {
+          headers: {
+            "stp-token": token,
+          },
+        }
+      );
+      console.log("data user", response.data[0].name);
+      const userName = response.data[0].name;
+      setName(userName);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (dni !== null) {
+      renderDataUser();
+    }
+  }, [dni]);
+
   const data = {
     accountNumber,
     balance,
     currency,
+    name,
   };
 
   return (
