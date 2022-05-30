@@ -23,7 +23,6 @@ const AuthProvider = ({ children }) => {
     password: "",
   });
   const [showLoader, setShowLoader] = useState(false);
-  const [token, setToken] = useState(null);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -77,8 +76,7 @@ const AuthProvider = ({ children }) => {
         }
       );
       console.log(response);
-      // const token = localStorage.setItem("token", response.data.token);
-      setToken(response.data.token);
+      localStorage.setItem("token", response.data.token);
       navigate(from, { replace: true });
     } catch (err) {
       console.log("error", err);
@@ -108,7 +106,6 @@ const AuthProvider = ({ children }) => {
     showEye,
     input,
     showLoader,
-    token,
     handleChange,
     handleKeyUp,
     handleClickShow,
