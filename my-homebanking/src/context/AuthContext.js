@@ -77,6 +77,7 @@ const AuthProvider = ({ children }) => {
       );
       console.log(response);
       localStorage.setItem("token", response.data.token);
+      localStorage.setItem("data", response.data.email);
       navigate(from, { replace: true });
     } catch (err) {
       console.log("error", err);
