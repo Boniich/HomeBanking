@@ -4,6 +4,7 @@ import Dashboard from "./components/views/dashboard/Dashboard";
 import Layout from "./components/views/layout/Layout";
 import LoginView from "./components/views/login/LoginView";
 import { AuthProvider } from "./context/AuthContext";
+import IsLogged from "./routes/isLogged/IsLogged";
 import PrivateRoute from "./routes/privateRoute/PrivateRoute";
 
 function App() {
@@ -13,7 +14,9 @@ function App() {
         <Route path="/" element={<Layout />}>
           {/* Ruta publica */}
 
-          <Route path="login" element={<LoginView />} />
+          <Route element={<IsLogged />}>
+            <Route path="login" element={<LoginView />} />
+          </Route>
 
           <Route element={<PrivateRoute />}>
             <Route path="dashboard" element={<Dashboard />} />
