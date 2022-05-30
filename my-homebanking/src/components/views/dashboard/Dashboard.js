@@ -1,4 +1,4 @@
-import React, { createRef } from "react";
+import React, { createRef, useContext } from "react";
 import {
   Li,
   ListMenu,
@@ -41,10 +41,11 @@ import { Logo } from "../../common/logo/Logo";
 import { neutralColor } from "../../../theme/colors/colors";
 import { shadownLG } from "../../../theme/shadown/shadown";
 import { CloseSessionPopup } from "../../common/closeSessionPopup/CloseSessionPopup";
-import { AccountProvider } from "../../../context/accountContext/AccountContext";
+import AccountContext from "../../../context/accountContext/AccountContext";
 const Dashboard = () => {
   const [responsiveNav, setResponsiveNav] = useState(false);
   const [changeColorNav, setChangeColorNav] = useState(false);
+  const { name } = useContext(AccountContext);
   const refNav = useRef(false);
   const ref = createRef();
 
@@ -70,103 +71,101 @@ const Dashboard = () => {
 
   return (
     <Section>
-      <AccountProvider>
-        <WelcomeHeader />
-        <UserSection>
-          <UserSection2>
-            <div>
-              <AccountSummaryView />
-              <CardList />
-            </div>
-            <ActivityView />
-          </UserSection2>
-        </UserSection>
-        {/* Al this props in Nav allow handle the change of background color and font color of nav bar
+      <WelcomeHeader />
+      <UserSection>
+        <UserSection2>
+          <div>
+            <AccountSummaryView />
+            <CardList />
+          </div>
+          <ActivityView />
+        </UserSection2>
+      </UserSection>
+      {/* Al this props in Nav allow handle the change of background color and font color of nav bar
     when the user scroll */}
-        <Nav
-          ref={refNav}
-          backColor={changeColorNav && "#fff"}
-          logoColor={changeColorNav && `${neutralColor.neutral900}`}
-          fontColor={changeColorNav && `${neutralColor.neutral800}`}
-          iconUserColor={changeColorNav && `${neutralColor.neutral700}`}
-          scrollShadow={changeColorNav && `${shadownLG}`}
-        >
-          <Logo />
-          <Ul>
-            <Li>
-              <NavLink to="/dashboard">
-                {({ isActive }) => (
-                  <LinkBox className={isActive ? "active" : ""}>
-                    <MenuIcons icon={faHouseChimney} />
-                    <FooterText>Inicio</FooterText>
-                  </LinkBox>
-                )}
-              </NavLink>
-            </Li>
-            <Li off>
-              <FooterText>Tarjetas</FooterText>
-            </Li>
-            <Li>
-              <NavLink to="/transacciones">
-                {({ isActive }) => (
-                  <LinkBox className={isActive ? "active" : ""}>
-                    <MenuIcons icon={faRightLeft} />
-                    <FooterText>Transacciones</FooterText>
-                  </LinkBox>
-                )}
-              </NavLink>
-            </Li>
-            <Li>
-              <LinkBox onClick={openResponsiveNav}>
-                <UserBox>
-                  <UserImage src={fotoPerfil}></UserImage>
-                  <UserIcon icon={faCaretDown} />
-                </UserBox>
-                <UserName>Ezequiel</UserName>
-              </LinkBox>
-            </Li>
-          </Ul>
-        </Nav>
-        {responsiveNav && (
-          <ListMenu>
-            <CloseButton propOnClick={closeResponsivenav} />
-            <UlMobile>
-              <LiMobile offOnDesktop>
-                <Span>
-                  <ParagraphMedium2>Tarjetas</ParagraphMedium2>
+      <Nav
+        ref={refNav}
+        backColor={changeColorNav && "#fff"}
+        logoColor={changeColorNav && `${neutralColor.neutral900}`}
+        fontColor={changeColorNav && `${neutralColor.neutral800}`}
+        iconUserColor={changeColorNav && `${neutralColor.neutral700}`}
+        scrollShadow={changeColorNav && `${shadownLG}`}
+      >
+        <Logo />
+        <Ul>
+          <Li>
+            <NavLink to="/dashboard">
+              {({ isActive }) => (
+                <LinkBox className={isActive ? "active" : ""}>
+                  <MenuIcons icon={faHouseChimney} />
+                  <FooterText>Inicio</FooterText>
+                </LinkBox>
+              )}
+            </NavLink>
+          </Li>
+          <Li off>
+            <FooterText>Tarjetas</FooterText>
+          </Li>
+          <Li>
+            <NavLink to="/transacciones">
+              {({ isActive }) => (
+                <LinkBox className={isActive ? "active" : ""}>
+                  <MenuIcons icon={faRightLeft} />
+                  <FooterText>Transacciones</FooterText>
+                </LinkBox>
+              )}
+            </NavLink>
+          </Li>
+          <Li>
+            <LinkBox onClick={openResponsiveNav}>
+              <UserBox>
+                <UserImage src={fotoPerfil}></UserImage>
+                <UserIcon icon={faCaretDown} />
+              </UserBox>
+              <UserName>{name}</UserName>
+            </LinkBox>
+          </Li>
+        </Ul>
+      </Nav>
+      {responsiveNav && (
+        <ListMenu>
+          <CloseButton propOnClick={closeResponsivenav} />
+          <UlMobile>
+            <LiMobile offOnDesktop>
+              <Span>
+                <ParagraphMedium2>Tarjetas</ParagraphMedium2>
+                <ArrowIcon icon={faAngleRight}></ArrowIcon>
+              </Span>
+            </LiMobile>
+            <LiMobile offOnDesktop>
+              <Span>
+                <ParagraphMedium2>Transferencias </ParagraphMedium2>
+                <ArrowIcon icon={faAngleRight}></ArrowIcon>
+              </Span>
+            </LiMobile>
+            <LiMobile>
+              <Span>
+                <ParagraphMedium2>Configuración</ParagraphMedium2>{" "}
+                <ArrowIcon icon={faAngleRight}></ArrowIcon>
+              </Span>
+            </LiMobile>
+            <LiMobile>
+              <Span>
+                <ParagraphMedium2>Ayuda</ParagraphMedium2>
+                <ArrowIcon icon={faAngleRight}></ArrowIcon>
+              </Span>
+            </LiMobile>
+            <LiMobile>
+              <CloseSessionPopup text="¿Desea cerrar la session?">
+                <Span ref={ref}>
+                  <ParagraphSemibold2>Cerrar sesión</ParagraphSemibold2>
                   <ArrowIcon icon={faAngleRight}></ArrowIcon>
                 </Span>
-              </LiMobile>
-              <LiMobile offOnDesktop>
-                <Span>
-                  <ParagraphMedium2>Transferencias </ParagraphMedium2>
-                  <ArrowIcon icon={faAngleRight}></ArrowIcon>
-                </Span>
-              </LiMobile>
-              <LiMobile>
-                <Span>
-                  <ParagraphMedium2>Configuración</ParagraphMedium2>{" "}
-                  <ArrowIcon icon={faAngleRight}></ArrowIcon>
-                </Span>
-              </LiMobile>
-              <LiMobile>
-                <Span>
-                  <ParagraphMedium2>Ayuda</ParagraphMedium2>
-                  <ArrowIcon icon={faAngleRight}></ArrowIcon>
-                </Span>
-              </LiMobile>
-              <LiMobile>
-                <CloseSessionPopup text="¿Desea cerrar la session?">
-                  <Span ref={ref}>
-                    <ParagraphSemibold2>Cerrar sesión</ParagraphSemibold2>
-                    <ArrowIcon icon={faAngleRight}></ArrowIcon>
-                  </Span>
-                </CloseSessionPopup>
-              </LiMobile>
-            </UlMobile>
-          </ListMenu>
-        )}
-      </AccountProvider>
+              </CloseSessionPopup>
+            </LiMobile>
+          </UlMobile>
+        </ListMenu>
+      )}
     </Section>
   );
 };
