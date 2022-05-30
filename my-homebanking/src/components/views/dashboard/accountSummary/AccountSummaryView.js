@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { infoColor } from "../../../../theme/colors/colors";
 import { HeadingSemiBold3 } from "../../../../theme/heading/heading";
 import {
@@ -17,79 +17,14 @@ import {
   SavingType,
 } from "./styleAccountSummary";
 import { ChangeAccountCard } from "./changeAccount/ChangeAccountCard";
-import axios from "axios";
+import AccountContext from "../../../../context/accountContext/AccountContext";
 
 export const AccountSummaryView = () => {
   const notificationText = "Número de cuenta copiado";
   const notificationColor = infoColor.info900;
   const ref = React.createRef();
 
-  const [accountNumber, setAccountNumber] = useState();
-  const [balance, setBalance] = useState("00.00");
-  const [currency, setCurrency] = useState({
-    currencyText: "",
-    currencySymbol: "",
-  });
-
-  const email = localStorage.getItem("data");
-  const token = localStorage.getItem("token");
-
-  const handleCurrency = (currency) => {
-    switch (currency) {
-      case "USD":
-        setCurrency({ currencyText: "Ahorro en dolares", currencySymbol: "$" });
-        break;
-      case "ARS":
-        setCurrency({
-          currencyText: "Ahorro en pesos Arg",
-          currencySymbol: "$",
-        });
-        break;
-
-      case "PEN":
-        setCurrency({
-          currencyText: "Ahorro en Soles",
-          currencySymbol: "S/.",
-        });
-        break;
-
-      default:
-        setCurrency({
-          currencyText: "Ahorro",
-          currencySymbol: "$",
-        });
-        break;
-    }
-  };
-
-  let url = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_FIND_ACCOUNT_ENDPOINT}`;
-  const handleAccount = async () => {
-    try {
-      const response = await axios.post(
-        url,
-        {
-          email: email,
-        },
-        {
-          headers: {
-            "stp-token": token,
-          },
-        }
-      );
-
-      console.log(response);
-      setAccountNumber(response.data.accountNumber);
-      setBalance(response.data.balance);
-      const currency = response.data.currency;
-      handleCurrency(currency);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    handleAccount();
-  }, []);
+  const { accountNumber, balance, currency } = useContext(AccountContext);
 
   return (
     <AccountSummary>
