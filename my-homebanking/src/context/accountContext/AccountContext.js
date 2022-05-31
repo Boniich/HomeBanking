@@ -9,7 +9,8 @@ const AccountProvider = ({ children }) => {
   const [dni, setDni] = useState(null);
   const [name, setName] = useState();
   const [cci, setCci] = useState(null);
-  const [tranferences, setTranferences] = useState(0);
+  const [tranferences, setTranferences] = useState(null);
+
   const [currency, setCurrency] = useState({
     currencyText: "",
     currencySymbol: "",
