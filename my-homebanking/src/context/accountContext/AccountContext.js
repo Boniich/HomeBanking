@@ -8,6 +8,8 @@ const AccountProvider = ({ children }) => {
   const [balance, setBalance] = useState("00.00");
   const [dni, setDni] = useState(null);
   const [name, setName] = useState();
+  const [cci, setCci] = useState(null);
+  const [tranferences, setTranferences] = useState(0);
   const [currency, setCurrency] = useState({
     currencyText: "",
     currencySymbol: "",
@@ -63,6 +65,7 @@ const AccountProvider = ({ children }) => {
       setAccountNumber(response.data.accountNumber);
       setBalance(response.data.balance);
       setDni(response.data.owner);
+      setCci(response.data.cciCode);
       const currency = response.data.currency;
       handleCurrency(currency);
     } catch (error) {
@@ -102,11 +105,40 @@ const AccountProvider = ({ children }) => {
     }
   }, [dni]);
 
+  let cciCodeUrl = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_TRANSACTION_ACCOUNT_ENDPOINT}`;
+
+  const bringTransations = async () => {
+    try {
+      const response = await axios.post(
+        cciCodeUrl,
+        {
+          cci: cci,
+        },
+        {
+          headers: {
+            "stp-token": token,
+          },
+        }
+      );
+      console.log("transations", response.data);
+      setTranferences(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (cci !== null) {
+      bringTransations();
+    }
+  }, [cci]);
+
   const data = {
     accountNumber,
     balance,
     currency,
     name,
+    tranferences,
   };
 
   return (
