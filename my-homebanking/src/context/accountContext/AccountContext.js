@@ -9,6 +9,7 @@ const AccountProvider = ({ children }) => {
   const [dni, setDni] = useState(null);
   const [name, setName] = useState();
   const [cci, setCci] = useState(null);
+  const [userImage, setUserImage] = useState(null);
   const [tranferences, setTranferences] = useState(null);
 
   const [currency, setCurrency] = useState({
@@ -92,9 +93,11 @@ const AccountProvider = ({ children }) => {
           },
         }
       );
-      console.log("data user", response.data[0].name);
+      console.log("data user", response.data[0]);
       const userName = response.data[0].name;
+      const image = response.data[0].img;
       setName(userName);
+      setUserImage(image);
     } catch (error) {
       console.log(error);
     }
@@ -140,6 +143,7 @@ const AccountProvider = ({ children }) => {
     currency,
     name,
     tranferences,
+    userImage,
   };
 
   return (
