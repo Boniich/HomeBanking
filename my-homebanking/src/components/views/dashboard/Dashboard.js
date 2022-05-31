@@ -28,7 +28,7 @@ import WelcomeHeader from "./welcomeHeader/WelcomeHeader";
 import { useRef, useState } from "react";
 import { AccountSummaryView } from "./accountSummary/AccountSummaryView";
 import { ArrowIcon } from "../../../theme/styledIcon/styledIcon";
-import fotoPerfil from "../../../assets/fotoPerfil.jpg";
+import noUserImage from "../../../assets/noUserImage.png";
 import { NavLink } from "react-router-dom";
 import {
   ParagraphMedium2,
@@ -45,10 +45,9 @@ import AccountContext from "../../../context/accountContext/AccountContext";
 const Dashboard = () => {
   const [responsiveNav, setResponsiveNav] = useState(false);
   const [changeColorNav, setChangeColorNav] = useState(false);
-  const { name } = useContext(AccountContext);
+  const { name, userImage } = useContext(AccountContext);
   const refNav = useRef(false);
   const ref = createRef();
-
   const openResponsiveNav = () => {
     setResponsiveNav(!responsiveNav);
     // mala practica pero es una solucion temporal
@@ -119,7 +118,13 @@ const Dashboard = () => {
           <Li>
             <LinkBox onClick={openResponsiveNav}>
               <UserBox>
-                <UserImage src={fotoPerfil}></UserImage>
+                <UserImage
+                  src={
+                    userImage
+                      ? `data:image/png;base64,${userImage}`
+                      : noUserImage
+                  }
+                ></UserImage>
                 <UserIcon icon={faCaretDown} />
               </UserBox>
               <UserName>{name}</UserName>
