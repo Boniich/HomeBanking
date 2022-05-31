@@ -10,14 +10,14 @@ import {
   RenderActivity,
 } from "./styleExistsActivity";
 
-export const ExistsActivity = ({ transferenceMockData }) => {
+export const ExistsActivity = ({ transferenceData }) => {
   return (
     <RenderActivity>
       <ParagraphMedium2>Actividad Reciente</ParagraphMedium2>
       <CardTransfContainer>
-        {transferenceMockData.map((transference) => (
+        {transferenceData.map((transference) => (
           <TransferenceCardView
-            key={transference.id}
+            key={transference._id}
             amount={transference.amount}
             motive={transference.motive}
             date={transference.date}
@@ -25,7 +25,7 @@ export const ExistsActivity = ({ transferenceMockData }) => {
         ))}
       </CardTransfContainer>
       <AllActivityBox>
-        <Link to="/transacciones">
+        <Link to="">
           <ParagraphUnderline2>Ver toda la actividad</ParagraphUnderline2>
         </Link>
       </AllActivityBox>
