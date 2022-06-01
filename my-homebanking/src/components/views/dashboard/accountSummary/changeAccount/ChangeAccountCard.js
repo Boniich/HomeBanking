@@ -14,7 +14,9 @@ import {
   LogoOnAccountTypeButton,
 } from "./styleChangeAccountCard";
 
-export const ChangeAccountCard = ({ typeSaving, accountNumber }) => {
+export const ChangeAccountCard = ({ typeSaving, accountNumber, email }) => {
+  const emailInToken = localStorage.getItem("data");
+
   return (
     <ChangeAccountContainer>
       <ChangeAccountContent>
@@ -25,10 +27,11 @@ export const ChangeAccountCard = ({ typeSaving, accountNumber }) => {
           <ParagraphSemibold2>{typeSaving}</ParagraphSemibold2>
           <ParagraphMedium3>{accountNumber}</ParagraphMedium3>
         </AccountData>
-
-        <BackgroundIconOfActiveAccoun>
-          <ActiveAccountIcon icon={faCheck} />
-        </BackgroundIconOfActiveAccoun>
+        {emailInToken === email && (
+          <BackgroundIconOfActiveAccoun>
+            <ActiveAccountIcon icon={faCheck} />
+          </BackgroundIconOfActiveAccoun>
+        )}
       </ChangeAccountContent>
     </ChangeAccountContainer>
   );
