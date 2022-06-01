@@ -22,29 +22,29 @@ const AccountProvider = ({ children }) => {
   const token = localStorage.getItem("token");
 
   const handleCurrency = (currency) => {
-    let typeCurrency = {
+    let CurrencyType = {
       currencyText: "",
       currencySymbol: "",
     };
     switch (currency) {
       case "USD":
-        typeCurrency.currencyText = "Ahorro en dolares";
-        typeCurrency.currencySymbol = "$";
-        return typeCurrency;
+        CurrencyType.currencyText = "Ahorro en dolares";
+        CurrencyType.currencySymbol = "$";
+        return CurrencyType;
       case "ARS":
-        typeCurrency.currencyText = "Ahorro en pesos Arg";
-        typeCurrency.currencySymbol = "$";
-        return typeCurrency;
+        CurrencyType.currencyText = "Ahorro en pesos Arg";
+        CurrencyType.currencySymbol = "$";
+        return CurrencyType;
 
       case "PEN":
-        typeCurrency.currencyText = "Ahorro en Soles";
-        typeCurrency.currencySymbol = "S/";
-        return typeCurrency;
+        CurrencyType.currencyText = "Ahorro en Soles";
+        CurrencyType.currencySymbol = "S/";
+        return CurrencyType;
 
       default:
-        typeCurrency.currencyText = "Ahorro";
-        typeCurrency.currencySymbol = "$";
-        return typeCurrency;
+        CurrencyType.currencyText = "Ahorro";
+        CurrencyType.currencySymbol = "$";
+        return CurrencyType;
     }
   };
 
