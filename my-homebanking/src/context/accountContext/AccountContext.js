@@ -10,6 +10,7 @@ const AccountProvider = ({ children }) => {
   const [name, setName] = useState();
   const [cci, setCci] = useState(null);
   const [userImage, setUserImage] = useState(null);
+  const [allAccountsBeUser, setAllAccountsBeUser] = useState(null);
   const [tranferences, setTranferences] = useState(null);
 
   const [currency, setCurrency] = useState({
@@ -21,30 +22,29 @@ const AccountProvider = ({ children }) => {
   const token = localStorage.getItem("token");
 
   const handleCurrency = (currency) => {
+    let typeCurrency = {
+      currencyText: "",
+      currencySymbol: "",
+    };
     switch (currency) {
       case "USD":
-        setCurrency({ currencyText: "Ahorro en dolares", currencySymbol: "$" });
-        break;
+        typeCurrency.currencyText = "Ahorro en dolares";
+        typeCurrency.currencySymbol = "$";
+        return typeCurrency;
       case "ARS":
-        setCurrency({
-          currencyText: "Ahorro en pesos Arg",
-          currencySymbol: "$",
-        });
-        break;
+        typeCurrency.currencyText = "Ahorro en pesos Arg";
+        typeCurrency.currencySymbol = "$";
+        return typeCurrency;
 
       case "PEN":
-        setCurrency({
-          currencyText: "Ahorro en Soles",
-          currencySymbol: "S/.",
-        });
-        break;
+        typeCurrency.currencyText = "Ahorro en Soles";
+        typeCurrency.currencySymbol = "S/";
+        return typeCurrency;
 
       default:
-        setCurrency({
-          currencyText: "Ahorro",
-          currencySymbol: "$",
-        });
-        break;
+        typeCurrency.currencyText = "Ahorro";
+        typeCurrency.currencySymbol = "$";
+        return typeCurrency;
     }
   };
 
@@ -69,7 +69,12 @@ const AccountProvider = ({ children }) => {
       setDni(response.data.owner);
       setCci(response.data.cciCode);
       const currency = response.data.currency;
-      handleCurrency(currency);
+      const currencyData = handleCurrency(currency);
+      setCurrency({
+        currencyText: currencyData.currencyText,
+        currencySymbol: currencyData.currencySymbol,
+      });
+      console.log("currency procesada", currencyData);
     } catch (error) {
       console.log(error);
     }
@@ -103,9 +108,34 @@ const AccountProvider = ({ children }) => {
     }
   };
 
+  // all accounts by the same user
+
+  let allAccountBeUserURL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_USER_ACCOUNTS_ENDPOINT}`;
+
+  const bringAllAccountBeUser = async () => {
+    try {
+      const response = await axios.post(
+        allAccountBeUserURL,
+        {
+          dni: dni,
+        },
+        {
+          headers: {
+            "stp-token": token,
+          },
+        }
+      );
+      console.log("all accounts be user", response.data);
+      setAllAccountsBeUser(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     if (dni !== null) {
       renderDataUser();
+      bringAllAccountBeUser();
     }
   }, [dni]);
 
@@ -144,6 +174,7 @@ const AccountProvider = ({ children }) => {
     name,
     tranferences,
     userImage,
+    allAccountsBeUser,
   };
 
   return (
