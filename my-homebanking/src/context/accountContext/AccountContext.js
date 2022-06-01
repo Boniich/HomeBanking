@@ -11,7 +11,7 @@ const AccountProvider = ({ children }) => {
   const [name, setName] = useState();
   const [cci, setCci] = useState(null);
   const [userImage, setUserImage] = useState(null);
-  const [allAccountsBeUser, setAllAccountsBeUser] = useState(null);
+  const [allAccountsByUser, setAllAccountsByUser] = useState([]);
   const [tranferences, setTranferences] = useState(null);
 
   const [currency, setCurrency] = useState({
@@ -86,7 +86,7 @@ const AccountProvider = ({ children }) => {
 
   let allAccountBeUserURL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_USER_ACCOUNTS_ENDPOINT}`;
 
-  const bringAllAccountBeUser = async () => {
+  const bringAllAccountByUser = async () => {
     try {
       const response = await axios.post(
         allAccountBeUserURL,
@@ -100,7 +100,21 @@ const AccountProvider = ({ children }) => {
         }
       );
       console.log("all accounts be user", response.data);
-      setAllAccountsBeUser(response.data);
+
+      for (let e = 0; e < response.data.length; e++) {
+        const currencyObj = handleCurrency(response.data[e].currency);
+        let obj = {
+          id: response.data[e]._id,
+          email: response.data[e].email,
+          accountNumber: response.data[e].accountNumber,
+          currencyText: currencyObj.currencyText,
+        };
+        console.log(obj);
+        setAllAccountsByUser((allAccountsByUser) => [
+          ...allAccountsByUser,
+          obj,
+        ]);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -109,7 +123,7 @@ const AccountProvider = ({ children }) => {
   useEffect(() => {
     if (dni !== null) {
       renderDataUser();
-      bringAllAccountBeUser();
+      bringAllAccountByUser();
     }
   }, [dni]);
 
@@ -148,7 +162,7 @@ const AccountProvider = ({ children }) => {
     name,
     tranferences,
     userImage,
-    allAccountsBeUser,
+    allAccountsByUser,
   };
 
   return (
