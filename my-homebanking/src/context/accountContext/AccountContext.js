@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import { handleCurrency } from "./handleCurrency/handleCurrency";
 
 const AccountContext = createContext();
 
@@ -20,33 +21,6 @@ const AccountProvider = ({ children }) => {
 
   const email = localStorage.getItem("data");
   const token = localStorage.getItem("token");
-
-  const handleCurrency = (currency) => {
-    let CurrencyType = {
-      currencyText: "",
-      currencySymbol: "",
-    };
-    switch (currency) {
-      case "USD":
-        CurrencyType.currencyText = "Ahorro en dolares";
-        CurrencyType.currencySymbol = "$";
-        return CurrencyType;
-      case "ARS":
-        CurrencyType.currencyText = "Ahorro en pesos Arg";
-        CurrencyType.currencySymbol = "$";
-        return CurrencyType;
-
-      case "PEN":
-        CurrencyType.currencyText = "Ahorro en Soles";
-        CurrencyType.currencySymbol = "S/";
-        return CurrencyType;
-
-      default:
-        CurrencyType.currencyText = "Ahorro";
-        CurrencyType.currencySymbol = "$";
-        return CurrencyType;
-    }
-  };
 
   let url = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_FIND_ACCOUNT_ENDPOINT}`;
   const handleAccount = async () => {
