@@ -24,8 +24,9 @@ export const AccountSummaryView = () => {
   const notificationColor = infoColor.info900;
   const ref = React.createRef();
 
-  const { accountNumber, balance, currency } = useContext(AccountContext);
-
+  const { accountNumber, balance, currency, allAccountsByUser } =
+    useContext(AccountContext);
+  console.log("todas las cuentas por usuario", allAccountsByUser);
   return (
     <AccountSummary>
       <AccountSummaryContent>
@@ -38,10 +39,14 @@ export const AccountSummaryView = () => {
             headerText="Cambiar Cuenta"
             height="auto"
           >
-            <ChangeAccountCard
-              typeSaving="Ahorro en Dolares"
-              accountNumber="123456789"
-            />
+            {allAccountsByUser.map((el) => (
+              <ChangeAccountCard
+                key={el.id}
+                typeSaving={el.currencyText}
+                accountNumber={el.accountNumber}
+                email={el.email}
+              />
+            ))}
           </Popup>
         </SavingType>
         <HeadingSemiBold3>
