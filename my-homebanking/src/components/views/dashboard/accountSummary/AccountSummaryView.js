@@ -16,13 +16,19 @@ import {
   NumberAccount,
   SavingType,
 } from "./styleAccountSummary";
-import { ChangeAccountCard } from "./changeAccount/ChangeAccountCard";
 import AccountContext from "../../../../context/accountContext/AccountContext";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { AccountCard } from "../../../common/accountCard/AccountCard";
+import {
+  ActiveAccountIcon,
+  BackgroundIconOfActiveAccoun,
+} from "../../../common/accountCard/styleAccountCard";
 
 export const AccountSummaryView = () => {
   const notificationText = "Número de cuenta copiado";
   const notificationColor = infoColor.info900;
   const ref = React.createRef();
+  const emailInToken = localStorage.getItem("data");
 
   const { accountNumber, balance, currency, allAccountsByUser } =
     useContext(AccountContext);
@@ -40,12 +46,17 @@ export const AccountSummaryView = () => {
             height="auto"
           >
             {allAccountsByUser.map((el) => (
-              <ChangeAccountCard
+              <AccountCard
                 key={el.id}
                 typeSaving={el.currencyText}
                 accountNumber={el.accountNumber}
-                email={el.email}
-              />
+              >
+                {emailInToken === el.email && (
+                  <BackgroundIconOfActiveAccoun>
+                    <ActiveAccountIcon icon={faCheck} />
+                  </BackgroundIconOfActiveAccoun>
+                )}
+              </AccountCard>
             ))}
           </Popup>
         </SavingType>
