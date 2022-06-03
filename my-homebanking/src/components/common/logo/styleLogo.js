@@ -17,9 +17,16 @@ const LogoContent = styled.div`
   align-items: center;
 `;
 
-const LogoImage = styled.img`
+const LogoImage = styled.img.attrs((props) => ({
+  logoColor:
+    props.logoColor === "changeToWhite"
+      ? `invert(100%) sepia(0%) saturate(0%) hue-rotate(7deg) brightness(107%) contrast(107%)`
+      : `invert(7%) sepia(54%) saturate(587%) hue-rotate(183deg)
+      brightness(93%) contrast(96%)`,
+}))`
   width: 50px;
   height: 50px;
+  filter: ${(props) => props.logoColor};
 `;
 
 const LogoTitle = styled.h1`
