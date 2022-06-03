@@ -14,7 +14,7 @@ export const CloseSessionButtons = () => {
     <CloseSeccionButtonsContainer>
       <KeepActiveSessionButton>Mantener activa</KeepActiveSessionButton>
       <CloseSessionButton onClick={closeSession}>
-        Cerrar session
+        Cerrar sesión
       </CloseSessionButton>
     </CloseSeccionButtonsContainer>
   );
