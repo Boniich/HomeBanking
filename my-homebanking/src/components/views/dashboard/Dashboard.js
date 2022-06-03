@@ -85,12 +85,12 @@ const Dashboard = () => {
       <Nav
         ref={refNav}
         backColor={changeColorNav && "#fff"}
-        logoColor={changeColorNav && `${neutralColor.neutral900}`}
+        titleColor={changeColorNav && `${neutralColor.neutral900}`}
         fontColor={changeColorNav && `${neutralColor.neutral800}`}
         iconUserColor={changeColorNav && `${neutralColor.neutral700}`}
         scrollShadow={changeColorNav && `${shadownLG}`}
       >
-        <Logo />
+        <Logo logoColor={!changeColorNav && "changeToWhite"} />
         <Ul>
           <Li>
             <NavLink to="/dashboard">
