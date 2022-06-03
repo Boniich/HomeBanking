@@ -12,7 +12,7 @@ const WelcomeHeader = () => {
     <WelcomeUserContainer>
       <WelcomeUserTexs>
         <HeadingSemiBold5>Hola, {name}</HeadingSemiBold5>
-        <ParagraphMedium2>Bienvenida a tu banca movil</ParagraphMedium2>
+        <ParagraphMedium2>Bienvenido a tu banca movil</ParagraphMedium2>
       </WelcomeUserTexs>
     </WelcomeUserContainer>
   );
