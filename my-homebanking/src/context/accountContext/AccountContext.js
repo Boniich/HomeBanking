@@ -160,6 +160,7 @@ const AccountProvider = ({ children }) => {
     balance,
     currency,
     name,
+    cci,
     tranferences,
     userImage,
     allAccountsByUser,
