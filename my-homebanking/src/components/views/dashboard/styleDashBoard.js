@@ -35,7 +35,7 @@ const UserIcon = styled(FontAwesomeIcon)`
 
 const Nav = styled.nav.attrs((props) => ({
   backColor: props.backColor || `${neutralColor.neutral700}`,
-  logoColor: props.logoColor || `#fff`,
+  titleColor: props.titleColor || `#fff`,
   fontColor: props.fontColor || "#fff",
   iconUserColor: props.iconUserColor || "#fff",
   scrollShadow: props.scrollShadow || "none",
@@ -88,7 +88,7 @@ const Nav = styled.nav.attrs((props) => ({
       margin: 0;
       font-size: 20.35px;
       line-height: 24.42px;
-      color: ${(props) => props.logoColor};
+      color: ${(props) => props.titleColor};
     }
 
     ${UserIcon} {
