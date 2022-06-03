@@ -22,7 +22,8 @@ export const ExistsActivity = ({ transferenceData }) => {
             motive={transference.motive}
             date={transference.date}
             destiny={transference.destiny}
-            origin={transference.origin}
+            baseIso={transference.exchangeInfo.baseIso}
+            objectiveIso={transference.exchangeInfo.objectiveIso}
           />
         ))}
       </CardTransfContainer>
