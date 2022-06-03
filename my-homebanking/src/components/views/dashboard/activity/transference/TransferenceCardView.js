@@ -32,6 +32,7 @@ const TransferenceCardView = ({
   });
 
   const { cci } = useContext(AccountContext);
+  const humanDate = new Date(date).toLocaleDateString();
   const originCurrencySymbol = handleCurrency(baseIso);
   const destinyCurrencySymbol = handleCurrency(objectiveIso);
   useEffect(() => {
@@ -55,7 +56,7 @@ const TransferenceCardView = ({
       <FigureTransf>
         <TransfInfo>
           <ParagraphSemibold2>{motive}</ParagraphSemibold2>
-          <ParagraphMedium3>{date}</ParagraphMedium3>
+          <ParagraphMedium3>{humanDate}</ParagraphMedium3>
         </TransfInfo>
         <TransferenceAmount amountColor={amountStatus.sameCci && true}>
           {amountStatus.Symbol}
