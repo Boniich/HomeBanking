@@ -4,7 +4,7 @@ const IsLogged = () => {
   const location = useLocation();
 
   return localStorage.getItem("token") ? (
-    <Navigate to="/dashboard" state={{ from: location }} replace />
+    <Navigate to="/" state={{ from: location }} replace />
   ) : (
     <Outlet />
   );

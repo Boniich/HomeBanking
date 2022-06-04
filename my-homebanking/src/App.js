@@ -3,6 +3,7 @@ import "./App.css";
 import Dashboard from "./components/views/dashboard/Dashboard";
 import Layout from "./components/views/layout/Layout";
 import LoginView from "./components/views/login/LoginView";
+import { TransactionToMyAccount } from "./components/views/transactions/toMyAccount/TransactionToMyAccount";
 import { AccountProvider } from "./context/accountContext/AccountContext";
 import { AuthProvider } from "./context/AuthContext";
 import IsLogged from "./routes/isLogged/IsLogged";
@@ -27,7 +28,7 @@ function App() {
 
         <Route element={<PrivateRoute />}>
           <Route
-            path="dashboard"
+            path="/"
             element={
               <AccountProvider>
                 <Dashboard />
@@ -37,8 +38,17 @@ function App() {
         </Route>
 
         <Route element={<PrivateRoute />}>
-          <Route path="transacciones" element={<h1>transacciones</h1>} />
+          <Route path="transactions" element={<h1>transacciones</h1>} />
         </Route>
+
+        <Route element={<PrivateRoute />}>
+          <Route
+            path="transactions/to_my_account"
+            element={<TransactionToMyAccount />}
+          />
+        </Route>
+
+        {/* <Route path="/" element={<h1>home</h1>} /> */}
         {/* error 404 (si no encuentra la pagina) */}
         <Route path="*" element={<h1>Pagina no encontrada</h1>} />
       </Route>
