@@ -93,7 +93,7 @@ const Dashboard = () => {
         <Logo logoColor={!changeColorNav && "changeToWhite"} />
         <Ul>
           <Li>
-            <NavLink to="/dashboard">
+            <NavLink to="/">
               {({ isActive }) => (
                 <LinkBox className={isActive ? "active" : ""}>
                   <MenuIcons icon={faHouseChimney} />
