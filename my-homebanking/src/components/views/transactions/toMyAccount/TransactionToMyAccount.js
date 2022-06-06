@@ -22,6 +22,12 @@ const TransactionContent = styled.div`
   ${Button} {
     margin-bottom: 20px;
   }
+
+  .disable {
+    background-color: ${neutralColor.neutral200};
+    color: ${neutralColor.neutral400};
+    cursor: no-drop;
+  }
 `;
 
 const AmountBox = styled.div`
@@ -104,9 +110,17 @@ const AccountContainer = styled.div`
 export const TransactionToMyAccount = () => {
   const shortNavText = "A cuenta propia";
   const largeNavText = "Transferencia a cuenta propia";
-  const [amount, setAmount] = useState(0);
-
+  const [amount, setAmount] = useState({ amount: 0 });
+  const [buttonIsDisable, setButtonIsDisable] = useState(true);
   console.log(amount);
+
+  const handleKeyUp = () => {
+    // button turn off if the user enter a point.
+    // it has a easy solution but first i have to test another thing
+    amount.amount.length !== 0
+      ? setButtonIsDisable(false)
+      : setButtonIsDisable(true);
+  };
 
   return (
     <>
@@ -122,6 +136,7 @@ export const TransactionToMyAccount = () => {
                 onChange={(e) =>
                   setAmount({ ...amount, amount: e.target.value })
                 }
+                onKeyUp={handleKeyUp}
               />
 
               <ParagraphMedium3>Monto a enviar</ParagraphMedium3>
@@ -137,7 +152,12 @@ export const TransactionToMyAccount = () => {
               <AccountCard />
             </div>
           </AccountContainer>
-          <Button>Confirmar transferencia</Button>
+          <Button
+            className={`${buttonIsDisable === true ? "disable" : ""}`}
+            disabled={buttonIsDisable}
+          >
+            Confirmar transferencia
+          </Button>
         </TransactionContent>
       </TransactionForm>
     </>
