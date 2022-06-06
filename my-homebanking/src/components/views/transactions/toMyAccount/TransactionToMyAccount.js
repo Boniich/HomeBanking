@@ -5,7 +5,7 @@ import { ParagraphMedium3 } from "../../../../theme/paragraph/paragraph";
 import { shadownMD, shadownXS } from "../../../../theme/shadown/shadown";
 import { SecondaryNav } from "../../../common/navs/secondaryNav/SecondaryNav";
 
-const TransactionSection = styled.section`
+const TransactionForm = styled.form`
   display: flex;
   justify-content: center;
 `;
@@ -65,6 +65,12 @@ const AmountInput = styled.input`
     color: ${neutralColor.neutral400};
   }
 
+  ::-webkit-inner-spin-button,
+  ::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
   @media screen and (min-width: 744px) {
     height: 58px;
     font-size: 48px;
@@ -85,7 +91,7 @@ export const TransactionToMyAccount = () => {
   return (
     <>
       <SecondaryNav shortNavText={shortNavText} largeNavText={largeNavText} />
-      <TransactionSection>
+      <TransactionForm>
         <TransactionContent>
           <AmountBox>
             <AmountContent>
@@ -102,7 +108,7 @@ export const TransactionToMyAccount = () => {
             </AmountContent>
           </AmountBox>
         </TransactionContent>
-      </TransactionSection>
+      </TransactionForm>
     </>
   );
 };
