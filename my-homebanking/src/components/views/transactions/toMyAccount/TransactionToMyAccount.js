@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { Button } from "../../../../theme/buttons/buttons";
 import { neutralColor } from "../../../../theme/colors/colors";
-import { ParagraphMedium3 } from "../../../../theme/paragraph/paragraph";
+import {
+  ParagraphMedium3,
+  ParagraphSemibold2,
+} from "../../../../theme/paragraph/paragraph";
 import { shadownMD, shadownXS } from "../../../../theme/shadown/shadown";
+import { AccountCard } from "../../../common/accountCard/AccountCard";
 import { SecondaryNav } from "../../../common/navs/secondaryNav/SecondaryNav";
 
 const TransactionForm = styled.form`
@@ -13,6 +18,10 @@ const TransactionForm = styled.form`
 const TransactionContent = styled.div`
   display: flex;
   flex-direction: column;
+
+  ${Button} {
+    margin-bottom: 20px;
+  }
 `;
 
 const AmountBox = styled.div`
@@ -81,6 +90,17 @@ const AmountInput = styled.input`
   }
 `;
 
+const AccountContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 96px;
+  ${ParagraphSemibold2} {
+    color: ${neutralColor.neutral600};
+    margin-bottom: 16px;
+  }
+`;
+
 export const TransactionToMyAccount = () => {
   const shortNavText = "A cuenta propia";
   const largeNavText = "Transferencia a cuenta propia";
@@ -107,6 +127,17 @@ export const TransactionToMyAccount = () => {
               <ParagraphMedium3>Monto a enviar</ParagraphMedium3>
             </AmountContent>
           </AmountBox>
+          <AccountContainer>
+            <div>
+              <ParagraphSemibold2>Cuenta de cargo</ParagraphSemibold2>
+              <AccountCard />
+            </div>
+            <div>
+              <ParagraphSemibold2>Cuenta de destino</ParagraphSemibold2>
+              <AccountCard />
+            </div>
+          </AccountContainer>
+          <Button>Confirmar transferencia</Button>
         </TransactionContent>
       </TransactionForm>
     </>
