@@ -3,8 +3,8 @@ import { Button } from "../../../../theme/buttons/buttons";
 import { primaryColor } from "../../../../theme/colors/colors";
 
 const KeepActiveSessionButton = styled(Button)`
-  width: 178px;
-  height: 47px;
+  width: ${(props) => props.width || "178px"};
+  height: ${(props) => props.heigth || "47px"};
   background: ${primaryColor.primary500};
   color: #fff;
   border: "none";
@@ -13,11 +13,11 @@ const KeepActiveSessionButton = styled(Button)`
   padding: 12px 16px;
 
   @media screen and (min-width: 744px) {
-    padding: 22px 28px;
-    width: 198px;
-    height: 66px;
-    font-size: 18px;
-    line-height: 22px;
+    padding: ${(props) => props.tablePadding || "22px 28px"};
+    width: ${(props) => props.width || "198px"};
+    height: ${(props) => props.heigth || "66px"};
+    font-size: ${(props) => props.tableFontSize || "18px"};
+    line-height: ${(props) => props.tableLineHeight || "22px"};
   }
 `;
 
@@ -41,12 +41,12 @@ const CloseSessionButton = styled(KeepActiveSessionButton)`
 const CloseSeccionButtonsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: ${(props) => props.gap || "12px"};
 
   @media screen and (min-width: 744px) {
-    flex-direction: row;
+    flex-direction: ${(props) => props.flexDirection || "row"};
     justify-content: center;
-    width: 408px;
+    /* width: 408px; */
   }
 `;
 

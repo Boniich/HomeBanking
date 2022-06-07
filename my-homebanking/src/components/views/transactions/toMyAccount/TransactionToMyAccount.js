@@ -1,14 +1,32 @@
+import { faCheck, faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Button } from "../../../../theme/buttons/buttons";
-import { neutralColor } from "../../../../theme/colors/colors";
+import { Caption } from "../../../../theme/caption/caption";
+import { neutralColor, primaryColor } from "../../../../theme/colors/colors";
+import { HeadingBold5 } from "../../../../theme/heading/heading";
 import {
+  ParagraphMedium2,
   ParagraphMedium3,
   ParagraphSemibold2,
+  ParagraphSemibold3,
 } from "../../../../theme/paragraph/paragraph";
 import { shadownMD, shadownXS } from "../../../../theme/shadown/shadown";
 import { AccountCard } from "../../../common/accountCard/AccountCard";
+import { CloseSessionButtons } from "../../../common/closeSessionPopup/closeSessionButtons/CloseSessionButtons";
+import {
+  CloseSeccionButtonsContainer,
+  CloseSessionButton,
+  KeepActiveSessionButton,
+} from "../../../common/closeSessionPopup/closeSessionButtons/styleCloseSessionButtons";
+import {
+  BackgroundCloseSessionIcon,
+  CloseSessionContent,
+  CloseSessionIcon,
+  CloseSessionIconAndTexs,
+} from "../../../common/closeSessionPopup/styleCloseSessionPopup";
 import { SecondaryNav } from "../../../common/navs/secondaryNav/SecondaryNav";
+import { Popup } from "../../../common/popup/Popup";
 
 const TransactionForm = styled.form`
   display: flex;
@@ -131,10 +149,15 @@ export const TransactionToMyAccount = () => {
     test && setAmount({ ...amount, [e.target.name]: e.target.value });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("ingresa", amount.amount);
+  };
+
   return (
     <>
       <SecondaryNav shortNavText={shortNavText} largeNavText={largeNavText} />
-      <TransactionForm>
+      <TransactionForm onSubmit={handleSubmit}>
         <TransactionContent>
           <AmountBox>
             <AmountContent>
@@ -161,12 +184,64 @@ export const TransactionToMyAccount = () => {
               <AccountCard />
             </div>
           </AccountContainer>
-          <Button
-            className={`${buttonIsDisable === true ? "disable" : ""}`}
-            disabled={buttonIsDisable}
+          <Popup
+            action={
+              <Button
+                className={`${buttonIsDisable === true ? "disable" : ""}`}
+                disabled={buttonIsDisable}
+                type="submit"
+              >
+                Confirmar transferencia
+              </Button>
+            }
+            background={primaryColor.primary600}
+            width="288px"
+            height="493px"
+            showHeader={false}
+            closeIcon={false}
           >
-            Confirmar transferencia
-          </Button>
+            <CloseSessionContent changeGap>
+              <CloseSessionIconAndTexs
+                mobileDisableFlexGap
+                tableDisableFlexGap
+                tableHeadingText
+                tableHeadingLineHeight
+                mobileMarginTranf
+                tableMarginTranf
+              >
+                <BackgroundCloseSessionIcon
+                  mobileMarginBottom="40px"
+                  tableMarginBottom="32px"
+                >
+                  <CloseSessionIcon icon={faCheck}></CloseSessionIcon>
+                </BackgroundCloseSessionIcon>
+                <ParagraphMedium2>Enviaste</ParagraphMedium2>
+                <HeadingBold5>$900.00</HeadingBold5>
+                <ParagraphSemibold3>Danee Woart</ParagraphSemibold3>
+                <Caption>28 Feb 2022 - 05:43pm</Caption>
+              </CloseSessionIconAndTexs>
+              <CloseSeccionButtonsContainer gap="16px" flexDirection="column">
+                <KeepActiveSessionButton
+                  tablePadding="12px 16px"
+                  width="195px"
+                  heigth="41px"
+                  tableFontSize="14px"
+                  tableLineHeight="17px"
+                >
+                  Nueva Transferencia
+                </KeepActiveSessionButton>
+                <CloseSessionButton
+                  tablePadding="12px 16px"
+                  width="195px"
+                  heigth="41px"
+                  tableFontSize="14px"
+                  tableLineHeight="17px"
+                >
+                  Regresar al inicio
+                </CloseSessionButton>
+              </CloseSeccionButtonsContainer>
+            </CloseSessionContent>
+          </Popup>
         </TransactionContent>
       </TransactionForm>
     </>
