@@ -40,10 +40,14 @@ export const Popup = React.forwardRef((props, ref) => {
           desktopHeight={props.desktopHeight}
         >
           <ModalContainer>
-            <ModalHeader>
-              <HeadingSemiBold5>{props.headerText}</HeadingSemiBold5>
-              {props.closeIcon === true && <CloseButton propOnClick={close} />}
-            </ModalHeader>
+            {props.showHeader === true && (
+              <ModalHeader>
+                <HeadingSemiBold5>{props.headerText}</HeadingSemiBold5>
+                {props.closeIcon === true && (
+                  <CloseButton propOnClick={close} />
+                )}
+              </ModalHeader>
+            )}
             <ModalContent>{props.children}</ModalContent>
           </ModalContainer>
         </Modal>
