@@ -44,6 +44,7 @@ export const AccountSummaryView = () => {
             }
             headerText="Cambiar Cuenta"
             height="auto"
+            closeIcon={true}
           >
             {allAccountsByUser.map((el) => (
               <AccountCard
@@ -76,6 +77,7 @@ export const AccountSummaryView = () => {
         <Popup
           action={<SendButton ref={ref} text="Enviar Dinero" />}
           headerText="Enviar Dinero"
+          closeIcon={true}
         >
           <SendButton text="A otra cuenta" extraText="San Patrick" />
           <SendButton text="A cuenta propia" />
