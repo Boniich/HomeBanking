@@ -1,8 +1,8 @@
+import { ButtonsContainer } from "../../../../theme/buttons/buttonContainer/buttonContainer";
 import {
-  CloseSeccionButtonsContainer,
+  KeepSessionActiveButton,
   CloseSessionButton,
-  KeepActiveSessionButton,
-} from "./styleCloseSessionButtons";
+} from "../../../../theme/buttons/buttons";
 
 export const CloseSessionButtons = () => {
   const closeSession = () => {
@@ -11,11 +11,11 @@ export const CloseSessionButtons = () => {
   };
 
   return (
-    <CloseSeccionButtonsContainer>
-      <KeepActiveSessionButton>Mantener activa</KeepActiveSessionButton>
+    <ButtonsContainer>
+      <KeepSessionActiveButton>Mantener activa</KeepSessionActiveButton>
       <CloseSessionButton onClick={closeSession}>
         Cerrar sesión
       </CloseSessionButton>
-    </CloseSeccionButtonsContainer>
+    </ButtonsContainer>
   );
 };
