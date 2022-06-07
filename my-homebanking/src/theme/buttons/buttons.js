@@ -69,8 +69,8 @@ const ComeBackToSiteButton = styled(ButtonWithoutBackground)``;
 
 // close session modal
 
-const CloseSessionButton = styled(ButtonWithBackground)``;
-const KeepSessionActiveButton = styled(ButtonWithoutBackground)``;
+const CloseSessionButton = styled(ButtonWithoutBackground)``;
+const KeepSessionActiveButton = styled(ButtonWithBackground)``;
 
 export {
   Button,
