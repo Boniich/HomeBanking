@@ -110,16 +110,25 @@ const AccountContainer = styled.div`
 export const TransactionToMyAccount = () => {
   const shortNavText = "A cuenta propia";
   const largeNavText = "Transferencia a cuenta propia";
-  const [amount, setAmount] = useState({ amount: 0 });
+  const [amount, setAmount] = useState({ amount: "" });
   const [buttonIsDisable, setButtonIsDisable] = useState(true);
   console.log(amount);
 
   const handleKeyUp = () => {
-    // button turn off if the user enter a point.
-    // it has a easy solution but first i have to test another thing
     amount.amount.length !== 0
       ? setButtonIsDisable(false)
       : setButtonIsDisable(true);
+  };
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    const reg = /([0-9][.]{0,1})$/g;
+
+    const test = reg.test(value);
+
+    e.target.value === "" && setAmount({ amount: "" });
+
+    test && setAmount({ ...amount, [e.target.name]: e.target.value });
   };
 
   return (
@@ -130,12 +139,12 @@ export const TransactionToMyAccount = () => {
           <AmountBox>
             <AmountContent>
               <AmountInput
-                type="number"
+                type="text"
                 name="amount"
+                autoComplete="off"
                 placeholder="00.00"
-                onChange={(e) =>
-                  setAmount({ ...amount, amount: e.target.value })
-                }
+                value={amount.amount}
+                onChange={handleChange}
                 onKeyUp={handleKeyUp}
               />
 
