@@ -42,7 +42,7 @@ export const Popup = React.forwardRef((props, ref) => {
           <ModalContainer>
             <ModalHeader>
               <HeadingSemiBold5>{props.headerText}</HeadingSemiBold5>
-              <CloseButton propOnClick={close} />
+              {props.closeIcon === true && <CloseButton propOnClick={close} />}
             </ModalHeader>
             <ModalContent>{props.children}</ModalContent>
           </ModalContainer>
