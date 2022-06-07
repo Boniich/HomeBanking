@@ -21,6 +21,7 @@ export const CloseSessionPopup = ({ children, text }) => {
       tableHeight="544px"
       desktopWidth="686px"
       desktopHeight="642px"
+      showHeader={true}
       closeIcon={true}
     >
       <CloseSessionContent>
