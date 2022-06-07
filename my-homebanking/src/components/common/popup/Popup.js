@@ -38,6 +38,7 @@ export const Popup = React.forwardRef((props, ref) => {
           tableHeight={props.tableHeight}
           desktopWidth={props.desktopWidth}
           desktopHeight={props.desktopHeight}
+          shadow={props.shadow}
         >
           <ModalContainer>
             {props.showHeader === true && (

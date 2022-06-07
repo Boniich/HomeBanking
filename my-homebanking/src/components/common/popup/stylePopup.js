@@ -2,6 +2,7 @@ import Popup from "reactjs-popup";
 import styled from "styled-components";
 import { neutralColor } from "../../../theme/colors/colors";
 import { HeadingSemiBold5 } from "../../../theme/heading/heading";
+import { shadownLG } from "../../../theme/shadown/shadown";
 import { SendArrowIcon } from "../../../theme/styledIcon/styledIcon";
 import { CloseButtonContainer } from "../closeButton/styledCloseButton";
 import { SendButtonContainer } from "../sendButton/styleSendButton";
@@ -11,7 +12,8 @@ const Modal = styled.div`
   height: ${(props) => props.height || `244px`};
   background: #ffffff;
   border-radius: 16px;
-
+  box-shadow: ${(props) => props.shadow || "none"};
+  /* 10px 5px 5px red; */
   @media screen and (min-width: 744px) {
     width: ${(props) => props.tableWidth || `400px`};
     height: ${(props) => props.tableHeight || "auto"};
