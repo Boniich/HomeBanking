@@ -38,18 +38,24 @@ function App() {
         </Route>
 
         <Route element={<PrivateRoute />}>
-          <Route path="transactions" element={<h1>transacciones</h1>} />
+          <Route path="transference" element={<h1>transacciones</h1>} />
         </Route>
 
         <Route element={<PrivateRoute />}>
           <Route
-            path="transactions/to_my_account"
+            path="make_transference_to_my_account"
+            element={<TransactionToMyAccount />}
+          />
+        </Route>
+
+        <Route element={<PrivateRoute />}>
+          <Route
+            path="make_transference_to_another_user/enter_number_account"
             element={<TransactionToMyAccount />}
           />
         </Route>
 
         {/* <Route path="/" element={<h1>home</h1>} /> */}
-        {/* error 404 (si no encuentra la pagina) */}
         <Route path="*" element={<h1>Pagina no encontrada</h1>} />
       </Route>
     </Routes>
