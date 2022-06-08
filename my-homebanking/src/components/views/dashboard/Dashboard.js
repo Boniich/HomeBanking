@@ -18,7 +18,7 @@ const Dashboard = () => {
           <ActivityView />
         </UserSection2>
       </UserSection>
-      <PrimaryNav />
+      <PrimaryNav activeSecondColorNav={false} />
     </Section>
   );
 };
