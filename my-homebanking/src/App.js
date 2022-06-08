@@ -3,11 +3,12 @@ import "./App.css";
 import Dashboard from "./components/views/dashboard/Dashboard";
 import Layout from "./components/views/layout/Layout";
 import LoginView from "./components/views/login/LoginView";
-import { TransactionToMyAccount } from "./components/views/transactions/toMyAccount/TransactionToMyAccount";
+import { MakeTransferenceToMyAccount } from "./components/transference/makeTransference/makeTransfToMyAccount/MakeTransferenceToMyAccount";
 import { AccountProvider } from "./context/accountContext/AccountContext";
 import { AuthProvider } from "./context/AuthContext";
 import IsLogged from "./routes/isLogged/IsLogged";
 import PrivateRoute from "./routes/privateRoute/PrivateRoute";
+import { MakeTransferenceToAnotherUser } from "./components/transference/makeTransference/makeTransfToAnotherUser/MakeTransferenceToAnotherUser";
 
 function App() {
   return (
@@ -44,14 +45,14 @@ function App() {
         <Route element={<PrivateRoute />}>
           <Route
             path="make_transference_to_my_account"
-            element={<TransactionToMyAccount />}
+            element={<MakeTransferenceToMyAccount />}
           />
         </Route>
 
         <Route element={<PrivateRoute />}>
           <Route
             path="make_transference_to_another_user/enter_number_account"
-            element={<TransactionToMyAccount />}
+            element={<MakeTransferenceToAnotherUser />}
           />
         </Route>
 
