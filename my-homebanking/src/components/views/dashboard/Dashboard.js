@@ -40,8 +40,8 @@ import ActivityView from "./activity/ActivityView";
 import { Logo } from "../../common/logo/Logo";
 import { neutralColor } from "../../../theme/colors/colors";
 import { shadownLG } from "../../../theme/shadown/shadown";
-import { CloseSessionPopup } from "../../common/closeSessionPopup/CloseSessionPopup";
 import AccountContext from "../../../context/accountContext/AccountContext";
+import { CloseSessionPopup } from "../../common/popup/closeSessionPopup/CloseSessionPopup";
 const Dashboard = () => {
   const [responsiveNav, setResponsiveNav] = useState(false);
   const [changeColorNav, setChangeColorNav] = useState(false);
