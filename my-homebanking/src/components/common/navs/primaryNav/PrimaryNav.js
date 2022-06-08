@@ -4,7 +4,13 @@ import {
   faHouseChimney,
   faRightLeft,
 } from "@fortawesome/free-solid-svg-icons";
-import React, { createRef, useContext, useRef, useState } from "react";
+import React, {
+  createRef,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { NavLink } from "react-router-dom";
 import AccountContext from "../../../../context/accountContext/AccountContext";
 import { neutralColor } from "../../../../theme/colors/colors";
@@ -35,12 +41,16 @@ import {
   UserName,
 } from "./stylePrimaryNav";
 
-export const PrimaryNav = () => {
+export const PrimaryNav = ({ activeSecondColorNav }) => {
   const [responsiveNav, setResponsiveNav] = useState(false);
   const [changeColorNav, setChangeColorNav] = useState(false);
   const { name, userImage } = useContext(AccountContext);
   const refNav = useRef(false);
   const ref = createRef();
+
+  useEffect(() => {
+    setSecondayNavColor();
+  }, []);
 
   const openResponsiveNav = () => {
     setResponsiveNav(!responsiveNav);
@@ -60,7 +70,12 @@ export const PrimaryNav = () => {
     window.scrollY >= 120 ? setChangeColorNav(true) : setChangeColorNav(false);
   };
 
-  window.addEventListener("scroll", changeBackgroundColorNav);
+  const setSecondayNavColor = () => {
+    activeSecondColorNav === true && setChangeColorNav(true);
+  };
+
+  activeSecondColorNav === false &&
+    window.addEventListener("scroll", changeBackgroundColorNav);
 
   /* Al this props in Nav allow handle the change of background color and font color of nav bar
     when the user scroll */
