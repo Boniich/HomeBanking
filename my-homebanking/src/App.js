@@ -3,12 +3,12 @@ import "./App.css";
 import Dashboard from "./components/views/dashboard/Dashboard";
 import Layout from "./components/views/layout/Layout";
 import LoginView from "./components/views/login/LoginView";
-import { MakeTransferenceToMyAccount } from "./components/transference/makeTransference/makeTransfToMyAccount/MakeTransferenceToMyAccount";
+import { MakeTransferenceToMyAccount } from "./components/views/transferences/makeTransference/makeTransfToMyAccount/MakeTransferenceToMyAccount";
 import { AccountProvider } from "./context/accountContext/AccountContext";
 import { AuthProvider } from "./context/AuthContext";
 import IsLogged from "./routes/isLogged/IsLogged";
 import PrivateRoute from "./routes/privateRoute/PrivateRoute";
-import { MakeTransferenceToAnotherUser } from "./components/transference/makeTransference/makeTransfToAnotherUser/MakeTransferenceToAnotherUser";
+import { MakeTransferenceToAnotherUser } from "./components/views/transferences/makeTransference/makeTransfToAnotherUser/MakeTransferenceToAnotherUser";
 
 function App() {
   return (
