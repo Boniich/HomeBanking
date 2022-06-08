@@ -29,6 +29,7 @@ export const Popup = React.forwardRef((props, ref) => {
       background={props.background}
       modal
       trigger={props.action}
+      closeOnDocumentClick={false}
     >
       {(close) => (
         <Modal
