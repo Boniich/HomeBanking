@@ -3,19 +3,59 @@ import "./App.css";
 import Dashboard from "./components/views/dashboard/Dashboard";
 import Layout from "./components/views/layout/Layout";
 import LoginView from "./components/views/login/LoginView";
+import { TransactionToMyAccount } from "./components/views/transactions/toMyAccount/TransactionToMyAccount";
+import { AccountProvider } from "./context/accountContext/AccountContext";
+import { AuthProvider } from "./context/AuthContext";
+import IsLogged from "./routes/isLogged/IsLogged";
+import PrivateRoute from "./routes/privateRoute/PrivateRoute";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
         {/* Ruta publica */}
-        <Route path="login" element={<LoginView />} />
 
-        {/* Se deben proteger mas adelante */}
-        <Route path="dashboard" element={<Dashboard />} />
-        {/* Este ruta es provisoria, mas adelante vere si realmente necesito que este aca */}
-        <Route path="transacciones" element={<h1>transacciones</h1>} />
-        {/* error 404 (si no encuentra la pagina) */}
+        <Route element={<IsLogged />}>
+          <Route
+            path="login"
+            element={
+              <AuthProvider>
+                <LoginView />
+              </AuthProvider>
+            }
+          />
+        </Route>
+
+        <Route element={<PrivateRoute />}>
+          <Route
+            path="/"
+            element={
+              <AccountProvider>
+                <Dashboard />
+              </AccountProvider>
+            }
+          />
+        </Route>
+
+        <Route element={<PrivateRoute />}>
+          <Route path="transference" element={<h1>transacciones</h1>} />
+        </Route>
+
+        <Route element={<PrivateRoute />}>
+          <Route
+            path="make_transference_to_my_account"
+            element={<TransactionToMyAccount />}
+          />
+        </Route>
+
+        <Route element={<PrivateRoute />}>
+          <Route
+            path="make_transference_to_another_user/enter_number_account"
+            element={<TransactionToMyAccount />}
+          />
+        </Route>
+
+        {/* <Route path="/" element={<h1>home</h1>} /> */}
         <Route path="*" element={<h1>Pagina no encontrada</h1>} />
       </Route>
     </Routes>

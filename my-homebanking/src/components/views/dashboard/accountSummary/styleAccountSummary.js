@@ -1,27 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Popup from "reactjs-popup";
 import styled from "styled-components";
-import {
-  infoColor,
-  neutralColor,
-  primaryColor,
-} from "../../../../theme/colors/colors";
-import {
-  HeadingSemiBold3,
-  HeadingSemiBold5,
-} from "../../../../theme/heading/heading";
+import { neutralColor, primaryColor } from "../../../../theme/colors/colors";
+import { HeadingSemiBold3 } from "../../../../theme/heading/heading";
 import {
   ParagraphMedium2,
   ParagraphMedium3,
-  ParagraphSemibold2,
   ParagraphSemibold3,
 } from "../../../../theme/paragraph/paragraph";
 import { shadownMD, shadownXS } from "../../../../theme/shadown/shadown";
-import {
-  CloseIcon,
-  SendArrowIcon,
-} from "../../../../theme/styledIcon/styledIcon";
-import { CloseButtonContainer } from "../../../common/closeButton/styledCloseButton";
+import { ModalContainer } from "../../../common/popup/stylePopup";
 import { SendButtonContainer } from "../../../common/sendButton/styleSendButton";
 
 const AccountSummary = styled.div`
@@ -96,53 +83,25 @@ const SavingType = styled.div`
   ${ParagraphSemibold3} {
     color: ${primaryColor.primary600};
   }
+
+  ${ModalContainer} {
+    height: auto;
+  }
 `;
 
 const CopyButton = styled(FontAwesomeIcon)`
   width: 14.58px;
   height: 16.67px;
   color: ${neutralColor.neutral500};
+  margin-left: 14px;
 `;
 
 const NumberAccount = styled.div`
   display: flex;
 
-  ${CopyButton} {
-    margin-left: 14px;
-  }
-
   ${ParagraphMedium2} {
     margin: 0;
   }
-`;
-
-const CloseIconNotify = styled(CloseIcon)`
-  width: 13.33px;
-  height: 13.33px;
-  color: ${infoColor.info900};
-  cursor: pointer;
-`;
-
-const Notify = styled.div`
-  width: 328px;
-  display: flex;
-
-  ${ParagraphSemibold3} {
-    color: ${infoColor.info900};
-    margin: 0;
-    margin-right: 39px;
-  }
-
-  @media screen and (min-width: 740px) {
-    width: 420px;
-  }
-`;
-
-const InfoIconNotify = styled(CloseIconNotify)`
-  width: 16.67px;
-  height: 16.67px;
-  margin-right: 13.67px;
-  cursor: none;
 `;
 
 const BackgroundSendIcon = styled.span`
@@ -156,81 +115,11 @@ const BackgroundSendIcon = styled.span`
   background: linear-gradient(216.25deg, #60ebd0 4.63%, #0fb398 87.8%);
 `;
 
-//popup components
-
-const PopupContainer = styled.div`
-  width: 312px;
-  height: 244px;
-  background: #ffffff;
-  border-radius: 16px;
-
-  @media screen and (min-width: 744px) {
-    width: 400px;
-  }
-`;
-
-const PopupHeadContent = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 24px;
-
-  ${HeadingSemiBold5} {
-    margin: 0;
-  }
-
-  //Component inside of CloseButton
-  ${CloseButtonContainer} {
-    display: flex;
-    margin: 0;
-    padding: 0;
-  }
-`;
-
-const PopupContent = styled.div`
-  padding: 24px 24px 32px;
-
-  ${SendButtonContainer} {
-    margin: 0;
-    margin-bottom: 16px;
-    background: transparent;
-    border: 1px solid ${neutralColor.neutral300};
-    color: ${neutralColor.neutral800};
-
-    ${SendArrowIcon} {
-      color: ${neutralColor.neutral700};
-    }
-
-    &:hover {
-      transition: all 0.5s;
-      background-color: ${neutralColor.neutral100};
-    }
-  }
-`;
-
-const StyledPopup = styled(Popup)`
-  &-content {
-    ${PopupContainer}
-    ${PopupHeadContent}
-    ${PopupContent}
-  }
-
-  &-overlay {
-    background: ${neutralColor.neutral900};
-    opacity: 0.9;
-  }
-`;
 export {
   AccountSummary,
   AccountSummaryContent,
   SavingType,
   NumberAccount,
-  Notify,
-  InfoIconNotify,
-  CloseIconNotify,
   CopyButton,
   BackgroundSendIcon,
-  StyledPopup,
-  PopupContainer,
-  PopupHeadContent,
-  PopupContent,
 };

@@ -1,98 +1,95 @@
-import { faCircleInfo, faCopy, faX } from "@fortawesome/free-solid-svg-icons";
-import { CopyToClipboard } from "react-copy-to-clipboard";
-import toast, { Toaster } from "react-hot-toast";
-import {
-  HeadingSemiBold3,
-  HeadingSemiBold5,
-} from "../../../../theme/heading/heading";
+import React, { useContext } from "react";
+import { infoColor } from "../../../../theme/colors/colors";
+import { HeadingSemiBold3 } from "../../../../theme/heading/heading";
 import {
   ParagraphMedium2,
   ParagraphMedium3,
   ParagraphSemibold3,
 } from "../../../../theme/paragraph/paragraph";
-import { CloseButton } from "../../../common/closeButton/CloseButton";
+import { CopyAccion } from "../../../common/copyAccion/CopyAccion";
+import { Notification } from "../../../common/notification/Notification";
+import { Popup } from "../../../common/popup/Popup";
 import { SendButton } from "../../../common/sendButton/SendButton";
 import {
   AccountSummary,
   AccountSummaryContent,
-  CloseIconNotify,
-  CopyButton,
-  InfoIconNotify,
-  Notify,
   NumberAccount,
-  PopupContainer,
-  PopupContent,
-  PopupHeadContent,
   SavingType,
-  StyledPopup,
 } from "./styleAccountSummary";
+import AccountContext from "../../../../context/accountContext/AccountContext";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { AccountCard } from "../../../common/accountCard/AccountCard";
+import {
+  ActiveAccountIcon,
+  BackgroundIconOfActiveAccoun,
+} from "../../../common/accountCard/styleAccountCard";
+import { Link } from "react-router-dom";
 
 export const AccountSummaryView = () => {
-  const numberAccount = 12458745893254;
-  const showAlert = () => {
-    toast.dismiss();
-    toast(
-      (t) => (
-        <Notify>
-          <InfoIconNotify icon={faCircleInfo} />
-          <ParagraphSemibold3>Número de cuenta copiado</ParagraphSemibold3>
-          <CloseIconNotify icon={faX} onClick={() => toast.dismiss(t.id)} />
-        </Notify>
-      ),
-      {
-        style: {
-          minWidth: "200px",
-          maxWidth: "100%",
-        },
-      },
-      {
-        duration: 2000,
-      }
-    );
-  };
+  const notificationText = "Número de cuenta copiado";
+  const notificationColor = infoColor.info900;
+  const ref = React.createRef();
+  const emailInToken = localStorage.getItem("data");
 
+  const { accountNumber, balance, currency, allAccountsByUser } =
+    useContext(AccountContext);
+  console.log("todas las cuentas por usuario", allAccountsByUser);
   return (
     <AccountSummary>
       <AccountSummaryContent>
-        {/* el tipo de ahorro cambia segun lo seleccionado*/}
         <SavingType>
-          <ParagraphMedium3>Ahorro dolares</ParagraphMedium3>
-          <ParagraphSemibold3>Cambiar cuenta</ParagraphSemibold3>
+          <ParagraphMedium3>{currency.currencyText}</ParagraphMedium3>
+          <Popup
+            action={
+              <ParagraphSemibold3 ref={ref}>Cambiar cuenta</ParagraphSemibold3>
+            }
+            headerText="Cambiar Cuenta"
+            height="auto"
+            showHeader={true}
+            closeIcon={true}
+          >
+            {allAccountsByUser.map((el) => (
+              <AccountCard
+                key={el.id}
+                typeSaving={el.currencyText}
+                accountNumber={el.accountNumber}
+              >
+                {emailInToken === el.email && (
+                  <BackgroundIconOfActiveAccoun>
+                    <ActiveAccountIcon icon={faCheck} />
+                  </BackgroundIconOfActiveAccoun>
+                )}
+              </AccountCard>
+            ))}
+          </Popup>
         </SavingType>
-        <HeadingSemiBold3>$200.00</HeadingSemiBold3>
+        <HeadingSemiBold3>
+          {currency.currencySymbol}
+          {balance}
+        </HeadingSemiBold3>
         <NumberAccount>
-          <ParagraphMedium2>{numberAccount}</ParagraphMedium2>
-          <CopyToClipboard text={numberAccount}>
-            <CopyButton icon={faCopy} onClick={showAlert} />
-          </CopyToClipboard>
-          <Toaster
-            position="bottom-center"
-            containerStyle={{
-              bottom: 75,
-            }}
-            toastOptions={{
-              style: {
-                border: "1px solid #BAE6FD",
-                background: "#F0F9FF",
-                padding: "12px 20px",
-              },
-            }}
+          <ParagraphMedium2>{accountNumber}</ParagraphMedium2>
+          <CopyAccion
+            numberAccount={accountNumber}
+            notificationText={notificationText}
+            notificationColor={notificationColor}
           />
+          <Notification background="#F0F9FF" />
         </NumberAccount>
-        <StyledPopup modal trigger={<SendButton text="Enviar Dinero" />}>
-          {(close) => (
-            <PopupContainer>
-              <PopupContent>
-                <PopupHeadContent>
-                  <HeadingSemiBold5>Enviar Dinero</HeadingSemiBold5>
-                  <CloseButton propOnClick={close} />
-                </PopupHeadContent>
-                <SendButton text="A otra cuenta" extraText="San Patrick" />
-                <SendButton text="A cuenta propia" />
-              </PopupContent>
-            </PopupContainer>
-          )}
-        </StyledPopup>
+        <Popup
+          action={<SendButton ref={ref} text="Enviar Dinero" />}
+          headerText="Enviar Dinero"
+          showHeader={true}
+          closeIcon={true}
+        >
+          <Link to="make_transference_to_another_user/enter_number_account">
+            <SendButton text="A otra cuenta" extraText="San Patrick" />
+          </Link>
+
+          <Link to="make_transference_to_my_account">
+            <SendButton text="A cuenta propia" />
+          </Link>
+        </Popup>
       </AccountSummaryContent>
     </AccountSummary>
   );

@@ -1,7 +1,7 @@
 // This are components that handle icons for will use many times
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { neutralColor, primaryColor } from "../colors/colors";
+import { neutralColor, primaryColor, secondaryColor } from "../colors/colors";
 
 const CloseIcon = styled(FontAwesomeIcon)`
   width: 9.33px;
@@ -19,4 +19,19 @@ const SendArrowIcon = styled(ArrowIcon)`
   font-size: 14px;
   margin-right: 10px;
 `;
-export { CloseIcon, ArrowIcon, SendArrowIcon };
+
+const CheckIcon = styled(FontAwesomeIcon).attrs((props) => ({
+  tranfcheckiconwidth: props.tranfcheckiconwidth === true ? "29.09px" : "32px",
+  tranfcheckiconheight:
+    props.tranfcheckiconheight === true ? "29.09px" : "32px",
+  tranfcoloricon:
+    props.tranfcoloricon === "white"
+      ? "#fff"
+      : `${secondaryColor.secondary800}`,
+}))`
+  width: ${(props) => props.tranfcheckiconwidth};
+  height: ${(props) => props.tranfcheckiconheight};
+  color: ${(props) => props.tranfcoloricon};
+`;
+
+export { CloseIcon, ArrowIcon, SendArrowIcon, CheckIcon };

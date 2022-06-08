@@ -23,12 +23,6 @@ const LoginSection = styled.section`
   align-items: center;
 `;
 
-const Img = styled.img`
-  width: 50px;
-  height: 50px;
-  margin: 0 auto;
-`;
-
 const EmailContainer = styled.div`
   margin-bottom: 24px;
 `;
@@ -102,10 +96,6 @@ const Box = styled.div`
     width: 312px;
   }
 
-  ${HeadingMedium4} {
-    margin: 8px 0 40px 0;
-    text-align: center;
-  }
   ${ParagraphMedium3} {
     text-align: left;
     margin: 0;
@@ -148,16 +138,11 @@ const Box = styled.div`
     ${Button} {
       width: 341px;
     }
-
-    ${HeadingMedium4} {
-      margin: 8px 0 56px 0;
-    }
   }
 `;
 
 export {
   Box,
-  Img,
   LoginSection,
   EmailContainer,
   PasswordContainer,
