@@ -23,6 +23,7 @@ import {
   ActiveAccountIcon,
   BackgroundIconOfActiveAccoun,
 } from "../../../common/accountCard/styleAccountCard";
+import { Link } from "react-router-dom";
 
 export const AccountSummaryView = () => {
   const notificationText = "Número de cuenta copiado";
@@ -81,8 +82,13 @@ export const AccountSummaryView = () => {
           showHeader={true}
           closeIcon={true}
         >
-          <SendButton text="A otra cuenta" extraText="San Patrick" />
-          <SendButton text="A cuenta propia" />
+          <Link to="make_transference_to_another_user/enter_number_account">
+            <SendButton text="A otra cuenta" extraText="San Patrick" />
+          </Link>
+
+          <Link to="make_transference_to_my_account">
+            <SendButton text="A cuenta propia" />
+          </Link>
         </Popup>
       </AccountSummaryContent>
     </AccountSummary>
