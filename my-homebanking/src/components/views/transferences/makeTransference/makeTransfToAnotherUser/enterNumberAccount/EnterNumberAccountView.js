@@ -6,6 +6,7 @@ import { shadownMD, shadownXS } from "../../../../../../theme/shadown/shadown";
 import { SecondaryNav } from "../../../../../common/navs/secondaryNav/SecondaryNav";
 import noUserImage from "../../../../../../assets/noUserImage.png";
 import { UserResult } from "../../commonTransferenceComponents/userResult/UserResult";
+import { Input } from "../../../../../../theme/inputs/input";
 const EnterNumberSection = styled.section`
   display: flex;
   justify-content: center;
@@ -31,26 +32,6 @@ const EnterNumberInputContainer = styled.div`
   ${ParagraphMedium3} {
     color: ${neutralColor.neutral700};
     padding-left: 4px;
-  }
-`;
-
-const SearchInput = styled.input`
-  box-sizing: border-box;
-  width: 100%;
-  height: 54px;
-  padding: 0px 16px;
-  background: #fff;
-  border: 1px solid ${neutralColor.neutral400};
-  font-size: 16px;
-  line-height: 150%;
-  color: ${neutralColor.neutral800};
-  border-radius: 8px;
-  outline: none;
-
-  ::placeholder {
-    font-size: 16px;
-    line-height: 150%;
-    color: ${neutralColor.neutral400};
   }
 `;
 
@@ -105,7 +86,7 @@ export const EnterNumberAccountView = () => {
             <HeadingSemiBold5>Enviar Dinero</HeadingSemiBold5>
             <EnterNumberInputContainer>
               <ParagraphMedium3>Numero de cuenta</ParagraphMedium3>
-              <SearchInput type="search" placeholder="000-000000000-000" />
+              <Input type="search" placeholder="000-000000000-000" />
             </EnterNumberInputContainer>
 
             {/* Get a result */}
