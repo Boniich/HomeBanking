@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { primaryColor } from "../colors/colors";
+import { neutralColor, primaryColor } from "../colors/colors";
 
 const Button = styled.button`
   font-family: inherit;
@@ -72,10 +72,39 @@ const ComeBackToSiteButton = styled(ButtonWithoutBackground)``;
 const CloseSessionButton = styled(ButtonWithoutBackground)``;
 const KeepSessionActiveButton = styled(ButtonWithBackground)``;
 
+const ConfigButton = styled.button.attrs((props) => ({
+  switchBackground:
+    props.switchBackground === true ? `${neutralColor.neutral700}` : "#fff",
+  switchColor:
+    props.switchColor === true ? "#fff" : `${neutralColor.neutral500}`,
+  switchFontWeight: props.switchFontWeight === true ? "600" : "400",
+  switchBorder:
+    props.switchBorder === true
+      ? "none"
+      : `1px solid ${neutralColor.neutral300}`,
+}))`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: inherit;
+  width: 312px;
+  height: 41px;
+  border-radius: 120px;
+  padding: 12px 24px;
+  color: ${(props) => props.switchColor};
+  background: ${(props) => props.switchBackground};
+  font-weight: ${(props) => props.switchFontWeight};
+  border: ${(props) => props.switchBorder};
+  font-size: 14px;
+  line-height: 17px;
+  cursor: pointer;
+`;
+
 export {
   Button,
   MakeNewTransaction,
   ComeBackToSiteButton,
   CloseSessionButton,
   KeepSessionActiveButton,
+  ConfigButton,
 };
