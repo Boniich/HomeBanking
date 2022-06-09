@@ -1,11 +1,11 @@
 import React from "react";
 import { AccountCard } from "../../../../common/accountCard/AccountCard";
-import { MakeTransferenceView } from "../commonTransferenceComponents/MakeTransferenceView";
+import { TransferenceForm } from "../commonTransferenceComponents/TransferenceForm.js/TransferenceForm";
 
 export const MakeTransferenceToMyAccount = () => {
   return (
-    <MakeTransferenceView>
+    <TransferenceForm>
       <AccountCard />
-    </MakeTransferenceView>
+    </TransferenceForm>
   );
 };
