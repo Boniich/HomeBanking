@@ -7,6 +7,7 @@ import { SecondaryNav } from "../../../../../common/navs/secondaryNav/SecondaryN
 import noUserImage from "../../../../../../assets/noUserImage.png";
 import { UserResult } from "../../commonTransferenceComponents/userResult/UserResult";
 import { Input } from "../../../../../../theme/inputs/input";
+import { InputContainer } from "../../../../../../theme/inputs/inputContainer/inputContainer";
 const EnterNumberSection = styled.section`
   display: flex;
   justify-content: center;
@@ -24,16 +25,16 @@ const EnterNumberContent = styled.div`
   }
 `;
 
-const EnterNumberInputContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+// const EnterNumberInputContainer = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   gap: 8px;
 
-  ${ParagraphMedium3} {
-    color: ${neutralColor.neutral700};
-    padding-left: 4px;
-  }
-`;
+//   ${ParagraphMedium3} {
+//     color: ${neutralColor.neutral700};
+//     padding-left: 4px;
+//   }
+// `;
 
 const UserNotFoundContainer = styled.div`
   padding: 16px;
@@ -84,10 +85,10 @@ export const EnterNumberAccountView = () => {
         <EnterNumberContainer>
           <EnterNumberContent>
             <HeadingSemiBold5>Enviar Dinero</HeadingSemiBold5>
-            <EnterNumberInputContainer>
+            <InputContainer>
               <ParagraphMedium3>Numero de cuenta</ParagraphMedium3>
               <Input type="search" placeholder="000-000000000-000" />
-            </EnterNumberInputContainer>
+            </InputContainer>
 
             {/* Get a result */}
             <ResultsContainer>
