@@ -8,7 +8,8 @@ import { AccountProvider } from "./context/accountContext/AccountContext";
 import { AuthProvider } from "./context/AuthContext";
 import IsLogged from "./routes/isLogged/IsLogged";
 import PrivateRoute from "./routes/privateRoute/PrivateRoute";
-import { MakeTransferenceToAnotherUser } from "./components/views/transferences/makeTransference/makeTransfToAnotherUser/MakeTransferenceToAnotherUser";
+import { MakeTransferenceToAnotherUserView } from "./components/views/transferences/makeTransference/makeTransfToAnotherUser/MakeTransferenceToAnotherUserView";
+import { EnterNumberAccountView } from "./components/views/transferences/makeTransference/makeTransfToAnotherUser/enterNumberAccount/EnterNumberAccountView";
 
 function App() {
   return (
@@ -52,14 +53,14 @@ function App() {
         <Route element={<PrivateRoute />}>
           <Route
             path="make_transference_to_another_user/enter_number_account"
-            element={<MakeTransferenceToAnotherUser />}
+            element={<EnterNumberAccountView />}
           />
         </Route>
 
         <Route element={<PrivateRoute />}>
           <Route
             path="make_transference_to_another_user/make_transference"
-            element={<h1>Transference to another user</h1>}
+            element={<MakeTransferenceToAnotherUserView />}
           />
         </Route>
 
