@@ -168,7 +168,6 @@ export const ConfigurationView = () => {
                 <Input type="text" />
               </InputContainer>
             </Box1>
-
             <SaveChangesButton>Guardar Cambios</SaveChangesButton>
           </ConfigurationContent>
         </ConfigurationForm>
