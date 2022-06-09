@@ -144,33 +144,56 @@ export const ConfigurationView = () => {
             Cambiar password
           </ConfigButton>
         </ButtonsContainer>
-        <ConfigurationForm onSubmit={handleSubmit}>
-          <ConfigurationContent>
-            <ChangeImageContainer>
-              <ParagraphMedium3>Avatar</ParagraphMedium3>
-              <ChangeImageContent>
-                <Image src={nouUserImage} />
-                <ImageButtonsContainer>
-                  <ChangeImageButton>Cambiar</ChangeImageButton>
-                  <DeleteImageButton switchBorder={true}>
-                    Eliminar
-                  </DeleteImageButton>
-                </ImageButtonsContainer>
-              </ChangeImageContent>
-            </ChangeImageContainer>
-            <Box1>
-              <InputContainer>
-                <ParagraphMedium3>Nombres</ParagraphMedium3>
-                <Input type="text" />
-              </InputContainer>
-              <InputContainer>
-                <ParagraphMedium3>Apellidos</ParagraphMedium3>
-                <Input type="text" />
-              </InputContainer>
-            </Box1>
-            <SaveChangesButton>Guardar Cambios</SaveChangesButton>
-          </ConfigurationContent>
-        </ConfigurationForm>
+        {/* Form to image, name and last name */}
+        {switchSection.personalData ? (
+          <ConfigurationForm onSubmit={handleSubmit}>
+            <ConfigurationContent>
+              <ChangeImageContainer>
+                <ParagraphMedium3>Avatar</ParagraphMedium3>
+                <ChangeImageContent>
+                  <Image src={nouUserImage} />
+                  <ImageButtonsContainer>
+                    <ChangeImageButton>Cambiar</ChangeImageButton>
+                    <DeleteImageButton switchBorder={true}>
+                      Eliminar
+                    </DeleteImageButton>
+                  </ImageButtonsContainer>
+                </ChangeImageContent>
+              </ChangeImageContainer>
+              <Box1>
+                <InputContainer>
+                  <ParagraphMedium3>Nombres</ParagraphMedium3>
+                  <Input type="text" />
+                </InputContainer>
+                <InputContainer>
+                  <ParagraphMedium3>Apellidos</ParagraphMedium3>
+                  <Input type="text" />
+                </InputContainer>
+              </Box1>
+              <SaveChangesButton>Guardar Cambios</SaveChangesButton>
+            </ConfigurationContent>
+          </ConfigurationForm>
+        ) : (
+          <ConfigurationForm onSubmit={handleSubmit}>
+            <ConfigurationContent>
+              <Box1>
+                <InputContainer>
+                  <ParagraphMedium3>Email</ParagraphMedium3>
+                  <Input type="text" />
+                </InputContainer>
+                <InputContainer>
+                  <ParagraphMedium3>Nueva contraseña</ParagraphMedium3>
+                  <Input type="text" />
+                </InputContainer>
+                <InputContainer>
+                  <ParagraphMedium3>Repetir nueva contraseña</ParagraphMedium3>
+                  <Input type="text" />
+                </InputContainer>
+              </Box1>
+              <SaveChangesButton>Guardar Cambios</SaveChangesButton>
+            </ConfigurationContent>
+          </ConfigurationForm>
+        )}
       </ConfigurationSection>
     </>
   );
