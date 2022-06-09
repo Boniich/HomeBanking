@@ -10,6 +10,7 @@ import IsLogged from "./routes/isLogged/IsLogged";
 import PrivateRoute from "./routes/privateRoute/PrivateRoute";
 import { MakeTransferenceToAnotherUserView } from "./components/views/transferences/makeTransference/makeTransfToAnotherUser/MakeTransferenceToAnotherUserView";
 import { EnterNumberAccountView } from "./components/views/transferences/makeTransference/makeTransfToAnotherUser/enterNumberAccount/EnterNumberAccountView";
+import { ConfigurationView } from "./components/views/configuration/ConfigurationView";
 
 function App() {
   return (
@@ -62,6 +63,10 @@ function App() {
             path="make_transference_to_another_user/make_transference"
             element={<MakeTransferenceToAnotherUserView />}
           />
+        </Route>
+
+        <Route element={<PrivateRoute />}>
+          <Route path="configuration" element={<ConfigurationView />} />
         </Route>
 
         {/* <Route path="/" element={<h1>home</h1>} /> */}
