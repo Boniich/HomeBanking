@@ -1,6 +1,6 @@
 import React from "react";
 import { AccountCard } from "../../../../common/accountCard/AccountCard";
-import { TransferenceForm } from "../commonTransferenceComponents/TransferenceForm.js/TransferenceForm";
+import { TransferenceForm } from "../commonTransferenceComponents/TransferenceForm/TransferenceForm";
 
 export const MakeTransferenceToMyAccount = () => {
   const shortNavText = "A cuenta propia";
