@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import { neutralColor } from "../../../../../../theme/colors/colors";
-import { ParagraphMedium3 } from "../../../../../../theme/paragraph/paragraph";
+import {
+  ParagraphMedium3,
+  ParagraphSemibold2,
+} from "../../../../../../theme/paragraph/paragraph";
 import { ArrowIcon } from "../../../../../../theme/styledIcon/styledIcon";
 
 const UserResultContainer = styled.div.attrs((props) => ({
@@ -30,6 +33,14 @@ const DataUser = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
+
+  ${ParagraphSemibold2} {
+    color: ${neutralColor.neutral800};
+  }
+
+  @media screen and (min-width: 744px) {
+    width: 230px;
+  }
 `;
 
 const ArrowIconOfUserResult = styled(ArrowIcon).attrs((props) => ({
