@@ -9,6 +9,7 @@ import { SecondaryNav } from "../../../../../common/navs/secondaryNav/SecondaryN
 import { TransferencePopup } from "../../../../../common/popup/transferencePopup/TransferencePopup";
 import {
   AccountContainer,
+  AccountContent,
   AmountBox,
   AmountContent,
   AmountInput,
@@ -65,14 +66,14 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
             </AmountContent>
           </AmountBox>
           <AccountContainer>
-            <div>
+            <AccountContent>
               <ParagraphSemibold2>Cuenta de cargo</ParagraphSemibold2>
               <AccountCard />
-            </div>
-            <div>
+            </AccountContent>
+            <AccountContent>
               <ParagraphSemibold2>Cuenta de destino</ParagraphSemibold2>
               {children}
-            </div>
+            </AccountContent>
           </AccountContainer>
           <TransferencePopup tranfToAnotherAccountURL="">
             <Button

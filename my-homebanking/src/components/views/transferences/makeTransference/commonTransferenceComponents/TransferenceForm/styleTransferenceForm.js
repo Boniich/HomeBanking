@@ -98,9 +98,14 @@ const AccountContainer = styled.div`
   flex-direction: column;
   gap: 32px;
   margin-bottom: 96px;
+`;
+const AccountContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
   ${ParagraphSemibold2} {
     color: ${neutralColor.neutral600};
-    margin-bottom: 16px;
   }
 `;
 
@@ -111,4 +116,5 @@ export {
   TransactionContent,
   TransactionForm,
   AccountContainer,
+  AccountContent,
 };
