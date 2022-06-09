@@ -1,15 +1,11 @@
 import styled from "styled-components";
 import { neutralColor } from "../../../../../../theme/colors/colors";
 import { HeadingSemiBold5 } from "../../../../../../theme/heading/heading";
-import {
-  ParagraphMedium3,
-  ParagraphSemibold2,
-} from "../../../../../../theme/paragraph/paragraph";
+import { ParagraphMedium3 } from "../../../../../../theme/paragraph/paragraph";
 import { shadownMD, shadownXS } from "../../../../../../theme/shadown/shadown";
-import { ArrowIcon } from "../../../../../../theme/styledIcon/styledIcon";
 import { SecondaryNav } from "../../../../../common/navs/secondaryNav/SecondaryNav";
 import noUserImage from "../../../../../../assets/noUserImage.png";
-import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { UserResult } from "../../commonTransferenceComponents/userResult/UserResult";
 const EnterNumberSection = styled.section`
   display: flex;
   justify-content: center;
@@ -58,42 +54,6 @@ const SearchInput = styled.input`
   }
 `;
 
-const ResultsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  ${ParagraphMedium3} {
-    color: ${neutralColor.neutral500};
-  }
-`;
-const UserResultContainer = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 16px;
-  gap: 12px;
-  background: ${neutralColor.neutral50};
-  border: 1px solid ${neutralColor.neutral300};
-  border-radius: 8px;
-`;
-
-const UserImage = styled.img`
-  width: 36px;
-  height: 36px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 100%;
-`;
-
-const DataUser = styled.div`
-  width: 156px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-`;
-
-const ArrowIconOfUserResult = styled(ArrowIcon)`
-  color: ${neutralColor.neutral700};
-`;
-
 const UserNotFoundContainer = styled.div`
   padding: 16px;
   background: ${neutralColor.neutral100};
@@ -124,6 +84,15 @@ const EnterNumberContainer = styled.div`
   }
 `;
 
+const ResultsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  ${ParagraphMedium3} {
+    color: ${neutralColor.neutral500};
+  }
+`;
+
 export const EnterNumberAccountView = () => {
   const shortNavText = "A otro usuario";
   const largeNavText = "Transferencia a otro usuario";
@@ -140,17 +109,10 @@ export const EnterNumberAccountView = () => {
             </EnterNumberInputContainer>
 
             {/* Get a result */}
-            {/* <ResultsContainer>
+            <ResultsContainer>
               <ParagraphMedium3>Numero de cuenta</ParagraphMedium3>
-              <UserResultContainer>
-                <UserImage src={noUserImage} />
-                <DataUser>
-                  <ParagraphSemibold2>Darrel Steward</ParagraphSemibold2>
-                  <ParagraphMedium3>047-567123888-000</ParagraphMedium3>
-                </DataUser>
-                <ArrowIconOfUserResult icon={faAngleRight} />
-              </UserResultContainer>
-            </ResultsContainer> */}
+              <UserResult />
+            </ResultsContainer>
 
             {/*  User no found */}
             {/* <UserNotFoundContainer>
