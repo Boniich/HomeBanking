@@ -56,6 +56,13 @@ function App() {
           />
         </Route>
 
+        <Route element={<PrivateRoute />}>
+          <Route
+            path="make_transference_to_another_user/make_transference"
+            element={<h1>Transference to another user</h1>}
+          />
+        </Route>
+
         {/* <Route path="/" element={<h1>home</h1>} /> */}
         <Route path="*" element={<h1>Pagina no encontrada</h1>} />
       </Route>
