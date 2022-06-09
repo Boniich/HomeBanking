@@ -3,13 +3,18 @@ import { neutralColor } from "../../../../../../theme/colors/colors";
 import { ParagraphMedium3 } from "../../../../../../theme/paragraph/paragraph";
 import { ArrowIcon } from "../../../../../../theme/styledIcon/styledIcon";
 
-const UserResultContainer = styled.div`
+const UserResultContainer = styled.div.attrs((props) => ({
+  removeBorder: props.removeBorder
+    ? "none"
+    : `1px solid ${neutralColor.neutral300}`,
+  removePadding: props.removePadding ? "0" : "16px",
+}))`
   display: flex;
   align-items: center;
-  padding: 16px;
+  padding: ${(props) => props.removePadding};
   gap: 12px;
   background: ${neutralColor.neutral50};
-  border: 1px solid ${neutralColor.neutral300};
+  border: ${(props) => props.removeBorder};
   border-radius: 8px;
 `;
 
@@ -27,7 +32,10 @@ const DataUser = styled.div`
   gap: 4px;
 `;
 
-const ArrowIconOfUserResult = styled(ArrowIcon)`
+const ArrowIconOfUserResult = styled(ArrowIcon).attrs((props) => ({
+  disableicon: props.disableicon ? "none" : "flex",
+}))`
+  display: ${(props) => props.disableicon};
   color: ${neutralColor.neutral700};
 `;
 
