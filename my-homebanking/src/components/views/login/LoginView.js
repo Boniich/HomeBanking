@@ -74,7 +74,11 @@ const LoginView = () => {
           <ParagraphUnderline3>¿Olvidaste tu contraseña?</ParagraphUnderline3>
           {/* cambiar por link */}
           <Button
-            className={`${isDisable === true ? "disable" : ""}`}
+            disabledBackground={isDisable}
+            disableColor={isDisable}
+            disableCursor={isDisable}
+            disableFocus={isDisable}
+            disableHover={isDisable}
             type="submit"
             disabled={isDisable}
           >
