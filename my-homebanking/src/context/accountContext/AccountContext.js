@@ -7,6 +7,7 @@ const AccountContext = createContext();
 const AccountProvider = ({ children }) => {
   const [accountNumber, setAccountNumber] = useState();
   const [balance, setBalance] = useState("00.00");
+  const [userEmail, setUserEmail] = useState("");
   const [dni, setDni] = useState(null);
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -42,6 +43,7 @@ const AccountProvider = ({ children }) => {
       setAccountNumber(response.data.accountNumber);
       setBalance(response.data.balance);
       setDni(response.data.owner);
+      setUserEmail(response.data.email);
       setCci(response.data.cciCode);
       const currency = response.data.currency;
       const currencyData = handleCurrency(currency);
@@ -162,6 +164,7 @@ const AccountProvider = ({ children }) => {
     balance,
     currency,
     name,
+    userEmail,
     lastName,
     cci,
     tranferences,
