@@ -1,26 +1,34 @@
 import styled from "styled-components";
 import { neutralColor, primaryColor } from "../colors/colors";
 
-const Button = styled.button`
+const Button = styled.button.attrs((props) => ({
+  disabledBackground: props.disabledBackground
+    ? `${neutralColor.neutral200}`
+    : `${primaryColor.primary500}`,
+  disableColor: props.disableColor ? `${neutralColor.neutral400}` : ` #fff`,
+  disableCursor: props.disableCursor ? "no-drop" : "pointer",
+  disableFocus: props.disableFocus ? "none" : `${primaryColor.primary700}`,
+  disableHover: props.disableHover ? "none" : `${primaryColor.primary400}`,
+}))`
   font-family: inherit;
   /* El width se cambia en el componente que se este utilizando */
   width: auto;
   height: 55px;
-  background-color: ${primaryColor.primary500};
-  color: #fff;
+  background-color: ${(props) => props.disabledBackground};
+  color: ${(props) => props.disableColor};
   border-radius: 8px;
   font-size: 16px;
   font-weight: 600;
   line-height: 19px;
   border: none;
-  cursor: pointer;
+  cursor: ${(props) => props.disableCursor};
 
   &:hover {
-    background-color: ${primaryColor.primary400};
+    background-color: ${(props) => props.disableHover};
   }
 
   &:focus {
-    background-color: ${primaryColor.primary700};
+    background-color: ${(props) => props.disableFocus};
   }
 `;
 
