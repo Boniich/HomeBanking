@@ -5,7 +5,7 @@ import { ExistsActivity } from "./existsActivity/ExistsActivity";
 import { NonActivityMsg } from "./nonActivityMsg/NonActivityMsg";
 import { ActivityContainer } from "./styleActivityView";
 
-const ActivityView = () => {
+const ActivityView = ({ ...props }) => {
   const { tranferences } = useContext(AccountContext);
   const [loading, setLoading] = useState(true);
 
@@ -16,7 +16,7 @@ const ActivityView = () => {
   }, [tranferences]);
 
   return (
-    <ActivityContainer>
+    <ActivityContainer desktopWidth={props.desktopWidth}>
       {loading && <CircleLoader />}
       {tranferences &&
         (tranferences.length > 0 ? (

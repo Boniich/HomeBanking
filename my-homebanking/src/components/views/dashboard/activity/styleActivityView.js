@@ -14,7 +14,7 @@ const ActivityContainer = styled.div`
   }
 
   @media screen and (min-width: 1512px) {
-    width: 595px;
+    width: ${(props) => props.desktopWidth || "595px"};
   }
 `;
 
