@@ -8,7 +8,8 @@ const AccountProvider = ({ children }) => {
   const [accountNumber, setAccountNumber] = useState();
   const [balance, setBalance] = useState("00.00");
   const [dni, setDni] = useState(null);
-  const [name, setName] = useState();
+  const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [cci, setCci] = useState(null);
   const [userImage, setUserImage] = useState(null);
   const [allAccountsByUser, setAllAccountsByUser] = useState([]);
@@ -48,7 +49,6 @@ const AccountProvider = ({ children }) => {
         currencyText: currencyData.currencyText,
         currencySymbol: currencyData.currencySymbol,
       });
-      console.log("currency procesada", currencyData);
     } catch (error) {
       console.log(error);
     }
@@ -74,8 +74,10 @@ const AccountProvider = ({ children }) => {
       );
       console.log("data user", response.data[0]);
       const userName = response.data[0].name;
+      const lastName = response.data[0].surname;
       const image = response.data[0].img;
       setName(userName);
+      setLastName(lastName);
       setUserImage(image);
     } catch (error) {
       console.log(error);
@@ -160,6 +162,7 @@ const AccountProvider = ({ children }) => {
     balance,
     currency,
     name,
+    lastName,
     cci,
     tranferences,
     userImage,
