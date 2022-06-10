@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { ButtonsContainer } from "../../../theme/buttons/buttonContainer/buttonContainer";
 import { Button, ConfigButton } from "../../../theme/buttons/buttons";
@@ -8,7 +8,9 @@ import { SecondaryNav } from "../../common/navs/secondaryNav/SecondaryNav";
 import nouUserImage from "../../../assets/noUserImage.png";
 import { errorColor, neutralColor } from "../../../theme/colors/colors";
 import { InputContainer } from "../../../theme/inputs/inputContainer/inputContainer";
-import { Input } from "../../../theme/inputs/input";
+import { ChangeImageInput, Input } from "../../../theme/inputs/input";
+import { ChangeImageLabel } from "../../../theme/labels/labels";
+import AccountContext from "../../../context/accountContext/AccountContext";
 const ConfigurationSection = styled.section`
   display: flex;
   justify-content: center;
@@ -71,12 +73,6 @@ const ImageButtonsContainer = styled.div`
   gap: 8px;
 `;
 
-const ChangeImageButton = styled(ConfigButton)`
-  width: 104px;
-  border-radius: 8px;
-  color: ${neutralColor.neutral800};
-`;
-
 const DeleteImageButton = styled(ConfigButton)`
   padding: 12px;
   width: 76px;
@@ -103,11 +99,45 @@ const SaveChangesButton = styled(Button)`
 `;
 
 export const ConfigurationView = () => {
+  const uniqueString = "Configuración";
   const [switchSection, setSwitchSection] = useState({
     personalData: true,
     accountData: false,
   });
-  const uniqueString = "Configuración";
+  const { name, lastName, userImage, userEmail } = useContext(AccountContext);
+  const [dataUser, setDataUser] = useState({
+    name: "",
+    lastName: "",
+    image: "",
+  });
+  const [accountData, setAccountData] = useState({
+    email: "",
+    password: "",
+    confPassword: "",
+  });
+
+  useEffect(() => {
+    setDataUser({ name: name, lastName: lastName, image: userImage });
+  }, [name]);
+
+  useEffect(() => {
+    setAccountData({
+      email: userEmail,
+      password: "123456789",
+      confPassword: "123456789",
+    });
+  }, [userEmail]);
+
+  console.log(dataUser);
+
+  const handleChange = (e) => {
+    console.log("handlechange");
+    setDataUser({ ...dataUser, [e.target.name]: e.target.value });
+  };
+
+  const handleAccountDataChange = (e) => {
+    setAccountData({ ...accountData, [e.target.name]: e.target.value });
+  };
 
   const changeToAccountData = () => {
     setSwitchSection({ personalData: false, accountData: true });
@@ -151,9 +181,23 @@ export const ConfigurationView = () => {
               <ChangeImageContainer>
                 <ParagraphMedium3>Avatar</ParagraphMedium3>
                 <ChangeImageContent>
-                  <Image src={nouUserImage} />
+                  <Image
+                    src={
+                      userImage
+                        ? `data:image/png;base64,${dataUser.image}`
+                        : nouUserImage
+                    }
+                  />
                   <ImageButtonsContainer>
-                    <ChangeImageButton>Cambiar</ChangeImageButton>
+                    <ChangeImageLabel>
+                      Cambiar
+                      <ChangeImageInput
+                        type="file"
+                        accept="image/png, image/jpeg"
+                        name="image"
+                        onChange={handleChange}
+                      />
+                    </ChangeImageLabel>
                     <DeleteImageButton switchBorder={true}>
                       Eliminar
                     </DeleteImageButton>
@@ -163,11 +207,21 @@ export const ConfigurationView = () => {
               <Box1>
                 <InputContainer>
                   <ParagraphMedium3>Nombres</ParagraphMedium3>
-                  <Input type="text" />
+                  <Input
+                    type="text"
+                    name="name"
+                    value={dataUser.name}
+                    onChange={handleChange}
+                  />
                 </InputContainer>
                 <InputContainer>
                   <ParagraphMedium3>Apellidos</ParagraphMedium3>
-                  <Input type="text" />
+                  <Input
+                    type="text"
+                    name="lastName"
+                    value={dataUser.lastName}
+                    onChange={handleChange}
+                  />
                 </InputContainer>
               </Box1>
               <SaveChangesButton>Guardar Cambios</SaveChangesButton>
@@ -179,18 +233,38 @@ export const ConfigurationView = () => {
               <Box1>
                 <InputContainer>
                   <ParagraphMedium3>Email</ParagraphMedium3>
-                  <Input type="text" />
+                  <Input
+                    type="email"
+                    name="email"
+                    value={accountData.email}
+                    disabled={true}
+                    onChange={handleAccountDataChange}
+                  />
                 </InputContainer>
                 <InputContainer>
                   <ParagraphMedium3>Nueva contraseña</ParagraphMedium3>
-                  <Input type="text" />
+                  <Input
+                    type="password"
+                    name="password"
+                    disabled={true}
+                    value={accountData.password}
+                    onChange={handleAccountDataChange}
+                  />
                 </InputContainer>
                 <InputContainer>
                   <ParagraphMedium3>Repetir nueva contraseña</ParagraphMedium3>
-                  <Input type="text" />
+                  <Input
+                    type="password"
+                    name="confirPassword"
+                    disabled={true}
+                    value={accountData.confPassword}
+                    onChange={handleAccountDataChange}
+                  />
                 </InputContainer>
               </Box1>
-              <SaveChangesButton>Guardar Cambios</SaveChangesButton>
+              <SaveChangesButton disabled={true}>
+                Guardar Cambios
+              </SaveChangesButton>
             </ConfigurationContent>
           </ConfigurationForm>
         )}
