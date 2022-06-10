@@ -8,7 +8,6 @@ import {
   primaryColor,
   neutralColor,
 } from "../../../theme/colors/colors";
-import { HeadingMedium4 } from "../../../theme/heading/heading";
 import {
   ParagraphMedium3,
   ParagraphUnderline3,
@@ -121,12 +120,6 @@ const Box = styled.div`
     text-align: left;
     color: ${errorColor.error500};
     padding: 4px 0 0 4px;
-  }
-
-  .disable {
-    background-color: ${neutralColor.neutral200};
-    color: ${neutralColor.neutral500};
-    cursor: no-drop;
   }
 
   @media screen and (min-width: 744px) {
