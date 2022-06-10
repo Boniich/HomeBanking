@@ -1,16 +1,11 @@
 import styled from "styled-components";
-import { neutralColor } from "../../../theme/colors/colors";
-
-const Section = styled.section`
-  background-color: ${neutralColor.neutral50};
-`;
 
 const UserSection = styled.div`
   display: flex;
   justify-content: center;
 `;
 
-const UserSection2 = styled.div`
+const UserContent = styled.div`
   position: absolute;
   top: 132px;
   display: flex;
@@ -27,4 +22,4 @@ const UserSection2 = styled.div`
   }
 `;
 
-export { Section, UserSection, UserSection2 };
+export { UserSection, UserContent };
