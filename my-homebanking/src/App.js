@@ -66,7 +66,14 @@ function App() {
         </Route>
 
         <Route element={<PrivateRoute />}>
-          <Route path="configuration" element={<ConfigurationView />} />
+          <Route
+            path="configuration"
+            element={
+              <AccountProvider>
+                <ConfigurationView />
+              </AccountProvider>
+            }
+          />
         </Route>
 
         {/* <Route path="/" element={<h1>home</h1>} /> */}
