@@ -20,3 +20,7 @@ export const Input = styled.input`
     color: ${neutralColor.neutral400};
   }
 `;
+
+export const ChangeImageInput = styled.input`
+  display: none;
+`;
