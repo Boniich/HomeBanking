@@ -41,27 +41,46 @@ function App() {
         </Route>
 
         <Route element={<PrivateRoute />}>
-          <Route path="transference" element={<h1>transacciones</h1>} />
+          <Route
+            path="transference"
+            element={
+              <AccountProvider>
+                <h1>transacciones</h1>
+              </AccountProvider>
+            }
+          />
         </Route>
 
         <Route element={<PrivateRoute />}>
           <Route
             path="make_transference_to_my_account"
-            element={<MakeTransferenceToMyAccount />}
+            element={
+              <AccountProvider>
+                <MakeTransferenceToMyAccount />
+              </AccountProvider>
+            }
           />
         </Route>
 
         <Route element={<PrivateRoute />}>
           <Route
             path="make_transference_to_another_user/enter_number_account"
-            element={<EnterNumberAccountView />}
+            element={
+              <AccountProvider>
+                <EnterNumberAccountView />
+              </AccountProvider>
+            }
           />
         </Route>
 
         <Route element={<PrivateRoute />}>
           <Route
             path="make_transference_to_another_user/make_transference"
-            element={<MakeTransferenceToAnotherUserView />}
+            element={
+              <AccountProvider>
+                <MakeTransferenceToAnotherUserView />
+              </AccountProvider>
+            }
           />
         </Route>
 
