@@ -11,7 +11,7 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import AccountContext from "../../../../context/accountContext/AccountContext";
 import { neutralColor } from "../../../../theme/colors/colors";
 import { FooterText } from "../../../../theme/footer/footer";
@@ -143,16 +143,20 @@ export const PrimaryNav = ({ activeSecondColorNav }) => {
               </Span>
             </LiMobile>
             <LiMobile offOnDesktop>
-              <Span>
-                <ParagraphMedium2>Transferencias </ParagraphMedium2>
-                <ArrowIcon icon={faAngleRight}></ArrowIcon>
-              </Span>
+              <Link to="/transference">
+                <Span>
+                  <ParagraphMedium2>Transferencias </ParagraphMedium2>
+                  <ArrowIcon icon={faAngleRight}></ArrowIcon>
+                </Span>
+              </Link>
             </LiMobile>
             <LiMobile>
-              <Span>
-                <ParagraphMedium2>Configuración</ParagraphMedium2>{" "}
-                <ArrowIcon icon={faAngleRight}></ArrowIcon>
-              </Span>
+              <Link to="/configuration">
+                <Span>
+                  <ParagraphMedium2>Configuración</ParagraphMedium2>
+                  <ArrowIcon icon={faAngleRight}></ArrowIcon>
+                </Span>
+              </Link>
             </LiMobile>
             <LiMobile>
               <Span>

@@ -48,6 +48,7 @@ const Nav = styled.nav.attrs((props) => ({
   width: 100%;
 
   ${FooterText} {
+    cursor: pointer;
     color: ${neutralColor.neutral500};
   }
 
@@ -142,6 +143,14 @@ const Li = styled.li`
       font-size: 16px;
       line-height: 24px;
     }
+    /* 
+    .active > * {
+      background: ${primaryColor.primary50};
+      border-radius: 160px;
+      color: ${primaryColor.primary600};
+      font-weight: 600;
+      line-height: 19px;
+    } */
   }
 
   //this class is setted in NavLink by librery
@@ -188,7 +197,7 @@ const ListMenu = styled.div`
 const Span = styled.span`
   display: flex;
   justify-content: space-between;
-
+  cursor: pointer;
   ${ParagraphMedium2} {
     color: ${neutralColor.neutral700};
     margin: 0;
@@ -212,6 +221,7 @@ const UserImage = styled.img`
 `;
 
 const UserName = styled(FooterText)`
+  cursor: pointer;
   @media screen and (min-width: 1512px) {
     display: none;
   }
@@ -222,6 +232,7 @@ const UserBox = styled.span`
   justify-content: center;
   align-items: center;
   gap: 2px;
+  cursor: pointer;
 `;
 
 export {
