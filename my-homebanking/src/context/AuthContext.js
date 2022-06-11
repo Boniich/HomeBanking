@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import bcryptjs from "bcryptjs";
 import axios from "axios";
 const { hash } = bcryptjs;
@@ -25,8 +25,6 @@ const AuthProvider = ({ children }) => {
   const [showLoader, setShowLoader] = useState(false);
 
   const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from?.pathname || "/dashboard";
 
   let url = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_AUTH_ENDPOINT}`;
   const handleChange = (e) => {
@@ -78,7 +76,7 @@ const AuthProvider = ({ children }) => {
       console.log(response);
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("data", response.data.email);
-      navigate(from, { replace: true });
+      navigate("/", { replace: true });
     } catch (err) {
       console.log("error", err);
       if (err?.response.status === 404) {
