@@ -1,19 +1,33 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import {
   ParagraphMedium2,
+  ParagraphSemibold2,
   ParagraphUnderline2,
 } from "../../../../../theme/paragraph/paragraph";
 import TransferenceCardView from "../transference/TransferenceCardView";
 import {
   AllActivityBox,
   CardTransfContainer,
+  LoadMoreResultContainer,
   RenderActivity,
 } from "./styleExistsActivity";
 
 export const ExistsActivity = ({ transferenceData }) => {
+  const [showAllTransferences, setShowAllTransferences] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    location.pathname === "/transference" && setShowAllTransferences(true);
+  }, []);
+
+  const lessPaddingBotton = !showAllTransferences ? "" : "32px";
+
   return (
-    <RenderActivity>
-      <ParagraphMedium2>Actividad Reciente</ParagraphMedium2>
+    <RenderActivity paddingBotton={lessPaddingBotton}>
+      {!showAllTransferences && (
+        <ParagraphMedium2>Actividad Reciente</ParagraphMedium2>
+      )}
       <CardTransfContainer>
         {transferenceData.map((transference) => (
           <TransferenceCardView
@@ -28,9 +42,15 @@ export const ExistsActivity = ({ transferenceData }) => {
         ))}
       </CardTransfContainer>
       <AllActivityBox>
-        <Link to="">
-          <ParagraphUnderline2>Ver toda la actividad</ParagraphUnderline2>
-        </Link>
+        {!showAllTransferences ? (
+          <Link to="/transference">
+            <ParagraphUnderline2>Ver toda la actividad</ParagraphUnderline2>
+          </Link>
+        ) : (
+          <LoadMoreResultContainer>
+            <ParagraphSemibold2>Cargar mas resultados</ParagraphSemibold2>
+          </LoadMoreResultContainer>
+        )}
       </AllActivityBox>
     </RenderActivity>
   );

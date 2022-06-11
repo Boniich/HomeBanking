@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { primaryColor } from "../../../../../theme/colors/colors";
 import {
   ParagraphMedium2,
+  ParagraphSemibold2,
   ParagraphUnderline2,
 } from "../../../../../theme/paragraph/paragraph";
 
@@ -13,6 +14,10 @@ const RenderActivity = styled.div`
 
   @media screen and (min-width: 744px) {
     padding: 32px 32px 40px;
+  }
+
+  @media screen and (min-width: 1512px) {
+    padding-bottom: ${(props) => props.paddingBotton};
   }
 `;
 
@@ -31,4 +36,21 @@ const AllActivityBox = styled.div`
   }
 `;
 
-export { RenderActivity, CardTransfContainer, AllActivityBox };
+const LoadMoreResultContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 0;
+
+  ${ParagraphSemibold2} {
+    color: ${primaryColor.primary600};
+    cursor: pointer;
+  }
+`;
+
+export {
+  RenderActivity,
+  CardTransfContainer,
+  AllActivityBox,
+  LoadMoreResultContainer,
+};
