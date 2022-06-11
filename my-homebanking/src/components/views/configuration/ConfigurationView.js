@@ -262,7 +262,14 @@ export const ConfigurationView = () => {
                   />
                 </InputContainer>
               </Box1>
-              <SaveChangesButton disabled={true}>
+              <SaveChangesButton
+                disabledBackground={true}
+                disableColor={true}
+                disableCursor={true}
+                disableFocus={true}
+                disableHover={true}
+                disabled={true}
+              >
                 Guardar Cambios
               </SaveChangesButton>
             </ConfigurationContent>
