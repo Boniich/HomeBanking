@@ -11,6 +11,7 @@ import PrivateRoute from "./routes/privateRoute/PrivateRoute";
 import { MakeTransferenceToAnotherUserView } from "./components/views/transferences/makeTransference/makeTransfToAnotherUser/MakeTransferenceToAnotherUserView";
 import { EnterNumberAccountView } from "./components/views/transferences/makeTransference/makeTransfToAnotherUser/enterNumberAccount/EnterNumberAccountView";
 import { ConfigurationView } from "./components/views/configuration/ConfigurationView";
+import { ShowTransferences } from "./components/views/transferences/showTransferences/ShowTransferences";
 
 function App() {
   return (
@@ -45,7 +46,7 @@ function App() {
             path="transference"
             element={
               <AccountProvider>
-                <h1>transacciones</h1>
+                <ShowTransferences />
               </AccountProvider>
             }
           />
