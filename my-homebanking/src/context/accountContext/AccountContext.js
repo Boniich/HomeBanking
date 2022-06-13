@@ -43,6 +43,7 @@ const AccountProvider = ({ children }) => {
       setAccountNumber(response.data.accountNumber);
       setBalance(response.data.balance);
       setDni(response.data.owner);
+      console.log(dni);
       setUserEmail(response.data.email);
       setCci(response.data.cciCode);
       const currency = response.data.currency;
@@ -74,10 +75,10 @@ const AccountProvider = ({ children }) => {
           },
         }
       );
-      console.log("data user", response.data[0]);
-      const userName = response.data[0].name;
-      const lastName = response.data[0].surname;
-      const image = response.data[0].img;
+      console.log("data user", response.data);
+      const userName = response.data.name;
+      const lastName = response.data.surname;
+      const image = response.data.img;
       setName(userName);
       setLastName(lastName);
       setUserImage(image);

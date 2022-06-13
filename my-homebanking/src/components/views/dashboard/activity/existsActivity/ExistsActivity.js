@@ -140,9 +140,9 @@ export const Data = ({ transference }) => {
           },
         }
       );
-      console.log("data user", response.data[0]);
-      const userName = response.data[0].name;
-      const lastName = response.data[0].surname;
+      console.log("data user", response.data);
+      const userName = response.data.name;
+      const lastName = response.data.surname;
       setName(userName);
       setLastName(lastName);
     } catch (error) {
@@ -163,9 +163,9 @@ export const Data = ({ transference }) => {
           },
         }
       );
-      console.log("data user", response.data[0]);
-      const userName = response.data[0].name;
-      const lastName = response.data[0].surname;
+      console.log("data user", response.data);
+      const userName = response.data.name;
+      const lastName = response.data.surname;
       setName(userName);
       setLastName(lastName);
     } catch (error) {
