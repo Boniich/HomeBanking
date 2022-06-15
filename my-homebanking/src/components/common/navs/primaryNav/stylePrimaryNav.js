@@ -120,6 +120,7 @@ const UlMobile = styled(Ul)`
   @media screen and (min-width: 1512px) {
     justify-content: flex-start;
     align-items: flex-start;
+    gap: 10px
   }
 `;
 
@@ -167,8 +168,25 @@ const LiMobile = styled.li`
 
   @media screen and (min-width: 1512px) {
     display: ${(props) => props.offOnDesktop && "none"};
+    /* 20px of padding of left and right - 228px = 180px*/
+    width: 180px;
+    height: 40px;
+    margin: 0;
   }
 `;
+
+const DesktopDropdownNav = styled.div`
+position: absolute;
+background: #fff;
+top: 72px;
+width: 228px;
+/* 20px of padding for each side - 176px = 136px  */
+margin-right: 175px;
+height: 136px;
+box-shadow: ${shadownLG};
+border-radius: 16px;
+padding: 20px 0;
+`
 
 const ListMenu = styled.div`
   position: fixed;
@@ -178,6 +196,7 @@ const ListMenu = styled.div`
   width: 100%;
 
   @media screen and (min-width: 1512px) {
+    display: none;
     top: 72px;
     left: 1350px;
     width: 228px;
@@ -249,4 +268,5 @@ export {
   Ul,
   MenuIcons,
   UserIcon,
+  DesktopDropdownNav,
 };

@@ -26,6 +26,7 @@ import { Logo } from "../../logo/Logo";
 import noUserImage from "../../../../assets/noUserImage.png";
 import { CloseSessionPopup } from "../../popup/closeSessionPopup/CloseSessionPopup";
 import {
+  DesktopDropdownNav,
   Li,
   LiMobile,
   LinkBox,
@@ -129,6 +130,30 @@ export const PrimaryNav = ({ activeSecondColorNav }) => {
               </UserBox>
               <UserName>{name}</UserName>
             </LinkBox>
+            {responsiveNav && <DesktopDropdownNav> 
+              <UlMobile>
+              <LiMobile>
+              <Link to="/configuration">
+                <Span>
+                  <ParagraphMedium2>Configuración</ParagraphMedium2>
+                </Span>
+              </Link>
+            </LiMobile>
+            <LiMobile>
+              <Span>
+                <ParagraphMedium2>Ayuda</ParagraphMedium2>
+              </Span>
+            </LiMobile>
+            <LiMobile>
+              <CloseSessionPopup text="¿Desea cerrar la sesión?">
+                <Span ref={ref}>
+                  <ParagraphSemibold2>Cerrar sesión</ParagraphSemibold2>
+                </Span>
+              </CloseSessionPopup>
+            </LiMobile>
+            </UlMobile>
+            </DesktopDropdownNav>}
+            
           </Li>
         </Ul>
       </Nav>
