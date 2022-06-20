@@ -65,11 +65,12 @@ const AuthProvider = ({ children }) => {
         {
           email: input.email,
           password: input.password,
+          token: appToken,
         },
         {
           headers: {
             "content-type": "application/json",
-            "app-token": appToken,
+            
           },
         }
       );
