@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import { getAccountNumberFromStorage } from "../../services/commonFunctions/getAccountNumber/getAccountNumber";
 import { handleCurrency } from "./handleCurrency/handleCurrency";
 
 const AccountContext = createContext();
@@ -23,7 +24,7 @@ const AccountProvider = ({ children }) => {
 
   const email = localStorage.getItem("data");
   const token = localStorage.getItem("token");
-  const accNumber = localStorage.getItem("accNumber");
+  const accNumber = getAccountNumberFromStorage();
 
   const allAccountByUser_URL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_USER_ACCOUNTS_ENDPOINT}`;
   const findAccount_URL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_FIND_ACCOUNT_ENDPOINT}`;
@@ -43,8 +44,7 @@ const AccountProvider = ({ children }) => {
       console.log("all accounts be user", response);
 
       // save account number of the first account of user
-      const getAccountNumber = window.localStorage.getItem("accNumber");
-      if(!getAccountNumber){
+      if(!accNumber){
         const accountNumber = response.data[0].accountNumber;
         window.localStorage.setItem("accNumber",accountNumber);
       }
@@ -141,8 +141,6 @@ const AccountProvider = ({ children }) => {
   useEffect(() => {
     (dni !== null) && bringDataUser();
   }, [dni]);
-
- 
 
   const bringTransferenceByUser = async () => {
     try {
