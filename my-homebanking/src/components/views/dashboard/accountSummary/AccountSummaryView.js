@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { infoColor } from "../../../../theme/colors/colors";
 import { HeadingSemiBold3 } from "../../../../theme/heading/heading";
 import {
@@ -29,10 +29,11 @@ export const AccountSummaryView = () => {
   const notificationText = "Número de cuenta copiado";
   const notificationColor = infoColor.info900;
   const ref = React.createRef();
-  const emailInToken = localStorage.getItem("data");
+  const accNumber = localStorage.getItem("accNumber");
 
   const { accountNumber, balance, currency, allAccountsByUser } =
     useContext(AccountContext);
+
   console.log("todas las cuentas por usuario", allAccountsByUser);
   return (
     <AccountSummary>
@@ -54,7 +55,7 @@ export const AccountSummaryView = () => {
                 typeSaving={el.currencyText}
                 accountNumber={el.accountNumber}
               >
-                {emailInToken === el.email && (
+                {accNumber === el.accountNumber && (
                   <BackgroundIconOfActiveAccoun>
                     <ActiveAccountIcon icon={faCheck} />
                   </BackgroundIconOfActiveAccoun>
