@@ -17,11 +17,14 @@ import AccountContext from "../../../context/accountContext/AccountContext";
 export const AccountCard = ({typeSaving, accountNumber, children }) => {
 
   const {bringCurrentAccount} = useContext(AccountContext);
+  const accountNumberInStorage = sessionStorage.getItem("accNumber");
 
   const changeAccount = () =>{
-    console.log(accountNumber);
-    bringCurrentAccount(accountNumber);
-    sessionStorage.setItem("accNumber",accountNumber);
+    if(accountNumberInStorage !== accountNumber){
+      console.log(accountNumber);
+      bringCurrentAccount(accountNumber);
+      sessionStorage.setItem("accNumber",accountNumber);
+    }
   }
 
   return (
