@@ -23,14 +23,16 @@ const AccountProvider = ({ children }) => {
 
   const email = localStorage.getItem("data");
   const token = localStorage.getItem("token");
+  const accNumber = localStorage.getItem("accNumber");
 
-  let bringAllAccountByUserURL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_USER_ACCOUNTS_ENDPOINT}`;
-  let bringCurrentAccountURL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_FIND_ACCOUNT_ENDPOINT}`;
-
+  const allAccountByUser_URL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_USER_ACCOUNTS_ENDPOINT}`;
+  const findAccount_URL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_FIND_ACCOUNT_ENDPOINT}`;
+  const dataUser_URL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_USER_FIND_ENDPOINT}`;
+  const transferencesByUser_URL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_TRANSACTION_ACCOUNT_ENDPOINT}`;
 
   const bringAllAccountByUser = async () => {
     try {
-      const response = await axios.post(bringAllAccountByUserURL,{
+      const response = await axios.post(allAccountByUser_URL,{
         email: email
       },{
         headers:{
@@ -72,10 +74,10 @@ const AccountProvider = ({ children }) => {
   },[]);
 
   const bringCurrentAccount = async () => {
-    const accNumber = localStorage.getItem("accNumber");
+    
     try {
       const response = await axios.post(
-        bringCurrentAccountURL,
+        findAccount_URL,
         {
           accountNumber: accNumber
         },
@@ -105,15 +107,15 @@ const AccountProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    bringCurrentAccount();
-  }, []);
+    (accNumber !== null) && bringCurrentAccount();
+  }, [accNumber]);
 
 
-   let dataUserUrl = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_USER_FIND_ENDPOINT}`;
-  const renderDataUser = async () => {
+  
+  const bringDataUser = async () => {
     try {
       const response = await axios.post(
-        dataUserUrl,
+        dataUser_URL,
         {
           dni: dni,
         },
@@ -137,146 +139,36 @@ const AccountProvider = ({ children }) => {
 
 
   useEffect(() => {
-    (dni !== null) && renderDataUser();
+    (dni !== null) && bringDataUser();
   }, [dni]);
 
+ 
 
-/*------------------------------------------------------------------------------------*/
-  // let url = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_FIND_ACCOUNT_ENDPOINT}`;
-  // const handleAccount = async () => {
-  //   try {
-  //     const response = await axios.post(
-  //       url,
-  //       {
-  //         email: "anarod@gmail.com",
-  //       },
-  //       {
-  //         headers: {
-  //           "stp-token": token,
-  //         },
-  //       }
-  //     );
+  const bringTransferenceByUser = async () => {
+    try {
+      const response = await axios.post(
+        transferencesByUser_URL,
+        {
+          cci: cci,
+        },
+        {
+          headers: {
+            token: token,
+          },
+        }
+      );
+      console.log("transations", response.data);
+      setTranferences(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  //     console.log(response);
-  //     setAccountNumber(response.data.accountNumber);
-  //     setBalance(response.data.balance);
-  //     setDni(response.data.owner);
-  //     console.log(dni);
-  //     setUserEmail(response.data.email);
-  //     setCci(response.data.cciCode);
-  //     const currency = response.data.currency;
-  //     const currencyData = handleCurrency(currency);
-  //     setCurrency({
-  //       currencyText: currencyData.currencyText,
-  //       currencySymbol: currencyData.currencySymbol,
-  //     });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   handleAccount();
-  // }, []);
-
-  // let dataUserUrl = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_USER_FIND_ENDPOINT}`;
-  // const renderDataUser = async () => {
-  //   try {
-  //     const response = await axios.post(
-  //       dataUserUrl,
-  //       {
-  //         dni: dni,
-  //       },
-  //       {
-  //         headers: {
-  //           "stp-token": token,
-  //         },
-  //       }
-  //     );
-  //     console.log("data user", response.data);
-  //     const userName = response.data.name;
-  //     const lastName = response.data.surname;
-  //     const image = response.data.img;
-  //     setName(userName);
-  //     setLastName(lastName);
-  //     setUserImage(image);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // all accounts by the same user
-
-  // let allAccountBeUserURL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_USER_ACCOUNTS_ENDPOINT}`;
-
-  // const bringAllAccountByUser = async () => {
-  //   try {
-  //     const response = await axios.post(
-  //       allAccountBeUserURL,
-  //       {
-  //         dni: dni,
-  //       },
-  //       {
-  //         headers: {
-  //           "stp-token": token,
-  //         },
-  //       }
-  //     );
-  //     console.log("all accounts be user", response.data);
-
-  //     for (let e = 0; e < response.data.length; e++) {
-  //       const currencyObj = handleCurrency(response.data[e].currency);
-  //       let obj = {
-  //         id: response.data[e]._id,
-  //         email: response.data[e].email,
-  //         accountNumber: response.data[e].accountNumber,
-  //         currencyText: currencyObj.currencyText,
-  //       };
-  //       console.log(obj);
-  //       setAllAccountsByUser((allAccountsByUser) => [
-  //         ...allAccountsByUser,
-  //         obj,
-  //       ]);
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   if (dni !== null) {
-  //     renderDataUser();
-  //     bringAllAccountByUser();
-  //   }
-  // }, [dni]);
-
-  // let cciCodeUrl = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_TRANSACTION_ACCOUNT_ENDPOINT}`;
-
-  // const bringTransations = async () => {
-  //   try {
-  //     const response = await axios.post(
-  //       cciCodeUrl,
-  //       {
-  //         cci: cci,
-  //       },
-  //       {
-  //         headers: {
-  //           "stp-token": token,
-  //         },
-  //       }
-  //     );
-  //     console.log("transations", response.data);
-  //     setTranferences(response.data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   if (cci !== null) {
-  //     bringTransations();
-  //   }
-  // }, [cci]);
+  useEffect(() => {
+    if (cci !== null) {
+      bringTransferenceByUser();
+    }
+  }, [cci]);
 
   const data = {
     accountNumber,
