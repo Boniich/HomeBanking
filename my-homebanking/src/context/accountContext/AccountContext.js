@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
-import { getAccountNumberFromStorage } from "../../services/commonFunctions/getAccountNumber/getAccountNumber";
 import { handleCurrency } from "../../services/commonFunctions/handleCurrency/handleCurrency";
+import { getAccountNumberFromStorage } from "../../services/commonFunctions/sessionStorageMethods/accountNumberMethods";
 
 const AccountContext = createContext();
 
@@ -73,7 +73,7 @@ const AccountProvider = ({ children }) => {
       bringAllAccountByUser();
   },[]);
 
-  const bringCurrentAccount = async () => {
+  const bringCurrentAccount = async (accNumber) => {
     
     try {
       const response = await axios.post(
@@ -107,7 +107,7 @@ const AccountProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    (accNumber !== null) && bringCurrentAccount();
+    (accNumber !== null) && bringCurrentAccount(accNumber);
   }, [accNumber]);
 
 
@@ -179,6 +179,7 @@ const AccountProvider = ({ children }) => {
     tranferences,
     userImage,
     allAccountsByUser,
+    bringCurrentAccount,
   };
 
   return (
