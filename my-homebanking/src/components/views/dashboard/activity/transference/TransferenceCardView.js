@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import AccountContext from "../../../../../context/accountContext/AccountContext";
-import { handleCurrency } from "../../../../../context/accountContext/handleCurrency/handleCurrency";
+import { handleCurrency } from "../../../../../services/commonFunctions/handleCurrency/handleCurrency";
 import {
   ParagraphMedium3,
   ParagraphSemibold2,

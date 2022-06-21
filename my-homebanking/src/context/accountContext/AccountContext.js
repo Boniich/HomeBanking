@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 import { getAccountNumberFromStorage } from "../../services/commonFunctions/getAccountNumber/getAccountNumber";
-import { handleCurrency } from "./handleCurrency/handleCurrency";
+import { handleCurrency } from "../../services/commonFunctions/handleCurrency/handleCurrency";
 
 const AccountContext = createContext();
 
