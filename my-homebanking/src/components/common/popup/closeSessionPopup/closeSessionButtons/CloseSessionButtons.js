@@ -6,7 +6,7 @@ import {
 
 export const CloseSessionButtons = () => {
   const closeSession = () => {
-    localStorage.clear();
+    sessionStorage.clear();
     window.location.reload();
   };
 
