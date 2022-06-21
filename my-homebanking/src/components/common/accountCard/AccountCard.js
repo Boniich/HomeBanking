@@ -11,10 +11,21 @@ import {
   AccountTypeLogo,
   LogoOnAccountTypeButton,
 } from "./styleAccountCard";
+import { useContext } from "react";
+import AccountContext from "../../../context/accountContext/AccountContext";
 
-export const AccountCard = ({ typeSaving, accountNumber, children }) => {
+export const AccountCard = ({typeSaving, accountNumber, children }) => {
+
+  const {bringCurrentAccount} = useContext(AccountContext);
+
+  const changeAccount = () =>{
+    console.log(accountNumber);
+    bringCurrentAccount(accountNumber);
+    sessionStorage.setItem("accNumber",accountNumber);
+  }
+
   return (
-    <AccountContainer>
+    <AccountContainer onClick={changeAccount}>
       <AccountContent>
         <AccountTypeLogo>
           <LogoOnAccountTypeButton src={logo} />

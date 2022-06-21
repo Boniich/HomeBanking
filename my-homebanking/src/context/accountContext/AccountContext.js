@@ -1,7 +1,6 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 import { handleCurrency } from "../../services/commonFunctions/handleCurrency/handleCurrency";
-import { getAccountNumberFromStorage } from "../../services/commonFunctions/sessionStorageMethods/accountNumberMethods";
 
 const AccountContext = createContext();
 
@@ -22,9 +21,9 @@ const AccountProvider = ({ children }) => {
     currencySymbol: "",
   });
 
-  const email = localStorage.getItem("data");
-  const token = localStorage.getItem("token");
-  const accNumber = getAccountNumberFromStorage();
+  const email = sessionStorage.getItem("data")
+  const token = sessionStorage.getItem("token");
+  const accNumber = sessionStorage.getItem("accNumber");
 
   const allAccountByUser_URL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_USER_ACCOUNTS_ENDPOINT}`;
   const findAccount_URL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_FIND_ACCOUNT_ENDPOINT}`;
@@ -46,7 +45,7 @@ const AccountProvider = ({ children }) => {
       // save account number of the first account of user
       if(!accNumber){
         const accountNumber = response.data[0].accountNumber;
-        window.localStorage.setItem("accNumber",accountNumber);
+        sessionStorage.setItem("accNumber",accountNumber);
       }
 
 

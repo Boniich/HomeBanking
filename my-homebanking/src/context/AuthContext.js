@@ -75,8 +75,8 @@ const AuthProvider = ({ children }) => {
         }
       );
       console.log(response);
-      localStorage.setItem("token", response.data.token);
-      localStorage.setItem("data", response.data.email);
+      sessionStorage.setItem("token", response.data.token);
+      sessionStorage.setItem("data", response.data.email);
       navigate("/", { replace: true });
     } catch (err) {
       console.log("error", err);

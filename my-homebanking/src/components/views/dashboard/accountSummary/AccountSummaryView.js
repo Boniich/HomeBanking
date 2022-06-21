@@ -24,13 +24,12 @@ import {
   BackgroundIconOfActiveAccoun,
 } from "../../../common/accountCard/styleAccountCard";
 import { Link } from "react-router-dom";
-import { getAccountNumberFromStorage } from "../../../../services/commonFunctions/sessionStorageMethods/accountNumberMethods";
 
 export const AccountSummaryView = () => {
   const notificationText = "Número de cuenta copiado";
   const notificationColor = infoColor.info900;
   const ref = React.createRef();
-  const accNumber = getAccountNumberFromStorage();
+  const accNumber = sessionStorage.getItem("accNumber");
 
   const { accountNumber, balance, currency, allAccountsByUser } =
     useContext(AccountContext);
