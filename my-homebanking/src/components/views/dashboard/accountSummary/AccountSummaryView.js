@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext} from "react";
 import { infoColor } from "../../../../theme/colors/colors";
 import { HeadingSemiBold3 } from "../../../../theme/heading/heading";
 import {
