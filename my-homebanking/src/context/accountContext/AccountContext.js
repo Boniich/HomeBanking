@@ -24,22 +24,44 @@ const AccountProvider = ({ children }) => {
   const email = localStorage.getItem("data");
   const token = localStorage.getItem("token");
 
-  const userData = {
-    "email": email,
-    "token": token,
-  }
+  let bringAllAccountByUserURL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_USER_ACCOUNTS_ENDPOINT}`;
+  let bringCurrentAccountURL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_FIND_ACCOUNT_ENDPOINT}`;
 
-  let allAccountBeUserURL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_USER_ACCOUNTS_ENDPOINT}`;
 
   const bringAllAccountByUser = async () => {
     try {
-      const response = await axios({
-        method: "get",
-        url: allAccountBeUserURL,
-        data: userData,
+      const response = await axios.post(bringAllAccountByUserURL,{
+        email: email
+      },{
+        headers:{
+          token: token
+        }
       }
       );
-      console.log("all accounts be user", response.data);
+      console.log("all accounts be user", response);
+
+      // save account number of the first account of user
+      const getAccountNumber = window.localStorage.getItem("accNumber");
+      if(!getAccountNumber){
+        const accountNumber = response.data[0].accountNumber;
+        window.localStorage.setItem("accNumber",accountNumber);
+      }
+
+
+      for (let e = 0; e < response.data.length; e++) {
+        const currencyObj = handleCurrency(response.data[e].currency);
+        let obj = {
+          id: response.data[e]._id,
+          accountNumber: response.data[e].accountNumber,
+          currencyText: currencyObj.currencyText,
+        };
+        console.log(obj);
+        setAllAccountsByUser((allAccountsByUser) => [
+          ...allAccountsByUser,
+          obj,
+        ]);
+      }
+      
     } catch (error) {
       console.log(error);
     }
@@ -47,8 +69,76 @@ const AccountProvider = ({ children }) => {
 
   useEffect(() => {
       bringAllAccountByUser();
+  },[]);
+
+  const bringCurrentAccount = async () => {
+    const accNumber = localStorage.getItem("accNumber");
+    try {
+      const response = await axios.post(
+        bringCurrentAccountURL,
+        {
+          accountNumber: accNumber
+        },
+        {
+          headers: {
+            token: token,
+          },
+        }
+      );
+
+      console.log(response);
+      setAccountNumber(response.data.accountNumber);
+      setBalance(response.data.balance);
+      setDni(response.data.owner);
+      console.log(dni);
+      setUserEmail(response.data.email);
+      setCci(response.data.cciCode);
+      const currency = response.data.currency;
+      const currencyData = handleCurrency(currency);
+      setCurrency({
+        currencyText: currencyData.currencyText,
+        currencySymbol: currencyData.currencySymbol,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    bringCurrentAccount();
   }, []);
 
+
+   let dataUserUrl = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_USER_FIND_ENDPOINT}`;
+  const renderDataUser = async () => {
+    try {
+      const response = await axios.post(
+        dataUserUrl,
+        {
+          dni: dni,
+        },
+        {
+          headers: {
+            token: token,
+          },
+        }
+      );
+      console.log("data user", response.data);
+      const userName = response.data.name;
+      const lastName = response.data.surname;
+      const image = response.data.img;
+      setName(userName);
+      setLastName(lastName);
+      setUserImage(image);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
+  useEffect(() => {
+    (dni !== null) && renderDataUser();
+  }, [dni]);
 
 
 /*------------------------------------------------------------------------------------*/
