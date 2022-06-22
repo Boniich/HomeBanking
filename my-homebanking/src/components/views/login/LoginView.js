@@ -82,7 +82,7 @@ const LoginView = () => {
             type="submit"
             disabled={isDisable}
           >
-            {showLoader ? <Loader /> : "Iniciar Sesión"}
+            {showLoader ? <Loader circleColor="#fff"/> : "Iniciar Sesión"}
           </Button>
         </form>
       </Box>
