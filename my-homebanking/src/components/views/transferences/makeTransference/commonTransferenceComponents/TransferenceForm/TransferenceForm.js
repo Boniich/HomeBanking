@@ -1,10 +1,12 @@
-import React, { createRef, useState } from "react";
+import React, { createRef, useContext, useState } from "react";
+import AccountContext from "../../../../../../context/accountContext/AccountContext";
 import { Button } from "../../../../../../theme/buttons/buttons";
 import {
   ParagraphMedium3,
   ParagraphSemibold2,
 } from "../../../../../../theme/paragraph/paragraph";
 import { AccountCard } from "../../../../../common/accountCard/AccountCard";
+import Dropdown from "../../../../../common/dropdown/Dropdown";
 import { SecondaryNav } from "../../../../../common/navs/secondaryNav/SecondaryNav";
 import { TransferencePopup } from "../../../../../common/popup/transferencePopup/TransferencePopup";
 import {
@@ -22,6 +24,8 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
   const [buttonIsDisable, setButtonIsDisable] = useState(true);
   const ref = createRef();
   console.log(amount);
+
+  const { accountNumber, currency,allAccountsByUser } = useContext(AccountContext);
 
   const handleKeyUp = () => {
     amount.amount.length !== 0
@@ -68,7 +72,7 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
           <AccountContainer>
             <AccountContent>
               <ParagraphSemibold2>Cuenta de cargo</ParagraphSemibold2>
-              <AccountCard />
+              <Dropdown accountNumber={accountNumber} currency={currency} allAccountsByUser={allAccountsByUser}/>
             </AccountContent>
             <AccountContent>
               <ParagraphSemibold2>Cuenta de destino</ParagraphSemibold2>
