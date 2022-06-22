@@ -28,6 +28,10 @@ const TransactionContent = styled.div`
 `;
 
 const AmountBox = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+gap: 40px;
   width: 312px;
   height: 211px;
   box-shadow: ${shadownXS};
@@ -44,7 +48,7 @@ const AmountBox = styled.div`
 `;
 
 const AmountContent = styled.div`
-  height: 100%;
+  /* height: 100%; */
   display: flex;
   gap: 8px;
   flex-direction: column;
@@ -109,6 +113,34 @@ const AccountContent = styled.div`
   }
 `;
 
+const MotiveContainer = styled.div`
+display: flex;
+flex-direction: column;
+gap: 12px;
+padding: 0 32px;
+`;
+
+const MotiveInput = styled.input`
+font-family: inherit;
+padding: 0;
+border: none;
+outline: none;
+
+::placeholder {
+  font-size: 14px;
+  line-height: 17px;
+  color: ${neutralColor.neutral500};
+}
+@media screen and (min-width: 744px) {
+
+    ::placeholder {
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+
+`;
+
 export {
   AmountBox,
   AmountContent,
@@ -117,4 +149,7 @@ export {
   TransactionForm,
   AccountContainer,
   AccountContent,
+  MotiveContainer,
+  // Bar,
+  MotiveInput,
 };
