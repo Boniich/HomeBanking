@@ -44,7 +44,7 @@ const AccountProvider = ({ children }) => {
   const findAccount_URL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_FIND_ACCOUNT_ENDPOINT}`;
   const dataUser_URL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_USER_FIND_ENDPOINT}`;
   const transferencesByUser_URL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_TRANSACTION_ACCOUNT_ENDPOINT}`;
-
+  const makeTransference_URL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_MAKE_A_TRANSFERENCE}`;
   const bringAllAccountByUser = async () => {
     try {
       const response = await axios.post(allAccountByUser_URL,{
@@ -246,6 +246,26 @@ const AccountProvider = ({ children }) => {
   },[searchUserDni]);
 
 
+  // transference
+
+  const makeTransference = async (motive, amount) =>{
+    try{
+      const response = await axios.put(makeTransference_URL,{
+        origin: cci,
+        destiny: searchUserCci,
+        motive: motive,
+        amount: amount,
+      },{
+        headers: {
+          token: token,
+        },
+      });
+      console.log("make transference", response);
+    }catch(error){
+      console.log(error);
+    }
+  }
+
   const data = {
     accountNumber,
     balance,
@@ -268,6 +288,7 @@ const AccountProvider = ({ children }) => {
     setSearchUserFound,
     searchUserNotFound,
     setSearchUserNotFound,
+    makeTransference,
   };
 
   return (
