@@ -1,6 +1,6 @@
 import { Svg } from "./styleLoader";
 
-export const Loader = () => {
+export const Loader = ({circleColor}) => {
   return (
     <Svg
       version="1.1"
@@ -10,7 +10,7 @@ export const Loader = () => {
       viewBox="0 0 100 100"
       enable-background="new 0 0 0 0"
     >
-      <circle fill="#fff" stroke="none" cx="6" cy="50" r="6">
+      <circle fill={circleColor} stroke="none" cx="6" cy="50" r="6">
         <animateTransform
           attributeName="transform"
           dur="1s"
@@ -20,7 +20,7 @@ export const Loader = () => {
           begin="0.1"
         />
       </circle>
-      <circle fill="#fff" stroke="none" cx="30" cy="50" r="6">
+      <circle fill={circleColor} stroke="none" cx="30" cy="50" r="6">
         <animateTransform
           attributeName="transform"
           dur="1s"
@@ -30,7 +30,7 @@ export const Loader = () => {
           begin="0.2"
         />
       </circle>
-      <circle fill="#fff" stroke="none" cx="54" cy="50" r="6">
+      <circle fill={circleColor} stroke="none" cx="54" cy="50" r="6">
         <animateTransform
           attributeName="transform"
           dur="1s"
