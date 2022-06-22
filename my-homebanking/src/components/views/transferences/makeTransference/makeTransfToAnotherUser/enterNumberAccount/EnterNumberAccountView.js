@@ -8,6 +8,8 @@ import noUserImage from "../../../../../../assets/noUserImage.png";
 import { UserResult } from "../../commonTransferenceComponents/userResult/UserResult";
 import { Input } from "../../../../../../theme/inputs/input";
 import { InputContainer } from "../../../../../../theme/inputs/inputContainer/inputContainer";
+import React, { useContext, useEffect, useState } from "react";
+import AccountContext from "../../../../../../context/accountContext/AccountContext";
 const EnterNumberSection = styled.section`
   display: flex;
   justify-content: center;
@@ -76,8 +78,27 @@ const ResultsContainer = styled.div`
 `;
 
 export const EnterNumberAccountView = () => {
+  const [valor, setValor] = useState({valor:""});
+  const [makeCallToApi, setMakeCallToApi] = useState(false);
   const shortNavText = "A otro usuario";
   const largeNavText = "Transferencia a otro usuario";
+  console.log("valor",valor);
+
+  const {searchAccountUser} = useContext(AccountContext);
+  
+  useEffect(() =>{
+    makeCallToApi && searchAccountUser(valor.valor);
+  }, [makeCallToApi])
+
+  const handleChange = (e) =>{
+    setMakeCallToApi(false);
+    let length = e.target.value.length
+
+    setValor({ ...valor, [e.target.name]: e.target.value,});
+
+    (length === 17) && setMakeCallToApi(true);
+  }
+
   return (
     <>
       <SecondaryNav shortNavText={shortNavText} largeNavText={largeNavText} />
@@ -87,7 +108,12 @@ export const EnterNumberAccountView = () => {
             <HeadingSemiBold5>Enviar Dinero</HeadingSemiBold5>
             <InputContainer>
               <ParagraphMedium3>Numero de cuenta</ParagraphMedium3>
-              <Input type="search" placeholder="000-000000000-000" />
+              <Input 
+              type="search" 
+              name="valor" 
+              value={valor.valor} 
+              placeholder="000 - 000000000 - 000" 
+              onChange={handleChange} />
             </InputContainer>
 
             {/* Get a result */}
