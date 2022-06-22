@@ -18,8 +18,17 @@ import {
  * @param {string} background  Set a background color for overlay of popup. It has a default value of rgba(17, 24, 39, 0.9)
  * @param {any} action Accion what will display popup. It can be a button component, a text or whatever
  * @param {string} headerText  Text that will have the propup in the top of it
- * @param {string} height  height of popup. It has a default value of 244px
  * @param {any} children It is the "children of popup" which will be render what you want in middle of popup
+ * @param {boolean} open open the modal without a component as trigger (default value: false)
+ * 
+ * @param {string} width  witdth of popup.
+ * @param {string} height  height of popup. It has a default value of 244px
+ * @param {string} tableWidth  witdth of popup in tablet.
+ * @param {string} tableHeight  height of popup in tablet.
+ * @param {string} desktopWidth  witdth of popup in desktop.
+ * @param {string} desktopHeight  height of popup in desktop. It has a default value of 244px
+ * @param {string} shadow  shadow of popup
+ * 
  **/
 
 export const Popup = React.forwardRef((props, ref) => {
@@ -30,6 +39,7 @@ export const Popup = React.forwardRef((props, ref) => {
       modal
       trigger={props.action}
       closeOnDocumentClick={false}
+      open={props.open}
     >
       {(close) => (
         <Modal
