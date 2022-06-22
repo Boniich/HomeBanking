@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import AccountContext from "../../../../../context/accountContext/AccountContext";
 import { handleCurrency } from "../../../../../services/commonFunctions/handleCurrency/handleCurrency";
+import { Hr } from "../../../../../theme/hr/hr";
 import {
   ParagraphMedium3,
   ParagraphSemibold2,
 } from "../../../../../theme/paragraph/paragraph";
 import {
-  Divider,
   FigureTransf,
   Transf,
   TransferenceAmount,
@@ -59,7 +59,7 @@ const TransferenceCardView = React.forwardRef(
           </TransferenceAmount>
         </FigureTransf>
         <div>
-          <Divider />
+          <Hr/>
         </div>
       </Transf>
     );

@@ -23,11 +23,6 @@ const TransfInfo = styled.div`
 
 const Transf = styled.div``;
 
-const Divider = styled.hr`
-  margin: 0;
-  padding: 0;
-  background-color: ${neutralColor.neutral200};
-`;
 const TransferenceAmount = styled(ParagraphSemibold2).attrs((props) => ({
   amountColor:
     props.amountColor === true
@@ -37,4 +32,4 @@ const TransferenceAmount = styled(ParagraphSemibold2).attrs((props) => ({
   color: ${(props) => props.amountColor};
 `;
 
-export { TransfInfo, FigureTransf, Transf, Divider, TransferenceAmount };
+export { TransfInfo, FigureTransf, Transf, TransferenceAmount };
