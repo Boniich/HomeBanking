@@ -12,6 +12,7 @@ import React, { useContext, useEffect, useState } from "react";
 import AccountContext from "../../../../../../context/accountContext/AccountContext";
 import { Loader } from "../../../../../common/loader/Loader";
 import { Button } from "../../../../../../theme/buttons/buttons";
+import { Link } from "react-router-dom";
 const EnterNumberSection = styled.section`
   display: flex;
   justify-content: center;
@@ -140,11 +141,14 @@ export const EnterNumberAccountView = () => {
             {searchUserFound && 
             <ResultsContainer>
               <ParagraphMedium3>Numero de cuenta</ParagraphMedium3>
+              <Link to="/make_transference_to_another_user/make_transference">
               <UserResult 
               name={searchUserName} 
               lastName={searchUserLastName} 
               userImage={searchUserImage} 
               accountNumber={searchUserAccNUmber} />
+              </Link>
+
             </ResultsContainer>}
 
 
