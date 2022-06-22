@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { neutralColor } from "../../../../../../theme/colors/colors";
+import { neutralColor, primaryColor } from "../../../../../../theme/colors/colors";
 import { HeadingSemiBold5 } from "../../../../../../theme/heading/heading";
 import { ParagraphMedium3 } from "../../../../../../theme/paragraph/paragraph";
 import { shadownMD, shadownXS } from "../../../../../../theme/shadown/shadown";
@@ -10,6 +10,8 @@ import { Input } from "../../../../../../theme/inputs/input";
 import { InputContainer } from "../../../../../../theme/inputs/inputContainer/inputContainer";
 import React, { useContext, useEffect, useState } from "react";
 import AccountContext from "../../../../../../context/accountContext/AccountContext";
+import { Loader } from "../../../../../common/loader/Loader";
+import { Button } from "../../../../../../theme/buttons/buttons";
 const EnterNumberSection = styled.section`
   display: flex;
   justify-content: center;
@@ -84,19 +86,36 @@ export const EnterNumberAccountView = () => {
   const largeNavText = "Transferencia a otro usuario";
   console.log("valor",valor);
 
-  const {searchAccountUser} = useContext(AccountContext);
-  
+  const {
+    searchAccountUser,
+    searchUserAccNUmber, 
+    searchUserName,
+    searchUserLastName,
+    searchUserImage,
+    searchUserLoader,
+    searchUserFound,
+    searchUserNotFound,
+    setSearchUserFound,
+    setSearchUserNotFound,
+  } = useContext(AccountContext);
+
   useEffect(() =>{
-    makeCallToApi && searchAccountUser(valor.valor);
+    makeCallToApi && 
+    searchAccountUser(valor.valor);
   }, [makeCallToApi])
 
   const handleChange = (e) =>{
     setMakeCallToApi(false);
+    setSearchUserFound(false);
+    setSearchUserNotFound(false);
     let length = e.target.value.length
 
     setValor({ ...valor, [e.target.name]: e.target.value,});
 
-    (length === 17) && setMakeCallToApi(true);
+    if(length === 17){
+      setMakeCallToApi(true);
+    }
+
   }
 
   return (
@@ -117,17 +136,25 @@ export const EnterNumberAccountView = () => {
             </InputContainer>
 
             {/* Get a result */}
+            {searchUserLoader && <Loader circleColor={primaryColor.primary500}/>}
+            {searchUserFound && 
             <ResultsContainer>
               <ParagraphMedium3>Numero de cuenta</ParagraphMedium3>
-              <UserResult />
-            </ResultsContainer>
+              <UserResult 
+              name={searchUserName} 
+              lastName={searchUserLastName} 
+              userImage={searchUserImage} 
+              accountNumber={searchUserAccNUmber} />
+            </ResultsContainer>}
 
-            {/*  User no found */}
-            {/* <UserNotFoundContainer>
+
+            {searchUserNotFound && 
+            <UserNotFoundContainer>
               <ParagraphMedium3>
                 El número de cuenta no pertenece a ningun usuario
               </ParagraphMedium3>
-            </UserNotFoundContainer> */}
+            </UserNotFoundContainer> }
+
           </EnterNumberContent>
         </EnterNumberContainer>
       </EnterNumberSection>

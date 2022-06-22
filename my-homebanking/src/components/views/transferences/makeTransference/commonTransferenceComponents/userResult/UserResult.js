@@ -17,10 +17,10 @@ export const UserResult = ({ ...props }) => {
       removeBorder={props.removeBorder}
       removePadding={props.removePadding}
     >
-      <UserImage src={noUserImage} />
+      <UserImage src={`data:image/png;base64,${props.userImage}`} />
       <DataUser>
-        <ParagraphSemibold2>Darrel Steward</ParagraphSemibold2>
-        <ParagraphMedium3>047-567123888-000</ParagraphMedium3>
+        <ParagraphSemibold2>{props.name} {props.lastName}</ParagraphSemibold2>
+        <ParagraphMedium3>{props.accountNumber}</ParagraphMedium3>
       </DataUser>
       <ArrowIconOfUserResult
         icon={faAngleRight}

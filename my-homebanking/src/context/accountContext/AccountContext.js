@@ -16,6 +16,21 @@ const AccountProvider = ({ children }) => {
   const [allAccountsByUser, setAllAccountsByUser] = useState([]);
   const [tranferences, setTranferences] = useState(null);
 
+  // search a user for make a transference
+
+  // find acount endpoint
+  const [searchUserFound, setSearchUserFound] = useState(false);
+  const [searchUserNotFound, setSearchUserNotFound] = useState(false);
+  const [searchUserCci, setSearchUserCci] = useState(null);
+  const [searchUserAccNUmber, setSearchUserAccNumber] = useState("");
+  const [searchUserDni, setSearchUserDni] = useState(null);
+  // find user endpoint
+  const [searchUserImage, setSearchUserImage] = useState("");
+  const [searchUserName, setSearchUserName] = useState("");
+  const [searchUserLastName, setSearchLastUserName] = useState("");
+  // loader for search user
+  const [searchUserLoader, setSearchUserLoader] = useState(false);
+
   const [currency, setCurrency] = useState({
     currencyText: "",
     currencySymbol: "",
@@ -167,6 +182,70 @@ const AccountProvider = ({ children }) => {
     }
   }, [cci]);
 
+
+  // search user for transference
+
+  const searchAccountUser = async (accNumber) => {
+    setSearchUserLoader(true);
+    try {
+      const response = await axios.post(
+        findAccount_URL,
+        {
+          accountNumber: accNumber
+        },
+        {
+          headers: {
+            token: token,
+          },
+        }
+      );
+
+      console.log(response);
+      setSearchUserCci(response.data.cciCode);
+      setSearchUserAccNumber(response.data.accountNumber);
+      setSearchUserDni(response.data.owner);
+      setSearchUserFound(true);
+    } catch (error) {
+      console.log(error);
+      if(error?.response.status === 404){
+        console.log("usuario no encontrado");
+        setSearchUserNotFound(true);
+      }
+    } finally{
+      setSearchUserLoader(false);
+    }
+  };
+
+  const searchDataUser = async () => {
+    try {
+      const response = await axios.post(
+        dataUser_URL,
+        {
+          dni: searchUserDni,
+        },
+        {
+          headers: {
+            token: token,
+          },
+        }
+      );
+      console.log("user searched", response.data);
+      const userName = response.data.name;
+      const lastName = response.data.surname;
+      const image = response.data.img;
+      setSearchUserName(userName)
+      setSearchLastUserName(lastName)
+      setSearchUserImage(image);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() =>{
+    (searchUserDni !== null) && searchDataUser();
+  },[searchUserDni]);
+
+
   const data = {
     accountNumber,
     balance,
@@ -179,6 +258,16 @@ const AccountProvider = ({ children }) => {
     userImage,
     allAccountsByUser,
     bringCurrentAccount,
+    searchAccountUser,
+    searchUserAccNUmber,
+    searchUserName,
+    searchUserLastName,
+    searchUserImage,
+    searchUserLoader,
+    searchUserFound,
+    setSearchUserFound,
+    searchUserNotFound,
+    setSearchUserNotFound,
   };
 
   return (
