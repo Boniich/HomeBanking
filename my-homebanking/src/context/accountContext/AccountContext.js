@@ -30,7 +30,8 @@ const AccountProvider = ({ children }) => {
   const [searchUserLastName, setSearchLastUserName] = useState("");
   // loader for search user
   const [searchUserLoader, setSearchUserLoader] = useState(false);
-
+  // loader meanwhile at transference is in procress
+  const [transferenceLoader, setTransferenceLoader] = useState(false);
   const [currency, setCurrency] = useState({
     currencyText: "",
     currencySymbol: "",
@@ -249,6 +250,7 @@ const AccountProvider = ({ children }) => {
   // transference
 
   const makeTransference = async (motive, amount) =>{
+    setTransferenceLoader(true);
     try{
       const response = await axios.put(makeTransference_URL,{
         origin: cci,
@@ -263,6 +265,8 @@ const AccountProvider = ({ children }) => {
       console.log("make transference", response);
     }catch(error){
       console.log(error);
+    } finally{
+      setTransferenceLoader(false);
     }
   }
 
@@ -289,6 +293,7 @@ const AccountProvider = ({ children }) => {
     searchUserNotFound,
     setSearchUserNotFound,
     makeTransference,
+    transferenceLoader,
   };
 
   return (

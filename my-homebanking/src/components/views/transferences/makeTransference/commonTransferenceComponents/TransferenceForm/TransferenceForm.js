@@ -7,6 +7,7 @@ import {
   ParagraphSemibold2,
 } from "../../../../../../theme/paragraph/paragraph";
 import Dropdown from "../../../../../common/dropdown/Dropdown";
+import { Loader } from "../../../../../common/loader/Loader";
 import { SecondaryNav } from "../../../../../common/navs/secondaryNav/SecondaryNav";
 import { TransferencePopup } from "../../../../../common/popup/transferencePopup/TransferencePopup";
 import {
@@ -25,10 +26,11 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
   const [amount, setAmount] = useState({ amount: "" });
   const [motive, setMotive] = useState({ motive: ""});
   const [buttonIsDisable, setButtonIsDisable] = useState(true);
+  const [openModal, setOpenModal] = useState(true);
   const ref = createRef();
   console.log(amount);
   console.log(motive);
-  const { accountNumber, currency,allAccountsByUser } = useContext(AccountContext);
+  const { accountNumber, currency,allAccountsByUser, makeTransference,transferenceLoader } = useContext(AccountContext);
 
   const handleKeyUp = () => {
     amount.amount.length !== 0
@@ -55,7 +57,7 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("ingresa", amount.amount);
+    makeTransference(motive.motive,amount.amount);
   };
 
   return (
@@ -98,16 +100,18 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
               {children}
             </AccountContent>
           </AccountContainer>
-          <TransferencePopup tranfToAnotherAccountURL="">
+          {/* <TransferencePopup tranfToAnotherAccountURL=""> */}
             <Button
               ref={ref}
               className={`${buttonIsDisable === true ? "disable" : ""}`}
               disabled={buttonIsDisable}
               type="submit"
             >
-              Confirmar transferencia
+              {transferenceLoader ? <Loader circleColor="#fff"/> : "Confirmar transferencia"}
             </Button>
-          </TransferencePopup>
+          {/* </TransferencePopup> */}
+           {/* <TransferencePopup tranfToAnotherAccountURL="">{open => openModal}
+           </TransferencePopup> */}
         </TransactionContent>
       </TransactionForm>
     </>
