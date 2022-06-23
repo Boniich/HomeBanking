@@ -1,5 +1,6 @@
 import React, { createRef, useContext, useState } from "react";
 import AccountContext from "../../../../../../context/accountContext/AccountContext";
+import { getDate } from "../../../../../../services/commonFunctions/getDate/getDate";
 import { Button } from "../../../../../../theme/buttons/buttons";
 import { Hr } from "../../../../../../theme/hr/hr";
 import {
@@ -30,10 +31,19 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
   const ref = createRef();
   console.log(amount);
   console.log(motive);
-  const { accountNumber, currency,allAccountsByUser, makeTransference,transferenceLoader } = useContext(AccountContext);
+  const { 
+    accountNumber, 
+    currency,
+    allAccountsByUser, 
+    makeTransference,
+    transferenceLoader,
+    searchUserName,
+    searchUserLastName,
+    successTransference 
+  }  = useContext(AccountContext);
 
   const handleKeyUp = () => {
-    amount.amount.length !== 0
+    (amount.amount.length !== 0 && motive.motive.length !== 0)
       ? setButtonIsDisable(false)
       : setButtonIsDisable(true);
   };
@@ -87,6 +97,7 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
                 name="motive"
                 value={motive.motive}
                 onChange={handleMotiveChange}
+                onKeyUp={handleKeyUp}
                 />
               </MotiveContainer>
           </AmountBox>
@@ -100,7 +111,6 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
               {children}
             </AccountContent>
           </AccountContainer>
-          {/* <TransferencePopup tranfToAnotherAccountURL=""> */}
             <Button
               ref={ref}
               className={`${buttonIsDisable === true ? "disable" : ""}`}
@@ -109,9 +119,14 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
             >
               {transferenceLoader ? <Loader circleColor="#fff"/> : "Confirmar transferencia"}
             </Button>
-          {/* </TransferencePopup> */}
-           {/* <TransferencePopup tranfToAnotherAccountURL="">{open => openModal}
-           </TransferencePopup> */}
+           <TransferencePopup 
+           tranfToAnotherAccountURL="/make_transference_to_another_user/enter_number_account" 
+           open={successTransference} 
+           amount={amount.amount}
+           name={searchUserName}
+           lastName={searchUserLastName}
+           >
+           </TransferencePopup>
         </TransactionContent>
       </TransactionForm>
     </>
