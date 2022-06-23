@@ -81,12 +81,12 @@ const ResultsContainer = styled.div`
 `;
 
 export const EnterNumberAccountView = () => {
-  const [valor, setValor] = useState({valor:""});
+  const [accNumber, setAccNumber] = useState({accNumber:""});
   const [makeCallToApi, setMakeCallToApi] = useState(false);
   const shortNavText = "A otro usuario";
   const largeNavText = "Transferencia a otro usuario";
-  console.log("valor",valor);
-
+  console.log("valor",accNumber);
+  
   const {
     searchAccountUser,
     searchUserAccNUmber, 
@@ -96,26 +96,23 @@ export const EnterNumberAccountView = () => {
     searchUserLoader,
     searchUserFound,
     searchUserNotFound,
-    setSearchUserFound,
-    setSearchUserNotFound,
+    resetSearchUser,
   } = useContext(AccountContext);
 
   useEffect(() =>{
     makeCallToApi && 
-    searchAccountUser(valor.valor);
+    searchAccountUser(accNumber.accNumber);
   }, [makeCallToApi])
 
   const handleChange = (e) =>{
     setMakeCallToApi(false);
-    setSearchUserFound(false);
-    setSearchUserNotFound(false);
     let length = e.target.value.length
 
-    setValor({ ...valor, [e.target.name]: e.target.value,});
+    setAccNumber({ ...accNumber, [e.target.name]: e.target.value,});
 
-    if(length === 17){
-      setMakeCallToApi(true);
-    }
+    if(length === 16 || length === 0){resetSearchUser()};
+
+    if(length === 17){setMakeCallToApi(true)};
 
   }
 
@@ -130,9 +127,9 @@ export const EnterNumberAccountView = () => {
               <ParagraphMedium3>Numero de cuenta</ParagraphMedium3>
               <Input 
               type="search" 
-              name="valor" 
-              value={valor.valor} 
-              placeholder="000 - 000000000 - 000" 
+              name="accNumber" 
+              value={accNumber.accNumber} 
+              placeholder="000-000000000-000" 
               onChange={handleChange} />
             </InputContainer>
 
