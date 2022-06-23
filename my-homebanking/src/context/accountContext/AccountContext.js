@@ -63,6 +63,8 @@ const AccountProvider = ({ children }) => {
     setSearchLastUserName("");
   }
 
+  const removeModalFromOldTransference = () => setSuccesstransference(false);
+
   const allAccountByUser_URL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_USER_ACCOUNTS_ENDPOINT}`;
   const findAccount_URL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_FIND_ACCOUNT_ENDPOINT}`;
   const dataUser_URL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_USER_FIND_ENDPOINT}`;
@@ -291,7 +293,6 @@ const AccountProvider = ({ children }) => {
       setTransferenceLoader(false);
     }
   }
-
   const data = {
     accountNumber,
     balance,
@@ -315,6 +316,8 @@ const AccountProvider = ({ children }) => {
     makeTransference,
     transferenceLoader,
     resetSearchUser,
+    successTransference,
+    removeModalFromOldTransference,
   };
 
   return (
