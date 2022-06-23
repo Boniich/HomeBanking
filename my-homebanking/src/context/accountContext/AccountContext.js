@@ -32,6 +32,14 @@ const AccountProvider = ({ children }) => {
   const [searchUserLoader, setSearchUserLoader] = useState(false);
   // loader meanwhile at transference is in procress
   const [transferenceLoader, setTransferenceLoader] = useState(false);
+
+  // success or faild of transference 
+
+  const [successTransference, setSuccesstransference] = useState(false);
+  const [failedTransference, setFailedTransference] = useState(false);
+
+
+
   const [currency, setCurrency] = useState({
     currencyText: "",
     currencySymbol: "",
@@ -40,6 +48,20 @@ const AccountProvider = ({ children }) => {
   const email = sessionStorage.getItem("data")
   const token = sessionStorage.getItem("token");
   const accNumber = sessionStorage.getItem("accNumber");
+
+  // functions that handle set states
+
+  const resetSearchUser = () =>{
+    setSearchUserFound(false);
+    setSearchUserNotFound(false);
+    setSearchUserCci(null);
+    setSearchUserAccNumber("");
+    setSearchUserDni(null);
+
+    setSearchUserImage("");
+    setSearchUserName("");
+    setSearchLastUserName("");
+  }
 
   const allAccountByUser_URL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_USER_ACCOUNTS_ENDPOINT}`;
   const findAccount_URL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_FIND_ACCOUNT_ENDPOINT}`;
@@ -205,16 +227,13 @@ const AccountProvider = ({ children }) => {
       setSearchUserCci(response.data.cciCode);
       setSearchUserAccNumber(response.data.accountNumber);
       setSearchUserDni(response.data.owner);
-      setSearchUserFound(true);
     } catch (error) {
       console.log(error);
       if(error?.response.status === 404){
-        console.log("usuario no encontrado");
         setSearchUserNotFound(true);
+        setSearchUserLoader(false);
       }
-    } finally{
-      setSearchUserLoader(false);
-    }
+    } 
   };
 
   const searchDataUser = async () => {
@@ -237,6 +256,8 @@ const AccountProvider = ({ children }) => {
       setSearchUserName(userName)
       setSearchLastUserName(lastName)
       setSearchUserImage(image);
+      setSearchUserFound(true);
+      setSearchUserLoader(false);
     } catch (error) {
       console.log(error);
     }
@@ -263,6 +284,7 @@ const AccountProvider = ({ children }) => {
         },
       });
       console.log("make transference", response);
+      setSuccesstransference(true);
     }catch(error){
       console.log(error);
     } finally{
@@ -289,11 +311,10 @@ const AccountProvider = ({ children }) => {
     searchUserImage,
     searchUserLoader,
     searchUserFound,
-    setSearchUserFound,
     searchUserNotFound,
-    setSearchUserNotFound,
     makeTransference,
     transferenceLoader,
+    resetSearchUser,
   };
 
   return (
