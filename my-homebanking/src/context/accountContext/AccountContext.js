@@ -94,7 +94,9 @@ const AccountProvider = ({ children }) => {
         let obj = {
           id: response.data[e]._id,
           accountNumber: response.data[e].accountNumber,
+          balance: response.data[e].balance,
           currencyText: currencyObj.currencyText,
+          currencySymbol: currencyObj.currencySymbol,
         };
         console.log(obj);
         setAllAccountsByUser((allAccountsByUser) => [
