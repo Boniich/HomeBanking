@@ -1,9 +1,5 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import { ButtonsContainer } from "../../../../theme/buttons/buttonContainer/buttonContainer";
-import {
-  ComeBackToSiteButton,
-  MakeNewTransaction,
-} from "../../../../theme/buttons/buttons";
+import { getDate } from "../../../../services/commonFunctions/getDate/getDate";
 import { Caption } from "../../../../theme/caption/caption";
 import { primaryColor } from "../../../../theme/colors/colors";
 import { HeadingBold5 } from "../../../../theme/heading/heading";
@@ -21,10 +17,11 @@ import { TransferenceButtons } from "./transferenceButtons/TransferenceButtons";
 export const TransferencePopup = ({
   children,
   amount,
-  userName,
-  date,
-  tranfToAnotherAccountURL,
+  name,
+  lastName,
+  open,
 }) => {
+  const date = getDate();
   return (
     <Popup
       action={children}
@@ -38,6 +35,7 @@ export const TransferencePopup = ({
       shadow={shadownMD}
       showHeader={false}
       closeIcon={false}
+      open={open}
     >
       <ModalSubContent changeGap marginTop="33px">
         <ModalTextAndIcons
@@ -63,16 +61,11 @@ export const TransferencePopup = ({
             ></CheckIcon>
           </BackgroundIcon>
           <ParagraphMedium2>Enviaste</ParagraphMedium2>
-          {/* amount prop */}
-          <HeadingBold5>$900.00</HeadingBold5>
-          {/* username prop */}
-          <ParagraphSemibold3>Danee Woart</ParagraphSemibold3>
-          {/* date prop */}
-          <Caption>28 Feb 2022 - 05:43pm</Caption>
+          <HeadingBold5>{amount}</HeadingBold5>
+          <ParagraphSemibold3>{name} {lastName}</ParagraphSemibold3>
+          <Caption>{date}</Caption>
         </ModalTextAndIcons>
-        <TransferenceButtons
-          tranfToAnotherAccountURL={tranfToAnotherAccountURL}
-        />
+        <TransferenceButtons/>
       </ModalSubContent>
     </Popup>
   );
