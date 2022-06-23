@@ -1,5 +1,4 @@
 import React from "react";
-import { AccountCard } from "../../../../common/accountCard/AccountCard";
 import { TransferenceForm } from "../commonTransferenceComponents/TransferenceForm/TransferenceForm";
 
 export const MakeTransferenceToMyAccount = () => {
@@ -7,7 +6,7 @@ export const MakeTransferenceToMyAccount = () => {
   const largeNavText = "Transferencia a cuenta propia";
   return (
     <TransferenceForm shortNavText={shortNavText} largeNavText={largeNavText}>
-      <AccountCard />
+      {/* select especial que contiene las cuentas del usuario */}
     </TransferenceForm>
   );
 };
