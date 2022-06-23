@@ -1,6 +1,5 @@
 import React, { createRef, useContext, useState } from 'react';
 import AccountContext from '../../../../../../context/accountContext/AccountContext';
-import { getDate } from '../../../../../../services/commonFunctions/getDate/getDate';
 import { Button } from '../../../../../../theme/buttons/buttons';
 import { Hr } from '../../../../../../theme/hr/hr';
 import {
@@ -21,11 +20,14 @@ import {
 	TransactionContent,
 	TransactionForm,
 	MotiveInput,
+	DropdownContent,
+	MsgErrorContainer,
 } from './styleTransferenceForm';
 
 export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
 	const [amount, setAmount] = useState({ amount: '' });
 	const [motive, setMotive] = useState({ motive: '' });
+	const [notEnoughBalanceError, setNotEnoughBalanceError] = useState(false);
 	const [buttonIsDisable, setButtonIsDisable] = useState(true);
 	const ref = createRef();
 	console.log(amount);
@@ -47,6 +49,14 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
 		amount.amount.length !== 0 && motive.motive.length !== 0
 			? setButtonIsDisable(false)
 			: setButtonIsDisable(true);
+
+	    if(amount.amount > balance)  {
+			setButtonIsDisable(true);
+			setNotEnoughBalanceError(true);
+		}else{
+			setButtonIsDisable(false);
+			setNotEnoughBalanceError(false);
+		}
 	};
 
 	const handleChange = e => {
@@ -104,14 +114,23 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
 					</AmountBox>
 					<AccountContainer>
 						<AccountContent>
-							<ParagraphSemibold2>Cuenta de cargo</ParagraphSemibold2>
-							<Dropdown
-								accountNumber={accountNumber}
-								currency={currency}
-								balance={balance}
-								allAccountsByUser={allAccountsByUser}
-								bringCurrentAccount={bringCurrentAccount}
-							/>
+							<DropdownContent>
+								<ParagraphSemibold2>Cuenta de cargo</ParagraphSemibold2>
+								<Dropdown
+									accountNumber={accountNumber}
+									currency={currency}
+									balance={balance}
+									allAccountsByUser={allAccountsByUser}
+									bringCurrentAccount={bringCurrentAccount}
+								/>
+							</DropdownContent>
+							{notEnoughBalanceError && (
+								<MsgErrorContainer>
+									<ParagraphMedium3>
+										No cuentas con saldo suficiente
+									</ParagraphMedium3>
+								</MsgErrorContainer>
+							)}
 						</AccountContent>
 						<AccountContent>
 							<ParagraphSemibold2>Cuenta de destino</ParagraphSemibold2>

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Button } from '../../../../../../theme/buttons/buttons';
-import { neutralColor } from '../../../../../../theme/colors/colors';
+import { errorColor, neutralColor } from '../../../../../../theme/colors/colors';
 import {
 	ParagraphMedium3,
 	ParagraphSemibold2,
@@ -48,7 +48,6 @@ const AmountBox = styled.div`
 `;
 
 const AmountContent = styled.div`
-	/* height: 100%; */
 	display: flex;
 	gap: 8px;
 	flex-direction: column;
@@ -106,12 +105,26 @@ const AccountContainer = styled.div`
 const AccountContent = styled.div`
 	display: flex;
 	flex-direction: column;
+	gap: 8px;
+
+
+`;
+
+const DropdownContent = styled.div`
+	display: flex;
+	flex-direction: column;
 	gap: 16px;
 
 	${ParagraphSemibold2} {
 		color: ${neutralColor.neutral600};
 	}
 `;
+
+const MsgErrorContainer = styled.span`
+	${ParagraphMedium3}{
+		color: ${errorColor.error600}
+	}
+`
 
 const MotiveContainer = styled.div`
 	display: flex;
@@ -148,6 +161,7 @@ export {
 	AccountContainer,
 	AccountContent,
 	MotiveContainer,
-	// Bar,
+	DropdownContent,
+	MsgErrorContainer,
 	MotiveInput,
 };
