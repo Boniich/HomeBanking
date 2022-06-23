@@ -38,6 +38,8 @@ const AccountProvider = ({ children }) => {
 	const [successTransference, setSuccesstransference] = useState(false);
 	// const [failedTransference, setFailedTransference] = useState(false);
 
+  const [updateDataAfterTransf, setUpdateDataAfterTransf] = useState(false);
+
 	const [currency, setCurrency] = useState({
 		currencyText: '',
 		currencySymbol: '',
@@ -70,6 +72,8 @@ const AccountProvider = ({ children }) => {
 	};
 
 	const removeModalFromOldTransference = () => setSuccesstransference(false);
+
+  
 
 	const allAccountByUserURL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_USER_ACCOUNTS_ENDPOINT}`;
 	const findAccountURL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_FIND_ACCOUNT_ENDPOINT}`;
@@ -138,7 +142,7 @@ const AccountProvider = ({ children }) => {
 
 	useEffect(() => {
 		accNumber !== null && bringCurrentAccount(accNumber);
-	}, [accNumber]);
+	}, [accNumber,updateDataAfterTransf]);
 
 	const bringDataUser = async () => {
 		try {
@@ -185,7 +189,7 @@ const AccountProvider = ({ children }) => {
 		if (cci !== null) {
 			bringTransferenceByUser();
 		}
-	}, [cci]);
+	}, [cci,updateDataAfterTransf]);
 
 	// search user for transference
 
@@ -256,6 +260,7 @@ const AccountProvider = ({ children }) => {
 				headers
 			);
 			console.log('make transference', response);
+      setUpdateDataAfterTransf(!updateDataAfterTransf);
 			setSuccesstransference(true);
 		} catch (error) {
 			console.log(error);
