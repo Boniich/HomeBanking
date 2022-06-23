@@ -1,9 +1,13 @@
-import { useState } from "react";
+import React,{useState } from "react";
 import styled from "styled-components";
-import { primaryColor } from "../../../theme/colors/colors";
+import { neutralColor, primaryColor } from "../../../theme/colors/colors";
 import { AccountTypeLogo, LogoOnAccountTypeButton } from "../accountCard/styleAccountCard";
 import logo from "../../../assets/logo.svg";
-import { ParagraphMedium3, ParagraphSemibold2 } from "../../../theme/paragraph/paragraph";
+import { ParagraphMedium3, ParagraphSemibold2, ParagraphSemibold3 } from "../../../theme/paragraph/paragraph";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
+import { shadownMD } from "../../../theme/shadown/shadown";
+import { Logo } from "../logo/Logo";
 const WrapperDropdown = styled.div`
   display: flex;
   min-height: 78px;
@@ -33,20 +37,77 @@ flex-direction: column;
 `
 
 const DropdownList = styled.ul`
+  /* original width: 312px - 32px (16 + 16) of padding = 280px */
+  width: 280px;
+  display: flex;
+  flex-direction:column;
+  gap: 16px;
   position: absolute;
   top: 70px;
   background: #fff;
   z-index: 100;
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-  padding: 0;
+  box-shadow: ${shadownMD};
+  padding: 16px;
   margin: 0;
-  width: 100%;
   margin-top: 20px;
+  border-radius: 8px;
+
+  @media screen and (min-width: 744px){
+    /* original width: 404px - 48px (24 + 24) of padding = 356px */
+    width: 356px;
+    padding: 24px;
+    
+  }
 `;
 
-const Dropdown = ({ accountNumber, currency }) => {
+const DropdownArrowContainer = styled.div`
+display: flex;
+align-items: center;
+gap: 9px;
+
+${ParagraphSemibold3}{
+  color: ${neutralColor.neutral800};
+}
+`;
+
+const DropdownArrow = styled(FontAwesomeIcon)`
+width: 12px;
+height: 12px;
+color: ${neutralColor.neutral800};
+`;
+
+const DropdownItemList = styled.li`
+display: flex;
+align-items: center;
+justify-content: space-between;
+background: ${neutralColor.neutral100};
+padding: 16px;
+border: 1px solid ${neutralColor.neutral300};
+border-radius: 4px;
+cursor: pointer;
+`;
+
+
+const Dropdown = ({ accountNumber, currency, balance, allAccountsByUser, bringCurrentAccount }) => {
   const [open, setOpen] = useState(false);
   const toggle = () => setOpen(!open);
+
+  const accountNumberInStorage = sessionStorage.getItem("accNumber");
+
+  const userAccounts = allAccountsByUser.filter((el) => el.accountNumber !== accountNumberInStorage);
+  console.log(userAccounts);
+
+
+  const changeAccount = (number) =>{
+    if(accountNumberInStorage !== number){
+      console.log("entra");
+      console.log(number);
+      bringCurrentAccount(number);
+      sessionStorage.setItem("accNumber",number);
+      setOpen(false);
+    }
+  }
+
 
   return (
     <WrapperDropdown className="dd-wrapper">
@@ -65,17 +126,30 @@ const Dropdown = ({ accountNumber, currency }) => {
         <ParagraphSemibold2>{currency.currencyText}</ParagraphSemibold2>
         <ParagraphMedium3>{accountNumber}</ParagraphMedium3>
         </AccountInfoCantainer>
-
         </HeaderContent>
-        <div className="dd-header__action">
-          <p>{open ? "Close" : "Open"}</p>
-        </div>
+        <DropdownArrowContainer>
+          <ParagraphSemibold3>{currency.currencySymbol}{balance}</ParagraphSemibold3>
+          {open ?  <DropdownArrow icon={faCaretUp}/> : <DropdownArrow icon={faCaretDown}/>}
+        </DropdownArrowContainer>
       </HeaderDropdown>
       {/*  */}
 
       {open && (
         <DropdownList>
-          <li>{accountNumber}</li>
+          {userAccounts.map((el)=>(
+            <DropdownItemList key={el.id} onClick={() => changeAccount(el.accountNumber)}>
+              <HeaderContent>
+            <AccountTypeLogo>
+              <LogoOnAccountTypeButton src={logo} />
+            </AccountTypeLogo>
+            <AccountInfoCantainer>
+              <ParagraphSemibold3>{el.currencyText}</ParagraphSemibold3>
+             <ParagraphMedium3>{el.accountNumber}</ParagraphMedium3>
+            </AccountInfoCantainer>
+            </HeaderContent>
+            <ParagraphSemibold3>{el.currencySymbol}{el.balance}</ParagraphSemibold3>
+            </DropdownItemList>
+          ))}
         </DropdownList>
       )}
     </WrapperDropdown>
