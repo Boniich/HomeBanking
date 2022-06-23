@@ -39,7 +39,7 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
     transferenceLoader,
     searchUserName,
     searchUserLastName,
-    successTransference 
+    successTransference
   }  = useContext(AccountContext);
 
   const handleKeyUp = () => {
@@ -120,7 +120,6 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
               {transferenceLoader ? <Loader circleColor="#fff"/> : "Confirmar transferencia"}
             </Button>
            <TransferencePopup 
-           tranfToAnotherAccountURL="/make_transference_to_another_user/enter_number_account" 
            open={successTransference} 
            amount={amount.amount}
            name={searchUserName}
