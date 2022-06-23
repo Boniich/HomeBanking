@@ -1,13 +1,13 @@
-import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
 const IsLogged = () => {
-  const location = useLocation();
+	const location = useLocation();
 
-  return sessionStorage.getItem("token") ? (
-    <Navigate to="/" state={{ from: location }} replace />
-  ) : (
-    <Outlet />
-  );
+	return sessionStorage.getItem('token') ? (
+		<Navigate to='/' state={{ from: location }} replace />
+	) : (
+		<Outlet />
+	);
 };
 
 export default IsLogged;
