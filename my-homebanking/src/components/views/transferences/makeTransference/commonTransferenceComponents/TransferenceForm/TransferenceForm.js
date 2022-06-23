@@ -27,13 +27,14 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
   const [amount, setAmount] = useState({ amount: "" });
   const [motive, setMotive] = useState({ motive: ""});
   const [buttonIsDisable, setButtonIsDisable] = useState(true);
-  const [openModal, setOpenModal] = useState(true);
   const ref = createRef();
   console.log(amount);
   console.log(motive);
   const { 
     accountNumber, 
     currency,
+    balance,
+    bringCurrentAccount,
     allAccountsByUser, 
     makeTransference,
     transferenceLoader,
@@ -104,7 +105,13 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
           <AccountContainer>
             <AccountContent>
               <ParagraphSemibold2>Cuenta de cargo</ParagraphSemibold2>
-              <Dropdown accountNumber={accountNumber} currency={currency} allAccountsByUser={allAccountsByUser}/>
+              <Dropdown 
+              accountNumber={accountNumber} 
+              currency={currency} 
+              balance={balance} 
+              allAccountsByUser={allAccountsByUser} 
+              bringCurrentAccount={bringCurrentAccount}
+              />
             </AccountContent>
             <AccountContent>
               <ParagraphSemibold2>Cuenta de destino</ParagraphSemibold2>
