@@ -77,7 +77,10 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		makeTransference(motive.motive, amount.amount);
+		if((motive.motive.length !== 0 && amount.amount.length !== 0) && (amount.amount < balance)){
+			makeTransference(motive.motive, amount.amount);
+		}
+		
 	};
 
 	return (
