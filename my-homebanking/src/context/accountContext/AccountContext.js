@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { createContext, useEffect, useState } from 'react';
+import { showNotification } from '../../components/common/notification/showNotification';
 import { handleCurrency } from '../../services/commonFunctions/handleCurrency/handleCurrency';
 
 const AccountContext = createContext();
@@ -313,6 +314,9 @@ const AccountProvider = ({ children }) => {
 			setSuccesstransference(true);
 		} catch (error) {
 			console.log(error);
+			if (error?.response.status === 500) {
+				showNotification("Error al transferir","Ups! A ocurrido un error. Intentalo mas tarde", "#7C2D12", true)
+			}
 		} finally {
 			setTransferenceLoader(false);
 		}
