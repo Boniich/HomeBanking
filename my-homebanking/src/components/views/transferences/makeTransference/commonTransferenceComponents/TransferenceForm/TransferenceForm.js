@@ -9,6 +9,7 @@ import {
 import Dropdown from '../../../../../common/dropdown/Dropdown';
 import { Loader } from '../../../../../common/loader/Loader';
 import { SecondaryNav } from '../../../../../common/navs/secondaryNav/SecondaryNav';
+import { Notification } from '../../../../../common/notification/Notification';
 import { TransferencePopup } from '../../../../../common/popup/transferencePopup/TransferencePopup';
 import {
 	AccountContainer,
@@ -172,6 +173,7 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
 					></TransferencePopup>
 				</TransactionContent>
 			</TransactionForm>
+			<Notification background='#FFF7ED' border='#FFF7ED' />
 		</>
 	);
 };
