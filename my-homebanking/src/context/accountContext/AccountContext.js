@@ -93,6 +93,7 @@ const AccountProvider = ({ children }) => {
 	const transferencesByUserURL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_TRANSACTION_ACCOUNT_ENDPOINT}`;
 	const makeTransferenceURL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_MAKE_A_TRANSFERENCE}`;
 	const bringAllAccountByUser = async () => {
+		setAllAccountsByUser([]);
 		try {
 			const response = await axios.post(
 				allAccountByUserURL,
@@ -128,7 +129,7 @@ const AccountProvider = ({ children }) => {
 
 	useEffect(() => {
 		bringAllAccountByUser();
-	}, []);
+	}, [successTransference]);
 
 	const bringCurrentAccount = async accNumber => {
 		try {
