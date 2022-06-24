@@ -7,11 +7,12 @@ export const MakeTransferenceToMyAccount = () => {
 	const shortNavText = 'A cuenta propia';
 	const largeNavText = 'Transferencia a cuenta propia';
 
-	const {bringOwnAccountToTransfer, searchUserAccNUmber, anotherCurrencyAcc} = useContext(AccountContext);
+	const {bringOwnAccountToTransfer,isReadyAllAcountsByUser, searchUserAccNUmber, anotherCurrencyAcc} = useContext(AccountContext);
 
 	useEffect(() =>{
-		bringOwnAccountToTransfer();
-	},[])
+		isReadyAllAcountsByUser && bringOwnAccountToTransfer(); 
+		
+	},[isReadyAllAcountsByUser])
 
 	console.log(searchUserAccNUmber);
 
