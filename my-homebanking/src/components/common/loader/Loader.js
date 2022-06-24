@@ -1,3 +1,4 @@
+import React from 'react';
 import { Svg } from './styleLoader';
 
 export const Loader = ({ circleColor }) => {

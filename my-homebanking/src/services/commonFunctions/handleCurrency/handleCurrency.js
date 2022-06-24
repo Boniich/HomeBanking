@@ -5,7 +5,7 @@
  */
 
 export const handleCurrency = currency => {
-	let CurrencyType = {
+	const CurrencyType = {
 		currencyText: '',
 		currencySymbol: '',
 	};

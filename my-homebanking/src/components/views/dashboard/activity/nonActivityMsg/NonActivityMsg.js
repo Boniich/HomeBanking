@@ -1,3 +1,4 @@
+import React from 'react';
 import { faRightLeft } from '@fortawesome/free-solid-svg-icons';
 import { ParagraphMedium2 } from '../../../../../theme/paragraph/paragraph';
 import {

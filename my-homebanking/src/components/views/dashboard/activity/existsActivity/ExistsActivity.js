@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import AccountContext from '../../../../../context/accountContext/AccountContext';
@@ -71,9 +71,9 @@ export const Data = ({ transference }) => {
 	const { cci } = useContext(AccountContext);
 	const originCciCode = transference.origin;
 	const destinyCciCode = transference.destiny;
-	const token = localStorage.getItem('token');
+	const token = sessionStorage.getItem('token');
 
-	let url = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_FIND_ACCOUNT_ENDPOINT}`;
+	const url = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_FIND_ACCOUNT_ENDPOINT}`;
 	const bringOriginAccount = async () => {
 		console.log(cci);
 		try {
@@ -84,7 +84,7 @@ export const Data = ({ transference }) => {
 				},
 				{
 					headers: {
-						'stp-token': token,
+						token,
 					},
 				}
 			);
@@ -106,7 +106,7 @@ export const Data = ({ transference }) => {
 				},
 				{
 					headers: {
-						'stp-token': token,
+						token,
 					},
 				}
 			);
@@ -126,17 +126,17 @@ export const Data = ({ transference }) => {
 		}
 	}, []);
 
-	let dataUserUrl = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_USER_FIND_ENDPOINT}`;
+	const dataUserUrl = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_USER_FIND_ENDPOINT}`;
 	const renderOriginUser = async () => {
 		try {
 			const response = await axios.post(
 				dataUserUrl,
 				{
-					dni: dni,
+					dni,
 				},
 				{
 					headers: {
-						'stp-token': token,
+						token,
 					},
 				}
 			);
@@ -155,11 +155,11 @@ export const Data = ({ transference }) => {
 			const response = await axios.post(
 				dataUserUrl,
 				{
-					dni: dni,
+					dni,
 				},
 				{
 					headers: {
-						'stp-token': token,
+						token,
 					},
 				}
 			);

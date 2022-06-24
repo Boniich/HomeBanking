@@ -7,14 +7,12 @@ import { HeadingSemiBold5 } from '../../../../../../theme/heading/heading';
 import { ParagraphMedium3 } from '../../../../../../theme/paragraph/paragraph';
 import { shadownMD, shadownXS } from '../../../../../../theme/shadown/shadown';
 import { SecondaryNav } from '../../../../../common/navs/secondaryNav/SecondaryNav';
-import noUserImage from '../../../../../../assets/noUserImage.png';
 import { UserResult } from '../../commonTransferenceComponents/userResult/UserResult';
 import { Input } from '../../../../../../theme/inputs/input';
 import { InputContainer } from '../../../../../../theme/inputs/inputContainer/inputContainer';
 import React, { useContext, useEffect, useState } from 'react';
 import AccountContext from '../../../../../../context/accountContext/AccountContext';
 import { Loader } from '../../../../../common/loader/Loader';
-import { Button } from '../../../../../../theme/buttons/buttons';
 import { Link } from 'react-router-dom';
 const EnterNumberSection = styled.section`
 	display: flex;
@@ -108,7 +106,7 @@ export const EnterNumberAccountView = () => {
 
 	const handleChange = e => {
 		setMakeCallToApi(false);
-		let length = e.target.value.length;
+		const length = e.target.value.length;
 
 		setAccNumber({ ...accNumber, [e.target.name]: e.target.value });
 

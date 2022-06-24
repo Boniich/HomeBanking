@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import { neutralColor } from '../../../../theme/colors/colors';
 import { HeadingBold5 } from '../../../../theme/heading/heading';

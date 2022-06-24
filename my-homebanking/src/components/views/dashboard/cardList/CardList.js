@@ -1,3 +1,4 @@
+import React from 'react';
 import {
 	ParagraphMedium2,
 	ParagraphSemibold2,

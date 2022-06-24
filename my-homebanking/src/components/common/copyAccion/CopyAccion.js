@@ -1,3 +1,4 @@
+import React from 'react';
 import { faCopy } from '@fortawesome/free-solid-svg-icons';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import { CopyButton } from '../../views/dashboard/accountSummary/styleAccountSummary';

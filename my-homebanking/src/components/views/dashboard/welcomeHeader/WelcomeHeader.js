@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { useContext, useEffect, useState } from 'react';
+
+import React, { useContext} from 'react';
 import AccountContext from '../../../../context/accountContext/AccountContext';
 import { HeadingSemiBold5 } from '../../../../theme/heading/heading';
 import { ParagraphMedium2 } from '../../../../theme/paragraph/paragraph';

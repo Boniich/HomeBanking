@@ -1,3 +1,4 @@
+import React from 'react';
 import { faCircleInfo, faXmark } from '@fortawesome/free-solid-svg-icons';
 import toast from 'react-hot-toast';
 import { ParagraphSemibold3 } from '../../../theme/paragraph/paragraph';

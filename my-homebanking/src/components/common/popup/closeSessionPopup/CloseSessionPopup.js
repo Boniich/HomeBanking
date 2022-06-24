@@ -1,3 +1,4 @@
+import React from 'react';
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import { neutralColor } from '../../../../theme/colors/colors';
 import { HeadingBold5 } from '../../../../theme/heading/heading';

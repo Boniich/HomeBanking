@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import React,{ useContext, useEffect, useState } from 'react';
 import AccountContext from '../../../../context/accountContext/AccountContext';
 import { CircleLoader } from '../../../common/circleLoader/CircleLoader';
 import { ExistsActivity } from './existsActivity/ExistsActivity';

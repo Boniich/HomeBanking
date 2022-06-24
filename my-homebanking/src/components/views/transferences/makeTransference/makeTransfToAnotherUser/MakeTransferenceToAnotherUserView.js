@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import React,{ useContext } from 'react';
 import AccountContext from '../../../../../context/accountContext/AccountContext';
 import { TransferenceForm } from '../commonTransferenceComponents/TransferenceForm/TransferenceForm';
 import { UserResult } from '../commonTransferenceComponents/userResult/UserResult';

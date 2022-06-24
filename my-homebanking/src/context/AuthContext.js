@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import React,{ createContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import bcryptjs from 'bcryptjs';
 import axios from 'axios';
@@ -26,7 +26,7 @@ const AuthProvider = ({ children }) => {
 
 	const navigate = useNavigate();
 
-	let url = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_AUTH_ENDPOINT}`;
+	const url = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_AUTH_ENDPOINT}`;
 	const handleChange = e => {
 		setInput({
 			...input,

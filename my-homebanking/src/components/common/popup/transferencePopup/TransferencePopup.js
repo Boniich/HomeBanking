@@ -1,3 +1,4 @@
+import React from 'react';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { getDate } from '../../../../services/commonFunctions/getDate/getDate';
 import { Caption } from '../../../../theme/caption/caption';

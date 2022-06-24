@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { neutralColor } from '../../../../../../theme/colors/colors';
 import {
-	ParagraphMedium3,
 	ParagraphSemibold2,
 } from '../../../../../../theme/paragraph/paragraph';
 import { ArrowIcon } from '../../../../../../theme/styledIcon/styledIcon';

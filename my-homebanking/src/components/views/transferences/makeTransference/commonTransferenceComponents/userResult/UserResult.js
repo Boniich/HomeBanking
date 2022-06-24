@@ -1,3 +1,4 @@
+import React from 'react';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import {
 	ParagraphMedium3,
@@ -9,7 +10,6 @@ import {
 	UserImage,
 	UserResultContainer,
 } from './styleUserResult';
-import noUserImage from '../../../../../../assets/noUserImage.png';
 
 export const UserResult = ({ ...props }) => {
 	return (

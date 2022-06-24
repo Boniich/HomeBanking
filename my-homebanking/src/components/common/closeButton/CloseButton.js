@@ -1,3 +1,4 @@
+import React from 'react';
 import { faX } from '@fortawesome/free-solid-svg-icons';
 import { CloseIcon } from '../../../theme/styledIcon/styledIcon';
 

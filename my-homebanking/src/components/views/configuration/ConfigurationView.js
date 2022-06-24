@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import React,{ useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { ButtonsContainer } from '../../../theme/buttons/buttonContainer/buttonContainer';
 import { Button, ConfigButton } from '../../../theme/buttons/buttons';
@@ -117,7 +117,7 @@ export const ConfigurationView = () => {
 	});
 
 	useEffect(() => {
-		setDataUser({ name: name, lastName: lastName, image: userImage });
+		setDataUser({ name, lastName, image: userImage });
 	}, [name]);
 
 	useEffect(() => {

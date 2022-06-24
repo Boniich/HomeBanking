@@ -1,3 +1,4 @@
+import React from 'react';
 import { ButtonsContainer } from '../../../../../theme/buttons/buttonContainer/buttonContainer';
 import {
 	KeepSessionActiveButton,
