@@ -16,6 +16,10 @@ const AccountProvider = ({ children }) => {
 	const [allAccountsByUser, setAllAccountsByUser] = useState([]);
 	const [tranferences, setTranferences] = useState(null);
 
+	// for reload in transference
+
+	const [isReadyAllAcountsByUser,setIsReadyAllAcountsByUser] = useState(false);
+
 	// search a user for make a transference
 
 	// find acount endpoint
@@ -25,14 +29,19 @@ const AccountProvider = ({ children }) => {
 	const [searchUserAccNUmber, setSearchUserAccNumber] = useState('');
 	const [searchUserDni, setSearchUserDni] = useState(null);
 
-	// 
 
-	const [anotherCurrencyAcc, setAnotherCurrencyAcc] = useState('');
 
 	// find user endpoint
 	const [searchUserImage, setSearchUserImage] = useState('');
 	const [searchUserName, setSearchUserName] = useState('');
 	const [searchUserLastName, setSearchLastUserName] = useState('');
+
+	// transfer to own accounts
+
+		const [anotherCurrencyAcc, setAnotherCurrencyAcc] = useState('');
+		const [isTheSameAccount, setIsTheSameAccount] = useState(false);
+
+
 	// loader for search user
 	const [searchUserLoader, setSearchUserLoader] = useState(false);
 	// loader meanwhile at transference is in procress
@@ -110,6 +119,7 @@ const AccountProvider = ({ children }) => {
 				};
 				console.log(obj);
 				setAllAccountsByUser(allAccountsByUser => [...allAccountsByUser, obj]);
+				setIsReadyAllAcountsByUser(true);
 			}
 		} catch (error) {
 			console.log(error);
@@ -202,6 +212,7 @@ const AccountProvider = ({ children }) => {
 	// search user for transference
 
 	const searchAccountUser = async accNumber => {
+		setIsTheSameAccount(false);
 		setSearchUserLoader(true);
 		try {
 			const response = await axios.post(
@@ -255,15 +266,27 @@ const AccountProvider = ({ children }) => {
 	// bring own account to transfer
 
 	const bringOwnAccountToTransfer = () =>{
+		setIsTheSameAccount(false);
 
 		if(allAccountsByUser.length > 1){
+			// crash si se si tiene una sola cuenta
+			//  el useffect se ejecuta dos veces, generando un crash
+			// al no encontrar el currencyText
+			// esto NO deberia pasar en produccion
 			const account = allAccountsByUser.filter( el => el.accountNumber !== accNumber);
 			console.log("account for destiny select: ",account);
 			setAnotherCurrencyAcc(account[0].currencyText);
 			setSearchUserCci(account[0].cciCode);
 			setSearchUserAccNumber(account[0].accountNumber);
-		}
+		} else{
+			console.log("entra");
+			const ownCurrency = currency.currencyText; 
+		 	setAnotherCurrencyAcc(ownCurrency);
+		 	setSearchUserAccNumber(accNumber);
+			setIsTheSameAccount(true);
+		 }
 
+	
 	}
 
 	// transference
@@ -317,6 +340,8 @@ const AccountProvider = ({ children }) => {
 		removeModalFromOldTransference,
 		bringOwnAccountToTransfer,
 		anotherCurrencyAcc,
+		isReadyAllAcountsByUser,
+		isTheSameAccount,
 	};
 
 	return (
