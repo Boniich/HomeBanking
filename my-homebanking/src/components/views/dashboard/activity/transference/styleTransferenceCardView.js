@@ -1,8 +1,5 @@
 import styled from 'styled-components';
-import {
-	errorColor,
-	successColor,
-} from '../../../../../theme/colors/colors';
+import { errorColor, successColor } from '../../../../../theme/colors/colors';
 import { ParagraphSemibold2 } from '../../../../../theme/paragraph/paragraph';
 
 const FigureTransf = styled.figure`

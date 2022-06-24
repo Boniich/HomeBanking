@@ -1,4 +1,4 @@
-import React,{ useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { ButtonsContainer } from '../../../theme/buttons/buttonContainer/buttonContainer';
 import { Button, ConfigButton } from '../../../theme/buttons/buttons';

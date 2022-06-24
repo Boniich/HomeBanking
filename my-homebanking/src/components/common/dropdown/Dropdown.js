@@ -7,7 +7,7 @@ import {
 } from '../accountCard/styleAccountCard';
 import logo from '../../../assets/logo.svg';
 import {
-  ParagraphMedium2,
+	ParagraphMedium2,
 	ParagraphMedium3,
 	ParagraphSemibold2,
 	ParagraphSemibold3,

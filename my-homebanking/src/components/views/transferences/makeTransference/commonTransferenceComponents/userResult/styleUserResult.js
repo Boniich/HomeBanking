@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import { neutralColor } from '../../../../../../theme/colors/colors';
-import {
-	ParagraphSemibold2,
-} from '../../../../../../theme/paragraph/paragraph';
+import { ParagraphSemibold2 } from '../../../../../../theme/paragraph/paragraph';
 import { ArrowIcon } from '../../../../../../theme/styledIcon/styledIcon';
 
 const UserResultContainer = styled.div.attrs(props => ({

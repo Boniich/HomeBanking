@@ -38,7 +38,7 @@ const AccountProvider = ({ children }) => {
 	const [successTransference, setSuccesstransference] = useState(false);
 	// const [failedTransference, setFailedTransference] = useState(false);
 
-  const [updateDataAfterTransf, setUpdateDataAfterTransf] = useState(false);
+	const [updateDataAfterTransf, setUpdateDataAfterTransf] = useState(false);
 
 	const [currency, setCurrency] = useState({
 		currencyText: '',
@@ -73,8 +73,6 @@ const AccountProvider = ({ children }) => {
 
 	const removeModalFromOldTransference = () => setSuccesstransference(false);
 
-  
-
 	const allAccountByUserURL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_USER_ACCOUNTS_ENDPOINT}`;
 	const findAccountURL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_FIND_ACCOUNT_ENDPOINT}`;
 	const dataUserURL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_USER_FIND_ENDPOINT}`;
@@ -82,7 +80,11 @@ const AccountProvider = ({ children }) => {
 	const makeTransferenceURL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_MAKE_A_TRANSFERENCE}`;
 	const bringAllAccountByUser = async () => {
 		try {
-			const response = await axios.post(allAccountByUserURL,{email}, headers);
+			const response = await axios.post(
+				allAccountByUserURL,
+				{ email },
+				headers
+			);
 			console.log('all accounts be user', response);
 
 			// save account number of the first account of user
@@ -142,7 +144,7 @@ const AccountProvider = ({ children }) => {
 
 	useEffect(() => {
 		accNumber !== null && bringCurrentAccount(accNumber);
-	}, [accNumber,updateDataAfterTransf]);
+	}, [accNumber, updateDataAfterTransf]);
 
 	const bringDataUser = async () => {
 		try {
@@ -189,7 +191,7 @@ const AccountProvider = ({ children }) => {
 		if (cci !== null) {
 			bringTransferenceByUser();
 		}
-	}, [cci,updateDataAfterTransf]);
+	}, [cci, updateDataAfterTransf]);
 
 	// search user for transference
 
@@ -260,7 +262,7 @@ const AccountProvider = ({ children }) => {
 				headers
 			);
 			console.log('make transference', response);
-      setUpdateDataAfterTransf(!updateDataAfterTransf);
+			setUpdateDataAfterTransf(!updateDataAfterTransf);
 			setSuccesstransference(true);
 		} catch (error) {
 			console.log(error);

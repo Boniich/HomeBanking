@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import { Button } from '../../../../../../theme/buttons/buttons';
-import { errorColor, neutralColor } from '../../../../../../theme/colors/colors';
+import {
+	errorColor,
+	neutralColor,
+} from '../../../../../../theme/colors/colors';
 import {
 	ParagraphMedium3,
 	ParagraphSemibold2,
@@ -106,8 +109,6 @@ const AccountContent = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 8px;
-
-
 `;
 
 const DropdownContent = styled.div`
@@ -121,10 +122,10 @@ const DropdownContent = styled.div`
 `;
 
 const MsgErrorContainer = styled.span`
-	${ParagraphMedium3}{
-		color: ${errorColor.error600}
+	${ParagraphMedium3} {
+		color: ${errorColor.error600};
 	}
-`
+`;
 
 const MotiveContainer = styled.div`
 	display: flex;
