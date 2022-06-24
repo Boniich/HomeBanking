@@ -1,22 +1,44 @@
-import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
-import React,{useState} from "react";
-import { ParagraphMedium3, ParagraphSemibold2} from "../../../../theme/paragraph/paragraph";
-import { AccountTypeLogo, LogoOnAccountTypeButton } from "../../accountCard/styleAccountCard";
-import { AccountInfoCantainer, DropdownArrow, DropdownArrowContainer, DropdownList, HeaderContent, HeaderDropdown, WrapperDropdown } from "../Dropdown";
-import logo from "../../../../assets/logo.svg";
+import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
+import React, { useState } from 'react';
+import {
+	ParagraphMedium2,
+	ParagraphMedium3,
+	ParagraphSemibold2,
+	ParagraphSemibold3,
+} from '../../../../theme/paragraph/paragraph';
+import {
+	AccountTypeLogo,
+	LogoOnAccountTypeButton,
+} from '../../accountCard/styleAccountCard';
+import {
+	AccountInfoCantainer,
+	DropdownArrow,
+	DropdownArrowContainer,
+	DropdownItemList,
+	DropdownList,
+	HeaderContent,
+	HeaderDropdown,
+	WrapperDropdown,
+} from '../Dropdown';
+import logo from '../../../../assets/logo.svg';
 export const DestinyAccountSelect = ({
 	accountNumber,
-    currency,
+	currency,
+	allAccountsByUser,
+	changeDestiny,
 }) => {
 	const [open, setOpen] = useState(false);
 	const toggle = () => setOpen(!open);
 
-	// const accountNumberInStorage = sessionStorage.getItem('accNumber');
+	const accountNumberInStorage = sessionStorage.getItem('accNumber');
 
-	// const userAccounts = allAccountsByUser.filter(
-	// 	el => el.accountNumber !== accountNumberInStorage
-	// );
-	// console.log(userAccounts);
+	const userAccounts = allAccountsByUser.filter(
+		el =>
+			el.accountNumber !== accountNumber &&
+			el.accountNumber !== accountNumberInStorage
+	);
+	console.log(userAccounts);
+
 
 	return (
 		<WrapperDropdown>
@@ -43,15 +65,17 @@ export const DestinyAccountSelect = ({
 					)}
 				</DropdownArrowContainer>
 			</HeaderDropdown>
-			{/*  */}
-
 			{open && (
 				<DropdownList>
-					{/* {userAccounts.length > 0 ? (
+					{userAccounts.length > 0 ? (
 						userAccounts.map(el => (
 							<DropdownItemList
 								key={el.id}
-								
+								onClick={() => changeDestiny(
+									el.currencyText,
+									el.accountNumber,
+									el.cci
+								)}
 							>
 								<HeaderContent>
 									<AccountTypeLogo>
@@ -62,15 +86,11 @@ export const DestinyAccountSelect = ({
 										<ParagraphMedium3>{el.accountNumber}</ParagraphMedium3>
 									</AccountInfoCantainer>
 								</HeaderContent>
-								<ParagraphSemibold3>
-									{el.currencySymbol}
-									{el.balance}
-								</ParagraphSemibold3>
 							</DropdownItemList>
 						))
 					) : (
 						<ParagraphMedium2>No dispones de otras cuentas</ParagraphMedium2>
-					)} */}
+					)}
 				</DropdownList>
 			)}
 		</WrapperDropdown>
