@@ -43,10 +43,11 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
 		searchUserName,
 		searchUserLastName,
 		successTransference,
+		isTheSameAccount,
 	} = useContext(AccountContext);
 
 	const handleKeyUp = () => {
-		amount.amount.length !== 0 && motive.motive.length !== 0
+		amount.amount.length !== 0 && motive.motive.length !== 0 && !isTheSameAccount
 			? setButtonIsDisable(false)
 			: setButtonIsDisable(true);
 
@@ -80,7 +81,8 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
 		if (
 			motive.motive.length !== 0 &&
 			amount.amount.length !== 0 &&
-			amount.amount < balance
+			amount.amount < balance &&
+			!isTheSameAccount
 		) {
 			makeTransference(motive.motive, amount.amount);
 		}
@@ -143,6 +145,11 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
 								<ParagraphSemibold2>Cuenta de destino</ParagraphSemibold2>
 								{children}
 							</DropdownContent>
+							{isTheSameAccount && <MsgErrorContainer>
+									<ParagraphMedium3>
+										No puedes transferir a una misma cuenta
+									</ParagraphMedium3>
+							</MsgErrorContainer>}
 						</AccountContent>
 					</AccountContainer>
 					<Button
