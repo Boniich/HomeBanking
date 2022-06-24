@@ -7,6 +7,7 @@ import {
 } from '../accountCard/styleAccountCard';
 import logo from '../../../assets/logo.svg';
 import {
+  ParagraphMedium2,
 	ParagraphMedium3,
 	ParagraphSemibold2,
 	ParagraphSemibold3,
@@ -154,26 +155,30 @@ const Dropdown = ({
 
 			{open && (
 				<DropdownList>
-					{userAccounts.map(el => (
-						<DropdownItemList
-							key={el.id}
-							onClick={() => changeAccount(el.accountNumber)}
-						>
-							<HeaderContent>
-								<AccountTypeLogo>
-									<LogoOnAccountTypeButton src={logo} />
-								</AccountTypeLogo>
-								<AccountInfoCantainer>
-									<ParagraphSemibold3>{el.currencyText}</ParagraphSemibold3>
-									<ParagraphMedium3>{el.accountNumber}</ParagraphMedium3>
-								</AccountInfoCantainer>
-							</HeaderContent>
-							<ParagraphSemibold3>
-								{el.currencySymbol}
-								{el.balance}
-							</ParagraphSemibold3>
-						</DropdownItemList>
-					))}
+					{userAccounts.length > 0 ? (
+						userAccounts.map(el => (
+							<DropdownItemList
+								key={el.id}
+								onClick={() => changeAccount(el.accountNumber)}
+							>
+								<HeaderContent>
+									<AccountTypeLogo>
+										<LogoOnAccountTypeButton src={logo} />
+									</AccountTypeLogo>
+									<AccountInfoCantainer>
+										<ParagraphSemibold3>{el.currencyText}</ParagraphSemibold3>
+										<ParagraphMedium3>{el.accountNumber}</ParagraphMedium3>
+									</AccountInfoCantainer>
+								</HeaderContent>
+								<ParagraphSemibold3>
+									{el.currencySymbol}
+									{el.balance}
+								</ParagraphSemibold3>
+							</DropdownItemList>
+						))
+					) : (
+						<ParagraphMedium2>No dispones de otras cuentas</ParagraphMedium2>
+					)}
 				</DropdownList>
 			)}
 		</WrapperDropdown>
