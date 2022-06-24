@@ -24,6 +24,11 @@ const AccountProvider = ({ children }) => {
 	const [searchUserCci, setSearchUserCci] = useState(null);
 	const [searchUserAccNUmber, setSearchUserAccNumber] = useState('');
 	const [searchUserDni, setSearchUserDni] = useState(null);
+
+	// 
+
+	const [anotherCurrencyAcc, setAnotherCurrencyAcc] = useState('');
+
 	// find user endpoint
 	const [searchUserImage, setSearchUserImage] = useState('');
 	const [searchUserName, setSearchUserName] = useState('');
@@ -98,6 +103,7 @@ const AccountProvider = ({ children }) => {
 				const obj = {
 					id: response.data[e]._id,
 					accountNumber: response.data[e].accountNumber,
+					cciCode: response.data[e].cciCode,
 					balance: response.data[e].balance,
 					currencyText: currencyObj.currencyText,
 					currencySymbol: currencyObj.currencySymbol,
@@ -246,6 +252,20 @@ const AccountProvider = ({ children }) => {
 		searchUserDni !== null && searchDataUser();
 	}, [searchUserDni]);
 
+	// bring own account to transfer
+
+	const bringOwnAccountToTransfer = () =>{
+
+		if(allAccountsByUser.length > 1){
+			const account = allAccountsByUser.filter( el => el.accountNumber !== accNumber);
+			console.log("account for destiny select: ",account);
+			setAnotherCurrencyAcc(account[0].currencyText);
+			setSearchUserCci(account[0].cciCode);
+			setSearchUserAccNumber(account[0].accountNumber);
+		}
+
+	}
+
 	// transference
 
 	const makeTransference = async (motive, amount) => {
@@ -295,6 +315,8 @@ const AccountProvider = ({ children }) => {
 		resetSearchUser,
 		successTransference,
 		removeModalFromOldTransference,
+		bringOwnAccountToTransfer,
+		anotherCurrencyAcc,
 	};
 
 	return (
