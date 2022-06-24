@@ -75,7 +75,7 @@ export const AccountSummaryView = () => {
 						notificationText={notificationText}
 						notificationColor={notificationColor}
 					/>
-					<Notification background='#F0F9FF' />
+					<Notification background='#F0F9FF' border='1px solid #BAE6FD'/>
 				</NumberAccount>
 				<Popup
 					action={<SendButton ref={ref} text='Enviar Dinero' />}
