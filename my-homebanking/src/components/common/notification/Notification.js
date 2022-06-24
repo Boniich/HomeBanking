@@ -1,7 +1,7 @@
 import React from 'react';
 import { Toaster } from 'react-hot-toast';
 
-export const Notification = ({ background }) => {
+export const Notification = ({ background,border }) => {
 	return (
 		<Toaster
 			position='bottom-center'
@@ -10,7 +10,7 @@ export const Notification = ({ background }) => {
 			}}
 			toastOptions={{
 				style: {
-					border: '1px solid #BAE6FD',
+					border,
 					background,
 					padding: '12px 20px',
 				},
