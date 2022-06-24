@@ -7,18 +7,30 @@ export const MakeTransferenceToMyAccount = () => {
 	const shortNavText = 'A cuenta propia';
 	const largeNavText = 'Transferencia a cuenta propia';
 	const accNumber = sessionStorage.getItem('accNumber');
-	const {bringOwnAccountToTransfer,isReadyAllAcountsByUser, searchUserAccNUmber, anotherCurrencyAcc} = useContext(AccountContext);
 
-	useEffect(() =>{
-		isReadyAllAcountsByUser && bringOwnAccountToTransfer(); 
-		
-	},[isReadyAllAcountsByUser,accNumber])
+	const {
+		bringOwnAccountToTransfer,
+		allAccountsByUser,
+		isReadyAllAcountsByUser,
+		searchUserAccNUmber,
+		anotherCurrencyAcc,
+		changeOwnAccDestinyToTransf,
+	} = useContext(AccountContext);
+
+	useEffect(() => {
+		isReadyAllAcountsByUser && bringOwnAccountToTransfer();
+	}, [isReadyAllAcountsByUser, accNumber]);
 
 	console.log(searchUserAccNUmber);
 
 	return (
 		<TransferenceForm shortNavText={shortNavText} largeNavText={largeNavText}>
-			<DestinyAccountSelect accountNumber={searchUserAccNUmber} currency={anotherCurrencyAcc}/>
+			<DestinyAccountSelect
+				accountNumber={searchUserAccNUmber}
+				currency={anotherCurrencyAcc}
+				allAccountsByUser={allAccountsByUser}
+				changeDestiny={changeOwnAccDestinyToTransf}
+			/>
 		</TransferenceForm>
 	);
 };
