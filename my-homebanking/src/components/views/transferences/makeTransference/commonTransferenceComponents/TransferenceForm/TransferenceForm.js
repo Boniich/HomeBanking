@@ -50,11 +50,10 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
 			? setButtonIsDisable(false)
 			: setButtonIsDisable(true);
 
-	    if(amount.amount > balance)  {
+		if (amount.amount > balance) {
 			setButtonIsDisable(true);
 			setNotEnoughBalanceError(true);
-		}else{
-			setButtonIsDisable(false);
+		} else {
 			setNotEnoughBalanceError(false);
 		}
 	};
@@ -114,6 +113,7 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
 					</AmountBox>
 					<AccountContainer>
 						<AccountContent>
+							{/* change name of dropdown component */}
 							<DropdownContent>
 								<ParagraphSemibold2>Cuenta de cargo</ParagraphSemibold2>
 								<Dropdown
@@ -133,8 +133,10 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
 							)}
 						</AccountContent>
 						<AccountContent>
-							<ParagraphSemibold2>Cuenta de destino</ParagraphSemibold2>
-							{children}
+							<DropdownContent>
+								<ParagraphSemibold2>Cuenta de destino</ParagraphSemibold2>
+								{children}
+							</DropdownContent>
 						</AccountContent>
 					</AccountContainer>
 					<Button
