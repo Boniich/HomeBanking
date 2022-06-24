@@ -14,7 +14,7 @@ export const CopyAccion = ({
 			<CopyToClipboard text={numberAccount}>
 				<CopyButton
 					icon={faCopy}
-					onClick={() => showNotification(notificationText, notificationColor)}
+					onClick={() => showNotification(notificationText,"", notificationColor)}
 				/>
 			</CopyToClipboard>
 		</>
