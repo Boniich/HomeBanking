@@ -188,19 +188,19 @@ Aca tendriamos todos los H1,H2, etc y sus modificaciones. Basicamente todos los 
 
 ```javascript
 const HeadingMedium1 = styled.h1`
-  font-size: 48px;
-  line-height: 120%;
-  letter-spacing: -0.02em;
-  font-weight: 600;
-  color: ${neutralColor.neutral900};
+	font-size: 48px;
+	line-height: 120%;
+	letter-spacing: -0.02em;
+	font-weight: 600;
+	color: ${neutralColor.neutral900};
 `;
 
 const HeadingSemiBold1 = styled(HeadingMedium1)`
-  font-weight: bold;
+	font-weight: bold;
 `;
 
 const HeadingBold1 = styled(HeadingMedium1)`
-  font-weight: 800;
+	font-weight: 800;
 `;
 
 // H2 y sus modificaciones
@@ -214,11 +214,11 @@ const HeadingMedium2 = styled.h2`
 `;
 
 const HeadingSemiBold2 = styled(HeadingMedium2)`
-  font-weight: bold;
+	font-weight: bold;
 `;
 
 const HeadingBold2 = styled(HeadingMedium2)`
-  font-weight: 800;
+	font-weight: 800;
 `;
 
 // H3 y sus modificaciones
@@ -232,11 +232,11 @@ const HeadingMedium3 = styled.h3`
 `;
 
 const HeadingSemiBold3 = styled(HeadingMedium3)`
-  font-weight: bold;
+	font-weight: bold;
 `;
 
 const HeadingBold3 = styled(HeadingMedium3)`
-  font-weight: 800;
+	font-weight: 800;
 `;
 
 // H4 y sus modificaciones
@@ -250,11 +250,11 @@ const HeadingMedium4 = styled.h4`
 `;
 
 const HeadingSemiBold4 = styled(HeadingMedium4)`
-  font-weight: bold;
+	font-weight: bold;
 `;
 
 const HeadingBold4 = styled(HeadingMedium4)`
-  font-weight: 800;
+	font-weight: 800;
 `;
 
 // H5 y sus modificaciones
@@ -267,11 +267,11 @@ const HeadingMedium5 = styled.h5`
 `;
 
 const HeadingSemiBold5 = styled(HeadingMedium5)`
-  font-weight: bold;
+	font-weight: bold;
 `;
 
 const HeadingBold5 = styled(HeadingMedium5)`
-  font-weight: 800;
+	font-weight: 800;
 `;
 
 // H6 y sus modificaciones
@@ -284,52 +284,52 @@ const HeadingMedium6 = styled.h6`
 `;
 
 const HeadingSemiBold6 = styled(HeadingMedium6)`
-  font-weight: bold;
+	font-weight: bold;
 `;
 
 const HeadingBold6 = styled(HeadingMedium6)`
-  font-weight: 800;
+	font-weight: 800;
 `;
 
 // Subheading
 
 const SubHeadingMedium = styled.h3`
-  font-size: 20px;
-  font-weight: normal;
-  line-height: 28px;
-  color: ${neutralColor.neutral900};
+	font-size: 20px;
+	font-weight: normal;
+	line-height: 28px;
+	color: ${neutralColor.neutral900};
 `;
 
 const SubHeadingSemiBold = styled(SubHeadingMedium)`
-  font-weight: 600;
+	font-weight: 600;
 `;
 
 const SubHeadingUnderline = styled(SubHeadingMedium)`
-  text-decoration-line: underline;
+	text-decoration-line: underline;
 `;
 
 export {
-  HeadingMedium1,
-  HeadingSemiBold1,
-  HeadingBold1,
-  HeadingMedium2,
-  HeadingSemiBold2,
-  HeadingBold2,
-  HeadingMedium3,
-  HeadingSemiBold3,
-  HeadingBold3,
-  HeadingMedium4,
-  HeadingSemiBold4,
-  HeadingBold4,
-  HeadingMedium5,
-  HeadingSemiBold5,
-  HeadingBold5,
-  HeadingMedium6,
-  HeadingSemiBold6,
-  HeadingBold6,
-  SubHeadingMedium,
-  SubHeadingSemiBold,
-  SubHeadingUnderline,
+	HeadingMedium1,
+	HeadingSemiBold1,
+	HeadingBold1,
+	HeadingMedium2,
+	HeadingSemiBold2,
+	HeadingBold2,
+	HeadingMedium3,
+	HeadingSemiBold3,
+	HeadingBold3,
+	HeadingMedium4,
+	HeadingSemiBold4,
+	HeadingBold4,
+	HeadingMedium5,
+	HeadingSemiBold5,
+	HeadingBold5,
+	HeadingMedium6,
+	HeadingSemiBold6,
+	HeadingBold6,
+	SubHeadingMedium,
+	SubHeadingSemiBold,
+	SubHeadingUnderline,
 };
 ```
 
@@ -337,59 +337,59 @@ export {
 
 ```javascript
 const ParagraphMedium1 = styled.p`
-  font-size: 18px;
-  line-height: 22px;
-  font-weight: normal;
-  color: ${neutralColor.neutral900};
+	font-size: 18px;
+	line-height: 22px;
+	font-weight: normal;
+	color: ${neutralColor.neutral900};
 `;
 
 const ParagraphSemibold1 = styled(ParagraphMedium1)`
-  font-weight: 600;
+	font-weight: 600;
 `;
 
 const ParagraphUnderline1 = styled(ParagraphMedium1)`
-  text-decoration-line: underline;
+	text-decoration-line: underline;
 `;
 
 const ParagraphMedium2 = styled.p`
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: normal;
-  color: ${neutralColor.neutral900};
+	font-size: 16px;
+	line-height: 24px;
+	font-weight: normal;
+	color: ${neutralColor.neutral900};
 `;
 
 const ParagraphSemibold2 = styled(ParagraphMedium2)`
-  font-weight: 600;
+	font-weight: 600;
 `;
 
 const ParagraphUnderline2 = styled(ParagraphMedium2)`
-  text-decoration-line: underline;
+	text-decoration-line: underline;
 `;
 
 const ParagraphMedium3 = styled.p`
-  font-size: 14px;
-  line-height: 17px;
-  font-weight: normal;
-  color: ${neutralColor.neutral900};
+	font-size: 14px;
+	line-height: 17px;
+	font-weight: normal;
+	color: ${neutralColor.neutral900};
 `;
 
 const ParagraphSemibold3 = styled(ParagraphMedium3)`
-  font-weight: 600;
+	font-weight: 600;
 `;
 const ParagraphUnderline3 = styled(ParagraphMedium3)`
-  text-decoration-line: underline;
+	text-decoration-line: underline;
 `;
 
 export {
-  ParagraphMedium1,
-  ParagraphSemibold1,
-  ParagraphUnderline1,
-  ParagraphMedium2,
-  ParagraphSemibold2,
-  ParagraphUnderline2,
-  ParagraphMedium3,
-  ParagraphSemibold3,
-  ParagraphUnderline3,
+	ParagraphMedium1,
+	ParagraphSemibold1,
+	ParagraphUnderline1,
+	ParagraphMedium2,
+	ParagraphSemibold2,
+	ParagraphUnderline2,
+	ParagraphMedium3,
+	ParagraphSemibold3,
+	ParagraphUnderline3,
 };
 ```
 
@@ -409,20 +409,20 @@ export { shadownXS, shadownXL, shadownSM, shadownMD, shadownLG };
 
 ```javascript
 const CaptionMedium = styled.caption`
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 18px;
-  color: ${neutralColor.neutral900};
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 18px;
+	color: ${neutralColor.neutral900};
 `;
 
 const CaptionSemiBold = styled(CaptionMedium)`
-  font-weight: 600;
+	font-weight: 600;
 `;
 
 const CaptionBold = styled(CaptionMedium)`
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
 `;
 
 export { CaptionMedium, CaptionSemiBold, CaptionBold };

@@ -1,21 +1,22 @@
-import { ButtonsContainer } from "../../../../../theme/buttons/buttonContainer/buttonContainer";
+import React from 'react';
+import { ButtonsContainer } from '../../../../../theme/buttons/buttonContainer/buttonContainer';
 import {
-  KeepSessionActiveButton,
-  CloseSessionButton,
-} from "../../../../../theme/buttons/buttons";
+	KeepSessionActiveButton,
+	CloseSessionButton,
+} from '../../../../../theme/buttons/buttons';
 
 export const CloseSessionButtons = () => {
-  const closeSession = () => {
-    localStorage.clear();
-    window.location.reload();
-  };
+	const closeSession = () => {
+		sessionStorage.clear();
+		window.location.reload();
+	};
 
-  return (
-    <ButtonsContainer>
-      <KeepSessionActiveButton>Mantener activa</KeepSessionActiveButton>
-      <CloseSessionButton onClick={closeSession}>
-        Cerrar sesión
-      </CloseSessionButton>
-    </ButtonsContainer>
-  );
+	return (
+		<ButtonsContainer>
+			<KeepSessionActiveButton>Mantener activa</KeepSessionActiveButton>
+			<CloseSessionButton onClick={closeSession}>
+				Cerrar sesión
+			</CloseSessionButton>
+		</ButtonsContainer>
+	);
 };
