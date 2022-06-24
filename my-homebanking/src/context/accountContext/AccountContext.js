@@ -82,7 +82,7 @@ const AccountProvider = ({ children }) => {
 	const makeTransferenceURL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_MAKE_A_TRANSFERENCE}`;
 	const bringAllAccountByUser = async () => {
 		try {
-			const response = await axios.post(allAccountByUserURL, email, headers);
+			const response = await axios.post(allAccountByUserURL,{email}, headers);
 			console.log('all accounts be user', response);
 
 			// save account number of the first account of user
