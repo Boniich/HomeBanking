@@ -6,13 +6,13 @@ import { TransferenceForm } from '../commonTransferenceComponents/TransferenceFo
 export const MakeTransferenceToMyAccount = () => {
 	const shortNavText = 'A cuenta propia';
 	const largeNavText = 'Transferencia a cuenta propia';
-
+	const accNumber = sessionStorage.getItem('accNumber');
 	const {bringOwnAccountToTransfer,isReadyAllAcountsByUser, searchUserAccNUmber, anotherCurrencyAcc} = useContext(AccountContext);
 
 	useEffect(() =>{
 		isReadyAllAcountsByUser && bringOwnAccountToTransfer(); 
 		
-	},[isReadyAllAcountsByUser])
+	},[isReadyAllAcountsByUser,accNumber])
 
 	console.log(searchUserAccNUmber);
 
