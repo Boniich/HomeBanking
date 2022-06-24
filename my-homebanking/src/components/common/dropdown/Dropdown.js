@@ -16,14 +16,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 import { shadownMD } from '../../../theme/shadown/shadown';
 
-const WrapperDropdown = styled.div`
+export const WrapperDropdown = styled.div`
 	display: flex;
 	min-height: 78px;
 	flex-wrap: wrap;
 	position: relative;
 `;
 
-const HeaderDropdown = styled.div`
+export const HeaderDropdown = styled.div`
 	display: flex;
 	justify-content: space-between;
 	cursor: pointer;
@@ -34,17 +34,17 @@ const HeaderDropdown = styled.div`
 	padding: 0 20px;
 `;
 
-const HeaderContent = styled.div`
+export const HeaderContent = styled.div`
 	display: flex;
 	align-items: center;
 	gap: 14px;
 `;
-const AccountInfoCantainer = styled.div`
+export const AccountInfoCantainer = styled.div`
 	display: flex;
 	flex-direction: column;
 `;
 
-const DropdownList = styled.ul`
+export const DropdownList = styled.ul`
 	/* original width: 312px - 32px (16 + 16) of padding = 280px */
 	width: 280px;
 	display: flex;
@@ -67,7 +67,7 @@ const DropdownList = styled.ul`
 	}
 `;
 
-const DropdownArrowContainer = styled.div`
+export const DropdownArrowContainer = styled.div`
 	display: flex;
 	align-items: center;
 	gap: 9px;
@@ -77,13 +77,13 @@ const DropdownArrowContainer = styled.div`
 	}
 `;
 
-const DropdownArrow = styled(FontAwesomeIcon)`
+export const DropdownArrow = styled(FontAwesomeIcon)`
 	width: 12px;
 	height: 12px;
 	color: ${neutralColor.neutral800};
 `;
 
-const DropdownItemList = styled.li`
+export const DropdownItemList = styled.li`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
