@@ -18,7 +18,7 @@ const AccountProvider = ({ children }) => {
 
 	// for reload in transference
 
-	const [isReadyAllAcountsByUser,setIsReadyAllAcountsByUser] = useState(false);
+	const [isReadyAllAcountsByUser, setIsReadyAllAcountsByUser] = useState(false);
 
 	// search a user for make a transference
 
@@ -29,8 +29,6 @@ const AccountProvider = ({ children }) => {
 	const [searchUserAccNUmber, setSearchUserAccNumber] = useState('');
 	const [searchUserDni, setSearchUserDni] = useState(null);
 
-
-
 	// find user endpoint
 	const [searchUserImage, setSearchUserImage] = useState('');
 	const [searchUserName, setSearchUserName] = useState('');
@@ -38,9 +36,8 @@ const AccountProvider = ({ children }) => {
 
 	// transfer to own accounts
 
-		const [anotherCurrencyAcc, setAnotherCurrencyAcc] = useState('');
-		const [isTheSameAccount, setIsTheSameAccount] = useState(false);
-
+	const [anotherCurrencyAcc, setAnotherCurrencyAcc] = useState('');
+	const [isTheSameAccount, setIsTheSameAccount] = useState(false);
 
 	// loader for search user
 	const [searchUserLoader, setSearchUserLoader] = useState(false);
@@ -266,29 +263,35 @@ const AccountProvider = ({ children }) => {
 
 	// bring own account to transfer
 
-	const bringOwnAccountToTransfer = () =>{
+	const bringOwnAccountToTransfer = () => {
 		setIsTheSameAccount(false);
 
-		if(allAccountsByUser.length > 1){
+		if (allAccountsByUser.length > 1) {
 			// crash si se si tiene una sola cuenta
 			//  el useffect se ejecuta dos veces, generando un crash
 			// al no encontrar el currencyText
 			// esto NO deberia pasar en produccion
-			const account = allAccountsByUser.filter( el => el.accountNumber !== accNumber);
-			console.log("account for destiny select: ",account);
+			const account = allAccountsByUser.filter(
+				el => el.accountNumber !== accNumber
+			);
+			console.log('account for destiny select: ', account);
 			setAnotherCurrencyAcc(account[0].currencyText);
 			setSearchUserCci(account[0].cciCode);
 			setSearchUserAccNumber(account[0].accountNumber);
-		} else{
-			console.log("entra");
-			const ownCurrency = currency.currencyText; 
-		 	setAnotherCurrencyAcc(ownCurrency);
-		 	setSearchUserAccNumber(accNumber);
+		} else {
+			console.log('entra');
+			const ownCurrency = currency.currencyText;
+			setAnotherCurrencyAcc(ownCurrency);
+			setSearchUserAccNumber(accNumber);
 			setIsTheSameAccount(true);
-		 }
+		}
+	};
 
-	
-	}
+	const changeOwnAccDestinyToTransf = (currencyText, accoNumber, cci) => {
+		setAnotherCurrencyAcc(currencyText);
+		setSearchUserCci(cci);
+		setSearchUserAccNumber(accoNumber);
+	};
 
 	// transference
 
@@ -343,6 +346,7 @@ const AccountProvider = ({ children }) => {
 		anotherCurrencyAcc,
 		isReadyAllAcountsByUser,
 		isTheSameAccount,
+		changeOwnAccDestinyToTransf,
 	};
 
 	return (
