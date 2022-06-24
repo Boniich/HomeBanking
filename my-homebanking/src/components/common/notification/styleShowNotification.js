@@ -1,15 +1,24 @@
 import styled from 'styled-components';
-import { ParagraphSemibold3 } from '../../../theme/paragraph/paragraph';
+import {
+	ParagraphMedium3,
+	ParagraphSemibold3,
+} from '../../../theme/paragraph/paragraph';
 import { CloseIcon } from '../../../theme/styledIcon/styledIcon';
 
-const NotificationContainer = styled.div`
+const NotificationContainer = styled.div.attrs(props => ({
+	removeCenterItems: props.removeCenterItems ? 'flex-start' : 'center',
+}))`
 	width: 270px;
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
+	align-items: ${props => props.removeCenterItems};
 	${ParagraphSemibold3} {
-		color: ${props => props.paragraphColor};
-		margin: 0;
+		color: ${props => props.color};
+		cursor: default;
+	}
+
+	${ParagraphMedium3} {
+		color: ${props => props.color};
 		cursor: default;
 	}
 
@@ -18,24 +27,44 @@ const NotificationContainer = styled.div`
 	}
 `;
 
-const NotificationIconAndText = styled.span`
+const NotificationIconAndText = styled.span.attrs(props => ({
+	removeCenterItems: props.removeCenterItems ? 'flex-start' : 'center',
+}))`
 	display: flex;
-	align-items: center;
+	align-items: ${props => props.removeCenterItems};
 	gap: 13.67px;
 `;
 
-const CloseIconNotification = styled(CloseIcon)`
+const NotificationTexts = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+`;
+
+const CloseIconNotification = styled(CloseIcon).attrs(props => ({
+	needPadding: props.needPadding ? '4px' : '',
+}))`
 	width: 16px;
 	height: 16px;
 	color: ${props => props.color};
 	cursor: pointer;
+
+	@media screen and (min-width: 744px) {
+		padding: ${props => props.needPadding};
+	}
 `;
 
-const InfoIconNotification = styled(CloseIconNotification)`
-	width: 16.67px;
-	height: 16.67px;
+const InfoIconNotification = styled(CloseIconNotification).attrs(props => ({
+	needPadding: props.needPadding ? '4px' : '',
+}))`
+	width: 20px;
+	height: 20px;
 	color: ${props => props.color};
 	cursor: default;
+
+	@media screen and (min-width: 744px) {
+		padding: ${props => props.needPadding};
+	}
 `;
 
 export {
@@ -43,4 +72,5 @@ export {
 	NotificationIconAndText,
 	InfoIconNotification,
 	CloseIconNotification,
+	NotificationTexts,
 };
