@@ -121,7 +121,7 @@ export const PrimaryNav = ({ activeSecondColorNav }) => {
 							<UserBox>
 								<UserImage
 									src={
-										userImage
+										(userImage !== "img-deleted")
 											? `${userImage}`
 											: noUserImage
 									}
