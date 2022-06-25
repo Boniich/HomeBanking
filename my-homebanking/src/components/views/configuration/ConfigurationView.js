@@ -5,7 +5,11 @@ import { Button, ConfigButton } from '../../../theme/buttons/buttons';
 import { ParagraphMedium3 } from '../../../theme/paragraph/paragraph';
 import { SecondaryNav } from '../../common/navs/secondaryNav/SecondaryNav';
 import nouUserImage from '../../../assets/noUserImage.png';
-import { errorColor, neutralColor, successColor } from '../../../theme/colors/colors';
+import {
+	errorColor,
+	neutralColor,
+	successColor,
+} from '../../../theme/colors/colors';
 import { InputContainer } from '../../../theme/inputs/inputContainer/inputContainer';
 import { ChangeImageInput, Input } from '../../../theme/inputs/input';
 import { ChangeImageLabel } from '../../../theme/labels/labels';
@@ -31,10 +35,23 @@ const ConfigurationSection = styled.section`
 	}
 `;
 
+const DeleteImageButton = styled.p`
+	font-size: 14px;
+	line-height: 17px;
+	font-weight: 400px;
+	color: ${errorColor.error600};
+	padding: 12px;
+	width: 76px;
+`;
+
 const ChangeImageContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
+
+	${ChangeImageInput} {
+		color: ${neutralColor.neutral800};
+	}
 
 	${ParagraphMedium3} {
 		color: ${neutralColor.neutral700};
@@ -58,13 +75,6 @@ const ImageButtonsContainer = styled.div`
 	display: flex;
 	align-items: center;
 	gap: 8px;
-`;
-
-const DeleteImageButton = styled(ConfigButton)`
-	padding: 12px;
-	width: 76px;
-	border-radius: 8px;
-	color: ${errorColor.error600};
 `;
 
 const SaveChangesButton = styled(Button)`
@@ -111,7 +121,6 @@ export const ConfigurationView = () => {
 		});
 	}
 
-
 	useEffect(() => {
 		setDataUser({ name, lastName, image: userImage, email: userEmail });
 	}, [name]);
@@ -120,13 +129,15 @@ export const ConfigurationView = () => {
 		setDataUser({ ...dataUser, [e.target.name]: e.target.value });
 	};
 
-	const handleChangeImage = (img) =>{
-		setDataUser({...dataUser, image: img})
-	}
+	const handleChangeImage = img => {
+		setDataUser({ ...dataUser, image: img });
+	};
 
-	// const deleteUserImage = () =>{
-	// 	setDataUser({image: ""});
-	// }
+	const deleteUserImage =  async () => {
+		// save the sring "img-deleted for delete img of data base. 
+		// if i find some way better i will change it
+		setDataUser({...dataUser, image: "img-deleted" });
+	};
 
 	const changeToAccountData = () => {
 		setSwitchSection({ personalData: false, accountData: true });
@@ -138,6 +149,7 @@ export const ConfigurationView = () => {
 
 	const handleSubmit = e => {
 		e.preventDefault();
+		console.log(dataUser);
 		updateDataUser(dataUser.name, dataUser.lastName, dataUser.image);
 	};
 	return (
@@ -171,28 +183,20 @@ export const ConfigurationView = () => {
 							<ChangeImageContainer>
 								<ParagraphMedium3>Avatar</ParagraphMedium3>
 								<ChangeImageContent>
-									<Image
-										src={
-											userImage
-												? `${dataUser.image}`
-												: nouUserImage
-										}
-									/>
+									<Image src={(userImage && dataUser.image !== "img-deleted") ? `${dataUser.image}` : nouUserImage} />
 									<ImageButtonsContainer>
 										<ChangeImageLabel>
 											Cambiar
 											<ChangeImageInput
 												type='file'
 												accept='image/png, image/jpeg'
-												onChange={async (e) => {
-												const img = await getBase64(e.target.files[0]);
-												handleChangeImage(img);
-												}
-											}
-
+												onChange={async e => {
+													const img = await getBase64(e.target.files[0]);
+													handleChangeImage(img);
+												}}
 											/>
 										</ChangeImageLabel>
-										<DeleteImageButton switchBorder={true}>
+										<DeleteImageButton onClick={deleteUserImage}>
 											Eliminar
 										</DeleteImageButton>
 									</ImageButtonsContainer>
@@ -228,7 +232,7 @@ export const ConfigurationView = () => {
 									/>
 								</InputContainer>
 							</ConfigurationFormInputs>
-							<SaveChangesButton type='submit' role="button">
+							<SaveChangesButton type='submit' role='button'>
 								<ProcessingRequestButton
 									state={updateDataUserLoader}
 									textBeforeRequest='Guardar Cambios'
@@ -240,7 +244,10 @@ export const ConfigurationView = () => {
 					<PasswordForm />
 				)}
 			</ConfigurationSection>
-			<Notification background={notificationBackground} border={notificationBorder}/>
+			<Notification
+				background={notificationBackground}
+				border={notificationBorder}
+			/>
 		</>
 	);
 };
