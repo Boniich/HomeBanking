@@ -33,7 +33,7 @@ export const showNotification = (text, subtext, color, changesToErrorMsgOfTransf
 			>
 				<NotificationIconAndText removeCenterItems={changesToErrorMsgOfTransf}>
 					<InfoIconNotification
-						needPadding={changesToErrorMsgOfTransf}
+						needpadding={changesToErrorMsgOfTransf}
 						icon={faCircleInfo}
 						color={color}
 					/>
@@ -43,7 +43,7 @@ export const showNotification = (text, subtext, color, changesToErrorMsgOfTransf
 					</NotificationTexts>
 				</NotificationIconAndText>
 				<CloseIconNotification
-					needPadding={changesToErrorMsgOfTransf}
+					needpadding={changesToErrorMsgOfTransf}
 					icon={faXmark}
 					color={color}
 					onClick={() => toast.dismiss(t.id)}

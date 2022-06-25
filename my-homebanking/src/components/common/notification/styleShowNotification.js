@@ -42,7 +42,7 @@ const NotificationTexts = styled.div`
 `;
 
 const CloseIconNotification = styled(CloseIcon).attrs(props => ({
-	needPadding: props.needPadding ? '4px' : '',
+	needpadding: props.needPadding ? '4px' : '',
 }))`
 	width: 16px;
 	height: 16px;
@@ -50,12 +50,12 @@ const CloseIconNotification = styled(CloseIcon).attrs(props => ({
 	cursor: pointer;
 
 	@media screen and (min-width: 744px) {
-		padding: ${props => props.needPadding};
+		padding: ${props => props.needpadding};
 	}
 `;
 
 const InfoIconNotification = styled(CloseIconNotification).attrs(props => ({
-	needPadding: props.needPadding ? '4px' : '',
+	needpadding: props.needpadding ? '4px' : '',
 }))`
 	width: 20px;
 	height: 20px;
@@ -63,7 +63,7 @@ const InfoIconNotification = styled(CloseIconNotification).attrs(props => ({
 	cursor: default;
 
 	@media screen and (min-width: 744px) {
-		padding: ${props => props.needPadding};
+		padding: ${props => props.needpadding};
 	}
 `;
 
