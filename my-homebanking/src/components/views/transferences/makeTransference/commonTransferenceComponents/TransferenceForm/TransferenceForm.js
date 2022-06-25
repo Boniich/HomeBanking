@@ -7,10 +7,10 @@ import {
 	ParagraphSemibold2,
 } from '../../../../../../theme/paragraph/paragraph';
 import Dropdown from '../../../../../common/dropdown/Dropdown';
-import { Loader } from '../../../../../common/loader/Loader';
 import { SecondaryNav } from '../../../../../common/navs/secondaryNav/SecondaryNav';
 import { Notification } from '../../../../../common/notification/Notification';
 import { TransferencePopup } from '../../../../../common/popup/transferencePopup/TransferencePopup';
+import { ProcessingRequestButton } from '../../../../../common/processingRequestButtton/ProcessingRequestButton';
 import {
 	AccountContainer,
 	AccountContent,
@@ -48,7 +48,9 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
 	} = useContext(AccountContext);
 
 	const handleKeyUp = () => {
-		amount.amount.length !== 0 && motive.motive.length !== 0 && !isTheSameAccount
+		amount.amount.length !== 0 &&
+		motive.motive.length !== 0 &&
+		!isTheSameAccount
 			? setButtonIsDisable(false)
 			: setButtonIsDisable(true);
 
@@ -146,11 +148,13 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
 								<ParagraphSemibold2>Cuenta de destino</ParagraphSemibold2>
 								{children}
 							</DropdownContent>
-							{isTheSameAccount && <MsgErrorContainer>
+							{isTheSameAccount && (
+								<MsgErrorContainer>
 									<ParagraphMedium3>
 										No puedes transferir a una misma cuenta
 									</ParagraphMedium3>
-							</MsgErrorContainer>}
+								</MsgErrorContainer>
+							)}
 						</AccountContent>
 					</AccountContainer>
 					<Button
@@ -159,11 +163,10 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
 						disabled={buttonIsDisable}
 						type='submit'
 					>
-						{transferenceLoader ? (
-							<Loader circleColor='#fff' />
-						) : (
-							'Confirmar transferencia'
-						)}
+						<ProcessingRequestButton
+							state={transferenceLoader}
+							textBeforeRequest='Confirmar transferencia'
+						/>
 					</Button>
 					<TransferencePopup
 						open={successTransference}
