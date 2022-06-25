@@ -51,6 +51,7 @@ const Image = styled.img`
 	height: 54px;
 	border: 1px solid rgba(0, 0, 0, 0.1);
 	border-radius: 100%;
+	object-fit: cover;
 `;
 
 const ImageButtonsContainer = styled.div`
@@ -101,6 +102,16 @@ export const ConfigurationView = () => {
 		email: '',
 	});
 
+	function getBase64(file) {
+		return new Promise((resolve, reject) => {
+			const reader = new FileReader();
+			reader.readAsDataURL(file);
+			reader.onload = () => resolve(reader.result);
+			reader.onerror = error => reject(error);
+		});
+	}
+
+
 	useEffect(() => {
 		setDataUser({ name, lastName, image: userImage, email: userEmail });
 	}, [name]);
@@ -108,6 +119,14 @@ export const ConfigurationView = () => {
 	const handleChange = e => {
 		setDataUser({ ...dataUser, [e.target.name]: e.target.value });
 	};
+
+	const handleChangeImage = (img) =>{
+		setDataUser({...dataUser, image: img})
+	}
+
+	// const deleteUserImage = () =>{
+	// 	setDataUser({image: ""});
+	// }
 
 	const changeToAccountData = () => {
 		setSwitchSection({ personalData: false, accountData: true });
@@ -155,7 +174,7 @@ export const ConfigurationView = () => {
 									<Image
 										src={
 											userImage
-												? `data:image/png;base64,${dataUser.image}`
+												? `${dataUser.image}`
 												: nouUserImage
 										}
 									/>
@@ -165,8 +184,12 @@ export const ConfigurationView = () => {
 											<ChangeImageInput
 												type='file'
 												accept='image/png, image/jpeg'
-												name='image'
-												onChange={handleChange}
+												onChange={async (e) => {
+												const img = await getBase64(e.target.files[0]);
+												handleChangeImage(img);
+												}
+											}
+
 											/>
 										</ChangeImageLabel>
 										<DeleteImageButton switchBorder={true}>
@@ -205,7 +228,7 @@ export const ConfigurationView = () => {
 									/>
 								</InputContainer>
 							</ConfigurationFormInputs>
-							<SaveChangesButton>
+							<SaveChangesButton type='submit' role="button">
 								<ProcessingRequestButton
 									state={updateDataUserLoader}
 									textBeforeRequest='Guardar Cambios'
