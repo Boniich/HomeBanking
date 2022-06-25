@@ -54,6 +54,7 @@ const AccountProvider = ({ children }) => {
 	const [updateDataAfterTransf, setUpdateDataAfterTransf] = useState(false);
 
 	const [updateDataUserLoader, setUpdateDataUserLoader] = useState(false);
+	const [successDataUserUpdate, setSuccessDataUserUpdate] = useState(false);
 
 	const [currency, setCurrency] = useState({
 		currencyText: '',
@@ -190,7 +191,7 @@ const AccountProvider = ({ children }) => {
 
 	useEffect(() => {
 		dni !== null && bringDataUser();
-	}, [dni]);
+	}, [dni, successDataUserUpdate]);
 
 	const bringTransferenceByUser = async () => {
 		try {
@@ -352,6 +353,7 @@ const AccountProvider = ({ children }) => {
 			);
 			console.log('updated user: ', response);
 			showNotification(successUpdateMsg, '', successtextColor);
+			setSuccessDataUserUpdate(!successDataUserUpdate);
 		} catch (error) {
 			console.log(error);
 		} finally {
