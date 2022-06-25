@@ -5,7 +5,7 @@ import { Button, ConfigButton } from '../../../theme/buttons/buttons';
 import { ParagraphMedium3 } from '../../../theme/paragraph/paragraph';
 import { SecondaryNav } from '../../common/navs/secondaryNav/SecondaryNav';
 import nouUserImage from '../../../assets/noUserImage.png';
-import { errorColor, neutralColor } from '../../../theme/colors/colors';
+import { errorColor, neutralColor, successColor } from '../../../theme/colors/colors';
 import { InputContainer } from '../../../theme/inputs/inputContainer/inputContainer';
 import { ChangeImageInput, Input } from '../../../theme/inputs/input';
 import { ChangeImageLabel } from '../../../theme/labels/labels';
@@ -16,6 +16,8 @@ import {
 	ConfigurationFormContent,
 	ConfigurationFormInputs,
 } from './configurationForms/styleConfigurationForm';
+import { ProcessingRequestButton } from '../../common/processingRequestButtton/ProcessingRequestButton';
+import { Notification } from '../../common/notification/Notification';
 const ConfigurationSection = styled.section`
 	display: flex;
 	justify-content: center;
@@ -78,11 +80,20 @@ const SaveChangesButton = styled(Button)`
 
 export const ConfigurationView = () => {
 	const uniqueString = 'Configuración';
+	const notificationBackground = successColor.success50;
+	const notificationBorder = successColor.success300;
 	const [switchSection, setSwitchSection] = useState({
 		personalData: true,
 		accountData: false,
 	});
-	const { name, lastName, userImage, userEmail } = useContext(AccountContext);
+	const {
+		name,
+		lastName,
+		userImage,
+		userEmail,
+		updateDataUser,
+		updateDataUserLoader,
+	} = useContext(AccountContext);
 	const [dataUser, setDataUser] = useState({
 		name: '',
 		lastName: '',
@@ -95,7 +106,6 @@ export const ConfigurationView = () => {
 	}, [name]);
 
 	const handleChange = e => {
-		console.log('handlechange');
 		setDataUser({ ...dataUser, [e.target.name]: e.target.value });
 	};
 
@@ -109,6 +119,7 @@ export const ConfigurationView = () => {
 
 	const handleSubmit = e => {
 		e.preventDefault();
+		updateDataUser(dataUser.name, dataUser.lastName, dataUser.image);
 	};
 	return (
 		<>
@@ -194,13 +205,19 @@ export const ConfigurationView = () => {
 									/>
 								</InputContainer>
 							</ConfigurationFormInputs>
-							<SaveChangesButton>Guardar Cambios</SaveChangesButton>
+							<SaveChangesButton>
+								<ProcessingRequestButton
+									state={updateDataUserLoader}
+									textBeforeRequest='Guardar Cambios'
+								/>
+							</SaveChangesButton>
 						</ConfigurationFormContent>
 					</ConfigurationFormContainer>
 				) : (
 					<PasswordForm />
 				)}
 			</ConfigurationSection>
+			<Notification background={notificationBackground} border={notificationBorder}/>
 		</>
 	);
 };
