@@ -139,12 +139,12 @@ const AccountProvider = ({ children }) => {
 				headers
 			);
 
-			console.log(response);
+			console.log("currentAccount: ",response);
 			setAccountNumber(response.data.accountNumber);
 			setBalance(response.data.balance);
 			setDni(response.data.owner);
 			console.log(dni);
-			setUserEmail(response.data.email);
+			
 			setCci(response.data.cciCode);
 			const currency = response.data.currency;
 			const currencyData = handleCurrency(currency);
@@ -174,9 +174,11 @@ const AccountProvider = ({ children }) => {
 			const userName = response.data.name;
 			const lastName = response.data.surname;
 			const image = response.data.img;
+			const email = response.data.email
 			setName(userName);
 			setLastName(lastName);
 			setUserImage(image);
+			setUserEmail(email);
 		} catch (error) {
 			console.log(error);
 		}

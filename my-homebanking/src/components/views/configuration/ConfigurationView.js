@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { ButtonsContainer } from '../../../theme/buttons/buttonContainer/buttonContainer';
 import { Button, ConfigButton } from '../../../theme/buttons/buttons';
 import { ParagraphMedium3 } from '../../../theme/paragraph/paragraph';
-import { shadownMD } from '../../../theme/shadown/shadown';
 import { SecondaryNav } from '../../common/navs/secondaryNav/SecondaryNav';
 import nouUserImage from '../../../assets/noUserImage.png';
 import { errorColor, neutralColor } from '../../../theme/colors/colors';
@@ -11,6 +10,12 @@ import { InputContainer } from '../../../theme/inputs/inputContainer/inputContai
 import { ChangeImageInput, Input } from '../../../theme/inputs/input';
 import { ChangeImageLabel } from '../../../theme/labels/labels';
 import AccountContext from '../../../context/accountContext/AccountContext';
+import { PasswordForm } from './configurationForms/passwordForm/PasswordForm';
+import {
+	ConfigurationFormContainer,
+	ConfigurationFormContent,
+	ConfigurationFormInputs,
+} from './configurationForms/styleConfigurationForm';
 const ConfigurationSection = styled.section`
 	display: flex;
 	justify-content: center;
@@ -22,27 +27,6 @@ const ConfigurationSection = styled.section`
 	@media screen and (min-width: 744px) {
 		gap: 48px;
 	}
-`;
-
-const ConfigurationForm = styled.form`
-	width: 272px;
-	height: auto;
-	background: #fff;
-	box-shadow: ${shadownMD};
-	border-radius: 16px;
-	padding: 32px 20px;
-
-	@media screen and (min-width: 744px) {
-		padding: 40px 32px;
-		/* original width: 504px - 64px (padding-left-right) = 440px (width)*/
-		width: 440px;
-	}
-`;
-
-const ConfigurationContent = styled.div`
-	display: flex;
-	flex-direction: column;
-	gap: 24px;
 `;
 
 const ChangeImageContainer = styled.div`
@@ -80,12 +64,6 @@ const DeleteImageButton = styled(ConfigButton)`
 	color: ${errorColor.error600};
 `;
 
-const Box1 = styled.div`
-	display: flex;
-	flex-direction: column;
-	gap: 16px;
-`;
-
 const SaveChangesButton = styled(Button)`
 	display: flex;
 	justify-content: center;
@@ -109,34 +87,16 @@ export const ConfigurationView = () => {
 		name: '',
 		lastName: '',
 		image: '',
-	});
-	const [accountData, setAccountData] = useState({
 		email: '',
-		password: '',
-		confPassword: '',
 	});
 
 	useEffect(() => {
-		setDataUser({ name, lastName, image: userImage });
+		setDataUser({ name, lastName, image: userImage, email: userEmail });
 	}, [name]);
-
-	useEffect(() => {
-		setAccountData({
-			email: userEmail,
-			password: '123456789',
-			confPassword: '123456789',
-		});
-	}, [userEmail]);
-
-	console.log(dataUser);
 
 	const handleChange = e => {
 		console.log('handlechange');
 		setDataUser({ ...dataUser, [e.target.name]: e.target.value });
-	};
-
-	const handleAccountDataChange = e => {
-		setAccountData({ ...accountData, [e.target.name]: e.target.value });
 	};
 
 	const changeToAccountData = () => {
@@ -171,13 +131,13 @@ export const ConfigurationView = () => {
 						switchFontWeight={switchSection.accountData}
 						switchBorder={switchSection.accountData}
 					>
-						Cambiar password
+						Cambiar contraseña
 					</ConfigButton>
 				</ButtonsContainer>
 				{/* Form to image, name and last name */}
 				{switchSection.personalData ? (
-					<ConfigurationForm onSubmit={handleSubmit}>
-						<ConfigurationContent>
+					<ConfigurationFormContainer onSubmit={handleSubmit}>
+						<ConfigurationFormContent>
 							<ChangeImageContainer>
 								<ParagraphMedium3>Avatar</ParagraphMedium3>
 								<ChangeImageContent>
@@ -204,7 +164,7 @@ export const ConfigurationView = () => {
 									</ImageButtonsContainer>
 								</ChangeImageContent>
 							</ChangeImageContainer>
-							<Box1>
+							<ConfigurationFormInputs>
 								<InputContainer>
 									<ParagraphMedium3>Nombres</ParagraphMedium3>
 									<Input
@@ -223,57 +183,22 @@ export const ConfigurationView = () => {
 										onChange={handleChange}
 									/>
 								</InputContainer>
-							</Box1>
-							<SaveChangesButton>Guardar Cambios</SaveChangesButton>
-						</ConfigurationContent>
-					</ConfigurationForm>
-				) : (
-					<ConfigurationForm onSubmit={handleSubmit}>
-						<ConfigurationContent>
-							<Box1>
 								<InputContainer>
 									<ParagraphMedium3>Email</ParagraphMedium3>
 									<Input
 										type='email'
 										name='email'
-										value={accountData.email}
+										value={dataUser.email}
 										disabled={true}
-										onChange={handleAccountDataChange}
+										onChange={handleChange}
 									/>
 								</InputContainer>
-								<InputContainer>
-									<ParagraphMedium3>Nueva contraseña</ParagraphMedium3>
-									<Input
-										type='password'
-										name='password'
-										disabled={true}
-										value={accountData.password}
-										onChange={handleAccountDataChange}
-									/>
-								</InputContainer>
-								<InputContainer>
-									<ParagraphMedium3>Repetir nueva contraseña</ParagraphMedium3>
-									<Input
-										type='password'
-										name='confirPassword'
-										disabled={true}
-										value={accountData.confPassword}
-										onChange={handleAccountDataChange}
-									/>
-								</InputContainer>
-							</Box1>
-							<SaveChangesButton
-								disabledBackground={true}
-								disableColor={true}
-								disableCursor={true}
-								disableFocus={true}
-								disableHover={true}
-								disabled={true}
-							>
-								Guardar Cambios
-							</SaveChangesButton>
-						</ConfigurationContent>
-					</ConfigurationForm>
+							</ConfigurationFormInputs>
+							<SaveChangesButton>Guardar Cambios</SaveChangesButton>
+						</ConfigurationFormContent>
+					</ConfigurationFormContainer>
+				) : (
+					<PasswordForm />
 				)}
 			</ConfigurationSection>
 		</>
