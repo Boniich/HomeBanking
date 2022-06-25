@@ -18,12 +18,12 @@ export const PasswordForm = () => {
 		setPassword({ ...password, [e.target.name]: e.target.value });
 	};
 
-	const handleSumit = e => {
+	const handleSubmit = e => {
 		e.preventDefault();
 	};
 
 	return (
-		<ConfigurationFormContainer onSubmit={handleSumit}>
+		<ConfigurationFormContainer onSubmit={handleSubmit}>
 			<ConfigurationFormContent>
 				<ConfigurationFormInputs>
 					<InputContainer>
