@@ -232,10 +232,12 @@ const UserImage = styled.img`
 	width: 24px;
 	height: 24px;
 	border-radius: 100%;
+	
 
 	@media screen and (min-width: 1512px) {
 		width: 36px;
 		height: 36px;
+		object-fit: cover;
 	}
 `;
 

@@ -122,7 +122,7 @@ export const PrimaryNav = ({ activeSecondColorNav }) => {
 								<UserImage
 									src={
 										userImage
-											? `data:image/png;base64,${userImage}`
+											? `${userImage}`
 											: noUserImage
 									}
 								></UserImage>
