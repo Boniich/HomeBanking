@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 import { Button } from '../../../../theme/buttons/buttons';
+import { errorColor, neutralColor } from '../../../../theme/colors/colors';
+import { ChangeImageInput } from '../../../../theme/inputs/input';
+import { ParagraphMedium3 } from '../../../../theme/paragraph/paragraph';
 import { shadownMD } from '../../../../theme/shadown/shadown';
 
 const ConfigurationFormContainer = styled.form`
@@ -29,6 +32,48 @@ const ConfigurationFormInputs = styled.div`
 	gap: 16px;
 `;
 
+const DeleteImageButton = styled.p`
+	font-size: 14px;
+	line-height: 17px;
+	font-weight: 400px;
+	color: ${errorColor.error600};
+	padding: 12px;
+	width: 76px;
+`;
+
+const ChangeImageContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+
+	${ChangeImageInput} {
+		color: ${neutralColor.neutral800};
+	}
+
+	${ParagraphMedium3} {
+		color: ${neutralColor.neutral700};
+	}
+`;
+
+const ChangeImageContent = styled.div`
+	display: flex;
+	gap: 16px;
+`;
+
+const Image = styled.img`
+	width: 54px;
+	height: 54px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 100%;
+	object-fit: cover;
+`;
+
+const ImageButtonsContainer = styled.div`
+	display: flex;
+	align-items: center;
+	gap: 8px;
+`;
+
 const SaveChangesButton = styled(Button)`
 	display: flex;
 	justify-content: center;
@@ -46,4 +91,9 @@ export {
 	ConfigurationFormContent,
 	ConfigurationFormInputs,
 	SaveChangesButton,
+	DeleteImageButton,
+	ChangeImageContainer,
+	ChangeImageContent,
+	Image,
+	ImageButtonsContainer,
 };
