@@ -17,7 +17,7 @@ import { Button } from '../../../theme/buttons/buttons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { Loader } from '../../common/loader/Loader';
 import { Logo } from '../../common/logo/Logo';
-import AuthContext from '../../../context/AuthContext';
+import AuthContext from '../../../context/authContext/AuthContext';
 
 const LoginView = () => {
 	const {

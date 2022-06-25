@@ -6,7 +6,7 @@ import Layout from './components/views/layout/Layout';
 import LoginView from './components/views/login/LoginView';
 import { MakeTransferenceToMyAccount } from './components/views/transferences/makeTransference/makeTransfToMyAccount/MakeTransferenceToMyAccount';
 import { AccountProvider } from './context/accountContext/AccountContext';
-import { AuthProvider } from './context/AuthContext';
+import { AuthProvider } from './context/authContext/AuthContext';
 import IsLogged from './routes/isLogged/IsLogged';
 import PrivateRoute from './routes/privateRoute/PrivateRoute';
 import { MakeTransferenceToAnotherUserView } from './components/views/transferences/makeTransference/makeTransfToAnotherUser/MakeTransferenceToAnotherUserView';
