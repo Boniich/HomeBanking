@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { createContext, useEffect, useState } from 'react';
 import { showNotification } from '../../components/common/notification/showNotification';
 import { handleCurrency } from '../../services/commonFunctions/handleCurrency/handleCurrency';
+import { successColor } from '../../theme/colors/colors';
 
 const AccountContext = createContext();
 
@@ -52,6 +53,8 @@ const AccountProvider = ({ children }) => {
 
 	const [updateDataAfterTransf, setUpdateDataAfterTransf] = useState(false);
 
+	const [updateDataUserLoader, setUpdateDataUserLoader] = useState(false);
+
 	const [currency, setCurrency] = useState({
 		currencyText: '',
 		currencySymbol: '',
@@ -90,6 +93,8 @@ const AccountProvider = ({ children }) => {
 	const dataUserURL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_USER_FIND_ENDPOINT}`;
 	const transferencesByUserURL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_TRANSACTION_ACCOUNT_ENDPOINT}`;
 	const makeTransferenceURL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_MAKE_A_TRANSFERENCE}`;
+	const updateDataUserURL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_UPDATE_DATA_USER}`;
+
 	const bringAllAccountByUser = async () => {
 		setAllAccountsByUser([]);
 		try {
@@ -139,12 +144,11 @@ const AccountProvider = ({ children }) => {
 				headers
 			);
 
-			console.log("currentAccount: ",response);
+			console.log('currentAccount: ', response);
 			setAccountNumber(response.data.accountNumber);
 			setBalance(response.data.balance);
 			setDni(response.data.owner);
 			console.log(dni);
-			
 			setCci(response.data.cciCode);
 			const currency = response.data.currency;
 			const currencyData = handleCurrency(currency);
@@ -174,7 +178,7 @@ const AccountProvider = ({ children }) => {
 			const userName = response.data.name;
 			const lastName = response.data.surname;
 			const image = response.data.img;
-			const email = response.data.email
+			const email = response.data.email;
 			setName(userName);
 			setLastName(lastName);
 			setUserImage(image);
@@ -317,12 +321,44 @@ const AccountProvider = ({ children }) => {
 		} catch (error) {
 			console.log(error);
 			if (error?.response.status === 500) {
-				showNotification("Error al transferir","Ups! A ocurrido un error. Intentalo mas tarde", "#7C2D12", true)
+				showNotification(
+					'Error al transferir',
+					'Ups! A ocurrido un error. Intentalo mas tarde',
+					'#7C2D12',
+					true
+				);
 			}
 		} finally {
 			setTransferenceLoader(false);
 		}
 	};
+
+	// update data user
+
+	const updateDataUser = async (name, surname, img) => {
+		const successUpdateMsg = 'Los datos se han actualizado';
+		const successtextColor = successColor.success900;
+		setUpdateDataUserLoader(true);
+		try {
+			const response = await axios.put(
+				updateDataUserURL,
+				{
+					dni,
+					name,
+					surname,
+					img,
+				},
+				headers
+			);
+			console.log('updated user: ', response);
+			showNotification(successUpdateMsg, '', successtextColor);
+		} catch (error) {
+			console.log(error);
+		} finally {
+			setUpdateDataUserLoader(false);
+		}
+	};
+
 	const data = {
 		accountNumber,
 		balance,
@@ -353,6 +389,8 @@ const AccountProvider = ({ children }) => {
 		isReadyAllAcountsByUser,
 		isTheSameAccount,
 		changeOwnAccDestinyToTransf,
+		updateDataUser,
+		updateDataUserLoader,
 	};
 
 	return (
