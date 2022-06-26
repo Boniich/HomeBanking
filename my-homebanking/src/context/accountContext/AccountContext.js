@@ -216,6 +216,62 @@ const AccountProvider = ({ children }) => {
 		}
 	}, [cci, updateDataAfterTransf]);
 
+	// functions that bring the name of user for details transference
+
+	// 1- call the account
+
+	const [dniForDetailsTranf, setDniForDetailsTranf] = useState('');
+	const [nameInDetailsTransf, setNameInDetailsTransf] = useState('');
+	const [lastNameInDetailsTransf, setLastNameInDetailsTransf] = useState('');
+	const [detailsTransfLoader, setDetailsTransfLoader] = useState(true);
+
+	const resetNameInDetailsTransf = () => {
+		setNameInDetailsTransf('');
+		setLastNameInDetailsTransf('');
+	};
+
+	const bringAccountToDetailsTransf = async cciCode => {
+		setDetailsTransfLoader(true);
+		try {
+			const response = await axios.post(
+				findAccountURL,
+				{
+					cciCode,
+				},
+				headers
+			);
+
+			console.log('origin account: ', response);
+			setDniForDetailsTranf(response.data.owner);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	// 2- use the dni that was extract from the account reques to extract the name and last name
+
+	const showUserNameInTransf = async () => {
+		try {
+			const response = await axios.post(
+				dataUserURL,
+				{
+					dni: dniForDetailsTranf,
+				},
+				headers
+			);
+			console.log('data user in details', response.data);
+			const userName = response.data.name;
+			const lastName = response.data.surname;
+			setNameInDetailsTransf(userName);
+			setLastNameInDetailsTransf(lastName);
+		} catch (error) {
+			console.log(error);
+		} finally {
+			setDniForDetailsTranf('');
+			setDetailsTransfLoader(false);
+		}
+	};
+
 	// search user for transference
 
 	const searchAccountUser = async accNumber => {
@@ -393,7 +449,14 @@ const AccountProvider = ({ children }) => {
 		isTheSameAccount,
 		changeOwnAccDestinyToTransf,
 		updateDataUser,
+		dniForDetailsTranf,
+		bringAccountToDetailsTransf,
 		updateDataUserLoader,
+		nameInDetailsTransf,
+		lastNameInDetailsTransf,
+		showUserNameInTransf,
+		resetNameInDetailsTransf,
+		detailsTransfLoader,
 	};
 
 	return (
