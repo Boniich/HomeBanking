@@ -17,7 +17,7 @@ export const UserResult = ({ ...props }) => {
 			removeBorder={props.removeBorder}
 			removePadding={props.removePadding}
 		>
-			<UserImage src={`data:image/png;base64,${props.userImage}`} />
+			<UserImage src={`${props.userImage}`} />
 			<DataUser>
 				<ParagraphSemibold2>
 					{props.name} {props.lastName}
