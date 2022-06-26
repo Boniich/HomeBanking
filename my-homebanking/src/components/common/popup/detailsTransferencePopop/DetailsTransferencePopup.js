@@ -62,7 +62,7 @@ export const DetailsTransferencePopup = ({transference}) =>{
 				}
 			);
 
-			console.log(response);
+			console.log("origin account: ",response);
 			setDni(response.data.owner);
 		} catch (error) {
 			console.log(error);
@@ -84,7 +84,7 @@ export const DetailsTransferencePopup = ({transference}) =>{
 				}
 			);
 
-			console.log(response);
+			console.log("destiny account: ",response);
 			setDni(response.data.owner);
 		} catch (error) {
 			console.log(error);
@@ -113,7 +113,7 @@ export const DetailsTransferencePopup = ({transference}) =>{
 					},
 				}
 			);
-			console.log('data user', response.data);
+			console.log('data from origin user', response.data);
 			const userName = response.data.name;
 			const lastName = response.data.surname;
 			setName(userName);
@@ -136,7 +136,7 @@ export const DetailsTransferencePopup = ({transference}) =>{
 					},
 				}
 			);
-			console.log('data user', response.data);
+			console.log('data from destiny user', response.data);
 			const userName = response.data.name;
 			const lastName = response.data.surname;
 			setName(userName);
@@ -147,11 +147,12 @@ export const DetailsTransferencePopup = ({transference}) =>{
 	};
 
 	useEffect(() => {
-		if (dni !== null) {
+		if (dni !== '') {
 			if (cci === transference.destiny) {
 				console.log('destiny');
 				renderOriginUser();
 			} else {
+                console.log('origin');
 				renderDestinyUser();
 			}
 		}
