@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import styled from 'styled-components';
 import AccountContext from '../../../../context/accountContext/AccountContext';
 import { transformDateToHumanDate } from '../../../../services/commonFunctions/getDate/getDate';
 import { handleCurrency } from '../../../../services/commonFunctions/handleCurrency/handleCurrency';
@@ -9,24 +8,8 @@ import {
 	ParagraphSemibold2,
 } from '../../../../theme/paragraph/paragraph';
 import { CircleLoader } from '../../circleLoader/CircleLoader';
+import { DataTransferenceGroup, DataTransferenceSubGroup, TransferenceDetailContainer } from './styleDetailsTransferencePopup';
 
-const TransferenceDetailContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-	gap: 23px;
-`;
-
-const DataTransferenceGroup = styled.div`
-	display: flex;
-	flex-direction: column;
-	gap: 8px;
-`;
-
-const DataTransferenceSubGroup = styled.div`
-	display: flex;
-	flex-direction: column;
-	gap: 4px;
-`;
 
 export const DetailsTransferencePopup = ({ transference }) => {
 	const [transfereceData, setTransferenceData] = useState({
