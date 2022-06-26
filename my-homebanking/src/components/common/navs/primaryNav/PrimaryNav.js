@@ -8,7 +8,6 @@ import React, {
 	createRef,
 	useContext,
 	useEffect,
-	useRef,
 	useState,
 } from 'react';
 import { Link, NavLink } from 'react-router-dom';
@@ -46,7 +45,6 @@ export const PrimaryNav = ({ activeSecondColorNav }) => {
 	const [responsiveNav, setResponsiveNav] = useState(false);
 	const [changeColorNav, setChangeColorNav] = useState(false);
 	const { name, userImage } = useContext(AccountContext);
-	const refNav = useRef(false);
 	const ref = createRef();
 
 	useEffect(() => {
@@ -55,16 +53,10 @@ export const PrimaryNav = ({ activeSecondColorNav }) => {
 
 	const openResponsiveNav = () => {
 		setResponsiveNav(!responsiveNav);
-		// mala practica pero es una solucion temporal
-		const wid = refNav.current.offsetWidth;
-		wid >= 1512
-			? (document.body.style.overflow = 'auto')
-			: (document.body.style.overflow = 'hidden');
 	};
 
 	const closeResponsivenav = () => {
 		setResponsiveNav(false);
-		document.body.style.overflow = 'auto';
 	};
 
 	const changeBackgroundColorNav = () => {
@@ -84,7 +76,6 @@ export const PrimaryNav = ({ activeSecondColorNav }) => {
 	return (
 		<>
 			<Nav
-				ref={refNav}
 				backColor={changeColorNav && '#fff'}
 				titleColor={changeColorNav && `${neutralColor.neutral900}`}
 				fontColor={changeColorNav && `${neutralColor.neutral800}`}
