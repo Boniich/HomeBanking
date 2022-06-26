@@ -47,13 +47,14 @@ export const DetailsTransferencePopup = ({transference}) =>{
 	const token = sessionStorage.getItem('token');
 
 	const url = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_FIND_ACCOUNT_ENDPOINT}`;
-	const bringOriginAccount = async () => {
+
+    const bringAccountToDetailsTransf = async (cciCode) => {
 		console.log(cci);
 		try {
 			const response = await axios.post(
 				url,
 				{
-					cciCode: originCciCode,
+					cciCode,
 				},
 				{
 					headers: {
@@ -69,61 +70,18 @@ export const DetailsTransferencePopup = ({transference}) =>{
 		}
 	};
 
-	const bringDestinyAccount = async () => {
-		console.log(cci);
-		try {
-			const response = await axios.post(
-				url,
-				{
-					cciCode: destinyCciCode,
-				},
-				{
-					headers: {
-						token,
-					},
-				}
-			);
-
-			console.log("destiny account: ",response);
-			setDni(response.data.owner);
-		} catch (error) {
-			console.log(error);
-		}
-	};
-
 	useEffect(() => {
 		if (cci === transference.destiny) {
-			bringOriginAccount();
+            // we show that user that send the money
+            bringAccountToDetailsTransf(originCciCode);
 		} else {
-			bringDestinyAccount();
+            bringAccountToDetailsTransf(destinyCciCode);
 		}
 	}, []);
 
 	const dataUserUrl = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_USER_FIND_ENDPOINT}`;
-	const renderOriginUser = async () => {
-		try {
-			const response = await axios.post(
-				dataUserUrl,
-				{
-					dni,
-				},
-				{
-					headers: {
-						token,
-					},
-				}
-			);
-			console.log('data from origin user', response.data);
-			const userName = response.data.name;
-			const lastName = response.data.surname;
-			setName(userName);
-			setLastName(lastName);
-		} catch (error) {
-			console.log(error);
-		}
-	};
 
-	const renderDestinyUser = async () => {
+    const showUserNameInTransf = async () => {
 		try {
 			const response = await axios.post(
 				dataUserUrl,
@@ -136,7 +94,7 @@ export const DetailsTransferencePopup = ({transference}) =>{
 					},
 				}
 			);
-			console.log('data from destiny user', response.data);
+			console.log('data user', response.data);
 			const userName = response.data.name;
 			const lastName = response.data.surname;
 			setName(userName);
@@ -150,10 +108,10 @@ export const DetailsTransferencePopup = ({transference}) =>{
 		if (dni !== '') {
 			if (cci === transference.destiny) {
 				console.log('destiny');
-				renderOriginUser();
+                showUserNameInTransf()
 			} else {
                 console.log('origin');
-				renderDestinyUser();
+                showUserNameInTransf()
 			}
 		}
 	}, [dni]);
