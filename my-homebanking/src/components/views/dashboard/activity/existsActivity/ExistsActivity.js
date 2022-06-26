@@ -261,10 +261,9 @@ export const ExistsActivity = ({ transferenceData }) => {
 	const ref = React.createRef();
 
 	const renderMoreResults = () => {
-		console.log("ejecuta");
-		(showMoreResults < transferenceData.length) &&
-		setShowMoreResults(showMoreResults + 3)
-	}
+		showMoreResults < transferenceData.length &&
+			setShowMoreResults(showMoreResults + 3);
+	};
 
 	useEffect(() => {
 		location.pathname === '/transference' && setShowAllTransferences(true);
@@ -285,17 +284,17 @@ export const ExistsActivity = ({ transferenceData }) => {
 						closeIcon={true}
 						headerText='Detalle de transferencia'
 						action={
-							(index <= showMoreResults) &&
+							index <= showMoreResults && (
 								<TransferenceCardView
-								ref={ref}
-								amount={transference.amount}
-								motive={transference.motive}
-								date={transference.date}
-								destiny={transference.destiny}
-								baseIso={transference.exchangeInfo.baseIso}
-								objectiveIso={transference.exchangeInfo.objectiveIso}
-							/>
-				
+									ref={ref}
+									amount={transference.amount}
+									motive={transference.motive}
+									date={transference.date}
+									destiny={transference.destiny}
+									baseIso={transference.exchangeInfo.baseIso}
+									objectiveIso={transference.exchangeInfo.objectiveIso}
+								/>
+							)
 						}
 					>
 						<Data transference={transference} />
@@ -309,7 +308,9 @@ export const ExistsActivity = ({ transferenceData }) => {
 					</Link>
 				) : (
 					<LoadMoreResultContainer>
-						<ParagraphSemibold2 onClick={renderMoreResults}>Cargar mas resultados</ParagraphSemibold2>
+						<ParagraphSemibold2 onClick={renderMoreResults}>
+							Cargar mas resultados
+						</ParagraphSemibold2>
 					</LoadMoreResultContainer>
 				)}
 			</AllActivityBox>
