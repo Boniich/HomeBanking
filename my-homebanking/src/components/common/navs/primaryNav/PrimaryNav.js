@@ -93,7 +93,10 @@ export const PrimaryNav = ({ activeSecondColorNav }) => {
 			>
 				<Logo logoColor={!changeColorNav && 'changeToWhite'} />
 				<Ul>
-					<Li>
+					<Li
+						backgroundActiveColor={changeColorNav && 'changeToGreen'}
+						activeColor={changeColorNav && 'changeToGreen'}
+					>
 						<NavLink to='/'>
 							{({ isActive }) => (
 								<LinkBox className={isActive ? 'active' : ''}>
@@ -106,7 +109,10 @@ export const PrimaryNav = ({ activeSecondColorNav }) => {
 					<Li off>
 						<FooterText>Tarjetas</FooterText>
 					</Li>
-					<Li>
+					<Li
+						backgroundActiveColor={changeColorNav && 'changeToGreen'}
+						activeColor={changeColorNav && 'changeToGreen'}
+					>
 						<NavLink to='/transference'>
 							{({ isActive }) => (
 								<LinkBox className={isActive ? 'active' : ''}>
@@ -121,7 +127,7 @@ export const PrimaryNav = ({ activeSecondColorNav }) => {
 							<UserBox>
 								<UserImage
 									src={
-										(userImage && userImage !== "img-deleted")
+										userImage && userImage !== 'img-deleted'
 											? `${userImage}`
 											: noUserImage
 									}

@@ -126,7 +126,16 @@ const UlMobile = styled(Ul)`
 
 const LinkBox = styled.span``;
 
-const Li = styled.li`
+const Li = styled.li.attrs(props => ({
+	backgroundActiveColor:
+		props.backgroundActiveColor === 'changeToGreen'
+			? `${primaryColor.primary50}`
+			: `rgba(255, 255, 255, 0.1)`,
+	activeColor:
+		props.activeColor === 'changeToGreen'
+			? `${primaryColor.primary600}`
+			: `${primaryColor.primary300}`,
+}))`
 	display: ${props => (props.off ? 'none' : 'flex')};
 	justify-content: center;
 	align-items: center;
@@ -136,7 +145,7 @@ const Li = styled.li`
 
 	@media screen and (min-width: 1512px) {
 		display: flex;
-		padding: 0 24px;
+		padding: 0 20px;
 		width: 100%;
 		height: 40px;
 
@@ -144,14 +153,19 @@ const Li = styled.li`
 			font-size: 16px;
 			line-height: 24px;
 		}
-		/* 
-    .active > * {
-      background: ${primaryColor.primary50};
-      border-radius: 160px;
-      color: ${primaryColor.primary600};
-      font-weight: 600;
-      line-height: 19px;
-    } */
+
+		.active > * {
+			background: ${props => props.backgroundActiveColor};
+			border-radius: 160px;
+
+			font-weight: 600;
+
+			${FooterText} {
+				line-height: 40px;
+				padding: 0 20px;
+				color: ${props => props.activeColor};
+			}
+		}
 	}
 
 	//this class is setted in NavLink by librery
@@ -232,7 +246,6 @@ const UserImage = styled.img`
 	width: 24px;
 	height: 24px;
 	border-radius: 100%;
-	
 
 	@media screen and (min-width: 1512px) {
 		width: 36px;
