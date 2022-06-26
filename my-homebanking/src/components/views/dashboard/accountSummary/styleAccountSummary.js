@@ -42,6 +42,7 @@ const AccountSummaryContent = styled.div`
 
 	${HeadingSemiBold3} {
 		margin: 0 0 8px 0;
+		
 	}
 
 	${SendButtonContainer} {
@@ -82,6 +83,7 @@ const SavingType = styled.div`
 
 	${ParagraphSemibold3} {
 		color: ${primaryColor.primary600};
+		cursor:pointer;
 	}
 
 	${ModalContainer} {
@@ -94,6 +96,7 @@ const CopyButton = styled(FontAwesomeIcon)`
 	height: 16.67px;
 	color: ${neutralColor.neutral500};
 	margin-left: 14px;
+	cursor: pointer;
 `;
 
 const NumberAccount = styled.div`

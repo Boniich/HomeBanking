@@ -9,6 +9,7 @@ const FigureTransf = styled.figure`
 	align-items: center;
 	justify-content: space-between;
 	padding: 20px 0;
+	cursor: pointer;
 `;
 
 const TransfInfo = styled.div`

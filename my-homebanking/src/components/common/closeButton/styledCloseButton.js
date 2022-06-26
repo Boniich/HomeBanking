@@ -17,6 +17,7 @@ const CloseButtonContent = styled.span`
 	align-items: center;
 	background-color: ${neutralColor.neutral100};
 	border-radius: 100%;
+	cursor: pointer;
 `;
 
 export { CloseButtonContainer, CloseButtonContent };
