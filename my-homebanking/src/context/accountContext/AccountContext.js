@@ -203,7 +203,8 @@ const AccountProvider = ({ children }) => {
 				headers
 			);
 			console.log('transations', response.data);
-			setTranferences(response.data);
+			const startInTheLastTransf = response.data.reverse();
+			setTranferences(startInTheLastTransf);
 		} catch (error) {
 			console.log(error);
 		}
