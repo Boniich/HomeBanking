@@ -14,6 +14,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import AccountContext from '../../../../../../context/accountContext/AccountContext';
 import { Loader } from '../../../../../common/loader/Loader';
 import { Link } from 'react-router-dom';
+import { MsgErrorContainer } from '../../commonTransferenceComponents/TransferenceForm/styleTransferenceForm';
 const EnterNumberSection = styled.section`
 	display: flex;
 	justify-content: center;
@@ -86,7 +87,7 @@ export const EnterNumberAccountView = () => {
 	const [makeCallToApi, setMakeCallToApi] = useState(false);
 	const shortNavText = 'A otro usuario';
 	const largeNavText = 'Transferencia a otro usuario';
-	console.log('valor', accNumber);
+	const number = sessionStorage.getItem('accNumber');
 
 	const {
 		searchAccountUser,
@@ -98,6 +99,8 @@ export const EnterNumberAccountView = () => {
 		searchUserFound,
 		searchUserNotFound,
 		resetSearchUser,
+		setIsTheSameAccount,
+		isTheSameAccount,
 	} = useContext(AccountContext);
 
 	useEffect(() => {
@@ -115,7 +118,11 @@ export const EnterNumberAccountView = () => {
 		}
 
 		if (length === 17) {
-			setMakeCallToApi(true);
+			if (e.target.value === number) {
+				setIsTheSameAccount(true);
+			} else {
+				setMakeCallToApi(true);
+			}
 		}
 	};
 
@@ -161,6 +168,14 @@ export const EnterNumberAccountView = () => {
 									El número de cuenta no pertenece a ningun usuario
 								</ParagraphMedium3>
 							</UserNotFoundContainer>
+						)}
+
+						{isTheSameAccount && (
+							<MsgErrorContainer>
+								<ParagraphMedium3>
+									No puedes transferir a una misma cuenta
+								</ParagraphMedium3>
+							</MsgErrorContainer>
 						)}
 					</EnterNumberContent>
 				</EnterNumberContainer>

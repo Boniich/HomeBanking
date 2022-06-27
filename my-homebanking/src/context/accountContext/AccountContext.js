@@ -326,7 +326,7 @@ const AccountProvider = ({ children }) => {
 		searchUserDni !== null && searchDataUser();
 	}, [searchUserDni]);
 
-	// bring own account to transfer
+	// bring own account to transfer in the selct
 
 	const bringOwnAccountToTransfer = () => {
 		setIsTheSameAccount(false);
@@ -457,6 +457,7 @@ const AccountProvider = ({ children }) => {
 		showUserNameInTransf,
 		resetNameInDetailsTransf,
 		detailsTransfLoader,
+		setIsTheSameAccount,
 	};
 
 	return (
