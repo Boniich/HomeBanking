@@ -11,8 +11,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import AccountContext from '../../../../../../context/accountContext/AccountContext';
 import { Loader } from '../../../../../common/loader/Loader';
 import { Link } from 'react-router-dom';
-import { MsgErrorContainer } from '../../commonTransferenceComponents/TransferenceForm/styleTransferenceForm';
 import { EnterNumberContainer, EnterNumberContent, EnterNumberSection, ResultsContainer, UserNotFoundContainer } from './styleEnterNumberAccount';
+import { ErrorMsgBeforeTransf } from '../../commonTransferenceComponents/errorMsgBeforeTransf/ErrorMsgBeforeTransf';
 
 
 export const EnterNumberAccountView = () => {
@@ -20,6 +20,7 @@ export const EnterNumberAccountView = () => {
 	const [makeCallToApi, setMakeCallToApi] = useState(false);
 	const shortNavText = 'A otro usuario';
 	const largeNavText = 'Transferencia a otro usuario';
+	const errorMsg = 'No puedes transferir a una misma cuenta';
 	const number = sessionStorage.getItem('accNumber');
 
 	const {
@@ -101,14 +102,7 @@ export const EnterNumberAccountView = () => {
 								</ParagraphMedium3>
 							</UserNotFoundContainer>
 						)}
-
-						{isTheSameAccount && (
-							<MsgErrorContainer>
-								<ParagraphMedium3>
-									No puedes transferir a una misma cuenta
-								</ParagraphMedium3>
-							</MsgErrorContainer>
-						)}
+						<ErrorMsgBeforeTransf errorState={isTheSameAccount} errorMsg={errorMsg}/>
 					</EnterNumberContent>
 				</EnterNumberContainer>
 			</EnterNumberSection>

@@ -11,6 +11,7 @@ import { SecondaryNav } from '../../../../../common/navs/secondaryNav/SecondaryN
 import { Notification } from '../../../../../common/notification/Notification';
 import { TransferencePopup } from '../../../../../common/popup/transferencePopup/TransferencePopup';
 import { ProcessingRequestButton } from '../../../../../common/processingRequestButtton/ProcessingRequestButton';
+import { ErrorMsgBeforeTransf } from '../errorMsgBeforeTransf/ErrorMsgBeforeTransf';
 import {
 	AccountContainer,
 	AccountContent,
@@ -22,7 +23,6 @@ import {
 	TransactionForm,
 	MotiveInput,
 	DropdownContent,
-	MsgErrorContainer,
 } from './styleTransferenceForm';
 
 export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
@@ -31,6 +31,8 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
 	const [notEnoughBalanceError, setNotEnoughBalanceError] = useState(false);
 	const [buttonIsDisable, setButtonIsDisable] = useState(true);
 	const ref = createRef();
+	const errorMsg = 'No puedes transferir a una misma cuenta';
+	const errorMsgNotEnoughBalance = 'No cuentas con saldo suficiente';
 	console.log(amount);
 	console.log(motive);
 	const {
@@ -135,26 +137,14 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
 									bringCurrentAccount={bringCurrentAccount}
 								/>
 							</DropdownContent>
-							{notEnoughBalanceError && (
-								<MsgErrorContainer>
-									<ParagraphMedium3>
-										No cuentas con saldo suficiente
-									</ParagraphMedium3>
-								</MsgErrorContainer>
-							)}
+							<ErrorMsgBeforeTransf errorState={notEnoughBalanceError} errorMsg={errorMsgNotEnoughBalance}/>
 						</AccountContent>
 						<AccountContent>
 							<DropdownContent>
 								<ParagraphSemibold2>Cuenta de destino</ParagraphSemibold2>
 								{children}
 							</DropdownContent>
-							{isTheSameAccount && (
-								<MsgErrorContainer>
-									<ParagraphMedium3>
-										No puedes transferir a una misma cuenta
-									</ParagraphMedium3>
-								</MsgErrorContainer>
-							)}
+							<ErrorMsgBeforeTransf errorState={isTheSameAccount} errorMsg={errorMsg} />
 						</AccountContent>
 					</AccountContainer>
 					<Button
