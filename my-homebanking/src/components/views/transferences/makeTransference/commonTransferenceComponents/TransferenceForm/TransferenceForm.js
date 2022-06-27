@@ -163,6 +163,7 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
 						amount={amount.amount}
 						name={searchUserName}
 						lastName={searchUserLastName}
+						currency={currency}
 					></TransferencePopup>
 				</TransactionContent>
 			</TransactionForm>

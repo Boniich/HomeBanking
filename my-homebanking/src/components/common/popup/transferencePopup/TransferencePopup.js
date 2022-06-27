@@ -21,6 +21,7 @@ export const TransferencePopup = ({
 	name,
 	lastName,
 	open,
+	currency,
 }) => {
 	const date = getDate();
 	return (
@@ -62,7 +63,7 @@ export const TransferencePopup = ({
 						></CheckIcon>
 					</BackgroundIcon>
 					<ParagraphMedium2>Enviaste</ParagraphMedium2>
-					<HeadingBold5>{amount}</HeadingBold5>
+					<HeadingBold5>{currency.currencySymbol} {amount}</HeadingBold5>
 					<ParagraphSemibold3>
 						{name} {lastName}
 					</ParagraphSemibold3>
