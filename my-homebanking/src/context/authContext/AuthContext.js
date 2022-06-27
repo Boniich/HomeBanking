@@ -1,8 +1,6 @@
 import React, { createContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import bcryptjs from 'bcryptjs';
 import axios from 'axios';
-const { hash } = bcryptjs;
 
 const AuthContext = createContext();
 
@@ -58,7 +56,7 @@ const AuthProvider = ({ children }) => {
 		setEmailError({ handleEmailError: false });
 		setPasswordError({ handlePasswordError: false });
 		try {
-			const appToken = await hash(`${process.env.REACT_APP_TOKEN_KEY}`, 10);
+			const appToken = `${process.env.REACT_APP_TOKEN_KEY}`;
 
 			const response = await axios.post(
 				url,
