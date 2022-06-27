@@ -16,7 +16,11 @@ const AccountProvider = ({ children }) => {
 	const [cci, setCci] = useState(null);
 	const [userImage, setUserImage] = useState(null);
 	const [allAccountsByUser, setAllAccountsByUser] = useState([]);
+
+	// bring transference
 	const [tranferences, setTranferences] = useState(null);
+	const [updateColorAmountAfterChangeAcc, setUpdateColorAmountAfterChangeAcc] =
+		useState(false);
 
 	// for reload in transference
 
@@ -194,6 +198,7 @@ const AccountProvider = ({ children }) => {
 	}, [dni, successDataUserUpdate]);
 
 	const bringTransferenceByUser = async () => {
+		setUpdateColorAmountAfterChangeAcc(false);
 		try {
 			const response = await axios.post(
 				transferencesByUserURL,
@@ -205,6 +210,7 @@ const AccountProvider = ({ children }) => {
 			console.log('transations', response.data);
 			const startInTheLastTransf = response.data.reverse();
 			setTranferences(startInTheLastTransf);
+			setUpdateColorAmountAfterChangeAcc(true);
 		} catch (error) {
 			console.log(error);
 		}
@@ -458,6 +464,7 @@ const AccountProvider = ({ children }) => {
 		resetNameInDetailsTransf,
 		detailsTransfLoader,
 		setIsTheSameAccount,
+		updateColorAmountAfterChangeAcc,
 	};
 
 	return (

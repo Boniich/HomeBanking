@@ -25,12 +25,12 @@ const TransferenceCardView = React.forwardRef(
 			currencySymbol: '',
 		});
 
-		const { cci } = useContext(AccountContext);
+		const { cci, updateColorAmountAfterChangeAcc } = useContext(AccountContext);
 		const humanDate = new Date(date).toLocaleDateString();
 		const originCurrencySymbol = handleCurrency(baseIso);
 		const destinyCurrencySymbol = handleCurrency(objectiveIso);
-		const accNumber = sessionStorage.getItem("accNumber");
 		useEffect(() => {
+			setAmountStatus({ sameCci: false });
 			if (cci === destiny) {
 				setAmountStatus({ sameCci: true, Symbol: '+' });
 				setCurrency({
@@ -38,13 +38,13 @@ const TransferenceCardView = React.forwardRef(
 					currencySymbol: destinyCurrencySymbol.currencySymbol,
 				});
 			} else {
-				setAmountStatus({ Symbol: '-' });
+				setAmountStatus({ sameCci: false, Symbol: '-' });
 				setCurrency({
 					currencyText: originCurrencySymbol.currencyText,
 					currencySymbol: originCurrencySymbol.currencySymbol,
 				});
 			}
-		}, [accNumber]);
+		}, [updateColorAmountAfterChangeAcc]);
 
 		return (
 			<Transf ref={ref} {...prop}>
