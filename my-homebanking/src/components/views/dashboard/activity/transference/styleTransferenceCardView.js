@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { errorColor, successColor } from '../../../../../theme/colors/colors';
-import { ParagraphSemibold2 } from '../../../../../theme/paragraph/paragraph';
+import { errorColor, neutralColor, successColor } from '../../../../../theme/colors/colors';
+import { ParagraphMedium3, ParagraphSemibold2 } from '../../../../../theme/paragraph/paragraph';
 
 const FigureTransf = styled.figure`
 	margin: 0;
@@ -15,6 +15,10 @@ const FigureTransf = styled.figure`
 const TransfInfo = styled.div`
 	${ParagraphSemibold2} {
 		margin-bottom: 4px;
+	}
+
+	${ParagraphMedium3}{
+		color: ${neutralColor.neutral500};
 	}
 `;
 
