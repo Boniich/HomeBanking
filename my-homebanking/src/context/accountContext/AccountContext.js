@@ -349,6 +349,8 @@ const AccountProvider = ({ children }) => {
 			setAnotherCurrencyAcc(account[0].currencyText);
 			setSearchUserCci(account[0].cciCode);
 			setSearchUserAccNumber(account[0].accountNumber);
+			setSearchUserName(name);
+			setSearchLastUserName(lastName);
 		} else {
 			console.log('entra');
 			const ownCurrency = currency.currencyText;
