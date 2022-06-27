@@ -74,7 +74,7 @@ export const DestinyAccountSelect = ({
 								onClick={() => changeDestiny(
 									el.currencyText,
 									el.accountNumber,
-									el.cci
+									el.cciCode
 								)}
 							>
 								<HeaderContent>
