@@ -1,8 +1,3 @@
-export const getDate = () => {
-	const newDate = new Date().toLocaleDateString();
-	return newDate;
-};
-
 const currentDateObj = () => {
 	const date = new Date();
 	return date;
