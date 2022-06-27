@@ -1,11 +1,8 @@
-import styled from 'styled-components';
 import {
-	neutralColor,
 	primaryColor,
 } from '../../../../../../theme/colors/colors';
 import { HeadingSemiBold5 } from '../../../../../../theme/heading/heading';
 import { ParagraphMedium3 } from '../../../../../../theme/paragraph/paragraph';
-import { shadownMD, shadownXS } from '../../../../../../theme/shadown/shadown';
 import { SecondaryNav } from '../../../../../common/navs/secondaryNav/SecondaryNav';
 import { UserResult } from '../../commonTransferenceComponents/userResult/UserResult';
 import { Input } from '../../../../../../theme/inputs/input';
@@ -15,72 +12,8 @@ import AccountContext from '../../../../../../context/accountContext/AccountCont
 import { Loader } from '../../../../../common/loader/Loader';
 import { Link } from 'react-router-dom';
 import { MsgErrorContainer } from '../../commonTransferenceComponents/TransferenceForm/styleTransferenceForm';
-const EnterNumberSection = styled.section`
-	display: flex;
-	justify-content: center;
-`;
+import { EnterNumberContainer, EnterNumberContent, EnterNumberSection, ResultsContainer, UserNotFoundContainer } from './styleEnterNumberAccount';
 
-const EnterNumberContent = styled.div`
-	display: flex;
-	flex-direction: column;
-	padding: 24px 24px 40px;
-	gap: 24px;
-
-	${HeadingSemiBold5} {
-		color: ${neutralColor.neutral600};
-		font-weight: 600;
-	}
-`;
-
-// const EnterNumberInputContainer = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   gap: 8px;
-
-//   ${ParagraphMedium3} {
-//     color: ${neutralColor.neutral700};
-//     padding-left: 4px;
-//   }
-// `;
-
-const UserNotFoundContainer = styled.div`
-	padding: 16px;
-	background: ${neutralColor.neutral100};
-	border-radius: 8px;
-
-	${ParagraphMedium3} {
-		color: ${neutralColor.neutral800};
-	}
-`;
-
-const EnterNumberContainer = styled.div`
-	width: 312px;
-	height: auto;
-	background: #fff;
-	box-shadow: ${shadownXS};
-	border-radius: 16px;
-	margin-top: 40px;
-
-	@media screen and (min-width: 744px) {
-		width: 402px;
-		margin-top: 64px;
-		box-shadow: ${shadownMD};
-
-		${EnterNumberContent} {
-			padding: 32px 32px 40px;
-			gap: 32px;
-		}
-	}
-`;
-
-const ResultsContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-	gap: 12px;
-	${ParagraphMedium3} {
-		color: ${neutralColor.neutral500};
-	}
-`;
 
 export const EnterNumberAccountView = () => {
 	const [accNumber, setAccNumber] = useState({ accNumber: '' });
@@ -144,7 +77,6 @@ export const EnterNumberAccountView = () => {
 							/>
 						</InputContainer>
 
-						{/* Get a result */}
 						{searchUserLoader && (
 							<Loader circleColor={primaryColor.primary500} />
 						)}
