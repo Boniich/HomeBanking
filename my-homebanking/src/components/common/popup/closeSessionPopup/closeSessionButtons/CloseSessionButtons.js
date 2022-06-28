@@ -5,7 +5,7 @@ import {
 	CloseSessionButton,
 } from '../../../../../theme/buttons/buttons';
 
-export const CloseSessionButtons = () => {
+export const CloseSessionButtons = ({propOnClick}) => {
 	const closeSession = () => {
 		sessionStorage.clear();
 		window.location.reload();
@@ -13,7 +13,7 @@ export const CloseSessionButtons = () => {
 
 	return (
 		<ButtonsContainer>
-			<KeepSessionActiveButton>Mantener activa</KeepSessionActiveButton>
+			<KeepSessionActiveButton onClick={propOnClick}>Mantener activa</KeepSessionActiveButton>
 			<CloseSessionButton onClick={closeSession}>
 				Cerrar sesión
 			</CloseSessionButton>

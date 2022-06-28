@@ -4,12 +4,7 @@ import {
 	faHouseChimney,
 	faRightLeft,
 } from '@fortawesome/free-solid-svg-icons';
-import React, {
-	createRef,
-	useContext,
-	useEffect,
-	useState,
-} from 'react';
+import React, { createRef, useContext, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import AccountContext from '../../../../context/accountContext/AccountContext';
 import { neutralColor } from '../../../../theme/colors/colors';
@@ -143,11 +138,13 @@ export const PrimaryNav = ({ activeSecondColorNav }) => {
 										</Span>
 									</LiMobile>
 									<LiMobile>
-										<CloseSessionPopup text='¿Desea cerrar la sesión?'>
-											<Span ref={ref}>
-												<ParagraphSemibold2>Cerrar sesión</ParagraphSemibold2>
-											</Span>
-										</CloseSessionPopup>
+										<CloseSessionPopup
+											action={
+												<Span ref={ref}>
+													<ParagraphSemibold2>Cerrar sesión</ParagraphSemibold2>
+												</Span>
+											}
+										></CloseSessionPopup>
 									</LiMobile>
 								</UlMobile>
 							</DesktopDropdownNav>
@@ -188,12 +185,14 @@ export const PrimaryNav = ({ activeSecondColorNav }) => {
 							</Span>
 						</LiMobile>
 						<LiMobile>
-							<CloseSessionPopup text='¿Desea cerrar la sesión?'>
-								<Span ref={ref}>
-									<ParagraphSemibold2>Cerrar sesión</ParagraphSemibold2>
-									<ArrowIcon icon={faAngleRight}></ArrowIcon>
-								</Span>
-							</CloseSessionPopup>
+							<CloseSessionPopup
+								action={
+									<Span ref={ref}>
+										<ParagraphSemibold2>Cerrar sesión</ParagraphSemibold2>
+										<ArrowIcon icon={faAngleRight}></ArrowIcon>
+									</Span>
+								}
+							></CloseSessionPopup>
 						</LiMobile>
 					</UlMobile>
 				</ListMenu>
