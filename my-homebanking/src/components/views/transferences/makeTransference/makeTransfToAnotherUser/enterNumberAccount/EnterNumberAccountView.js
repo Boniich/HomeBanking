@@ -49,6 +49,7 @@ export const EnterNumberAccountView = () => {
 
 		if (length === 16 || length === 0) {
 			resetSearchUser();
+			setIsTheSameAccount(false);
 		}
 
 		if (length === 17) {
