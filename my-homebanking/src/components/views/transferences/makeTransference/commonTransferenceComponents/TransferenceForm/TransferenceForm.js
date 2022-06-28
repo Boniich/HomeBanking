@@ -33,8 +33,6 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
 	const ref = createRef();
 	const errorMsg = 'No puedes transferir a una misma cuenta';
 	const errorMsgNotEnoughBalance = 'No cuentas con saldo suficiente';
-	console.log(amount);
-	console.log(motive);
 	const {
 		accountNumber,
 		currency,
@@ -76,8 +74,6 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
 	};
 
 	const handleMotiveChange = e => {
-		console.log(e.target.value);
-
 		setMotive({ ...motive, [e.target.name]: e.target.value });
 	};
 
@@ -137,14 +133,20 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
 									bringCurrentAccount={bringCurrentAccount}
 								/>
 							</DropdownContent>
-							<ErrorMsgBeforeTransf errorState={notEnoughBalanceError} errorMsg={errorMsgNotEnoughBalance}/>
+							<ErrorMsgBeforeTransf
+								errorState={notEnoughBalanceError}
+								errorMsg={errorMsgNotEnoughBalance}
+							/>
 						</AccountContent>
 						<AccountContent>
 							<DropdownContent>
 								<ParagraphSemibold2>Cuenta de destino</ParagraphSemibold2>
 								{children}
 							</DropdownContent>
-							<ErrorMsgBeforeTransf errorState={isTheSameAccount} errorMsg={errorMsg} />
+							<ErrorMsgBeforeTransf
+								errorState={isTheSameAccount}
+								errorMsg={errorMsg}
+							/>
 						</AccountContent>
 					</AccountContainer>
 					<Button

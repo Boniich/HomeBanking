@@ -37,7 +37,6 @@ export const DestinyAccountSelect = ({
 			el.accountNumber !== accountNumber &&
 			el.accountNumber !== accountNumberInStorage
 	);
-	console.log(userAccounts);
 
 
 	return (

@@ -72,7 +72,6 @@ const LoginView = () => {
 						)}
 					</PasswordContainer>
 					<ParagraphUnderline3>¿Olvidaste tu contraseña?</ParagraphUnderline3>
-					{/* cambiar por link */}
 					<Button
 						disabledBackground={isDisable}
 						disableColor={isDisable}

@@ -109,12 +109,9 @@ const Dropdown = ({
 	const userAccounts = allAccountsByUser.filter(
 		el => el.accountNumber !== accountNumberInStorage
 	);
-	console.log(userAccounts);
 
 	const changeAccount = number => {
 		if (accountNumberInStorage !== number) {
-			console.log('entra');
-			console.log(number);
 			bringCurrentAccount(number);
 			sessionStorage.setItem('accNumber', number);
 			setOpen(false);

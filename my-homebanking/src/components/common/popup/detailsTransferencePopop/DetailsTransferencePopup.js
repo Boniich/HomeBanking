@@ -52,10 +52,8 @@ export const DetailsTransferencePopup = ({ transference }) => {
 		if (dniForDetailsTranf !== '') {
 			resetNameInDetailsTransf();
 			if (cci === transference.destiny) {
-				console.log('destiny');
 				showUserNameInTransf();
 			} else {
-				console.log('origin');
 				showUserNameInTransf();
 			}
 		}
@@ -63,7 +61,6 @@ export const DetailsTransferencePopup = ({ transference }) => {
 
 	useEffect(() => {
 		if (transference.destiny === cci) {
-			console.log('es el de destino');
 			setTransferenceData({
 				disableOriginAccount: true,
 				transferenceTypeString: 'Enviado por',
@@ -73,7 +70,6 @@ export const DetailsTransferencePopup = ({ transference }) => {
 				currencySymbol: destinyCurrencySymbol.currencySymbol,
 			});
 		} else {
-			console.log('no es el de destino');
 			setCurrency({
 				currencyText: originCurrencySymbol.currencyText,
 				currencySymbol: originCurrencySymbol.currencySymbol,

@@ -34,7 +34,6 @@ export const AccountSummaryView = () => {
 	const { accountNumber, balance, currency, allAccountsByUser } =
 		useContext(AccountContext);
 
-	console.log('todas las cuentas por usuario', allAccountsByUser);
 	return (
 		<AccountSummary>
 			<AccountSummaryContent>
@@ -75,7 +74,7 @@ export const AccountSummaryView = () => {
 						notificationText={notificationText}
 						notificationColor={notificationColor}
 					/>
-					<Notification background='#F0F9FF' border='1px solid #BAE6FD'/>
+					<Notification background='#F0F9FF' border='1px solid #BAE6FD' />
 				</NumberAccount>
 				<Popup
 					action={<SendButton ref={ref} text='Enviar Dinero' />}

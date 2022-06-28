@@ -108,7 +108,6 @@ const AccountProvider = ({ children }) => {
 				{ email },
 				headers
 			);
-			console.log('all accounts be user', response);
 
 			// save account number of the first account of user
 			if (!accNumber) {
@@ -126,13 +125,11 @@ const AccountProvider = ({ children }) => {
 					currencyText: currencyObj.currencyText,
 					currencySymbol: currencyObj.currencySymbol,
 				};
-				console.log(obj);
+
 				setAllAccountsByUser(allAccountsByUser => [...allAccountsByUser, obj]);
 				setIsReadyAllAcountsByUser(true);
 			}
-		} catch (error) {
-			console.log(error);
-		}
+		} catch (error) {}
 	};
 
 	useEffect(() => {
@@ -149,11 +146,9 @@ const AccountProvider = ({ children }) => {
 				headers
 			);
 
-			console.log('currentAccount: ', response);
 			setAccountNumber(response.data.accountNumber);
 			setBalance(response.data.balance);
 			setDni(response.data.owner);
-			console.log(dni);
 			setCci(response.data.cciCode);
 			const currency = response.data.currency;
 			const currencyData = handleCurrency(currency);
@@ -161,9 +156,7 @@ const AccountProvider = ({ children }) => {
 				currencyText: currencyData.currencyText,
 				currencySymbol: currencyData.currencySymbol,
 			});
-		} catch (error) {
-			console.log(error);
-		}
+		} catch (error) {}
 	};
 
 	useEffect(() => {
@@ -179,7 +172,7 @@ const AccountProvider = ({ children }) => {
 				},
 				headers
 			);
-			console.log('data user', response.data);
+
 			const userName = response.data.name;
 			const lastName = response.data.surname;
 			const image = response.data.img;
@@ -188,9 +181,7 @@ const AccountProvider = ({ children }) => {
 			setLastName(lastName);
 			setUserImage(image);
 			setUserEmail(email);
-		} catch (error) {
-			console.log(error);
-		}
+		} catch (error) {}
 	};
 
 	useEffect(() => {
@@ -207,13 +198,10 @@ const AccountProvider = ({ children }) => {
 				},
 				headers
 			);
-			console.log('transations', response.data);
 			const startInTheLastTransf = response.data.reverse();
 			setTranferences(startInTheLastTransf);
 			setUpdateColorAmountAfterChangeAcc(true);
-		} catch (error) {
-			console.log(error);
-		}
+		} catch (error) {}
 	};
 
 	useEffect(() => {
@@ -247,11 +235,8 @@ const AccountProvider = ({ children }) => {
 				headers
 			);
 
-			console.log('origin account: ', response);
 			setDniForDetailsTranf(response.data.owner);
-		} catch (error) {
-			console.log(error);
-		}
+		} catch (error) {}
 	};
 
 	// 2- use the dni that was extract from the account reques to extract the name and last name
@@ -265,13 +250,12 @@ const AccountProvider = ({ children }) => {
 				},
 				headers
 			);
-			console.log('data user in details', response.data);
+
 			const userName = response.data.name;
 			const lastName = response.data.surname;
 			setNameInDetailsTransf(userName);
 			setLastNameInDetailsTransf(lastName);
 		} catch (error) {
-			console.log(error);
 		} finally {
 			setDniForDetailsTranf('');
 			setDetailsTransfLoader(false);
@@ -291,13 +275,10 @@ const AccountProvider = ({ children }) => {
 				},
 				headers
 			);
-
-			console.log(response);
 			setSearchUserCci(response.data.cciCode);
 			setSearchUserAccNumber(response.data.accountNumber);
 			setSearchUserDni(response.data.owner);
 		} catch (error) {
-			console.log(error);
 			if (error?.response.status === 404) {
 				setSearchUserNotFound(true);
 				setSearchUserLoader(false);
@@ -314,7 +295,6 @@ const AccountProvider = ({ children }) => {
 				},
 				headers
 			);
-			console.log('user searched', response.data);
 			const userName = response.data.name;
 			const lastName = response.data.surname;
 			const image = response.data.img;
@@ -323,9 +303,7 @@ const AccountProvider = ({ children }) => {
 			setSearchUserImage(image);
 			setSearchUserFound(true);
 			setSearchUserLoader(false);
-		} catch (error) {
-			console.log(error);
-		}
+		} catch (error) {}
 	};
 
 	useEffect(() => {
@@ -345,14 +323,12 @@ const AccountProvider = ({ children }) => {
 			const account = allAccountsByUser.filter(
 				el => el.accountNumber !== accNumber
 			);
-			console.log('account for destiny select: ', account);
 			setAnotherCurrencyAcc(account[0].currencyText);
 			setSearchUserCci(account[0].cciCode);
 			setSearchUserAccNumber(account[0].accountNumber);
 			setSearchUserName(name);
 			setSearchLastUserName(lastName);
 		} else {
-			console.log('entra');
 			const ownCurrency = currency.currencyText;
 			setAnotherCurrencyAcc(ownCurrency);
 			setSearchUserAccNumber(accNumber);
@@ -371,7 +347,7 @@ const AccountProvider = ({ children }) => {
 	const makeTransference = async (motive, amount) => {
 		setTransferenceLoader(true);
 		try {
-			const response = await axios.put(
+			await axios.put(
 				makeTransferenceURL,
 				{
 					origin: cci,
@@ -381,11 +357,9 @@ const AccountProvider = ({ children }) => {
 				},
 				headers
 			);
-			console.log('make transference', response);
 			setUpdateDataAfterTransf(!updateDataAfterTransf);
 			setSuccesstransference(true);
 		} catch (error) {
-			console.log(error);
 			if (error?.response.status === 500) {
 				showNotification(
 					'Error al transferir',
@@ -406,7 +380,7 @@ const AccountProvider = ({ children }) => {
 		const successtextColor = successColor.success900;
 		setUpdateDataUserLoader(true);
 		try {
-			const response = await axios.put(
+			await axios.put(
 				updateDataUserURL,
 				{
 					dni,
@@ -416,11 +390,9 @@ const AccountProvider = ({ children }) => {
 				},
 				headers
 			);
-			console.log('updated user: ', response);
 			showNotification(successUpdateMsg, '', successtextColor);
 			setSuccessDataUserUpdate(!successDataUserUpdate);
 		} catch (error) {
-			console.log(error);
 		} finally {
 			setUpdateDataUserLoader(false);
 		}

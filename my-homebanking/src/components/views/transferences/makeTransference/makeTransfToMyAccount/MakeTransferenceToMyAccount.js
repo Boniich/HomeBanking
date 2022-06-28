@@ -21,8 +21,6 @@ export const MakeTransferenceToMyAccount = () => {
 		isReadyAllAcountsByUser && bringOwnAccountToTransfer();
 	}, [isReadyAllAcountsByUser, accNumber]);
 
-	console.log(searchUserAccNUmber);
-
 	return (
 		<TransferenceForm shortNavText={shortNavText} largeNavText={largeNavText}>
 			<DestinyAccountSelect

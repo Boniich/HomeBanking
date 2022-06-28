@@ -54,7 +54,6 @@ export const UpdateDataForm = () =>{
 
     const handleSubmit = e => {
 		e.preventDefault();
-		console.log(dataUser);
 		updateDataUser(dataUser.name, dataUser.lastName, dataUser.image);
 	};
 

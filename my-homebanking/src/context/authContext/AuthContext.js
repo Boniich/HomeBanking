@@ -33,8 +33,6 @@ const AuthProvider = ({ children }) => {
 	};
 
 	const handleKeyUp = () => {
-		// Muestra y oculta el ojo
-		console.log('keyUp');
 		if (input.password.length !== 0) {
 			setShowEye(true);
 		} else {
@@ -43,6 +41,8 @@ const AuthProvider = ({ children }) => {
 
 		if (input.email.length !== 0 && input.password.length !== 0) {
 			setIsDisable(false);
+		}else{
+			setIsDisable(true);
 		}
 	};
 
