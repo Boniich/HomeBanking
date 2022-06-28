@@ -20,6 +20,11 @@ const LoginSection = styled.section`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
+	@media screen and (max-width: 744px) {
+		background: #fff;
+		
+	}
 `;
 
 const EmailContainer = styled.div`
@@ -83,7 +88,7 @@ const ShowLoginErros = styled.span`
 const Box = styled.div`
 	box-sizing: border-box;
 	width: 360px;
-	height: 302px;
+	height: auto;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
