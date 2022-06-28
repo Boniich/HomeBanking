@@ -8,15 +8,7 @@ const transformDateObj = date => {
 	return dateWithProp;
 };
 
-export const getCurrentTime = () => {
-	let time = '';
-	const hour = currentDateObj().getHours();
-	const minutes = currentDateObj().getMinutes();
-	time = `${hour}:${minutes} hs`;
-	return time;
-};
-
-export const transformDateToHumanDate = date => {
+const findMonth = (monthFromDate) =>{
 	const allMonths = [
 		'Ene',
 		'Feb',
@@ -31,6 +23,22 @@ export const transformDateToHumanDate = date => {
 		'Nov',
 		'Dic',
 	];
+	const month = allMonths.find((e, index) => index === monthFromDate);
+
+	return month
+}
+
+export const getCurrentDate = () => {
+	let date = '';
+	const day = currentDateObj().getDate();
+	const monthFromDate = currentDateObj().getMonth();
+	const month = findMonth(monthFromDate);
+	const year = currentDateObj().getFullYear();
+	date = `${day} ${month}. ${year}`
+	return date;
+};
+
+export const transformDateToHumanDate = date => {
 
 	const days = [
 		'Domingo',
@@ -51,7 +59,7 @@ export const transformDateToHumanDate = date => {
 
 	const dayTransfered = days.find((e, index) => index === dayFromDate);
 	const monthFromDate = transformDateObj(date).getMonth();
-	const month = allMonths.find((e, index) => index === monthFromDate);
+	const month = findMonth(monthFromDate);
 	const year = transformDateObj(date).getFullYear();
 	const hour = transformDateObj(date).getHours();
 	const minutes = transformDateObj(date).getMinutes();

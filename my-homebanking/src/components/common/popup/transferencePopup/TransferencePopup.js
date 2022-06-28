@@ -1,6 +1,6 @@
 import React from 'react';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import { getCurrentTime } from '../../../../services/commonFunctions/getDate/getDate';
+import { getCurrentDate } from '../../../../services/commonFunctions/getDate/getDate';
 import { Caption } from '../../../../theme/caption/caption';
 import { primaryColor } from '../../../../theme/colors/colors';
 import { HeadingBold5 } from '../../../../theme/heading/heading';
@@ -23,7 +23,7 @@ export const TransferencePopup = ({
 	open,
 	currency,
 }) => {
-	const date = getCurrentTime();
+	const date = getCurrentDate();
 	return (
 		<Popup
 			action={children}
@@ -67,7 +67,7 @@ export const TransferencePopup = ({
 					<ParagraphSemibold3>
 						{name} {lastName}
 					</ParagraphSemibold3>
-					<Caption>Transferido a las {date}</Caption>
+					<Caption>{date}</Caption>
 				</ModalTextAndIcons>
 				<TransferenceButtons />
 			</ModalSubContent>
