@@ -24,6 +24,7 @@ const AccountContainer = styled.div`
 	background: ${neutralColor.neutral100};
 	border: 1px solid ${neutralColor.neutral300};
 	border-radius: 8px;
+	cursor: pointer;
 `;
 
 const AccountContent = styled.div`
