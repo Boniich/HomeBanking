@@ -20,6 +20,10 @@ const SendArrowIcon = styled(ArrowIcon)`
 	margin-right: 10px;
 `;
 
+const NotFoundArrowIcon = styled(ArrowIcon)`
+	color: #fff;
+`;
+
 const CheckIcon = styled(FontAwesomeIcon).attrs(props => ({
 	tranfcheckiconwidth: props.tranfcheckiconwidth === true ? '29.09px' : '32px',
 	tranfcheckiconheight:
@@ -34,4 +38,4 @@ const CheckIcon = styled(FontAwesomeIcon).attrs(props => ({
 	color: ${props => props.tranfcoloricon};
 `;
 
-export { CloseIcon, ArrowIcon, SendArrowIcon, CheckIcon };
+export { CloseIcon, ArrowIcon, SendArrowIcon, CheckIcon, NotFoundArrowIcon };

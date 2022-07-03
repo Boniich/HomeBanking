@@ -13,6 +13,7 @@ import { MakeTransferenceToAnotherUserView } from './components/views/transferen
 import { EnterNumberAccountView } from './components/views/transferences/makeTransference/makeTransfToAnotherUser/enterNumberAccount/EnterNumberAccountView';
 import { ConfigurationView } from './components/views/configuration/ConfigurationView';
 import { ShowTransferences } from './components/views/transferences/showTransferences/ShowTransferences';
+import { NoFoundPage } from './components/views/noFoundPage/NoFoundPage';
 
 function App() {
 	return (
@@ -98,7 +99,7 @@ function App() {
 				</Route>
 
 				{/* <Route path="/" element={<h1>home</h1>} /> */}
-				<Route path='*' element={<h1>Pagina no encontrada</h1>} />
+				<Route path='*' element={<NoFoundPage />} />
 			</Route>
 		</Routes>
 	);
