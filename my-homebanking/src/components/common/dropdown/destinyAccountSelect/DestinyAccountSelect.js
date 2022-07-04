@@ -11,15 +11,16 @@ import {
 	LogoOnAccountTypeButton,
 } from '../../accountCard/styleAccountCard';
 import {
-	AccountInfoCantainer,
+	AccountInfoContainer,
 	DropdownArrow,
 	DropdownArrowContainer,
 	DropdownItemList,
 	DropdownList,
 	HeaderContent,
 	HeaderDropdown,
+	NoOtherAccountMsgContainer,
 	WrapperDropdown,
-} from '../Dropdown';
+} from '../styleDropdown';
 import logo from '../../../../assets/logo.svg';
 export const DestinyAccountSelect = ({
 	accountNumber,
@@ -38,7 +39,6 @@ export const DestinyAccountSelect = ({
 			el.accountNumber !== accountNumberInStorage
 	);
 
-
 	return (
 		<WrapperDropdown>
 			<HeaderDropdown
@@ -51,10 +51,10 @@ export const DestinyAccountSelect = ({
 					<AccountTypeLogo>
 						<LogoOnAccountTypeButton src={logo} />
 					</AccountTypeLogo>
-					<AccountInfoCantainer>
+					<AccountInfoContainer>
 						<ParagraphSemibold2>{currency}</ParagraphSemibold2>
 						<ParagraphMedium3>{accountNumber}</ParagraphMedium3>
-					</AccountInfoCantainer>
+					</AccountInfoContainer>
 				</HeaderContent>
 				<DropdownArrowContainer>
 					{open ? (
@@ -70,25 +70,25 @@ export const DestinyAccountSelect = ({
 						userAccounts.map(el => (
 							<DropdownItemList
 								key={el.id}
-								onClick={() => changeDestiny(
-									el.currencyText,
-									el.accountNumber,
-									el.cciCode
-								)}
+								onClick={() =>
+									changeDestiny(el.currencyText, el.accountNumber, el.cciCode)
+								}
 							>
 								<HeaderContent>
 									<AccountTypeLogo>
 										<LogoOnAccountTypeButton src={logo} />
 									</AccountTypeLogo>
-									<AccountInfoCantainer>
+									<AccountInfoContainer>
 										<ParagraphSemibold3>{el.currencyText}</ParagraphSemibold3>
 										<ParagraphMedium3>{el.accountNumber}</ParagraphMedium3>
-									</AccountInfoCantainer>
+									</AccountInfoContainer>
 								</HeaderContent>
 							</DropdownItemList>
 						))
 					) : (
-						<ParagraphMedium2>No dispones de otras cuentas</ParagraphMedium2>
+						<NoOtherAccountMsgContainer>
+							<ParagraphMedium2>No dispones de otras cuentas</ParagraphMedium2>
+						</NoOtherAccountMsgContainer>
 					)}
 				</DropdownList>
 			)}

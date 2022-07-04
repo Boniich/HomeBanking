@@ -23,7 +23,7 @@ export const EnterNumberAccountView = () => {
 	const [makeCallToApi, setMakeCallToApi] = useState(false);
 	const shortNavText = 'A otro usuario';
 	const largeNavText = 'Transferencia a otro usuario';
-	const errorMsg = 'No puedes transferir a una misma cuenta';
+	const errorMsg = 'No puedes transferirte a ti mismo';
 	const number = sessionStorage.getItem('accNumber');
 
 	const {
@@ -108,6 +108,7 @@ export const EnterNumberAccountView = () => {
 							)}
 
 							<ErrorMsgBeforeTransf
+								thereIsMargin
 								errorState={isTheSameAccount}
 								errorMsg={errorMsg}
 							/>
