@@ -17,7 +17,7 @@ const ArrowIcon = styled(FontAwesomeIcon)`
 const SendArrowIcon = styled(ArrowIcon)`
 	color: ${primaryColor.primary500};
 	font-size: 14px;
-	margin-right: 10px;
+	margin-right: 24px;
 `;
 
 const NotFoundArrowIcon = styled(ArrowIcon)`

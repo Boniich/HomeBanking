@@ -1,6 +1,4 @@
-import {
-	primaryColor,
-} from '../../../../../../theme/colors/colors';
+import { primaryColor } from '../../../../../../theme/colors/colors';
 import { HeadingSemiBold5 } from '../../../../../../theme/heading/heading';
 import { ParagraphMedium3 } from '../../../../../../theme/paragraph/paragraph';
 import { SecondaryNav } from '../../../../../common/navs/secondaryNav/SecondaryNav';
@@ -11,9 +9,14 @@ import React, { useContext, useEffect, useState } from 'react';
 import AccountContext from '../../../../../../context/accountContext/AccountContext';
 import { Loader } from '../../../../../common/loader/Loader';
 import { Link } from 'react-router-dom';
-import { EnterNumberContainer, EnterNumberContent, EnterNumberSection, ResultsContainer, UserNotFoundContainer } from './styleEnterNumberAccount';
+import {
+	EnterNumberContainer,
+	EnterNumberContent,
+	EnterNumberSection,
+	ResultsContainer,
+	UserNotFoundContainer,
+} from './styleEnterNumberAccount';
 import { ErrorMsgBeforeTransf } from '../../commonTransferenceComponents/errorMsgBeforeTransf/ErrorMsgBeforeTransf';
-
 
 export const EnterNumberAccountView = () => {
 	const [accNumber, setAccNumber] = useState({ accNumber: '' });
@@ -77,33 +80,38 @@ export const EnterNumberAccountView = () => {
 								placeholder='000-000000000-000'
 								onChange={handleChange}
 							/>
+
+							{searchUserLoader && (
+								<Loader thereIsMargin circleColor={primaryColor.primary500} />
+							)}
+
+							{searchUserFound && (
+								<ResultsContainer>
+									<ParagraphMedium3>Numero de cuenta</ParagraphMedium3>
+									<Link to='/make_transference_to_another_user/make_transference'>
+										<UserResult
+											name={searchUserName}
+											lastName={searchUserLastName}
+											userImage={searchUserImage}
+											accountNumber={searchUserAccNUmber}
+										/>
+									</Link>
+								</ResultsContainer>
+							)}
+
+							{searchUserNotFound && (
+								<UserNotFoundContainer>
+									<ParagraphMedium3>
+										El número de cuenta no pertenece a ningun usuario
+									</ParagraphMedium3>
+								</UserNotFoundContainer>
+							)}
+
+							<ErrorMsgBeforeTransf
+								errorState={isTheSameAccount}
+								errorMsg={errorMsg}
+							/>
 						</InputContainer>
-
-						{searchUserLoader && (
-							<Loader circleColor={primaryColor.primary500} />
-						)}
-						{searchUserFound && (
-							<ResultsContainer>
-								<ParagraphMedium3>Numero de cuenta</ParagraphMedium3>
-								<Link to='/make_transference_to_another_user/make_transference'>
-									<UserResult
-										name={searchUserName}
-										lastName={searchUserLastName}
-										userImage={searchUserImage}
-										accountNumber={searchUserAccNUmber}
-									/>
-								</Link>
-							</ResultsContainer>
-						)}
-
-						{searchUserNotFound && (
-							<UserNotFoundContainer>
-								<ParagraphMedium3>
-									El número de cuenta no pertenece a ningun usuario
-								</ParagraphMedium3>
-							</UserNotFoundContainer>
-						)}
-						<ErrorMsgBeforeTransf errorState={isTheSameAccount} errorMsg={errorMsg}/>
 					</EnterNumberContent>
 				</EnterNumberContainer>
 			</EnterNumberSection>

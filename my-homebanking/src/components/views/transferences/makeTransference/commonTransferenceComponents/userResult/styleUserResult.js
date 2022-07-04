@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import { neutralColor } from '../../../../../../theme/colors/colors';
-import { ParagraphSemibold2 } from '../../../../../../theme/paragraph/paragraph';
+import {
+	ParagraphMedium3,
+	ParagraphSemibold2,
+} from '../../../../../../theme/paragraph/paragraph';
 import { ArrowIcon } from '../../../../../../theme/styledIcon/styledIcon';
 
 const UserResultContainer = styled.div.attrs(props => ({
@@ -33,6 +36,10 @@ const DataUser = styled.div`
 
 	${ParagraphSemibold2} {
 		color: ${neutralColor.neutral800};
+	}
+
+	${ParagraphMedium3} {
+		color: ${neutralColor.neutral500};
 	}
 
 	@media screen and (min-width: 744px) {

@@ -17,7 +17,7 @@ const ActiveExtraText = styled.span`
 `;
 
 const SendIcon = styled(FontAwesomeIcon)`
-	font-weight: 13.33px;
+	font-weight: 14px;
 	color: #fff;
 `;
 

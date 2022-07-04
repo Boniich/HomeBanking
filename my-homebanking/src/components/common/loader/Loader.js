@@ -1,9 +1,10 @@
 import React from 'react';
 import { Svg } from './styleLoader';
 
-export const Loader = ({ circleColor }) => {
+export const Loader = ({ circleColor, thereIsMargin }) => {
 	return (
 		<Svg
+			thereIsMargin={thereIsMargin}
 			version='1.1'
 			id='L5'
 			x='0px'
