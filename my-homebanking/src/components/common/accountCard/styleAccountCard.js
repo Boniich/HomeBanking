@@ -1,6 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 import { neutralColor, successColor } from '../../../theme/colors/colors';
+import {
+	ParagraphMedium3,
+	ParagraphSemibold2,
+} from '../../../theme/paragraph/paragraph';
 
 const BackgroundIconOfActiveAccoun = styled.span`
 	display: flex;
@@ -44,6 +48,14 @@ const AccountData = styled.div`
 	flex-direction: column;
 	gap: 4px;
 	width: 144px;
+
+	${ParagraphSemibold2} {
+		color: ${neutralColor.neutral700};
+	}
+
+	${ParagraphMedium3} {
+		color: ${neutralColor.neutral500};
+	}
 
 	@media screen and (min-width: 744px) {
 		width: 216px;

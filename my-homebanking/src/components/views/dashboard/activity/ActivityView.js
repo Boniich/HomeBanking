@@ -17,7 +17,7 @@ const ActivityView = ({ ...props }) => {
 
 	return (
 		<ActivityContainer desktopWidth={props.desktopWidth}>
-			{loading && <CircleLoader />}
+			{loading && <CircleLoader thereIsMargin />}
 			{tranferences &&
 				(tranferences.length > 0 ? (
 					<ExistsActivity transferenceData={tranferences} />

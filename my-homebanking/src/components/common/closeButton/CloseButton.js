@@ -7,8 +7,8 @@ import { CloseButtonContainer, CloseButtonContent } from './styledCloseButton';
 export const CloseButton = ({ propOnClick }) => {
 	return (
 		<CloseButtonContainer>
-			<CloseButtonContent>
-				<CloseIcon icon={faX} onClick={propOnClick}></CloseIcon>
+			<CloseButtonContent onClick={propOnClick}>
+				<CloseIcon icon={faX}></CloseIcon>
 			</CloseButtonContent>
 		</CloseButtonContainer>
 	);

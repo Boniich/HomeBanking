@@ -35,10 +35,10 @@ const ModalContainer = styled.div`
 const ModalHeader = styled.div`
 	display: flex;
 	justify-content: space-between;
-	margin-bottom: 24px;
+	margin-bottom: 26px;
 
 	${HeadingSemiBold5} {
-		margin: 0;
+		color: ${neutralColor.neutral800};
 	}
 
 	//Component inside of CloseButton

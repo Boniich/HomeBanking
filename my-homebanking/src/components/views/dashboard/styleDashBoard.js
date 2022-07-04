@@ -18,6 +18,7 @@ const UserContent = styled.div`
 
 	@media screen and (min-width: 1512px) {
 		top: 352px;
+		padding-bottom: 40px;
 		flex-direction: row;
 	}
 `;

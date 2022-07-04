@@ -1,5 +1,9 @@
 import React, { useContext } from 'react';
-import { infoColor, primaryColor } from '../../../../theme/colors/colors';
+import {
+	infoColor,
+	neutralColor,
+	primaryColor,
+} from '../../../../theme/colors/colors';
 import { HeadingSemiBold3 } from '../../../../theme/heading/heading';
 import {
 	ParagraphMedium2,
@@ -89,11 +93,18 @@ export const AccountSummaryView = () => {
 					closeIcon={true}
 				>
 					<Link to='make_transference_to_another_user/enter_number_account'>
-						<SendButton text='A otra cuenta' extraText='San Patrick' />
+						<SendButton
+							text='A otra cuenta'
+							extraText='San Patrick'
+							color={neutralColor.neutral800}
+						/>
 					</Link>
 
 					<Link to='make_transference_to_my_account'>
-						<SendButton text='A cuenta propia' />
+						<SendButton
+							text='A cuenta propia'
+							color={neutralColor.neutral800}
+						/>
 					</Link>
 				</Popup>
 			</AccountSummaryContent>

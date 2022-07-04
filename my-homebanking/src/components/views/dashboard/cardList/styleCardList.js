@@ -36,17 +36,22 @@ const CardContentContainer = styled.div`
 `;
 
 const Card = styled.div`
+	/* original height: 65px - 20 padding (top/bottom) = 25px*/
+	height: 25px;
 	background: ${neutralColor.neutral100};
 	border: 1px solid ${neutralColor.neutral300};
 	border-radius: 8px;
-	/* it should be 20px but for have card icon more bigger is the 13px */
-	padding: 13px;
+	padding: 20px;
 	display: flex;
 	align-items: center;
 	gap: 12px;
 
 	${ParagraphMedium2} {
-		margin: 0;
+		color: ${neutralColor.neutral700};
+	}
+
+	:hover {
+		background: ${neutralColor.neutral200};
 	}
 `;
 

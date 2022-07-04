@@ -23,6 +23,7 @@ const TransferenceContent = styled.div`
 
 	${HeadingBold5} {
 		font-weight: 600;
+		padding-left: 8px;
 		color: ${neutralColor.neutral800};
 	}
 `;
@@ -33,7 +34,7 @@ export const ShowTransferences = () => {
 			<PrimaryNav activeSecondColorNav={true} />
 			<Section>
 				<TransferenceContent>
-					<HeadingBold5>Transacciones</HeadingBold5>
+					<HeadingBold5>Transferencias</HeadingBold5>
 					<ActivityView desktopWidth='766px' />
 				</TransferenceContent>
 			</Section>

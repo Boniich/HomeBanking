@@ -1,18 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Loading = styled.svg`
+const Loading = styled.svg.attrs(props => ({
+	thereIsMargin: props.thereIsMargin ? `250px 0` : '0',
+}))`
 	width: 100%;
 	height: 55px;
 	margin: 0;
 	@media screen and (min-width: 1512px) {
-		margin: 250px 0;
+		margin: ${props => props.thereIsMargin};
 	}
 `;
 
-export const CircleLoader = () => {
+export const CircleLoader = props => {
 	return (
 		<Loading
+			thereIsMargin={props.thereIsMargin}
 			version='1.1'
 			id='L9'
 			x='0px'

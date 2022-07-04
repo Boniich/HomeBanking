@@ -10,7 +10,7 @@ const NonActivityMsgContent = styled.div`
 	gap: 16px;
 
 	${ParagraphMedium2} {
-		margin: 0;
+		color: ${neutralColor.neutral800};
 		text-align: center;
 	}
 `;

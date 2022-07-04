@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { neutralColor, primaryColor, secondaryColor } from '../colors/colors';
 
 const CloseIcon = styled(FontAwesomeIcon)`
-	width: 9.33px;
-	height: 9.33px;
+	width: 12px;
+	height: 12px;
 	color: ${neutralColor.neutral700};
 `;
 const ArrowIcon = styled(FontAwesomeIcon)`
