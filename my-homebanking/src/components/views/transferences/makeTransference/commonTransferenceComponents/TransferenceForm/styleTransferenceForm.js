@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import { Button } from '../../../../../../theme/buttons/buttons';
-import {
-	neutralColor,
-} from '../../../../../../theme/colors/colors';
+import { neutralColor } from '../../../../../../theme/colors/colors';
 import {
 	ParagraphMedium3,
 	ParagraphSemibold2,
@@ -120,32 +118,6 @@ const DropdownContent = styled.div`
 	}
 `;
 
-const MotiveContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-	gap: 12px;
-	padding: 0 32px;
-`;
-
-const MotiveInput = styled.input`
-	font-family: inherit;
-	padding: 0;
-	border: none;
-	outline: none;
-
-	::placeholder {
-		font-size: 14px;
-		line-height: 17px;
-		color: ${neutralColor.neutral500};
-	}
-	@media screen and (min-width: 744px) {
-		::placeholder {
-			font-size: 16px;
-			line-height: 24px;
-		}
-	}
-`;
-
 export {
 	AmountBox,
 	AmountContent,
@@ -154,7 +126,5 @@ export {
 	TransactionForm,
 	AccountContainer,
 	AccountContent,
-	MotiveContainer,
 	DropdownContent,
-	MotiveInput,
 };

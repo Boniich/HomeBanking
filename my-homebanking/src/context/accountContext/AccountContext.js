@@ -43,6 +43,7 @@ const AccountProvider = ({ children }) => {
 	// transfer to own accounts
 
 	const [anotherCurrencyAcc, setAnotherCurrencyAcc] = useState('');
+	const [motive, setMotive] = useState('');
 	const [isTheSameAccount, setIsTheSameAccount] = useState(false);
 
 	// loader for search user
@@ -85,6 +86,7 @@ const AccountProvider = ({ children }) => {
 		setSearchUserCci(null);
 		setSearchUserAccNumber('');
 		setSearchUserDni(null);
+		setMotive('');
 
 		setSearchUserImage('');
 		setSearchUserName('');
@@ -145,7 +147,7 @@ const AccountProvider = ({ children }) => {
 				},
 				headers
 			);
-
+			console.log(response);
 			setAccountNumber(response.data.accountNumber);
 			setBalance(response.data.balance);
 			setDni(response.data.owner);
@@ -298,6 +300,7 @@ const AccountProvider = ({ children }) => {
 			const userName = response.data.name;
 			const lastName = response.data.surname;
 			const image = response.data.img;
+			setMotive(`${userName} ${lastName}`);
 			setSearchUserName(userName);
 			setSearchLastUserName(lastName);
 			setSearchUserImage(image);
@@ -314,12 +317,9 @@ const AccountProvider = ({ children }) => {
 
 	const bringOwnAccountToTransfer = () => {
 		setIsTheSameAccount(false);
+		setMotive('A cuenta propia');
 
 		if (allAccountsByUser.length > 1) {
-			// crash si se si tiene una sola cuenta
-			//  el useffect se ejecuta dos veces, generando un crash
-			// al no encontrar el currencyText
-			// esto NO deberia pasar en produccion
 			const account = allAccountsByUser.filter(
 				el => el.accountNumber !== accNumber
 			);
@@ -344,7 +344,7 @@ const AccountProvider = ({ children }) => {
 
 	// transference
 
-	const makeTransference = async (motive, amount) => {
+	const makeTransference = async amount => {
 		setTransferenceLoader(true);
 		try {
 			await axios.put(

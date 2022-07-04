@@ -1,7 +1,6 @@
 import React, { createRef, useContext, useState } from 'react';
 import AccountContext from '../../../../../../context/accountContext/AccountContext';
 import { Button } from '../../../../../../theme/buttons/buttons';
-import { Hr } from '../../../../../../theme/hr/hr';
 import {
 	ParagraphMedium3,
 	ParagraphSemibold2,
@@ -18,16 +17,13 @@ import {
 	AmountBox,
 	AmountContent,
 	AmountInput,
-	MotiveContainer,
 	TransactionContent,
 	TransactionForm,
-	MotiveInput,
 	DropdownContent,
 } from './styleTransferenceForm';
 
 export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
 	const [amount, setAmount] = useState({ amount: '' });
-	const [motive, setMotive] = useState({ motive: '' });
 	const [notEnoughBalanceError, setNotEnoughBalanceError] = useState(false);
 	const [buttonIsDisable, setButtonIsDisable] = useState(true);
 	const ref = createRef();
@@ -48,9 +44,7 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
 	} = useContext(AccountContext);
 
 	const handleKeyUp = () => {
-		amount.amount.length !== 0 &&
-		motive.motive.length !== 0 &&
-		!isTheSameAccount
+		amount.amount.length !== 0 && !isTheSameAccount
 			? setButtonIsDisable(false)
 			: setButtonIsDisable(true);
 
@@ -73,19 +67,14 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
 		test && setAmount({ ...amount, [e.target.name]: e.target.value });
 	};
 
-	const handleMotiveChange = e => {
-		setMotive({ ...motive, [e.target.name]: e.target.value });
-	};
-
 	const handleSubmit = e => {
 		e.preventDefault();
 		if (
-			motive.motive.length !== 0 &&
 			amount.amount.length !== 0 &&
 			amount.amount < balance &&
 			!isTheSameAccount
 		) {
-			makeTransference(motive.motive, amount.amount);
+			makeTransference(amount.amount);
 		}
 	};
 
@@ -108,17 +97,6 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
 
 							<ParagraphMedium3>Monto a enviar</ParagraphMedium3>
 						</AmountContent>
-						<MotiveContainer>
-							<Hr />
-							<MotiveInput
-								type='text'
-								placeholder='Agregar motivo'
-								name='motive'
-								value={motive.motive}
-								onChange={handleMotiveChange}
-								onKeyUp={handleKeyUp}
-							/>
-						</MotiveContainer>
 					</AmountBox>
 					<AccountContainer>
 						<AccountContent>
