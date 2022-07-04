@@ -5,7 +5,7 @@ const LogoContainer = styled.div`
 	display: ${props => (props.activeOnLogin ? 'block' : 'none')};
 	margin: 0 auto 40px auto;
 
-	@media screen and (min-width: 744) {
+	@media screen and (min-width: 744px) {
 		margin: 0 auto 56px auto;
 	}
 `;
@@ -32,8 +32,8 @@ const LogoImage = styled.img.attrs(props => ({
 const LogoTitle = styled.h1`
 	font-size: 24px;
 	font-weight: 700;
-	line-height: 28.8px;
-	letter-spacing: -2%;
+	line-height: 29px;
+	letter-spacing: -0.02em;
 	margin: 8px 0 0 0;
 	color: ${neutralColor.neutral900};
 `;

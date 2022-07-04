@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { infoColor } from '../../../../theme/colors/colors';
+import { infoColor, primaryColor } from '../../../../theme/colors/colors';
 import { HeadingSemiBold3 } from '../../../../theme/heading/heading';
 import {
 	ParagraphMedium2,
@@ -77,7 +77,13 @@ export const AccountSummaryView = () => {
 					<Notification background='#F0F9FF' border='1px solid #BAE6FD' />
 				</NumberAccount>
 				<Popup
-					action={<SendButton ref={ref} text='Enviar Dinero' />}
+					action={
+						<SendButton
+							ref={ref}
+							text='Enviar Dinero'
+							color={primaryColor.primary900}
+						/>
+					}
 					headerText='Enviar Dinero'
 					showHeader={true}
 					closeIcon={true}

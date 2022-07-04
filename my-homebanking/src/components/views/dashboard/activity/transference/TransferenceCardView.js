@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import AccountContext from '../../../../../context/accountContext/AccountContext';
 import { transformDateToHumanDate } from '../../../../../services/commonFunctions/getDate/getDate';
 import { handleCurrency } from '../../../../../services/commonFunctions/handleCurrency/handleCurrency';
-import { Hr } from '../../../../../theme/hr/hr';
 import {
 	ParagraphMedium3,
 	ParagraphSemibold2,
@@ -51,7 +50,9 @@ const TransferenceCardView = React.forwardRef(
 				<FigureTransf>
 					<TransfInfo>
 						<ParagraphSemibold2>{motive}</ParagraphSemibold2>
-						<ParagraphMedium3>{transformDateToHumanDate(date)}</ParagraphMedium3>
+						<ParagraphMedium3>
+							{transformDateToHumanDate(date)}
+						</ParagraphMedium3>
 					</TransfInfo>
 					<TransferenceAmount amountColor={amountStatus.sameCci && true}>
 						{amountStatus.Symbol}
@@ -59,9 +60,6 @@ const TransferenceCardView = React.forwardRef(
 						{amount}
 					</TransferenceAmount>
 				</FigureTransf>
-				<div>
-					<Hr />
-				</div>
 			</Transf>
 		);
 	}

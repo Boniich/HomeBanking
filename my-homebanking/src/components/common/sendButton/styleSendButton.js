@@ -1,10 +1,15 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 import { primaryColor } from '../../../theme/colors/colors';
+import { ParagraphSemibold2 } from '../../../theme/paragraph/paragraph';
 
 const IconTextContainer = styled.div`
 	display: flex;
 	align-items: center;
+
+	${ParagraphSemibold2} {
+		color: ${props => props.color};
+	}
 `;
 
 const ActiveExtraText = styled.span`
@@ -23,8 +28,7 @@ const SendButtonContainer = styled.button`
 	align-items: center;
 	width: 100%;
 	height: 60px;
-	background-color: ${primaryColor.primary50};
-	color: ${primaryColor.primary900};
+	background: ${primaryColor.primary50};
 	border-radius: 8px;
 	font-size: 16px;
 	font-weight: 600;
@@ -35,6 +39,7 @@ const SendButtonContainer = styled.button`
 	padding: 0;
 
 	@media screen and (min-width: 740px) {
+		margin-top: 38px;
 		${ActiveExtraText} {
 			display: inline-block;
 		}

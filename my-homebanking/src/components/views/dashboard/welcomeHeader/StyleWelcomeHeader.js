@@ -6,10 +6,11 @@ import { ParagraphMedium2 } from '../../../../theme/paragraph/paragraph';
 export const WelcomeUserTexs = styled.div`
 	width: 320px;
 	margin: 0 auto;
-	padding: 48px 0 0 24px;
+	padding: 48px 0 32px 24px;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
+	gap: 4px;
 `;
 
 export const WelcomeUserContainer = styled.div`
@@ -42,8 +43,9 @@ export const WelcomeUserContainer = styled.div`
 		}
 
 		${WelcomeUserTexs} {
-			padding-top: 80px;
+			padding: 64px 0 40px 24px;
 			width: 560px;
+			gap: 8px;
 		}
 	}
 
@@ -61,7 +63,7 @@ export const WelcomeUserContainer = styled.div`
 		}
 
 		${WelcomeUserTexs} {
-			padding-top: 250px;
+			padding: 212px 0 64px 24px;
 			width: 1060px;
 		}
 	}

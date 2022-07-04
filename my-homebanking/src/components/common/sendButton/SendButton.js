@@ -16,10 +16,10 @@ import {
 //  This button has this format [Icon- text - icon]
 
 export const SendButton = React.forwardRef(
-	({ text, extraText, ...props }, ref) => {
+	({ text, extraText, color, ...props }, ref) => {
 		return (
 			<SendButtonContainer ref={ref} {...props}>
-				<IconTextContainer>
+				<IconTextContainer color={color}>
 					<BackgroundSendIcon>
 						<SendIcon icon={faLocationArrow} />
 					</BackgroundSendIcon>

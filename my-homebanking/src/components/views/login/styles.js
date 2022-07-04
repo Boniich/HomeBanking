@@ -23,7 +23,6 @@ const LoginSection = styled.section`
 
 	@media screen and (max-width: 744px) {
 		background: #fff;
-		
 	}
 `;
 
@@ -54,13 +53,22 @@ const Input = styled.input`
 	height: 54px;
 	box-sizing: border-box;
 	padding: 0 16px;
+	color: ${neutralColor.neutral800};
 	border-radius: 8px;
 	border: ${props =>
-		props.nonoBorder === true ? 'none' : '1px solid #c3c9d6'};
+		props.nonoBorder === true
+			? 'none'
+			: `1px solid ${neutralColor.neutral400}`};
 	outline: ${props =>
 		props.nonoBorder === true ? `2px solid ${errorColor.error500}` : 'none'};
 	font-size: 16px;
 	line-height: 24px;
+
+	::placeholder {
+		color: ${neutralColor.neutral400};
+		font-size: 16px;
+		line-height: 24px;
+	}
 
 	&:focus {
 		border: ${props =>
@@ -101,6 +109,7 @@ const Box = styled.div`
 	}
 
 	${ParagraphMedium3} {
+		color: ${neutralColor.neutral700};
 		text-align: left;
 		margin: 0;
 		padding: 0 0 8px 4px;

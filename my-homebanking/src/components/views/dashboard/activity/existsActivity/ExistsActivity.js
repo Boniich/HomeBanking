@@ -13,6 +13,7 @@ import {
 	CardTransfContainer,
 	LoadMoreResultContainer,
 	RenderActivity,
+	ActivityTitleSection,
 } from './styleExistsActivity';
 
 export const ExistsActivity = ({ transferenceData }) => {
@@ -35,7 +36,9 @@ export const ExistsActivity = ({ transferenceData }) => {
 	return (
 		<RenderActivity paddingBotton={lessPaddingBotton}>
 			{!showAllTransferences && (
-				<ParagraphMedium2>Actividad Reciente</ParagraphMedium2>
+				<ActivityTitleSection>
+					<ParagraphMedium2>Actividad Reciente</ParagraphMedium2>
+				</ActivityTitleSection>
 			)}
 			<CardTransfContainer>
 				{transferenceData.map((transference, index) => (

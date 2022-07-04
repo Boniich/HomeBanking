@@ -23,12 +23,13 @@ const AccountSummary = styled.div`
 		width: 544px;
 		height: 319px;
 		box-shadow: ${shadownMD};
+		margin-bottom: 48px;
 	}
 
 	@media screen and (min-width: 1512px) {
 		width: 413px;
 		height: 312px;
-		margin-right: 40px;
+		margin: 0 40px 48px 0;
 	}
 `;
 
@@ -42,14 +43,7 @@ const AccountSummaryContent = styled.div`
 
 	${HeadingSemiBold3} {
 		margin: 0 0 8px 0;
-		
-	}
-
-	${SendButtonContainer} {
-		&:hover {
-			transition: all 0.5s;
-			background-color: ${primaryColor.primary300};
-		}
+		color: ${neutralColor.neutral800};
 	}
 
 	@media screen and (min-width: 744px) {
@@ -67,7 +61,12 @@ const AccountSummaryContent = styled.div`
 		}
 
 		${SendButtonContainer} {
+			/* no hace efecto, es el de styleSendButton el que esta funcionando */
 			margin-top: 38px;
+			&:hover {
+				transition: all 0.3s;
+				background-color: ${primaryColor.primary100};
+			}
 		}
 	}
 
@@ -83,7 +82,7 @@ const SavingType = styled.div`
 
 	${ParagraphSemibold3} {
 		color: ${primaryColor.primary600};
-		cursor:pointer;
+		cursor: pointer;
 	}
 
 	${ModalContainer} {
@@ -92,18 +91,19 @@ const SavingType = styled.div`
 `;
 
 const CopyButton = styled(FontAwesomeIcon)`
-	width: 14.58px;
-	height: 16.67px;
+	width: 20px;
+	height: 20px;
 	color: ${neutralColor.neutral500};
-	margin-left: 14px;
 	cursor: pointer;
 `;
 
 const NumberAccount = styled.div`
 	display: flex;
+	align-items: center;
+	gap: 8px;
 
 	${ParagraphMedium2} {
-		margin: 0;
+		color: ${neutralColor.neutral500};
 	}
 `;
 
