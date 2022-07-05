@@ -8,6 +8,7 @@ import {
 	ComeBackArrow,
 	Nav,
 	NavContent,
+	Space,
 } from './styleSecondaryNav';
 
 /**
@@ -16,7 +17,11 @@ import {
  * @param {String} largeNavText (opcional) change the short text by this at 744px
  */
 
-export const SecondaryNav = ({ shortNavText, largeNavText }) => {
+export const SecondaryNav = ({
+	shortNavText,
+	largeNavText,
+	spaceWidthInConfig,
+}) => {
 	const ref = useRef(false);
 	const [navText, setNavText] = useState(shortNavText);
 	const navigate = useNavigate();
@@ -44,6 +49,7 @@ export const SecondaryNav = ({ shortNavText, largeNavText }) => {
 				<ParagraphSemibold2>{navText}</ParagraphSemibold2>
 			</NavContent>
 			<Logo />
+			<Space spaceWidthInConfig={spaceWidthInConfig}></Space>
 		</Nav>
 	);
 };

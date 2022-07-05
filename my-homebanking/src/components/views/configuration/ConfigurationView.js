@@ -2,14 +2,11 @@ import React, { useState } from 'react';
 import { ButtonsContainer } from '../../../theme/buttons/buttonContainer/buttonContainer';
 import { ConfigButton } from '../../../theme/buttons/buttons';
 import { SecondaryNav } from '../../common/navs/secondaryNav/SecondaryNav';
-import {
-	successColor,
-} from '../../../theme/colors/colors';
+import { successColor } from '../../../theme/colors/colors';
 import { PasswordForm } from './configurationForms/passwordForm/PasswordForm';
 import { Notification } from '../../common/notification/Notification';
 import { ConfigurationSection } from './styleConfiguration';
 import { UpdateDataForm } from './configurationForms/userDataForm/UpdateDataForm';
-
 
 export const ConfigurationView = () => {
 	const uniqueString = 'Configuración';
@@ -29,7 +26,11 @@ export const ConfigurationView = () => {
 
 	return (
 		<>
-			<SecondaryNav shortNavText={uniqueString} largeNavText={uniqueString} />
+			<SecondaryNav
+				shortNavText={uniqueString}
+				largeNavText={uniqueString}
+				spaceWidthInConfig
+			/>
 			<ConfigurationSection>
 				<ButtonsContainer>
 					<ConfigButton
@@ -51,11 +52,7 @@ export const ConfigurationView = () => {
 						Cambiar contraseña
 					</ConfigButton>
 				</ButtonsContainer>
-				{switchSection.personalData ? (
-					<UpdateDataForm/>
-				) : (
-					<PasswordForm />
-				)}
+				{switchSection.personalData ? <UpdateDataForm /> : <PasswordForm />}
 			</ConfigurationSection>
 			<Notification
 				background={notificationBackground}

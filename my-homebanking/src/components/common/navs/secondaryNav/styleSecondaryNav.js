@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 import { neutralColor } from '../../../../theme/colors/colors';
+import { ParagraphSemibold2 } from '../../../../theme/paragraph/paragraph';
 import {
 	LogoContainer,
 	LogoContent,
@@ -10,10 +11,11 @@ import {
 
 const Nav = styled.nav`
 	display: flex;
+	justify-content: space-between;
+	position: relative;
 	align-items: center;
 	width: 100%;
 	height: 60px;
-	gap: 460px;
 	background: #fff;
 
 	@media screen and (min-width: 1512px) {
@@ -50,6 +52,8 @@ const ComeBackArrow = styled(FontAwesomeIcon)`
 
 const ArrowContainer = styled.span`
 	margin-left: 24px;
+	display: flex;
+	align-items: center;
 
 	@media screen and (min-width: 1512px) {
 		margin-left: 123px;
@@ -59,6 +63,22 @@ const ArrowContainer = styled.span`
 const NavContent = styled.div`
 	display: flex;
 	gap: 27px;
+	justify-content: flex-start;
+	align-items: center;
+
+	${ParagraphSemibold2} {
+		color: ${neutralColor.neutral800};
+	}
 `;
 
-export { Nav, ComeBackArrow, ArrowContainer, NavContent };
+const Space = styled.div.attrs(props => ({
+	spaceWidthInConfig: props.spaceWidthInConfig ? '300px' : '400px',
+}))`
+	width: 0;
+
+	@media screen and (min-width: 1512px) {
+		width: ${props => props.spaceWidthInConfig};
+	}
+`;
+
+export { Nav, ComeBackArrow, ArrowContainer, NavContent, Space };
