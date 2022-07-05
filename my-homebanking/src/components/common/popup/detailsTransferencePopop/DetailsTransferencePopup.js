@@ -8,8 +8,11 @@ import {
 	ParagraphSemibold2,
 } from '../../../../theme/paragraph/paragraph';
 import { CircleLoader } from '../../circleLoader/CircleLoader';
-import { DataTransferenceGroup, DataTransferenceSubGroup, TransferenceDetailContainer } from './styleDetailsTransferencePopup';
-
+import {
+	DataTransferenceGroup,
+	DataTransferenceSubGroup,
+	TransferenceDetailContainer,
+} from './styleDetailsTransferencePopup';
 
 export const DetailsTransferencePopup = ({ transference }) => {
 	const [transfereceData, setTransferenceData] = useState({
