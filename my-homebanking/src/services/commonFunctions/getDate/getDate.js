@@ -28,6 +28,42 @@ const findMonth = monthFromDate => {
 	return month;
 };
 
+const getfringeHour = hour => {
+	let fringeHour = '';
+	if (hour >= 0 && hour <= 11) {
+		console.log(hour);
+		console.log('am');
+		fringeHour = 'am';
+	} else {
+		fringeHour = 'pm';
+	}
+
+	return fringeHour;
+};
+
+const addZeroToDate = time => {
+	let completTime = ``;
+	if (time === 0) {
+		completTime = '00';
+	} else if (
+		time === 1 ||
+		time === 2 ||
+		time === 3 ||
+		time === 4 ||
+		time === 5 ||
+		time === 6 ||
+		time === 7 ||
+		time === 8 ||
+		time === 9
+	) {
+		completTime = `0${time}`;
+	} else {
+		completTime = time;
+	}
+
+	return completTime;
+};
+
 export const getCurrentDate = () => {
 	let date = '';
 	const day = currentDateObj().getDate();
@@ -37,7 +73,12 @@ export const getCurrentDate = () => {
 	const hour = currentDateObj().getHours();
 	const minutes = currentDateObj().getMinutes();
 
-	date = `${day} ${month}. ${year} - ${hour}:${minutes} hs`;
+	const completHour = addZeroToDate(hour);
+	const completMinutes = addZeroToDate(minutes);
+
+	date = `${day} ${month}. ${year} - ${completHour}:${completMinutes} ${getfringeHour(
+		hour
+	)}`;
 	return date;
 };
 
@@ -67,7 +108,11 @@ export const transformDateToHumanDate = date => {
 	const minutes = transformDateObj(date).getMinutes();
 	const newDate = transformDateObj(date).toLocaleDateString();
 	let result = '';
-	const timeDate = `${hour}:${minutes} hs`;
+
+	const completHour = addZeroToDate(hour);
+	const completMinutes = addZeroToDate(minutes);
+
+	const timeDate = `${completHour}:${completMinutes} ${getfringeHour(hour)}`;
 
 	const evaluateDay = lessADay => {
 		const conditional =
