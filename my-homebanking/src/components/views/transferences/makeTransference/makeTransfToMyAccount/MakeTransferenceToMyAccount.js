@@ -1,7 +1,9 @@
 import React, { useContext, useEffect } from 'react';
 import AccountContext from '../../../../../context/accountContext/AccountContext';
+import { ParagraphMedium2 } from '../../../../../theme/paragraph/paragraph';
 import { DestinyAccountSelect } from '../../../../common/dropdown/destinyAccountSelect/DestinyAccountSelect';
 import { TransferenceForm } from '../commonTransferenceComponents/TransferenceForm/TransferenceForm';
+import { NotHaveOtherActiveAccMsg } from './styleMakeTransferenceToMyAccount';
 
 export const MakeTransferenceToMyAccount = () => {
 	const shortNavText = 'A cuenta propia';
@@ -15,6 +17,7 @@ export const MakeTransferenceToMyAccount = () => {
 		searchUserAccNUmber,
 		anotherCurrencyAcc,
 		changeOwnAccDestinyToTransf,
+		isTheSameAccount,
 	} = useContext(AccountContext);
 
 	useEffect(() => {
@@ -23,12 +26,20 @@ export const MakeTransferenceToMyAccount = () => {
 
 	return (
 		<TransferenceForm shortNavText={shortNavText} largeNavText={largeNavText}>
-			<DestinyAccountSelect
-				accountNumber={searchUserAccNUmber}
-				currency={anotherCurrencyAcc}
-				allAccountsByUser={allAccountsByUser}
-				changeDestiny={changeOwnAccDestinyToTransf}
-			/>
+			{!isTheSameAccount ? (
+				<NotHaveOtherActiveAccMsg>
+					<ParagraphMedium2>
+						Para enviar dinero necesitas tener dos o mas cuentas activas
+					</ParagraphMedium2>
+				</NotHaveOtherActiveAccMsg>
+			) : (
+				<DestinyAccountSelect
+					accountNumber={searchUserAccNUmber}
+					currency={anotherCurrencyAcc}
+					allAccountsByUser={allAccountsByUser}
+					changeDestiny={changeOwnAccDestinyToTransf}
+				/>
+			)}
 		</TransferenceForm>
 	);
 };

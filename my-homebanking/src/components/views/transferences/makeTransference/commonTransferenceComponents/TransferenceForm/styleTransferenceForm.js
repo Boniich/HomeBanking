@@ -97,10 +97,15 @@ const AmountInput = styled.input`
 `;
 
 const AccountContainer = styled.div`
+	width: 312px;
 	display: flex;
 	flex-direction: column;
 	gap: 32px;
 	margin-bottom: 96px;
+
+	@media screen and (min-width: 744px) {
+		width: 404px;
+	}
 `;
 const AccountContent = styled.div`
 	display: flex;
