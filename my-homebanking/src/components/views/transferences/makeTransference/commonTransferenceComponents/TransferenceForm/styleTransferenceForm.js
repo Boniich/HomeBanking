@@ -16,14 +16,18 @@ const TransactionContent = styled.div`
 	display: flex;
 	flex-direction: column;
 
-	${Button} {
-		margin-bottom: 20px;
-	}
-
 	.disable {
 		background-color: ${neutralColor.neutral200};
 		color: ${neutralColor.neutral400};
 		cursor: no-drop;
+	}
+
+	@media screen and (min-width: 744px) {
+		justify-content: center;
+		align-items: center;
+		${Button} {
+			width: 233px;
+		}
 	}
 `;
 
@@ -33,7 +37,7 @@ const AmountBox = styled.div`
 	justify-content: center;
 	gap: 40px;
 	width: 312px;
-	height: 211px;
+	height: 227px;
 	box-shadow: ${shadownXS};
 	border-radius: 16px;
 	background: #fff;
@@ -41,9 +45,14 @@ const AmountBox = styled.div`
 
 	@media screen and (min-width: 744px) {
 		width: 404px;
-		height: 271px;
+		height: 288px;
 		box-shadow: ${shadownMD};
 		border-radius: 20px;
+		margin: 64px 0 48px 0;
+	}
+
+	@media screen and (min-width: 1512px) {
+		margin-top: 80px;
 	}
 `;
 
@@ -60,6 +69,7 @@ const AmountContent = styled.div`
 `;
 
 const AmountInput = styled.input`
+	font-family: inherit;
 	padding: 0;
 	border: none;
 	outline: none;
@@ -101,10 +111,11 @@ const AccountContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 32px;
-	margin-bottom: 96px;
+	margin-bottom: 88px;
 
 	@media screen and (min-width: 744px) {
 		width: 404px;
+		margin-bottom: 64px;
 	}
 `;
 const AccountContent = styled.div`

@@ -88,7 +88,7 @@ export const TransferenceForm = ({ children, shortNavText, largeNavText }) => {
 								type='text'
 								name='amount'
 								autoComplete='off'
-								placeholder='00.00'
+								placeholder='$00.00'
 								value={amount.amount}
 								onChange={handleChange}
 								onKeyUp={handleKeyUp}
