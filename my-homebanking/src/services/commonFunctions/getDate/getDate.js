@@ -8,7 +8,7 @@ const transformDateObj = date => {
 	return dateWithProp;
 };
 
-const findMonth = (monthFromDate) =>{
+const findMonth = monthFromDate => {
 	const allMonths = [
 		'Ene',
 		'Feb',
@@ -25,8 +25,8 @@ const findMonth = (monthFromDate) =>{
 	];
 	const month = allMonths.find((e, index) => index === monthFromDate);
 
-	return month
-}
+	return month;
+};
 
 export const getCurrentDate = () => {
 	let date = '';
@@ -34,12 +34,14 @@ export const getCurrentDate = () => {
 	const monthFromDate = currentDateObj().getMonth();
 	const month = findMonth(monthFromDate);
 	const year = currentDateObj().getFullYear();
-	date = `${day} ${month}. ${year}`
+	const hour = currentDateObj().getHours();
+	const minutes = currentDateObj().getMinutes();
+
+	date = `${day} ${month}. ${year} - ${hour}:${minutes} hs`;
 	return date;
 };
 
 export const transformDateToHumanDate = date => {
-
 	const days = [
 		'Domingo',
 		'Lunes',
