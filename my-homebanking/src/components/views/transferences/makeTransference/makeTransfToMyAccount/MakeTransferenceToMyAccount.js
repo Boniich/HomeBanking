@@ -26,7 +26,7 @@ export const MakeTransferenceToMyAccount = () => {
 
 	return (
 		<TransferenceForm shortNavText={shortNavText} largeNavText={largeNavText}>
-			{!isTheSameAccount ? (
+			{isTheSameAccount ? (
 				<NotHaveOtherActiveAccMsg>
 					<ParagraphMedium2>
 						Para enviar dinero necesitas tener dos o mas cuentas activas
