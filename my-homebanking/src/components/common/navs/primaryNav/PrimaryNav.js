@@ -82,6 +82,7 @@ export const PrimaryNav = ({ activeSecondColorNav }) => {
 					<Li
 						backgroundActiveColor={changeColorNav && 'changeToGreen'}
 						activeColor={changeColorNav && 'changeToGreen'}
+						hoverTextColor={changeColorNav && 'changeColorHover'}
 					>
 						<NavLink to='/'>
 							{({ isActive }) => (
@@ -92,12 +93,13 @@ export const PrimaryNav = ({ activeSecondColorNav }) => {
 							)}
 						</NavLink>
 					</Li>
-					<Li off>
+					<Li off hoverTextColor={changeColorNav && 'changeColorHover'}>
 						<FooterText>Tarjetas</FooterText>
 					</Li>
 					<Li
 						backgroundActiveColor={changeColorNav && 'changeToGreen'}
 						activeColor={changeColorNav && 'changeToGreen'}
+						hoverTextColor={changeColorNav && 'changeColorHover'}
 					>
 						<NavLink to='/transference'>
 							{({ isActive }) => (

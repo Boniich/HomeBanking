@@ -120,6 +120,7 @@ const UlMobile = styled(Ul)`
 	@media screen and (min-width: 1512px) {
 		justify-content: flex-start;
 		align-items: flex-start;
+
 		gap: 10px;
 	}
 `;
@@ -133,6 +134,10 @@ const Li = styled.li.attrs(props => ({
 			: `rgba(255, 255, 255, 0.1)`,
 	activeColor:
 		props.activeColor === 'changeToGreen'
+			? `${primaryColor.primary600}`
+			: `${primaryColor.primary300}`,
+	hoverTextColor:
+		props.hoverTextColor === 'changeColorHover'
 			? `${primaryColor.primary600}`
 			: `${primaryColor.primary300}`,
 }))`
@@ -152,6 +157,10 @@ const Li = styled.li.attrs(props => ({
 		${FooterText} {
 			font-size: 16px;
 			line-height: 24px;
+
+			&:hover {
+				color: ${props => props.hoverTextColor};
+			}
 		}
 
 		.active > * {
@@ -177,7 +186,7 @@ const Li = styled.li.attrs(props => ({
 `;
 
 const LiMobile = styled.li`
-	padding: 0 24px;
+	/* padding: 0 24px; */
 	margin: 16px 0;
 
 	@media screen and (min-width: 1512px) {
@@ -230,7 +239,10 @@ const ListMenu = styled.div`
 const Span = styled.span`
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	cursor: pointer;
+	padding: 0 24px;
+
 	${ParagraphMedium2} {
 		color: ${neutralColor.neutral700};
 		margin: 0;
@@ -239,6 +251,15 @@ const Span = styled.span`
 	${ParagraphSemibold2} {
 		margin: 0;
 		color: ${errorColor.error500};
+	}
+
+	&:hover {
+		background: ${neutralColor.neutral100};
+	}
+
+	@media screen and (min-width: 1512px) {
+		width: 100%;
+		height: 40px;
 	}
 `;
 
