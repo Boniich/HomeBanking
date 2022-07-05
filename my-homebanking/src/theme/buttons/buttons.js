@@ -35,8 +35,11 @@ const Button = styled.button.attrs(props => ({
 // this two button are used in modal like close session and tranference modal
 
 const ButtonWithBackground = styled(Button)`
-	width: ${props => props.width || '178px'};
-	height: ${props => props.heigth || '47px'};
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: ${props => props.width || '237px'};
+	height: ${props => props.heigth || '41px'};
 	background: ${primaryColor.primary500};
 	color: #fff;
 	border: 'none';
@@ -45,10 +48,10 @@ const ButtonWithBackground = styled(Button)`
 	padding: 12px 16px;
 
 	@media screen and (min-width: 744px) {
-		padding: ${props => props.tablePadding || '22px 28px'};
-		width: ${props => props.width || '198px'};
-		height: ${props => props.heigth || '66px'};
-		font-size: ${props => props.tableFontSize || '18px'};
+		padding: ${props => props.tablePadding || '18px 18px'};
+		width: ${props => props.width || '164px'};
+		height: ${props => props.heigth || '55px'};
+		font-size: ${props => props.tableFontSize || '16px'};
 		line-height: ${props => props.tableLineHeight || '22px'};
 	}
 `;

@@ -25,9 +25,9 @@ const NotFoundArrowIcon = styled(ArrowIcon)`
 `;
 
 const CheckIcon = styled(FontAwesomeIcon).attrs(props => ({
-	tranfcheckiconwidth: props.tranfcheckiconwidth === true ? '29.09px' : '32px',
+	tranfcheckiconwidth: props.tranfcheckiconwidth === true ? '29.09px' : '40px',
 	tranfcheckiconheight:
-		props.tranfcheckiconheight === true ? '29.09px' : '32px',
+		props.tranfcheckiconheight === true ? '29.09px' : '40px',
 	tranfcoloricon:
 		props.tranfcoloricon === 'white'
 			? '#fff'

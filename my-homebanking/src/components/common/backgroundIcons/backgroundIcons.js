@@ -7,9 +7,9 @@ import { secondaryColor, successColor } from '../../../theme/colors/colors';
 
 export const BackgroundIcon = styled.span.attrs(props => ({
 	tranfbackgroundiconwidth:
-		props.tranfbackgroundiconwidth === true ? '64px' : '56px',
+		props.tranfbackgroundiconwidth === true ? '64px' : '80px',
 	tranfbackgroundiconheight:
-		props.tranfbackgroundiconheight === true ? '64px' : '56px',
+		props.tranfbackgroundiconheight === true ? '64px' : '80px',
 	tranfbackgroundcoloricon:
 		props.tranfbackgroundcoloricon === 'successColor'
 			? ` ${successColor.success600}`

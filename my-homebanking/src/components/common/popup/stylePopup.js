@@ -15,7 +15,7 @@ const Modal = styled.div`
 	width: ${props => props.width || `312px`};
 	height: ${props => props.height || `244px`};
 	background: #ffffff;
-	border-radius: 16px;
+	border-radius: ${props => props.borderRadius || `16px`};
 	box-shadow: ${props => props.shadow || 'none'};
 	@media screen and (min-width: 744px) {
 		width: ${props => props.tableWidth || `400px`};
@@ -29,13 +29,13 @@ const Modal = styled.div`
 `;
 
 const ModalContainer = styled.div`
-	padding: 24px 24px 32px;
+	padding: ${props => props.padding || `24px 24px 32px`};
 `;
 
 const ModalHeader = styled.div`
 	display: flex;
 	justify-content: space-between;
-	margin-bottom: 26px;
+	margin-bottom: ${props => props.marginBotton || `26px`};
 
 	${HeadingSemiBold5} {
 		color: ${neutralColor.neutral800};
@@ -46,6 +46,10 @@ const ModalHeader = styled.div`
 		display: flex;
 		margin: 0;
 		padding: 0;
+	}
+
+	@media screen and (min-width: 744px) {
+		margin-bottom: ${props => props.marginBottonTable};
 	}
 `;
 
@@ -79,22 +83,22 @@ const ModalSubContent = styled.div.attrs(props => ({
 	justify-content: center;
 	align-items: center;
 	gap: ${props => props.changeGap || '32px'};
-	margin-top: ${props => props.marginTop || '12px'};
+	margin-top: ${props => props.marginTop || '0'};
 
 	@media screen and (min-width: 744px) {
-		gap: ${props => props.changeGap || '64px'};
-		margin-top: ${props => props.marginTop || '33px'};
+		gap: ${props => props.changeGap || '48px'};
+		margin-top: ${props => props.marginTop || '0'};
 	}
 
 	@media screen and (min-width: 1512px) {
-		margin-top: ${props => props.marginTop || '80px'};
+		margin-top: ${props => props.marginTop || '0'};
 	}
 `;
 
 const ModalTextAndIcons = styled.div.attrs(props => ({
 	mobileDisableFlexGap: props.mobileDisableFlexGap === true ? '0' : '24px',
 	tableDisableFlexGap: props.tableDisableFlexGap === true ? '0' : '32px',
-	tableHeadingText: props.tableHeadingText === true ? '24px' : '30px',
+	tableHeadingText: props.tableHeadingText === true ? '24px' : '24px',
 	tableHeadingLineHeight:
 		props.tableHeadingLineHeight === true ? '130%' : '120%',
 	mobileMarginTranf: props.mobileMarginTranf === true ? '16px 0' : '0',
