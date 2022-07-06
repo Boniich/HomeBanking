@@ -6,7 +6,7 @@ const CloseButtonContainer = styled.div`
 	margin-top: 32px;
 	display: flex;
 	justify-content: flex-end;
-	padding-right: 36px;
+	padding-right: 20px;
 
 	@media screen and (min-width: 744px) {
 		width: ${props => props.tableWidth};
