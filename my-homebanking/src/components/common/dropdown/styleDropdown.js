@@ -118,6 +118,10 @@ const DropdownItemList = styled.li`
 	border: 1px solid ${neutralColor.neutral300};
 	border-radius: 4px;
 	cursor: pointer;
+
+	&:hover {
+		background: ${neutralColor.neutral200};
+	}
 `;
 
 export {
