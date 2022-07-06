@@ -10,7 +10,7 @@ const TransferenceDetailContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 23px;
-	height: 380px;
+	height: auto;
 
 	${ParagraphMedium3} {
 		color: ${neutralColor.neutral500};
