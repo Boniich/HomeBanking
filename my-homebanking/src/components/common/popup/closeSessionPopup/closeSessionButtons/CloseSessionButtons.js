@@ -13,10 +13,10 @@ export const CloseSessionButtons = ({ propOnClick }) => {
 
 	return (
 		<ButtonsContainer>
+			<CloseSessionButton onClick={propOnClick}>Cancelar</CloseSessionButton>
 			<KeepSessionActiveButton onClick={closeSession}>
 				Si, cerrar sesión
 			</KeepSessionActiveButton>
-			<CloseSessionButton onClick={propOnClick}>Cancelar</CloseSessionButton>
 		</ButtonsContainer>
 	);
 };

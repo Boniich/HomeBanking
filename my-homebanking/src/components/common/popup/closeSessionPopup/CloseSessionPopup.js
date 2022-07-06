@@ -1,6 +1,5 @@
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
-import { neutralColor } from '../../../../theme/colors/colors';
 import {
 	HeadingBold5,
 	HeadingSemiBold5,
@@ -22,10 +21,11 @@ import {
 // this modal is not like other cause i need can be able to access to function "close"
 
 export const CloseSessionPopup = React.forwardRef((props, ref) => {
+	const backgroundColor = `rgb(55, 65, 81,0.9)`;
 	return (
 		<StyledPopup
 			ref={ref}
-			background={neutralColor.neutral700}
+			background={backgroundColor}
 			modal
 			trigger={props.action}
 			closeOnDocumentClick={false}
