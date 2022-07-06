@@ -16,13 +16,20 @@ const WrapperDropdown = styled.div`
 	position: relative;
 `;
 
-const HeaderDropdown = styled.div`
+const HeaderDropdown = styled.div.attrs(props => ({
+	isOwnAccDestinySelectBackground: props.isOwnAccDestinySelectBackground
+		? `${neutralColor.neutral100}`
+		: `${primaryColor.primary50}`,
+	isOwnAccDestinySelectBorder: props.isOwnAccDestinySelectBorder
+		? `${neutralColor.neutral300}`
+		: `${primaryColor.primary500}`,
+}))`
 	display: flex;
 	justify-content: space-between;
 	cursor: pointer;
 	width: 100%;
-	background: ${primaryColor.primary50};
-	border: 1px solid ${primaryColor.primary500};
+	background: ${props => props.isOwnAccDestinySelectBackground};
+	border: 1px solid ${props => props.isOwnAccDestinySelectBorder};
 	border-radius: 8px;
 	padding: 0 16px;
 `;

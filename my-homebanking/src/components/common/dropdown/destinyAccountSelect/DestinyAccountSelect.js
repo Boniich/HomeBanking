@@ -42,6 +42,8 @@ export const DestinyAccountSelect = ({
 	return (
 		<WrapperDropdown>
 			<HeaderDropdown
+				isOwnAccDestinySelectBackground
+				isOwnAccDestinySelectBorder
 				tabIndex={0}
 				role='button'
 				onKeypress={() => toggle(!open)}
