@@ -40,11 +40,11 @@ const EnterNumberContainer = styled.div`
 	background: #fff;
 	box-shadow: ${shadownXS};
 	border-radius: 16px;
-	margin-top: 40px;
+	margin-top: 100px;
 
 	@media screen and (min-width: 744px) {
 		width: 402px;
-		margin-top: 64px;
+		margin-top: 120px;
 		box-shadow: ${shadownMD};
 
 		${InputContainer} {
@@ -55,6 +55,10 @@ const EnterNumberContainer = styled.div`
 			padding: 32px;
 			gap: 32px;
 		}
+	}
+
+	@media screen and (min-width: 1512px) {
+		margin-top: 160px;
 	}
 `;
 

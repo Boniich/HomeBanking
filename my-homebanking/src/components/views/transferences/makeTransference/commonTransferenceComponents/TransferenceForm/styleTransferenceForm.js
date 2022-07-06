@@ -10,11 +10,13 @@ import { shadownMD, shadownXS } from '../../../../../../theme/shadown/shadown';
 const TransactionForm = styled.form`
 	display: flex;
 	justify-content: center;
+	height: 100%;
 `;
 
 const TransactionContent = styled.div`
 	display: flex;
 	flex-direction: column;
+	margin-bottom: 140px;
 
 	.disable {
 		background-color: ${neutralColor.neutral200};
@@ -41,18 +43,18 @@ const AmountBox = styled.div`
 	box-shadow: ${shadownXS};
 	border-radius: 16px;
 	background: #fff;
-	margin: 40px 0 32px 0;
+	margin: 100px 0 32px 0;
 
 	@media screen and (min-width: 744px) {
 		width: 404px;
 		height: 288px;
 		box-shadow: ${shadownMD};
 		border-radius: 20px;
-		margin: 64px 0 48px 0;
+		margin: 120px 0 48px 0;
 	}
 
 	@media screen and (min-width: 1512px) {
-		margin-top: 80px;
+		margin-top: 140px;
 	}
 `;
 
