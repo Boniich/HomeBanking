@@ -37,6 +37,14 @@ const AllActivityBox = styled.div`
 		color: ${primaryColor.primary600};
 		font-weight: 400;
 	}
+
+	@media screen and (min-width: 1512px) {
+		&:hover {
+			${ParagraphUnderline2} {
+				color: ${primaryColor.primary500};
+			}
+		}
+	}
 `;
 
 const LoadMoreResultContainer = styled.div`

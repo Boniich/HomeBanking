@@ -46,6 +46,7 @@ const Card = styled.div`
 	display: flex;
 	align-items: center;
 	gap: 12px;
+	cursor: pointer;
 
 	${ParagraphMedium2} {
 		color: ${neutralColor.neutral700};
