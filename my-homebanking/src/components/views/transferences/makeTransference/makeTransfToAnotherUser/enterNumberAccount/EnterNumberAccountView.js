@@ -41,6 +41,10 @@ export const EnterNumberAccountView = () => {
 	} = useContext(AccountContext);
 
 	useEffect(() => {
+		resetSearchUser();
+	}, []);
+
+	useEffect(() => {
 		makeCallToApi && searchAccountUser(accNumber.accNumber);
 	}, [makeCallToApi]);
 
