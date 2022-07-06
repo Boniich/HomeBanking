@@ -18,7 +18,7 @@ import {
 
 export const ExistsActivity = ({ transferenceData }) => {
 	const [showAllTransferences, setShowAllTransferences] = useState(false);
-	const [showMoreResults, setShowMoreResults] = useState(10);
+	const [showMoreResults, setShowMoreResults] = useState(9);
 	const location = useLocation();
 	const ref = React.createRef();
 
@@ -68,9 +68,11 @@ export const ExistsActivity = ({ transferenceData }) => {
 			</CardTransfContainer>
 			<AllActivityBox>
 				{!showAllTransferences ? (
-					<Link to='/transference'>
-						<ParagraphUnderline2>Ver toda la actividad</ParagraphUnderline2>
-					</Link>
+					transferenceData.length >= 9 && (
+						<Link to='/transference'>
+							<ParagraphUnderline2>Ver toda la actividad</ParagraphUnderline2>
+						</Link>
+					)
 				) : (
 					<LoadMoreResultContainer>
 						<ParagraphSemibold2 onClick={renderMoreResults}>
