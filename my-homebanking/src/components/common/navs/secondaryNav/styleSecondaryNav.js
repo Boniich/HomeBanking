@@ -10,9 +10,10 @@ import {
 } from '../../logo/styleLogo';
 
 const Nav = styled.nav`
+	position: fixed;
+	top: 0;
 	display: flex;
 	justify-content: space-between;
-	position: relative;
 	align-items: center;
 	width: 100%;
 	height: 60px;
