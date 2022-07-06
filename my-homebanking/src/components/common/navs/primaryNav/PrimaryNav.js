@@ -105,7 +105,7 @@ export const PrimaryNav = ({ activeSecondColorNav }) => {
 							{({ isActive }) => (
 								<LinkBox className={isActive ? 'active' : ''}>
 									<MenuIcons icon={faRightLeft} />
-									<FooterText>Transacciones</FooterText>
+									<FooterText>Transferencias</FooterText>
 								</LinkBox>
 							)}
 						</NavLink>
