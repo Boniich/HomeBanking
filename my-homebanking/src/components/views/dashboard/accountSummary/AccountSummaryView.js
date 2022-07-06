@@ -93,12 +93,15 @@ export const AccountSummaryView = () => {
 					headerText='Enviar Dinero'
 					showHeader={true}
 					closeIcon={true}
+					tabletPadding='32px 32px 40px'
+					thereIsAlingItem='center'
 				>
 					<Link to='make_transference_to_another_user/enter_number_account'>
 						<SendButton
 							text='A otra cuenta'
 							extraText='San Patrick'
 							color={neutralColor.neutral800}
+							width='336px'
 						/>
 					</Link>
 
@@ -106,6 +109,7 @@ export const AccountSummaryView = () => {
 						<SendButton
 							text='A cuenta propia'
 							color={neutralColor.neutral800}
+							width='336px'
 						/>
 					</Link>
 				</Popup>

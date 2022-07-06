@@ -40,6 +40,7 @@ const SendButtonContainer = styled.button`
 
 	@media screen and (min-width: 740px) {
 		margin-top: 38px;
+		width: ${props => props.width || `100%`};
 		${ActiveExtraText} {
 			display: inline-block;
 		}
