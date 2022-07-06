@@ -1,10 +1,32 @@
 import React from 'react';
 import { Svg } from './styleLoader';
 
-export const Loader = ({ circleColor, thereIsMargin }) => {
+/**
+ *
+ * @param {string} circleColor recive the color of loader (it is not background)
+ * @param {string} thereIsMargin if it is setted loader will have a padding top of 30px, if not, it will be of 0
+ * @returns
+ */
+
+export const Loader = ({
+	changeMobileWidth,
+	changeMobileHeight,
+	changeTableWidth,
+	changeTableHeight,
+	circleColor,
+	thereIsMargin,
+	marginForTransfList,
+	addPaddingToAccModal,
+}) => {
 	return (
 		<Svg
+			changeMobileWidth={changeMobileWidth}
+			changeMobileHeight={changeMobileHeight}
+			changeTableWidth={changeTableWidth}
+			changeTableHeight={changeTableHeight}
 			thereIsMargin={thereIsMargin}
+			marginForTransfList={marginForTransfList}
+			addPaddingToAccModal={addPaddingToAccModal}
 			version='1.1'
 			id='L5'
 			x='0px'

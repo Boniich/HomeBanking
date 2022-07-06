@@ -2,12 +2,13 @@ import React, { useContext, useEffect, useState } from 'react';
 import AccountContext from '../../../../context/accountContext/AccountContext';
 import { transformDateToHumanDate } from '../../../../services/commonFunctions/getDate/getDate';
 import { handleCurrency } from '../../../../services/commonFunctions/handleCurrency/handleCurrency';
+import { primaryColor } from '../../../../theme/colors/colors';
 import {
 	ParagraphMedium2,
 	ParagraphMedium3,
 	ParagraphSemibold2,
 } from '../../../../theme/paragraph/paragraph';
-import { CircleLoader } from '../../circleLoader/CircleLoader';
+import { Loader } from '../../loader/Loader';
 import {
 	DataTransferenceGroup,
 	DataTransferenceSubGroup,
@@ -83,7 +84,7 @@ export const DetailsTransferencePopup = ({ transference }) => {
 	return (
 		<>
 			{detailsTransfLoader ? (
-				<CircleLoader />
+				<Loader circleColor={primaryColor.primary500} />
 			) : (
 				<TransferenceDetailContainer>
 					<DataTransferenceGroup>

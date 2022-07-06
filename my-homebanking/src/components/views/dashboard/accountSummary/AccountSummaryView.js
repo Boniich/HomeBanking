@@ -28,6 +28,7 @@ import {
 	BackgroundIconOfActiveAccoun,
 } from '../../../common/accountCard/styleAccountCard';
 import { Link } from 'react-router-dom';
+import { Loader } from '../../../common/loader/Loader';
 
 export const AccountSummaryView = () => {
 	const notificationText = 'Número de cuenta copiado';
@@ -35,8 +36,13 @@ export const AccountSummaryView = () => {
 	const ref = React.createRef();
 	const accNumber = sessionStorage.getItem('accNumber');
 
-	const { accountNumber, balance, currency, allAccountsByUser } =
-		useContext(AccountContext);
+	const {
+		accountNumber,
+		balance,
+		currency,
+		allAccountsByUser,
+		processingChangeOfAcc,
+	} = useContext(AccountContext);
 
 	return (
 		<AccountSummary>
@@ -60,11 +66,21 @@ export const AccountSummaryView = () => {
 								typeSaving={el.currencyText}
 								accountNumber={el.accountNumber}
 							>
-								{accNumber === el.accountNumber && (
-									<BackgroundIconOfActiveAccoun>
-										<ActiveAccountIcon icon={faCheck} />
-									</BackgroundIconOfActiveAccoun>
-								)}
+								{accNumber === el.accountNumber &&
+									(processingChangeOfAcc ? (
+										<Loader
+											changeMobileWidth
+											changeMobileHeight
+											addPaddingToAccModal
+											changeTableWidth
+											changeTableHeight
+											circleColor={primaryColor.primary500}
+										/>
+									) : (
+										<BackgroundIconOfActiveAccoun>
+											<ActiveAccountIcon icon={faCheck} />
+										</BackgroundIconOfActiveAccoun>
+									))}
 							</AccountCard>
 						))}
 					</Popup>

@@ -26,6 +26,10 @@ const AccountProvider = ({ children }) => {
 
 	const [isReadyAllAcountsByUser, setIsReadyAllAcountsByUser] = useState(false);
 
+	//
+
+	const [processingChangeOfAcc, setProcessingChangeOfAcc] = useState(false);
+
 	// search a user for make a transference
 
 	// find acount endpoint
@@ -139,6 +143,7 @@ const AccountProvider = ({ children }) => {
 	}, [successTransference]);
 
 	const bringCurrentAccount = async accNumber => {
+		setProcessingChangeOfAcc(true);
 		try {
 			const response = await axios.post(
 				findAccountURL,
@@ -147,7 +152,6 @@ const AccountProvider = ({ children }) => {
 				},
 				headers
 			);
-			console.log(response);
 			setAccountNumber(response.data.accountNumber);
 			setBalance(response.data.balance);
 			setDni(response.data.owner);
@@ -158,7 +162,10 @@ const AccountProvider = ({ children }) => {
 				currencyText: currencyData.currencyText,
 				currencySymbol: currencyData.currencySymbol,
 			});
-		} catch (error) {}
+		} catch (error) {
+		} finally {
+			setProcessingChangeOfAcc(false);
+		}
 	};
 
 	useEffect(() => {
@@ -439,6 +446,7 @@ const AccountProvider = ({ children }) => {
 		detailsTransfLoader,
 		setIsTheSameAccount,
 		updateColorAmountAfterChangeAcc,
+		processingChangeOfAcc,
 	};
 
 	return (

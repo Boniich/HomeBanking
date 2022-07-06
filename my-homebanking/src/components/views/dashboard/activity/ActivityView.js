@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import AccountContext from '../../../../context/accountContext/AccountContext';
-import { CircleLoader } from '../../../common/circleLoader/CircleLoader';
+import { primaryColor } from '../../../../theme/colors/colors';
+// import { CircleLoader } from '../../../common/circleLoader/CircleLoader';
+import { Loader } from '../../../common/loader/Loader';
 import { ExistsActivity } from './existsActivity/ExistsActivity';
 import { NonActivityMsg } from './nonActivityMsg/NonActivityMsg';
 import { ActivityContainer } from './styleActivityView';
@@ -17,7 +19,9 @@ const ActivityView = ({ ...props }) => {
 
 	return (
 		<ActivityContainer desktopWidth={props.desktopWidth}>
-			{loading && <CircleLoader thereIsMargin />}
+			{loading && (
+				<Loader marginForTransfList circleColor={primaryColor.primary500} />
+			)}
 			{tranferences &&
 				(tranferences.length > 0 ? (
 					<ExistsActivity transferenceData={tranferences} />
