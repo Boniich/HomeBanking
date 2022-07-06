@@ -8,6 +8,7 @@ import {
 	ParagraphSemibold3,
 } from '../../../../theme/paragraph/paragraph';
 import { shadownMD, shadownXS } from '../../../../theme/shadown/shadown';
+import { SendArrowIcon } from '../../../../theme/styledIcon/styledIcon';
 import { ModalContainer } from '../../../common/popup/stylePopup';
 import { SendButtonContainer } from '../../../common/sendButton/styleSendButton';
 
@@ -62,10 +63,21 @@ const AccountSummaryContent = styled.div`
 
 		${SendButtonContainer} {
 			/* no hace efecto, es el de styleSendButton el que esta funcionando */
+
+			${SendArrowIcon} {
+				transition: all 0.5s ease-out;
+				transform: translate(0);
+			}
 			margin-top: 38px;
+
 			&:hover {
-				transition: all 0.3s;
+				transition: all 0.5s ease-out;
 				background-color: ${primaryColor.primary100};
+
+				${SendArrowIcon} {
+					transition: all 0.5s ease-out;
+					transform: translate(5px);
+				}
 			}
 		}
 	}
