@@ -156,7 +156,12 @@ export const PrimaryNav = ({ activeSecondColorNav }) => {
 			</Nav>
 			{responsiveNav && (
 				<ListMenu>
-					<CloseButton propOnClick={closeResponsivenav} />
+					<CloseButton
+						propOnClick={closeResponsivenav}
+						tabletMargin='46px auto 48px'
+						tableWidth='544px'
+						tableRightPadding='46px'
+					/>
 					<UlMobile>
 						<LiMobile offOnDesktop>
 							<Span>

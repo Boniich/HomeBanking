@@ -117,6 +117,11 @@ const UlMobile = styled(Ul)`
 	display: flex;
 	justify-content: space-between;
 
+	@media screen and (min-width: 744px) {
+		width: 544px;
+		margin: 0 auto;
+	}
+
 	@media screen and (min-width: 1512px) {
 		justify-content: flex-start;
 		align-items: flex-start;
