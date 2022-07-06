@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { neutralColor } from '../../../../../theme/colors/colors';
 import { Input } from '../../../../../theme/inputs/input';
 import { InputContainer } from '../../../../../theme/inputs/inputContainer/inputContainer';
 import { ParagraphMedium3 } from '../../../../../theme/paragraph/paragraph';
@@ -32,6 +33,8 @@ export const PasswordForm = () => {
 							type='password'
 							name='password'
 							disabled={true}
+							disableInputBackground={neutralColor.neutral50}
+							disableInputBorder={neutralColor.neutral200}
 							value={password.password}
 							onChange={handleChange}
 						/>
@@ -42,6 +45,8 @@ export const PasswordForm = () => {
 							type='password'
 							name='confirPassword'
 							disabled={true}
+							disableInputBackground={neutralColor.neutral50}
+							disableInputBorder={neutralColor.neutral200}
 							value={password.confPassword}
 							onChange={handleChange}
 						/>

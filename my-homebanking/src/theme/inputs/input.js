@@ -6,8 +6,9 @@ export const Input = styled.input`
 	width: 100%;
 	height: 54px;
 	padding: 0px 16px;
-	background: #fff;
-	border: 1px solid ${neutralColor.neutral400};
+	background: ${props => props.disableInputBackground || '#fff'};
+	border: 1px solid
+		${props => props.disableInputBorder || neutralColor.neutral400};
 	font-size: 16px;
 	line-height: 150%;
 	color: ${neutralColor.neutral800};

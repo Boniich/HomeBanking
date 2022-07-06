@@ -31,8 +31,6 @@ const findMonth = monthFromDate => {
 const getfringeHour = hour => {
 	let fringeHour = '';
 	if (hour >= 0 && hour <= 11) {
-		console.log(hour);
-		console.log('am');
 		fringeHour = 'am';
 	} else {
 		fringeHour = 'pm';
