@@ -91,6 +91,7 @@ const AccountProvider = ({ children }) => {
 		setSearchUserAccNumber('');
 		setSearchUserDni(null);
 		setMotive('');
+		setIsTheSameAccount(false);
 
 		setSearchUserImage('');
 		setSearchUserName('');
@@ -336,9 +337,6 @@ const AccountProvider = ({ children }) => {
 			setSearchUserName(name);
 			setSearchLastUserName(lastName);
 		} else {
-			const ownCurrency = currency.currencyText;
-			setAnotherCurrencyAcc(ownCurrency);
-			setSearchUserAccNumber(accNumber);
 			setIsTheSameAccount(true);
 		}
 	};
