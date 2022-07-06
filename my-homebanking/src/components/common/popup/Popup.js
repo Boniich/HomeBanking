@@ -52,7 +52,7 @@ export const Popup = React.forwardRef((props, ref) => {
 					desktopHeight={props.desktopHeight}
 					shadow={props.shadow}
 				>
-					<ModalContainer>
+					<ModalContainer tabletPadding={props.tabletPadding}>
 						{props.showHeader === true && (
 							<ModalHeader>
 								<HeadingSemiBold5>{props.headerText}</HeadingSemiBold5>
@@ -61,7 +61,9 @@ export const Popup = React.forwardRef((props, ref) => {
 								)}
 							</ModalHeader>
 						)}
-						<ModalContent>{props.children}</ModalContent>
+						<ModalContent thereIsAlingItem={props.thereIsAlingItem}>
+							{props.children}
+						</ModalContent>
 					</ModalContainer>
 				</Modal>
 			)}

@@ -51,6 +51,8 @@ export const AccountSummaryView = () => {
 						height='auto'
 						showHeader={true}
 						closeIcon={true}
+						tabletPadding='32px 32px 40px'
+						thereIsAlingItem='center'
 					>
 						{allAccountsByUser.map(el => (
 							<AccountCard

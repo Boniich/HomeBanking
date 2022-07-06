@@ -30,6 +30,10 @@ const Modal = styled.div`
 
 const ModalContainer = styled.div`
 	padding: ${props => props.padding || `24px 24px 32px`};
+
+	@media screen and (min-width: 744px) {
+		padding: ${props => props.tabletPadding};
+	}
 `;
 
 const ModalHeader = styled.div`
@@ -72,6 +76,10 @@ const ModalContent = styled.div`
 			transition: all 0.5s;
 			background-color: ${neutralColor.neutral100};
 		}
+	}
+
+	@media screen and (min-width: 744px) {
+		align-items: ${props => props.thereIsAlingItem};
 	}
 `;
 

@@ -29,6 +29,10 @@ const AccountContainer = styled.div`
 	border: 1px solid ${neutralColor.neutral300};
 	border-radius: 8px;
 	cursor: pointer;
+
+	@media screen and (min-width: 744px) {
+		width: 336px;
+	}
 `;
 
 const AccountContent = styled.div`
