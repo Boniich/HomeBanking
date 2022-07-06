@@ -26,6 +26,7 @@ const TitleCardSection = styled.div`
 
 	${ParagraphUnderline2} {
 		color: ${primaryColor.primary600};
+		cursor: pointer;
 	}
 `;
 

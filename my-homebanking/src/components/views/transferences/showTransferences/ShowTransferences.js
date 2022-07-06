@@ -9,7 +9,11 @@ const Section = styled.section`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin-top: 80px;
+	margin-top: 40px;
+
+	@media screen and (min-width: 744px) {
+		margin-top: 56px;
+	}
 
 	@media screen and (min-width: 1512px) {
 		margin-top: 164px;

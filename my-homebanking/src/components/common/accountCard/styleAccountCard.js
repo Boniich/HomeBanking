@@ -32,6 +32,10 @@ const AccountContainer = styled.div`
 
 	@media screen and (min-width: 744px) {
 		width: 336px;
+
+		&:hover {
+			background: ${neutralColor.neutral200};
+		}
 	}
 `;
 
