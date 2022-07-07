@@ -23,7 +23,12 @@ import {
  * @param {boolean} changesToErrorMsgOfTransf set some changes in the style for error transference msg (default: false)
  */
 
-export const showNotification = (text, subtext, color, changesToErrorMsgOfTransf) => {
+export const showNotification = (
+	text,
+	subtext,
+	color,
+	changesToErrorMsgOfTransf
+) => {
 	toast.dismiss();
 	toast(
 		t => (
@@ -57,7 +62,7 @@ export const showNotification = (text, subtext, color, changesToErrorMsgOfTransf
 			},
 		},
 		{
-			duration: 2000,
+			duration: 100,
 		}
 	);
 };

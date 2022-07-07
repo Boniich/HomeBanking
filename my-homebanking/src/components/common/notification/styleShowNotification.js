@@ -13,7 +13,7 @@ const NotificationContainer = styled.div.attrs(props => ({
 	justify-content: space-between;
 	align-items: ${props => props.removeCenterItems};
 	${ParagraphSemibold3} {
-		color: ${props => props.color};
+		color: ${props => props.color} !important;
 		cursor: default;
 	}
 
