@@ -47,6 +47,7 @@ export const PrimaryNav = ({ activeSecondColorNav }) => {
 	const [changeColorNav, setChangeColorNav] = useState(false);
 	const { name, userImage } = useContext(AccountContext);
 	const refNav = useRef(false);
+	const wid = refNav.current.offsetWidth;
 	const ref = createRef();
 
 	useEffect(() => {
@@ -72,10 +73,11 @@ export const PrimaryNav = ({ activeSecondColorNav }) => {
 	activeSecondColorNav === false &&
 		window.addEventListener('scroll', changeBackgroundColorNav);
 
-	window.addEventListener('scroll', () => {
-		const wid = refNav.current.offsetWidth;
-		wid >= 1512 && setResponsiveNav(false);
-	});
+	wid >= 1512 &&
+		responsiveNav &&
+		window.addEventListener('scroll', () => {
+			setResponsiveNav(false);
+		});
 	/* Al this props in Nav allow handle the change of background color and font color of nav bar
     when the user scroll */
 
