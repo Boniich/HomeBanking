@@ -4,7 +4,13 @@ import {
 	faHouseChimney,
 	faRightLeft,
 } from '@fortawesome/free-solid-svg-icons';
-import React, { createRef, useContext, useEffect, useState } from 'react';
+import React, {
+	createRef,
+	useContext,
+	useEffect,
+	useRef,
+	useState,
+} from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import AccountContext from '../../../../context/accountContext/AccountContext';
 import { neutralColor } from '../../../../theme/colors/colors';
@@ -40,6 +46,7 @@ export const PrimaryNav = ({ activeSecondColorNav }) => {
 	const [responsiveNav, setResponsiveNav] = useState(false);
 	const [changeColorNav, setChangeColorNav] = useState(false);
 	const { name, userImage } = useContext(AccountContext);
+	const refNav = useRef(false);
 	const ref = createRef();
 
 	useEffect(() => {
@@ -65,12 +72,17 @@ export const PrimaryNav = ({ activeSecondColorNav }) => {
 	activeSecondColorNav === false &&
 		window.addEventListener('scroll', changeBackgroundColorNav);
 
+	window.addEventListener('scroll', () => {
+		const wid = refNav.current.offsetWidth;
+		wid >= 1512 && setResponsiveNav(false);
+	});
 	/* Al this props in Nav allow handle the change of background color and font color of nav bar
     when the user scroll */
 
 	return (
 		<>
 			<Nav
+				ref={refNav}
 				backColor={changeColorNav && '#fff'}
 				titleColor={changeColorNav && `${neutralColor.neutral900}`}
 				fontColor={changeColorNav && `${neutralColor.neutral800}`}
