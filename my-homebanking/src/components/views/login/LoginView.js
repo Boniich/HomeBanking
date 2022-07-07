@@ -36,7 +36,7 @@ const LoginView = () => {
 	return (
 		<LoginSection>
 			<Box>
-				<Logo activeOnLogin />
+				<Logo url='' activeOnLogin />
 				<form action='' onSubmit={handleSubmit}>
 					<EmailContainer>
 						<ParagraphMedium3>Correo Electrónico</ParagraphMedium3>

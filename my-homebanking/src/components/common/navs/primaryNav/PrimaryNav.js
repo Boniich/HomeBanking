@@ -77,7 +77,7 @@ export const PrimaryNav = ({ activeSecondColorNav }) => {
 				iconUserColor={changeColorNav && `${neutralColor.neutral700}`}
 				scrollShadow={changeColorNav && `${shadownLG}`}
 			>
-				<Logo logoColor={!changeColorNav && 'changeToWhite'} />
+				<Logo url='/' logoColor={!changeColorNav && 'changeToWhite'} />
 				<Ul>
 					<Li
 						backgroundActiveColor={changeColorNav && 'changeToGreen'}

@@ -48,7 +48,7 @@ export const SecondaryNav = ({
 				</ArrowContainer>
 				<ParagraphSemibold2>{navText}</ParagraphSemibold2>
 			</NavContent>
-			<Logo />
+			<Logo url='/' />
 			{/* this space allow that logo will be center, it just a empty space */}
 			<Space spaceWidthInConfig={spaceWidthInConfig}></Space>
 		</Nav>
