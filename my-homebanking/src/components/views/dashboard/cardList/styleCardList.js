@@ -28,6 +28,12 @@ const TitleCardSection = styled.div`
 		color: ${primaryColor.primary600};
 		cursor: pointer;
 	}
+
+	&:hover {
+		${ParagraphUnderline2} {
+			color: ${primaryColor.primary500};
+		}
+	}
 `;
 
 const CardContentContainer = styled.div`
@@ -59,6 +65,7 @@ const Card = styled.div`
 
 const CardIcon = styled.img`
 	height: 37px;
+	padding: ${props => props.padding};
 `;
 
 export { CardSection, TitleCardSection, CardContentContainer, Card, CardIcon };
