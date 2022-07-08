@@ -76,7 +76,7 @@ export const EnterNumberAccountView = () => {
 					<EnterNumberContent>
 						<HeadingSemiBold5>Enviar Dinero</HeadingSemiBold5>
 						<InputContainer>
-							<ParagraphMedium3>Numero de cuenta</ParagraphMedium3>
+							<ParagraphMedium3>Número de cuenta</ParagraphMedium3>
 							<Input
 								type='search'
 								name='accNumber'
@@ -91,7 +91,7 @@ export const EnterNumberAccountView = () => {
 
 							{searchUserFound && (
 								<ResultsContainer>
-									<ParagraphMedium3>Numero de cuenta</ParagraphMedium3>
+									<ParagraphMedium3>Resultados</ParagraphMedium3>
 									<Link to='/make_transference_to_another_user/make_transference'>
 										<UserResult
 											name={searchUserName}
